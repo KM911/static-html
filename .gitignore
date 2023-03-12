@@ -1,0 +1,7 @@
+public
+node_modules
+db.json
+# !表示的是不忽略的文件
+!public/2048
+!public/
+
