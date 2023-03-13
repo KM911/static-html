@@ -149,7 +149,7 @@ aplayer:
 deploy:
   type: 'git'
   repo: https://github.com/KM911/BLOG.git
-  branch: master
+  branch: main
   # root的值 是你的博客文件夹的路径
   root: /public
 

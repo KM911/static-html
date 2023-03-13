@@ -1,7 +1,5 @@
 name: Hexo Deploy
 
-
-# active when 
 on:
   push:
     branches:
@@ -12,27 +10,54 @@ on:
   
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Copy file to github action
-      uses: actions/checkout@v2
 
-    - name: Setup Node.js environemnt
-      uses: actions/setup-node@v1
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
       with:
-        node-version: '14.x'
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
 
     - name: Install Dependencies
       run: npm install
 
-    - name: Build static html
-      run: npm run build
-      
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      NODE_VERSION: 16.x
+
+    steps:
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Deploy to Production
+      run: |
+        if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+          npm run build
+        fi
+        
     - name: publish and push
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.TEST_TOKEN }}
         publish_dir: ./public
-    
