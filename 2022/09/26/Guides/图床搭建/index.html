@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>图床搭建 | Debu cat 🐱</title><meta name="keywords" content="教程"><meta name="author" content="作格喝不起奶茶"><meta name="copyright" content="作格喝不起奶茶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="搭建图床 我们搭建图床主要是为了保存图片 方便将其发布到互联网上 让任何人都可以看见我们的图片 还可以进行加速 服务器本身并不需要加载图片 客户端负责进行 加载图片的工作 这个很关键 使用对象存储 参考教程 这里就用腾讯云作为案例了  获取密钥  这里我们就可以得到 前三项数据了  存储空间 和 存储区域 存储空间 就是 存储桶的名称  zuoge-1307686113 存储区域 就是 所属区域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图床搭建">
+<meta property="og:url" content="https://www.zuoge.online/2022/09/26/Guides/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Debu cat 🐱">
+<meta property="og:description" content="搭建图床 我们搭建图床主要是为了保存图片 方便将其发布到互联网上 让任何人都可以看见我们的图片 还可以进行加速 服务器本身并不需要加载图片 客户端负责进行 加载图片的工作 这个很关键 使用对象存储 参考教程 这里就用腾讯云作为案例了  获取密钥  这里我们就可以得到 前三项数据了  存储空间 和 存储区域 存储空间 就是 存储桶的名称  zuoge-1307686113 存储区域 就是 所属区域">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://81.68.91.70/api/cover">
+<meta property="article:published_time" content="2022-09-26T19:08:16.000Z">
+<meta property="article:modified_time" content="2023-03-13T12:52:09.353Z">
+<meta property="article:author" content="作格喝不起奶茶">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://81.68.91.70/api/cover"><link rel="shortcut icon" href="http://43.143.151.27/?action=get_image&image_name=7.webp"><link rel="canonical" href="https://www.zuoge.online/2022/09/26/Guides/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/static-html/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/static-html/',
+  algolia: undefined,
+  localSearch: {"path":"/static-html/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '图床搭建',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-13 12:52:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="same-origin"/><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/static-html/./atom.xml" title="Debu cat 🐱" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/static-html/">Debu cat 🐱</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">图床搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-26T19:08:16.000Z" title="发表于 2022-09-26 19:08:16">2022-09-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-13T12:52:09.353Z" title="更新于 2023-03-13 12:52:09">2023-03-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">625</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="图床搭建"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="搭建图床">搭建图床</h2>
+<p>我们搭建图床主要是为了保存图片 方便将其发布到互联网上 让任何人都可以看见我们的图片 还可以进行加速 服务器本身并不需要加载图片 客户端负责进行 加载图片的工作 这个很关键</p>
+<h2 id="使用对象存储">使用对象存储</h2>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/59284">参考教程</a></p>
+<p>这里就用腾讯云作为案例了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="D:/38985d56ebf496fb1cfb475541e9a0be46963f67.png" alt="image-20221007182020471" /></p>
+<h3 id="获取密钥">获取密钥</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/34aef57881342edfd11991b876ff60c28bdb0bca.png" alt="image-20221007183259598" /></p>
+<p>这里我们就可以得到 前三项数据了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/2aeec450f79f3eace33788eb9167e3fb90723ad9.png" alt="image-20221007183350827" /></p>
+<h3 id="存储空间-和-存储区域">存储空间 和 存储区域</h3>
+<p>存储空间 就是 存储桶的名称  <strong>zuoge-1307686113</strong></p>
+<p>存储区域 就是 所属区域 <strong>ap-nanjing</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/efaeab11adb556a46eeeb10b6890f63abe3aee7d.png" alt="image-20221007183439553" /></p>
+<h3 id="指定存储路径">指定存储路径</h3>
+<p>设置为 <strong>img/</strong> 就会把图片全部放到该文件夹下 (你猜猜看我为什么加粗 一定要加 <strong>/</strong> 啊)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/6b015212ab2e057d1a2fd32a3e5cd9d5726c6d07.png" alt="image-20221007183657701" /></p>
+<h2 id="白嫖B站">白嫖B站</h2>
+<p>这里需要使用一个插件<a target="_blank" rel="noopener" href="https://github.com/xlzy520/typora-plugin-bilibili">B站图床插件</a></p>
+<p>只需下载main.exe即可 位置要记好等下要用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\<span class="number">0.</span>SOFT\environment\<span class="keyword">go</span>\main.exe token=<span class="number">0008</span>ab15%<span class="number">2</span>C1680268896%<span class="number">2</span>Ca08ff%<span class="number">2</span>Aa1</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node <span class="attr">D</span>:\<span class="number">1.</span><span class="variable constant_">CS</span>\git_hub\typora-plugin-bilibili\typora.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取SESSDATA">获取SESSDATA</h3>
+<p>登录哔哩哔哩→F12打开控制台→Application→Cookies→SESSDATA</p>
+<h3 id="配置typora图像策略">配置typora图像策略</h3>
+<p>图像–&gt;上传服务 –&gt;Custom Command</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载的文件路径\main.exe <span class="attribute">token</span>=你的SESSDATA</span><br></pre></td></tr></table></figure>
+<h3 id="反防盗链">反防盗链</h3>
+<p>B站会做防盗链处理 我们需要破解</p>
+<p>其实就是添加一个referrer</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no-referrer&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>验证图片上传选项</p>
+<p>感觉这个方法是最简单的 根本就不需要什么脑子</p>
+<h2 id="自建图床">自建图床</h2>
+<p>这个其实就是利用我们自己的服务器 有一说一 ESC 和 OSS 好像用ESC要亏一些</p>
+<h3 id="搭建chevereto环境">搭建chevereto环境</h3>
+<p><a target="_blank" rel="noopener" href="https://feiju12138.github.io/2021/11/14/%E6%90%AD%E5%BB%BAChevereto%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1%E5%99%A8/">chevereto参考教程</a></p>
+<p>将zip文件上传解压</p>
+<p>正常情况</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chevereto can&#x27;t create the <span class="keyword">app</span>/settings.php <span class="keyword">file</span>. You must manually create this <span class="keyword">file</span>.</span><br></pre></td></tr></table></figure>
+<p>因为linux的文件权限很呆 这里是没有写入权限 我们修改成为777</p>
+<h4 id="连接数据库">连接数据库</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926183011293.png" alt="image-20220926183011293" /></p>
+<p>我们这里使用宝塔面板去创建数据库吧</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926184304494.png" alt="image-20220926184304494" /></p>
+<p>成功了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926184404129.png" alt="" /></p>
+<h4 id="获取api">获取api</h4>
+<p>Dashboard</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926185917249.png" alt="image-20220926185917249" /></p>
+<p>获取api key</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926185942611.png" alt="image-20220926185942611" /></p>
+<h4 id="设置最大上传文件限制">设置最大上传文件限制</h4>
+<p>因为我不知如何变成root用户 所以我们是用guest上传图片 会有限制 我们需要扩大文件上传上限</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926190519226.png" alt="image-20220926190519226" /></p>
+<h3 id="配置picgo">配置picgo</h3>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">43.143</span>.<span class="number">151.27</span><span class="regexp">/api/</span><span class="number">1</span>/upload</span><br></pre></td></tr></table></figure>
+<h4 id="下载chevereto插件">下载chevereto插件</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926190106653.png" alt="image-20220926190106653" /></p>
+<h3 id="配置typora图片设置">配置typora图片设置</h3>
+<p>上传服务 picgo (app)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://43.143.151.27/images/2022/09/26/image-20220926190305792.png" alt="image-20220926190305792" /></p>
+<h3 id="目前还是会报错-不知道是什么意思">目前还是会报错 不知道是什么意思</h3>
+<h3 id="利用phpMyAdmi">利用phpMyAdmi</h3>
+<h2 id="图床管理">图床管理</h2>
+<p>这里主要是讲讲我自己的图床管理经验</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.zuoge.online">作格喝不起奶茶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zuoge.online/2022/09/26/Guides/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/">https://www.zuoge.online/2022/09/26/Guides/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zuoge.online" target="_blank">Debu cat 🐱</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/static-html/tags/%E6%95%99%E7%A8%8B/">教程</a></div><div class="post_share"><div class="social-share" data-image="http://81.68.91.70/api/cover" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/static-html/2022/11/01/CI-CD/" title="CI&#x2F;CD"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-01</div><div class="title">CI&#x2F;CD</div></div></a></div><div><a href="/static-html/2022/10/22/FTP%E7%9A%84%E4%BD%BF%E7%94%A8/" title="FTP的使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-22</div><div class="title">FTP的使用</div></div></a></div><div><a href="/static-html/2022/10/18/Jupyter%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/" title="Jupyter远程连接"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-18</div><div class="title">Jupyter远程连接</div></div></a></div><div><a href="/static-html/2022/10/04/%E6%9C%8D%E5%8A%A1%E5%99%A8ESC/" title="服务器ESC"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-04</div><div class="title">服务器ESC</div></div></a></div><div><a href="/static-html/2022/09/19/%E6%88%91%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84markdown/" title="我所知道的Markdown"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-19</div><div class="title">我所知道的Markdown</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="this.onerror=null;this.src='/static-html/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">作格喝不起奶茶</div><div class="author-info__description">程序员应该把更多的时间花在代码和生活上 而不是和其他人争论哪一门语言更好</div></div><div class="card-info-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2547715095"><i class="fas fa-star"></i><span>访问我的QQ空间</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">希望你也可以喜欢你自己的生活</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.</span> <span class="toc-text">搭建图床</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8"><span class="toc-number">2.</span> <span class="toc-text">使用对象存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%86%E9%92%A5"><span class="toc-number">2.1.</span> <span class="toc-text">获取密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4-%E5%92%8C-%E5%AD%98%E5%82%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">2.2.</span> <span class="toc-text">存储空间 和 存储区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84"><span class="toc-number">2.3.</span> <span class="toc-text">指定存储路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E5%AB%96B%E7%AB%99"><span class="toc-number">3.</span> <span class="toc-text">白嫖B站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96SESSDATA"><span class="toc-number">3.1.</span> <span class="toc-text">获取SESSDATA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEtypora%E5%9B%BE%E5%83%8F%E7%AD%96%E7%95%A5"><span class="toc-number">3.2.</span> <span class="toc-text">配置typora图像策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E9%98%B2%E7%9B%97%E9%93%BE"><span class="toc-number">3.3.</span> <span class="toc-text">反防盗链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A"><span class="toc-number">4.</span> <span class="toc-text">自建图床</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAchevereto%E7%8E%AF%E5%A2%83"><span class="toc-number">4.1.</span> <span class="toc-text">搭建chevereto环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.1.1.</span> <span class="toc-text">连接数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96api"><span class="toc-number">4.1.2.</span> <span class="toc-text">获取api</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%80%E5%A4%A7%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6"><span class="toc-number">4.1.3.</span> <span class="toc-text">设置最大上传文件限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEpicgo"><span class="toc-number">4.2.</span> <span class="toc-text">配置picgo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDchevereto%E6%8F%92%E4%BB%B6"><span class="toc-number">4.2.1.</span> <span class="toc-text">下载chevereto插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEtypora%E5%9B%BE%E7%89%87%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.3.</span> <span class="toc-text">配置typora图片设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E8%BF%98%E6%98%AF%E4%BC%9A%E6%8A%A5%E9%94%99-%E4%B8%8D%E7%9F%A5%E9%81%93%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="toc-number">4.4.</span> <span class="toc-text">目前还是会报错 不知道是什么意思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8phpMyAdmi"><span class="toc-number">4.5.</span> <span class="toc-text">利用phpMyAdmi</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BA%8A%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">图床管理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%A6%82%E7%8E%87%E8%AE%BA/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 作格喝不起奶茶</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/static-html/js/utils.js"></script><script src="/static-html/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/static-html/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrctype="0"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

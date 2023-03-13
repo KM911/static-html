@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Git教程 | Debu cat 🐱</title><meta name="keywords" content="博客"><meta name="author" content="作格喝不起奶茶"><meta name="copyright" content="作格喝不起奶茶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="环境搭建 git下载和安装 这里推荐去腾讯下载 毕竟国内的网速相对较快 腾讯软件下载 下载和电脑匹配的位数 32位和64位 (记得点普通下载 而不是高速下载) 64位 32位  如果打开控制台 输入git 会有反应 说明配置成功了 基本信息配制 这里不要用我的信息 啊 (其实就算用了也不会出什么问题) 12git config --global user.name &quot;KM911&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git教程">
+<meta property="og:url" content="https://www.zuoge.online/2022/09/11/Guides/git%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Debu cat 🐱">
+<meta property="og:description" content="环境搭建 git下载和安装 这里推荐去腾讯下载 毕竟国内的网速相对较快 腾讯软件下载 下载和电脑匹配的位数 32位和64位 (记得点普通下载 而不是高速下载) 64位 32位  如果打开控制台 输入git 会有反应 说明配置成功了 基本信息配制 这里不要用我的信息 啊 (其实就算用了也不会出什么问题) 12git config --global user.name &quot;KM911&amp;quot">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://81.68.91.70/api/cover">
+<meta property="article:published_time" content="2022-09-11T09:06:16.000Z">
+<meta property="article:modified_time" content="2023-03-13T12:52:09.353Z">
+<meta property="article:author" content="作格喝不起奶茶">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://81.68.91.70/api/cover"><link rel="shortcut icon" href="http://43.143.151.27/?action=get_image&image_name=7.webp"><link rel="canonical" href="https://www.zuoge.online/2022/09/11/Guides/git%E6%95%99%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/static-html/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/static-html/',
+  algolia: undefined,
+  localSearch: {"path":"/static-html/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-13 12:52:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="same-origin"/><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/static-html/./atom.xml" title="Debu cat 🐱" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/static-html/">Debu cat 🐱</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Git教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-11T09:06:16.000Z" title="发表于 2022-09-11 09:06:16">2022-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-13T12:52:09.353Z" title="更新于 2023-03-13 12:52:09">2023-03-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/static-html/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1>环境搭建</h1>
+<h2 id="git下载和安装">git下载和安装</h2>
+<p>这里推荐去腾讯下载 毕竟国内的网速相对较快</p>
+<p><a target="_blank" rel="noopener" href="https://pc.qq.com/search.html#!keyword=git">腾讯软件下载</a></p>
+<p>下载和电脑匹配的位数 32位和64位 (记得点普通下载 而不是高速下载)</p>
+<p><a target="_blank" rel="noopener" href="https://webcdn.m.qq.com/spcmgr/download/Git-2.37.3-64-bit.exe">64位</a></p>
+<p><a target="_blank" rel="noopener" href="https://webcdn.m.qq.com/spcmgr/download/Git-2.37.3-32-bit.exe">32位</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://localhost:3000/picgo/1668762156326.webp" alt="image-20220911091043294" /></p>
+<p>如果打开控制台 输入git 会有反应 说明配置成功了</p>
+<h2 id="基本信息配制">基本信息配制</h2>
+<p>这里不要用我的信息 啊 (其实就算用了也不会出什么问题)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config <span class="attr">--global</span> user<span class="selector-class">.name</span> <span class="string">&quot;KM911&quot;</span></span><br><span class="line">git config <span class="attr">--global</span> user<span class="selector-class">.email</span> <span class="number">2547715095</span>@qq.com</span><br></pre></td></tr></table></figure>
+<h3 id="关闭服务器代理">关闭服务器代理</h3>
+<p>很关键 不然容易443 time out 不过其实就算用了 还是会是不是443的 没办法 谁让人家微软不是中国企业呢 w</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config <span class="attr">--global</span> <span class="attr">--unset</span> http<span class="selector-class">.proxy</span></span><br><span class="line">git config <span class="attr">--global</span> <span class="attr">--unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+<h3 id="生成密匙">生成密匙</h3>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="number">2547715095</span>@qq.com</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&#x27;2547715095@qq.com&#x27;</span> -f <span class="name">D</span>:\<span class="number">0.</span>SOFT\ssh\.ssh\github</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&#x27;2547715095@qq.com&#x27;</span> -f <span class="name">D</span>:\<span class="number">0.</span>SOFT\ssh\.ssh\gitee</span><br><span class="line"></span><br><span class="line">这里其实可以设置ssh的生成位置 默认c盘 就算没了 再重新生成一个就好了</span><br></pre></td></tr></table></figure>
+<h4 id="关于生成密钥的过程中-可选">关于生成密钥的过程中(可选)</h4>
+<p>我们可以指定生成的密钥位置(很关键 可以移动到D盘)和名字(不关键)</p>
+<p>在上述指令后 输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:<span class="regexp">/0.SOFT/</span>ssh<span class="regexp">/.ssh/</span>key</span><br></pre></td></tr></table></figure>
+<p>然后我们需要去设置git 去告诉它我们的密匙的位置</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> core.sshCommand <span class="string">&quot;D:\0.SOFT\ssh\.ssh\&quot;</span></span><br><span class="line">ssh-add D:\<span class="number">0</span>.SOFT\ssh\.ssh\gitee</span><br><span class="line">这里是因为我的<span class="keyword">key</span>就是叫做<span class="keyword">key</span></span><br><span class="line"></span><br><span class="line">我想到了 其实我们可以控制变量</span><br><span class="line"><span class="number">1</span>: 不设置我们的<span class="keyword">key</span> 只是修改目录 (共用一个<span class="keyword">key</span> 不修改邮箱 ) </span><br><span class="line"><span class="number">2</span>: 设置不同的邮箱 生成两个<span class="keyword">key</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="添加密钥">添加密钥</h2>
+<hr />
+<h3 id="关闭ssl认证">关闭ssl认证</h3>
+<p>其实还是为了解决网络 问题 最好还是科学上网</p>
+<p>这里推荐一个(不是广告 我自己也在用)</p>
+<p><a href="">pigcha</a> 按流量付费的话 30元 15g 我用了好久 还是因为拿去看V才用光的 啊哈哈哈 如果只是用来上github 还有一个软件可以使用</p>
+<p><a href="">steam++</a> 好像改名字了 不过这个不重要 免费软件 可以给开发者一点支持 让他买杯咖啡 不过因为是DNS代理或者修改host 容易出现浏览器无法使用的情况 对于新人来说 问题有点多 当然了 steam++还是很强大的</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslverify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本使用流程">基本使用流程</h3>
+<p>先在GitHub上创建一个仓库 然后将其clone到本地</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">仓库的链接</span></span><br></pre></td></tr></table></figure>
+<p>将想要上传的文件添加到缓存区 提交到本地后 上传到仓库</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">add</span> filename</span><br><span class="line"><span class="symbol">git</span> commit -m <span class="string">&quot;updata&quot;</span></span><br><span class="line"><span class="symbol">git</span> <span class="keyword">push</span> </span><br></pre></td></tr></table></figure>
+<p>稍等一下 你就可以在你的仓库 看见你的文件了</p>
+<p>反正我就是只是使用这些最基本的命令 依然很强大 分支什么的对于我们来说还没有必要</p>
+<p>恭喜你 你基本上已经学会了git的80% 可以愉快的玩耍了</p>
+<h2 id="其他参考教程">其他参考教程</h2>
+<p>安装git 这些东西都不是问题啊 其实我还是推荐 你去使用我们ubuntu系统来学习 因为有 apt get 这种很方便的命令行指令 (windos也有 不过支持相对没有那么好 毕竟术业有专攻)</p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">参考教程_雪峰</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30044692">参考教程_知乎_</a></p>
+<h1>情景再现</h1>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5f99380597de">参考教程</a></p>
+<p>在具体的情况下学习 有助于我们理解和记忆具体的内容</p>
+<h2 id="获取云端新的分支">获取云端新的分支</h2>
+<p><code>git branch -a</code> 查看本地和云端的分支</p>
+<p><code>git branch -b new_baanch</code> 切换到一个新的分支</p>
+<p><code>git fetch --all</code> 获取云端的全部修改</p>
+<p><code>git branch --set-upstream-to=origin/new_branch</code> 将该分支进行追踪新的分支</p>
+<p><code>git pull</code> 获取新的内容</p>
+<h2 id="本地和云端的代码冲突问题">本地和云端的代码冲突问题</h2>
+<p>直接放弃本地的方法</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">fetch</span> <span class="comment">--all  </span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard origin/master</span></span><br></pre></td></tr></table></figure>
+<p>当然了 这样肯定不是很好 我们应该可以这样解决</p>
+<h2 id="缺少文件没有提交">缺少文件没有提交</h2>
+<p>将本次提交 和上一次提交合并</p>
+<p>但是如果你已经将代码提交到云端了 就不要在修改了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
+<p>git rebase</p>
+<p>git cherry-pick</p>
+<h1>工作流</h1>
+<p>为了保证多人合作项目的时候 不会影响master分支的代码 我们使用如下的工作流</p>
+<p>下面的指令 需要在<strong>当前文件夹</strong>下 打开cmd powershell 或者git-bash 进行输入</p>
+<h2 id="克隆仓库到本地">克隆仓库到本地</h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>tee.com<span class="regexp">/dong-zuoge/</span>node.git</span><br></pre></td></tr></table></figure>
+<h2 id="开辟自己的分支">开辟自己的分支</h2>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> checkout -<span class="keyword">b</span> &lt;your-branch&gt;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/2a9a4da5fda911f3430143a8d753d517d2d7045e.png" alt="image-20221014211305053" /></p>
+<p>这样就算你修改了文件 不会影响主分支</p>
+<h2 id="查看自己修改">查看自己修改</h2>
+<p>你可能修改了一些代码 但是自己记不清了  使用如下的指令进行查看修改</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git diff</span></span><br></pre></td></tr></table></figure>
+<p>我们可以借助一些可视化的工具<a target="_blank" rel="noopener" href="https://desktop.github.com/">Github Desktop</a></p>
+<p>如果只是修改了几行 或许还可以使用原生的git 但是如果对于项目进行了大量的修改 并且涉及到不同层级的文件时 还是比较推荐使用这种工具</p>
+<h2 id="将修改提交到本地">将修改提交到本地</h2>
+<p>将修改提交到本地 这里我们还是没有修改云端 需要等待项目的主要负责人将其合并</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span> *</span><br><span class="line">git <span class="keyword">commit</span> -m &quot;提交的信息 最好可以描述清楚 自己做了什么修改 如何实现的 当然了其实就算很简单 也没有关系&quot;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://localhost:3000/picgo/1668762175877.webp" alt="image-20221014220330151" /></p>
+<p>左上角的对应我们的 git add *</p>
+<p>GitHub Desktop 默认会将全部的修改进行提交  你也可以选择不提交某些文件<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>左下角对应我们的 git commit -m “提交的信息”</p>
+<p>这里就是让我们输入提交信息的地方 下面的是Description(描述) 更加详细的描述</p>
+<h2 id="将提交合并-不重要">将提交合并(不重要)</h2>
+<p>有的时候 我们只是做了一点点小的修改 如果还是进行一样的提交方式 就会产生很多无效的commit</p>
+<p>为了简化我们的提交信息 我们可以这样做</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span> <span class="operator">*</span> </span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
+<p>这样就会将本次的提交合并到上一次提交上</p>
+<p>这里会进入我们的编辑模式 让你查看修改</p>
+<p><code>CTRL</code>+<code>C</code> 进入命令模式 然后输入 <code>qa</code> 就会退出了</p>
+<p>不要在已经将commit 上传了以后进行此操作 会出现比较复杂的修改</p>
+<p>尽管不会影响项目的运行 但是会产生垃圾信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/03d12b99fb8418ed5ba0f55469867e1a221620f9.png" alt="image-20221014222626888" /></p>
+<h2 id="将修改提交到云端">将修改提交到云端</h2>
+<p>如果你以及确保自己的修改已经完毕了 (这期间里你可能进行了多次的 add commit的操作)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/2628cec54613bc4caf8ed00d477bcbb7f74f2cf4.png" alt="image-20221014214558020" /></p>
+<p>将修改提交到云端</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> </span><br></pre></td></tr></table></figure>
+<p>对应的操作是 点击紫色的按钮</p>
+<p>这里特别将 上面的<code>Pull origin</code>按钮圈出来 是想说明 这里两个箭头的含义 向上的箭头表示 我们本地有多少次提交没有上传到云端 同理 向下的箭头 表示云端有多少修改没有同步到本地<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/853cb81c06843cdcc3679919ba2b3ece79755cb8.png" alt="image-20221014221814260" /></p>
+<h2 id="将分支合并-不重要">将分支合并(不重要)</h2>
+<p>这部分内容其实很简单的 因为都有可视化</p>
+<p>进入我们的<a target="_blank" rel="noopener" href="https://gitee.com/dong-zuoge/node">仓库地址</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/8806e9b053d999a2fffe3269b1773acafde481d4.png" alt="image-20221014223615538" /></p>
+<p><code>Pull Request</code> 申请将分支合并</p>
+<p>这里需要等待项目的负责人和审查员进行检查后 才会进行合并</p>
+<p>为了防止我这样的菜鸟直接修改master分支 影响系统的运行 很有必要</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/album/f927dc8b71aff07f8e098325f921476c57bf00a3.png" alt="image-20221014225035523" /></p>
+<p>这里推荐使用 扁平化合并</p>
+<p>这样不会将其他分支的每一次提交信息都合并到master分支上</p>
+<p>可以保持我们的master分支的整洁性</p>
+<h2 id="移除本地的分支">移除本地的分支</h2>
+<p>等到我们发现 自己的pull request 被合并以后 (说明你的修改是没有问题的) 我们也不再需要该分支了</p>
+<p>进行如下的操作  将本地分支移除</p>
+<p>我们的仓库就变成了 只有master分支的样子了</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="keyword">master</span> </span><br><span class="line"><span class="title">git</span> branch -D <span class="tag">&lt;your-branch&gt;</span></span><br></pre></td></tr></table></figure>
+<h1>总结</h1>
+<p>其实对于一般的情况 就比如说 我们个人开发 我们只需要进行</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span> *</span><br><span class="line">git <span class="keyword">commit</span> -m &quot;提交的信息&quot;</span><br></pre></td></tr></table></figure>
+<p>多次提交和修改之后</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> </span><br></pre></td></tr></table></figure>
+<p>完成了 是不是很简单啊 但是我还是推荐你养成良好的git使用习惯 这样对于自己代码回滚 还是为工作打下良好的基础 都是很好的练习</p>
+<h1>题外话</h1>
+<p>工具是为了提高效率 我并不觉得使用gui就一定 怎么这么样 使用命令行就 巴拉巴拉</p>
+<p>如果你觉得使用某种方式更加适合自己 有助于提高自己的效率 这样就够了 没有必要花费时间和别人争论怎么做更好之类的</p>
+<p>就算你对于一个工具不是非常了解 就比如这里的git 和 Github Desktop</p>
+<p>掌握一些基本的技巧 就可以体验到新的工具 带来的好处 所以多看看 有什么新奇的玩意 然后学习一下吧</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>我们可以专门创建一个<code>.gitingore</code>文件 告知什么文件不要进行提交 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.zuoge.online">作格喝不起奶茶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zuoge.online/2022/09/11/Guides/git%E6%95%99%E7%A8%8B/">https://www.zuoge.online/2022/09/11/Guides/git%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zuoge.online" target="_blank">Debu cat 🐱</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/static-html/tags/%E5%8D%9A%E5%AE%A2/">博客</a></div><div class="post_share"><div class="social-share" data-image="http://81.68.91.70/api/cover" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/static-html/2022/09/10/Guides/%E6%B5%8B%E8%AF%95/" title="测试Markdown渲染"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">测试Markdown渲染</div></div></a></div><div><a href="/static-html/2022/09/10/Guides/hexo%E7%9A%84%E5%9D%91/" title="Hexo的坑"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">Hexo的坑</div></div></a></div><div><a href="/static-html/2022/09/10/Happy/%E6%94%B6%E8%8E%B7/" title="博客的收获"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">博客的收获</div></div></a></div><div><a href="/static-html/2022/09/10/Guides/hexo%E6%95%99%E7%A8%8B/" title="Hexo教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://81.68.91.70/api/cover" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">Hexo教程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="this.onerror=null;this.src='/static-html/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">作格喝不起奶茶</div><div class="author-info__description">程序员应该把更多的时间花在代码和生活上 而不是和其他人争论哪一门语言更好</div></div><div class="card-info-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2547715095"><i class="fas fa-star"></i><span>访问我的QQ空间</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">希望你也可以喜欢你自己的生活</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">git下载和安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E9%85%8D%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">基本信息配制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%90%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">关闭服务器代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E5%8C%99"><span class="toc-number">1.2.2.</span> <span class="toc-text">生成密匙</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD-%E5%8F%AF%E9%80%89"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">关于生成密钥的过程中(可选)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%AF%86%E9%92%A5"><span class="toc-number">1.3.</span> <span class="toc-text">添加密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%ADssl%E8%AE%A4%E8%AF%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">关闭ssl认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">基本使用流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">其他参考教程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">情景再现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BA%91%E7%AB%AF%E6%96%B0%E7%9A%84%E5%88%86%E6%94%AF"><span class="toc-number">2.1.</span> <span class="toc-text">获取云端新的分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%92%8C%E4%BA%91%E7%AB%AF%E7%9A%84%E4%BB%A3%E7%A0%81%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">本地和云端的代码冲突问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E5%B0%91%E6%96%87%E4%BB%B6%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BA%A4"><span class="toc-number">2.3.</span> <span class="toc-text">缺少文件没有提交</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">3.1.</span> <span class="toc-text">克隆仓库到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E8%BE%9F%E8%87%AA%E5%B7%B1%E7%9A%84%E5%88%86%E6%94%AF"><span class="toc-number">3.2.</span> <span class="toc-text">开辟自己的分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%B7%B1%E4%BF%AE%E6%94%B9"><span class="toc-number">3.3.</span> <span class="toc-text">查看自己修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">3.4.</span> <span class="toc-text">将修改提交到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%8F%90%E4%BA%A4%E5%90%88%E5%B9%B6-%E4%B8%8D%E9%87%8D%E8%A6%81"><span class="toc-number">3.5.</span> <span class="toc-text">将提交合并(不重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%88%B0%E4%BA%91%E7%AB%AF"><span class="toc-number">3.6.</span> <span class="toc-text">将修改提交到云端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6-%E4%B8%8D%E9%87%8D%E8%A6%81"><span class="toc-number">3.7.</span> <span class="toc-text">将分支合并(不重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E6%9C%AC%E5%9C%B0%E7%9A%84%E5%88%86%E6%94%AF"><span class="toc-number">3.8.</span> <span class="toc-text">移除本地的分支</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">题外话</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E6%A6%82%E7%8E%87%E8%AE%BA/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/13/test/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="无题">无题</a><time datetime="2023-03-13T12:52:09.361Z" title="发表于 2023-03-13 12:52:09">2023-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 作格喝不起奶茶</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/static-html/js/utils.js"></script><script src="/static-html/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/static-html/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrctype="0"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
