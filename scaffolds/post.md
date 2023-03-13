@@ -1,8 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-mathjax: true
+mathjax: false
 tags: 
-cover: http://81.68.91.70/api/cover
-categories: 
+categories:
 ---

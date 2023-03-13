@@ -889,7 +889,7 @@ inject:
   #  - <link rel="stylesheet" href="/css/mouse.css">
 
   bottom:
-    - <div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrctype="0"> </div>
+    - <div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div>
     # - <script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script>
   # - <script src="xxxx"></script>
 

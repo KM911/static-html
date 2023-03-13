@@ -1,7 +1,6 @@
 ---
-title: 视频和音频
-mathjax: true
-cover: http://81.68.91.70/api/cover
+title: 重新认识typora
+
 date: 2023-03-12 14:17:43
 tags:
 categories:

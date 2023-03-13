@@ -139,9 +139,12 @@ plugins:
 #   smartLists: true
 #   smartypants: true
 
+# meting 为true 时，需要在主题配置文件中开启 meting
+# 也就是 
+# asset_inject: true 是说明开启了 meting
 aplayer:
-  meting: false
-  asset_inject: false
+  meting: true
+  asset_inject: true
 
 
 # Deployment
