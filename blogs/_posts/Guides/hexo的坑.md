@@ -32,3 +32,5 @@ categories: 教程
 ![image-20221006225313883](https://i0.hdslb.com/bfs/album/0617fb541c340b49d135a6ffae8bde18d9be257e.png)
 
 原因是出现了 %这样无法转义的字符
+
+也就是说 问题是我这里是如何显示它的呢 在什么情况下不可用
