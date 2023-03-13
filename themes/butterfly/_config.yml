@@ -183,8 +183,8 @@ wordcount:
 # 2: both (if the description exists, it will show description, or show the auto_excerpt)
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
-index_post_content:
-  method: 3
+index_post_content: 
+  method: 1
   length: 500 # if you set method to 2 or 3, the length need to config
 
 # anchor
@@ -886,11 +886,11 @@ inject:
   head:
   # - <link rel="stylesheet" href="/xxx.css">
    - <meta name="referrer" content="same-origin"/>
-   - <link rel="stylesheet" href="/css/mouse.css">
+  #  - <link rel="stylesheet" href="/css/mouse.css">
 
   bottom:
     - <div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrctype="0"> </div>
-    - <script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script>
+    # - <script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script>
   # - <script src="xxxx"></script>
 
 
