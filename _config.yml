@@ -17,7 +17,7 @@ timezone: ''
 # url: http://www.zuoge.online/
 url: https://www.zuoge.online/
 
-root: /
+root: /static-html/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
