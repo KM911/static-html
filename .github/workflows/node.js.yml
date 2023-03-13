@@ -1,5 +1,7 @@
 name: Hexo Deploy
 
+
+# active when 
 on:
   push:
     branches:
@@ -12,11 +14,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-    - name: Checkout
+    - name: Copy file to github action
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: Setup Node.js environemnt
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
@@ -24,10 +27,10 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Build
+    - name: Build static html
       run: npm run build
       
-    - name: deploy
+    - name: publish and push
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
