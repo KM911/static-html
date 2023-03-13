@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Nodejs | Debu cat 🐱</title><meta name="keywords" content="关键词"><meta name="author" content="作格喝不起奶茶"><meta name="copyright" content="作格喝不起奶茶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="环境搭建 这里不解释了 hello world 在我看来 这个才是真正意义上的hello world in nodejs –它解释了 我们的nodejs到底是做什么的 而不是你的npm环境 创建一个server.js文件 写入下面的代码 1234567const http &#x3D; require(&quot;http&quot;);const server &#x3D; http.createServer((r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs">
+<meta property="og:url" content="https://www.zuoge.online/2023/01/12/BOOK/node/index.html">
+<meta property="og:site_name" content="Debu cat 🐱">
+<meta property="og:description" content="环境搭建 这里不解释了 hello world 在我看来 这个才是真正意义上的hello world in nodejs –它解释了 我们的nodejs到底是做什么的 而不是你的npm环境 创建一个server.js文件 写入下面的代码 1234567const http &#x3D; require(&quot;http&quot;);const server &#x3D; http.createServer((r">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i0.hdslb.com/bfs/article/956bb2ff2f364235df290cb4b56c566d6a5fdcb0.jpg@942w_531h_progressive.webp">
+<meta property="article:published_time" content="2023-01-12T14:17:43.000Z">
+<meta property="article:modified_time" content="2023-03-13T15:08:32.089Z">
+<meta property="article:author" content="作格喝不起奶茶">
+<meta property="article:tag" content="关键词">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i0.hdslb.com/bfs/article/956bb2ff2f364235df290cb4b56c566d6a5fdcb0.jpg@942w_531h_progressive.webp"><link rel="shortcut icon" href="http://43.143.151.27/?action=get_image&image_name=7.webp"><link rel="canonical" href="https://www.zuoge.online/2023/01/12/BOOK/node/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/static-html/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/static-html/',
+  algolia: undefined,
+  localSearch: {"path":"/static-html/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Nodejs',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-13 15:08:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="same-origin"/><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/static-html/./atom.xml" title="Debu cat 🐱" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">77</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/static-html/">Debu cat 🐱</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/static-html/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/static-html/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Nodejs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-12T14:17:43.000Z" title="发表于 2023-01-12 14:17:43">2023-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-13T15:08:32.089Z" title="更新于 2023-03-13 15:08:32">2023-03-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nodejs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1>环境搭建</h1>
+<p>这里不解释了</p>
+<h1>hello world</h1>
+<p>在我看来 这个才是真正意义上的hello world in nodejs –它解释了 我们的nodejs到底是做什么的 而不是你的npm环境</p>
+<p>创建一个server.js文件 写入下面的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">request, respond</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">    respond.<span class="title function_">end</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>在当前文件夹下打开cmd or powershell 输入 <code>node server.js</code></p>
+<p>然后打开浏览器 输入下面的网址 <code>localhost:3000/</code></p>
+<p>就可以看到 我们的cmd界面中 输出了<code>hello world</code> 浏览器显示了 hello world (不过是在屏幕的左上角 并且字体有些小)</p>
+<h2 id="Nodejs">Nodejs</h2>
+<p>我们使用Nodejs 是开发网页的后端 (运行在服务器上的代码)</p>
+<p>用于处理我们浏览器的各种请求 比如http 是协议 get是协议中的method 吧</p>
+<p>比如 <a target="_blank" rel="noopener" href="http://zuoge.online">http://zuoge.online</a> 就是浏览器发送一个get请求到其对应的服务器上 服务器接收请求后 就会返回信息 显示在我们的浏览器中 可以是网页html 或者 数据</p>
+<h2 id="解析request请求">解析request请求</h2>
+<p>我们的浏览器向服务器发送了http的请求 其中包含了很多信息 比如访问的具体网址 使用的设备 发送请求的ip 大体如图所示</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">其中最关键的是我们的路径解析 </span><br><span class="line"></span><br><span class="line">## 路由</span><br><span class="line"></span><br><span class="line">再看一段代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>const http = require(“http”);</p>
+<p>const server = http.createServer((request, respond) =&gt; {<br />
+console.log(“hello world”);<br />
+respond.end(“hello world”);<br />
+})<br />
+server.listen(3000);</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们解释一下上面的代码</span><br><span class="line"></span><br><span class="line">console.log() 在nodejs的运行窗口 输出</span><br><span class="line"></span><br><span class="line">respond 返回的信息 就是浏览器访问我们的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 获取get请求的数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 解析request中的数据</span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">将req中的路由 解析 就是? 及其后面的内容</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">&gt; req.<span class="property">url</span>  </span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">将其解析为json</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">&gt; json_data = url.<span class="title function_">parse</span>(req.<span class="property">url</span>,<span class="literal">true</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">获取? 后面的参数</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">&gt; q = json_data.<span class="property">query</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">根据 键获取值</span></span><br><span class="line"><span class="meta prompt_">&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">&gt; value  = q.<span class="property">key</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 获取post请求中的数据</span><br><span class="line"></span><br><span class="line">post 无法从路径中获取参数</span><br><span class="line"></span><br><span class="line">这里我们需要其他的方法</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">// 先说js是如何发送post请求的</span><br><span class="line">let xhr = new XMLHttpRequest();</span><br><span class="line">            xhr.open(&quot;POST&quot;, &quot;http://localhost:3000/?action=add_article&quot;, true);</span><br><span class="line">            xhr.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;)</span><br><span class="line">            xhr.send(JSON.stringify(&#123;</span><br><span class="line">                &quot;author&quot;: document.getElementById(&quot;author&quot;).value,</span><br><span class="line">                &quot;title&quot;: document.getElementById(&quot;title&quot;).value,</span><br><span class="line">                &quot;content&quot;: document.getElementById(&quot;content&quot;).value</span><br><span class="line">            &#125;));</span><br><span class="line">            xhr.onreadystatechange = function () &#123;</span><br></pre></td></tr></table></figure>
+<p>我们是如何接受post请求的</p>
+<h2 id="利用respond返回数据">利用respond返回数据</h2>
+<h3 id="设置状态信息">设置状态信息</h3>
+<h2 id="文件读取">文件读取</h2>
+<p>fs.readFileSync</p>
+<p>这是同步的读取 方式 避免发送空的信息回去</p>
+<p>可以对普通文件进行发送 但是对于图片 该怎么办呢?</p>
+<h2 id="文件保存">文件保存</h2>
+<h2 id="路径重新定向问题">路径重新定向问题</h2>
+<p>有些路径的获取 会导致之前的路径无效</p>
+<p>目前最好的解决方案就是用相对路径写 并且保证不要出现路径混乱 这里就是自己的代码写得烂啊 你自己想想啊 你如果重定向有问题 不就是直接gg了吗?</p>
+<blockquote>
+<p>重定向问题</p>
+<blockquote>
+<p>‘./重新定向文件夹/QQ图片20221004203229.jpg’</p>
+</blockquote>
+</blockquote>
+<h2 id="连接数据库">连接数据库</h2>
+<p>需要一个插件</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save 还是放到我们的工作环境里面吧</span></span><br></pre></td></tr></table></figure>
+<p>这里不写对于数据库的基本操作 而是写 对于操作的要点 比如说 如何去</p>
+<h3 id="注册-和-登录">注册 和 登录</h3>
+<p><strong>注册方面</strong></p>
+<ul>
+<li>有不同的账号 检查账号是否相同–账号已经被注册了</li>
+<li>先不管这些吧 比如找回什么的</li>
+</ul>
+<p><strong>登录</strong></p>
+<p>user -&gt; pwd -&gt; yes 返回两个不同的信息</p>
+<p>账号不存在 -&gt; 密码错误 -&gt; 登录成功</p>
+<p>登录函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">login</span>(<span class="params">respond, respond_data</span>) &#123;</span><br><span class="line">    <span class="comment">// 1. 获取到用户名和密码</span></span><br><span class="line">    <span class="comment">// 2. 判断用户名是否存在</span></span><br><span class="line">    <span class="comment">// 3. 如果存在就判断密码是否正确</span></span><br><span class="line">    <span class="comment">// 4. 如果密码正确就返回登录成功</span></span><br><span class="line">    <span class="comment">// 5. 如果密码错误就返回密码错误</span></span><br><span class="line">    <span class="comment">// 6. 如果用户名不存在就返回用户名不存在</span></span><br><span class="line">    db.<span class="title function_">query</span>(<span class="string">&quot;select * from user_info where username = ?&quot;</span>, [respond_data.<span class="property">username</span>], <span class="keyword">function</span> (<span class="params">err, result</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (result.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 说明没有相同的用户</span></span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;用户名不存在&quot;</span>)</span><br><span class="line">                respond.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json;charset=utf-8&quot;</span> &#125;)</span><br><span class="line">                respond.<span class="title function_">end</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="string">&quot;code&quot;</span>: <span class="number">400</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;用户名不存在&quot;</span> &#125;))</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 说明有相同的用户</span></span><br><span class="line">                <span class="keyword">if</span> (result[<span class="number">0</span>].<span class="property">password</span> == respond_data.<span class="property">password</span>) &#123;</span><br><span class="line">                    <span class="comment">// 说明密码正确</span></span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;登录成功&quot;</span>)</span><br><span class="line">                    respond.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json;charset=utf-8&quot;</span> &#125;)</span><br><span class="line">                    respond.<span class="title function_">end</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="string">&quot;code&quot;</span>: <span class="number">200</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;登录成功&quot;</span> &#125;))</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 说明密码错误</span></span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;密码是 &quot;</span> + result[<span class="number">0</span>].<span class="property">password</span>)</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;错误的密码是 &quot;</span> + respond_data.<span class="property">password</span>)</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;密码错误&quot;</span>)</span><br><span class="line">                    respond.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json;charset=utf-8&quot;</span> &#125;)</span><br><span class="line">                    respond.<span class="title function_">end</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="string">&quot;code&quot;</span>: <span class="number">400</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;密码错误&quot;</span> &#125;))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解决跨域问题">解决跨域问题</h2>
+<p>我们需要在服务端 设置回复信息的头为</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">respond.<span class="built_in">set</span>Header(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>就算不设置 信息状态码 都是可以的</p>
+<h2 id="编写自己的package">编写自己的package</h2>
+<p>这样可以化简我们的</p>
+<p>利用moudle.export{</p>
+<p>函数名,}</p>
+<h1>CMS项目</h1>
+<p>content management system 内容管理系统</p>
+<p>我们的图床 百度网盘 其实都是一个CMS系统</p>
+<h2 id="NP-这里是图床-所以是公开的">NP 这里是图床 所以是公开的</h2>
+<p>分析我们的项目结构</p>
+<p>index 将上传图像 和 显示图像的页面 聚合到一起</p>
+<p>首先是一个 top 导航栏 好吧</p>
+<p>其实这里就已经🆗了 logo 是</p>
+<p>我们需要一个log 分别是ico webp之类的地方</p>
+<table>
+<thead>
+<tr>
+<th>log显示部分</th>
+<th>上传图片</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图床的显示部分</td>
+<td>这里我们使用keep-alive 一个很长的时间 不会很快的更新</td>
+</tr>
+</tbody>
+</table>
+<p>这里直接显示10张图片 显示文字 和 图片的内容</p>
+<p>class = shower</p>
+<p>如何对于图像 还是应该使用就是 new 2 old 的排列方式 图片的大小是统一的 这样让大家都可以看见 我们的缓存的信息 就是还是不错的 list</p>
+<h2 id="这里开始我们的上传头像文件作为试点">这里开始我们的上传头像文件作为试点</h2>
+<p>如何写一个合理的开发企划</p>
+<p>清晰明确的项目文档 哎</p>
+<p>其实就是一个 caves 不是很难的吧</p>
+<p>所以我们看看 node 和 共</p>
+<p>使用redis 进行优化 这里是 进行键值对的 存储</p>
+<p>不对 开始加载 然后就可以了</p>
+<p>消息队列 使用 redis 实现就好了这个其实估计没有什么技术难度 今年的寒假里 等等啊 我是不是就是经历过这个 这么又到 寒假了 其实我不是很喜欢这个东西 哎</p>
+<h2 id="其实我的问题有很多-第一是">其实我的问题有很多 第一是</h2>
+<p>nodejs 真的不行吗? 我感觉还可以啊</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.zuoge.online">作格喝不起奶茶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zuoge.online/2023/01/12/BOOK/node/">https://www.zuoge.online/2023/01/12/BOOK/node/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zuoge.online" target="_blank">Debu cat 🐱</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i0.hdslb.com/bfs/article/956bb2ff2f364235df290cb4b56c566d6a5fdcb0.jpg@942w_531h_progressive.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/article/6b29f3144d68391d88548f69fa464b4ae673e63b.jpg" onerror="this.onerror=null;this.src='/static-html/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">作格喝不起奶茶</div><div class="author-info__description">程序员应该把更多的时间花在代码和生活上 而不是和其他人争论哪一门语言更好</div></div><div class="card-info-data site-data is-center"><a href="/static-html/archives/"><div class="headline">文章</div><div class="length-num">77</div></a><a href="/static-html/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/static-html/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2547715095"><i class="fas fa-star"></i><span>访问我的QQ空间</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">希望你也可以喜欢你自己的生活</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">hello world</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nodejs"><span class="toc-number">2.1.</span> <span class="toc-text">Nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90request%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">解析request请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8respond%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.</span> <span class="toc-text">利用respond返回数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF"><span class="toc-number">2.3.1.</span> <span class="toc-text">设置状态信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">2.4.</span> <span class="toc-text">文件读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98"><span class="toc-number">2.5.</span> <span class="toc-text">文件保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E9%87%8D%E6%96%B0%E5%AE%9A%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-number">2.6.</span> <span class="toc-text">路径重新定向问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.7.</span> <span class="toc-text">连接数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C-%E5%92%8C-%E7%99%BB%E5%BD%95"><span class="toc-number">2.7.1.</span> <span class="toc-text">注册 和 登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98"><span class="toc-number">2.8.</span> <span class="toc-text">解决跨域问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84package"><span class="toc-number">2.9.</span> <span class="toc-text">编写自己的package</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">CMS项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NP-%E8%BF%99%E9%87%8C%E6%98%AF%E5%9B%BE%E5%BA%8A-%E6%89%80%E4%BB%A5%E6%98%AF%E5%85%AC%E5%BC%80%E7%9A%84"><span class="toc-number">3.1.</span> <span class="toc-text">NP 这里是图床 所以是公开的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B%E6%88%91%E4%BB%AC%E7%9A%84%E4%B8%8A%E4%BC%A0%E5%A4%B4%E5%83%8F%E6%96%87%E4%BB%B6%E4%BD%9C%E4%B8%BA%E8%AF%95%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">这里开始我们的上传头像文件作为试点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%9E%E6%88%91%E7%9A%84%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%88%E5%A4%9A-%E7%AC%AC%E4%B8%80%E6%98%AF"><span class="toc-number">3.3.</span> <span class="toc-text">其实我的问题有很多 第一是</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/12/TODO/" title="TODO">TODO</a><time datetime="2023-03-12T14:17:43.000Z" title="发表于 2023-03-12 14:17:43">2023-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/12/typora/" title="重新认识Typora">重新认识Typora</a><time datetime="2023-03-12T14:17:43.000Z" title="发表于 2023-03-12 14:17:43">2023-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/12/BACKEND/MySql%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Mysql环境搭建">Mysql环境搭建</a><time datetime="2023-03-12T14:17:43.000Z" title="发表于 2023-03-12 14:17:43">2023-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/12/BACKEND/Nginx/" title="Nginx">Nginx</a><time datetime="2023-03-12T14:17:43.000Z" title="发表于 2023-03-12 14:17:43">2023-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/static-html/2023/03/12/BACKEND/%E7%BC%BA%E5%B0%91vue/" title="Vue项目的常见报错汇总">Vue项目的常见报错汇总</a><time datetime="2023-03-12T14:17:43.000Z" title="发表于 2023-03-12 14:17:43">2023-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 作格喝不起奶茶</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/static-html/js/utils.js"></script><script src="/static-html/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/static-html/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7248481267" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
