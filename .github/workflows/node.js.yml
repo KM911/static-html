@@ -50,11 +50,8 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
-    - name: Deploy to Production
-      run: |
-        if [ ${{ github.ref }} = 'refs/heads/master' ]; then
-          npm run build
-        fi
+    - name: build static html
+      run: npm run build
         
     - name: publish and push
       uses: peaceiris/actions-gh-pages@v3
