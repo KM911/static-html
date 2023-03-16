@@ -5,7 +5,7 @@
     <url>/static-html/2023/03/12/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
-<li>[ ] 明天早起去学英语 就是希望你可以早点考过6级不是吗?</li>
+<li>[ ] 整理自己的文件夹</li>
 <li>[ ]</li>
 </ul>
 <h1>Fin</h1>
@@ -18,6 +18,11 @@
 </li>
 <li>
 <p>[x] 将博客的文章全部整理好 整理了 但是没有整理好 不是吗 哈哈哈哈 就是有点僵</p>
+</li>
+<li>
+<p>[x] go 发布自己的package 主要是为了做备份 其余都不重要 哈哈哈</p>
+<p>就是同步和测试存在一些麻烦不是吗?包括还有就是对于绝对路径和相对路径处理也是不清楚的</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/www/</span>server<span class="regexp">/nginx/</span>conf/ngin</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1>Task</h1>
@@ -147,6 +152,75 @@
 ]]></content>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从自行车到Spring</title>
+    <url>/static-html/2023/03/16/%E4%BB%8E%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%88%B0spring/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>自行车</h1>
+<p>首先,自行车并不是什么高科技,大部分都是很简单的传动结构,你可以很直观地看出其工作原理.比如我们的U刹,在刹车线被拉伸后,产生的压力和自行车的轮组一起摩擦,实现制动的效果.</p>
+<p>确实也是很简单的原理不是吗?</p>
+<p>但是,一开始我就直接自己去捣鼓,花费了很久的时间.其实就是在抓瞎,不是刹车线太送了没有任何的压力,就是</p>
+<h1>spring</h1>
+<p>我已经学会了如何用nodejs和go语言来编写简单的web服务器,但是来到了java,需要使用spring和maven或者gradle,就是直接傻眼了.</p>
+<p>其实从注解开始的那一刻,我的体验就已经不是很好了哈哈哈哈.</p>
+<p>不是很能理解,但是还是在自己捣鼓,结果就是花费了大量的时间,结果什么也得不到.</p>
+<p>从明天开始,我们先把网站项目给写完吧,不然对于我后面的内容影响有些大了不是吗?</p>
+<h1>总结</h1>
+<p>我们都是从简单开始模仿学习的,不要想着自己可以捣鼓出什么名堂,就连清华和哈佛的人,都需要从最基础的java开始学起,你还有什么理由不去自己学习呢?</p>
+]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring入门教程</title>
+    <url>/static-html/2023/03/16/spring%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>开始解析参数</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="comment">//    开始解析参数 </span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两种格式 第一种</p>
+<ul>
+<li>query</li>
+<li>param</li>
+</ul>
+<p>body又有好几种了 就是说.</p>
+<p>这里其实是一个反思吧 就是可以看出来你其实没有很好的学习 就是模仿才是学习的第一步  而不是你自己去抓瞎 不是吗?至少你看上去可以学习到很多东西都是可以的 他还记得我的课程表 不是吗</p>
+]]></content>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>发布自己的Go-Package</title>
+    <url>/static-html/2023/03/16/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84go-package/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>理由</h1>
+<p>写代码写久了,自然就会有一些自己的东西在这里</p>
+<h1>流程概览</h1>
+<ul>
+<li>创建GitHub仓库</li>
+<li>go mod init</li>
+<li>编写package</li>
+<li>上传到GitHub</li>
+<li>通过tag进行发布</li>
+<li>go get -u url 进行使用</li>
+</ul>
+<h1>注意的细节</h1>
+<p>首先</p>
+<p>go mod init 的地址不要带.git</p>
+<p>最好是可以做到名称一致,仓库的名称,package的名称都是一样的,我这里就都是oslib 并且请不要使用-这个符号.比如你的GitHub仓库地址是<code>https://github.com/KM911/oslib.git</code>,你就应该执行 <code>go mod init github.com/KM911/oslib</code></p>
+<p>然后创建一个文件比如说oslib.go</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> oslib</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;path/filepath&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">将文件路径转换为go文件路径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToGoFile</span><span class="params">(path <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> path + <span class="string">&quot;.go&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就可以commit了,但是在push之前,你应该还需要做一件事情,就是将打上tag.</p>
+<p>一般情况下,tag 是 vx.x.x 这样的形式,比如v0.0.1这样存在,其实就是版本号一样的存在.</p>
+<h1>引用</h1>
+<p>这里你就可以将remote应用了</p>
+<p>创建了一个新的项目 ,main.go文件如下</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/KM911/oslib&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   oslib.Run(<span class="string">&quot;dir&quot;</span>)</span><br><span class="line">&#125;<span class="keyword">package</span> main</span><br></pre></td></tr></table></figure>
+<h1>如果remote更新了会发生什么结果</h1>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
@@ -487,6 +561,7 @@ The story tells us that resolve the problem as soon as possible to avoid further
 <p>首先你应该挑选一个自己喜欢的terminal,可以都下载下来使用一下,选一个最喜欢就够了.</p>
 <p><a href="">windterm</a> 开源免费 我本人在用</p>
 <p><a href="">xshell</a> 收费 功能强大 我也不想用破解版的</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">vscode</span> 备份</span><br><span class="line">D:\<span class="number">0</span>.SOFT\<span class="meta">Code</span>\VsCode.exe --extensions-dir D:\SOFT\Path\<span class="meta">Code</span>\extensions --user-<span class="meta">data</span>-dir D:\SOFT\Path\<span class="meta">Code</span>\<span class="meta">data</span></span><br></pre></td></tr></table></figure>
 <h1>vscode快捷键</h1>
 <h2 id="重要的">重要的</h2>
 <p><code>ALT</code> + <code>click</code> 选中行 这个最关键</p>
