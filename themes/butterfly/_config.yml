@@ -140,9 +140,9 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - https://i0.hdslb.com/bfs/article/956bb2ff2f364235df290cb4b56c566d6a5fdcb0.jpg@942w_531h_progressive.webp
-    - https://i0.hdslb.com/bfs/article/77c343c464f3c4ad5ab4baba48a329d38d74d2a0.png@942w_531h_progressive.webp
-    - https://i0.hdslb.com/bfs/article/61e693800a1f2dbab634bbb30524b151523d09fa.jpg@942w_531h_progressive.webp
+    # - https://i0.hdslb.com/bfs/article/956bb2ff2f364235df290cb4b56c566d6a5fdcb0.jpg@942w_531h_progressive.webp
+    # - https://i0.hdslb.com/bfs/article/77c343c464f3c4ad5ab4baba48a329d38d74d2a0.png@942w_531h_progressive.webp
+    # - https://i0.hdslb.com/bfs/article/61e693800a1f2dbab634bbb30524b151523d09fa.jpg@942w_531h_progressive.webp
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
