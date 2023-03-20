@@ -8,7 +8,7 @@ categories:
 
 #  Stream
 
--   [ ] 整理自己的文件夹
+-   [ ] java static 
 -   [ ] 
 
 
@@ -31,36 +31,36 @@ categories:
     /www/server/nginx/conf/ngin
     ```
     
-    
+    放弃我们的go了不是吗 其实主要就是自己的水平不够呢?
 
 # Task
 
 -   [x] tiktok极简版
 -   [x] school 这个也是可以的 是吧 
--   [ ] java 这个可以先敷衍一下 其实主要是 我不是很喜欢java 不过可以将其做为真正的项目开始接触
--   [ ] 有自己一套键盘规则
+-   [x] java 这个可以先敷衍一下 其实主要是 我不是很喜欢java 不过可以将其做为真正的项目开始接触
+-   [x] 有自己一套键盘规则
 
 -   [ ] VSCode插件 中文符号替换
 
--   [ ] 一个本地化的文件共享工具 
+-   [x] 一个本地化的文件共享工具 
 
 -   [ ] GO语言的ORC
 
 -   [ ] 利用我们之前的天气卡片
 
--   [ ] Github action 自动化部署我们的hexo
+-   [x] Github action 自动化部署我们的hexo
 
--   [ ] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)
+-   [x] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)
 
--   [ ] LPA Local Page Application 
+-   [x] LPA Local Page Application 
 
     一种借助我们的浏览器进行开发的软件 
 
     好处和坏处我们自己去分析
 
--   [ ] github release 
+-   [x] github release 
 
--   [ ] GitHub app and so
+-   [x] GitHub app and so
 
 -   [x] 开始使用我们的faker alice 了
 
@@ -70,5 +70,22 @@ categories:
 
 -   [x] 利用go写cli工具 进行vue项目的初始化的创建 
 
-  
+-   [x] 是可以对一个全局变量进行修改的呢?
 
+好吧就是说我还是早点回去吧 ,感觉其实这些知识点并不难啊,其实最大的问题是就是你看不懂注解和接口对象之类的
+
+
+
+
+
+* 安全问题 电源 锁门 门禁 
+
+* 沟通联系 
+
+* 时间安排  学习模块 完成答辩 
+
+* 项目开始 公众号  
+
+* 打卡
+
+  
