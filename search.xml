@@ -5,7 +5,7 @@
     <url>/static-html/2023/03/12/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
-<li>[ ] 整理自己的文件夹</li>
+<li>[ ] java static</li>
 <li>[ ]</li>
 </ul>
 <h1>Fin</h1>
@@ -23,6 +23,7 @@
 <p>[x] go 发布自己的package 主要是为了做备份 其余都不重要 哈哈哈</p>
 <p>就是同步和测试存在一些麻烦不是吗?包括还有就是对于绝对路径和相对路径处理也是不清楚的</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/www/</span>server<span class="regexp">/nginx/</span>conf/ngin</span><br></pre></td></tr></table></figure>
+<p>放弃我们的go了不是吗 其实主要就是自己的水平不够呢?</p>
 </li>
 </ul>
 <h1>Task</h1>
@@ -34,16 +35,16 @@
 <p>[x] school 这个也是可以的 是吧</p>
 </li>
 <li>
-<p>[ ] java 这个可以先敷衍一下 其实主要是 我不是很喜欢java 不过可以将其做为真正的项目开始接触</p>
+<p>[x] java 这个可以先敷衍一下 其实主要是 我不是很喜欢java 不过可以将其做为真正的项目开始接触</p>
 </li>
 <li>
-<p>[ ] 有自己一套键盘规则</p>
+<p>[x] 有自己一套键盘规则</p>
 </li>
 <li>
 <p>[ ] VSCode插件 中文符号替换</p>
 </li>
 <li>
-<p>[ ] 一个本地化的文件共享工具</p>
+<p>[x] 一个本地化的文件共享工具</p>
 </li>
 <li>
 <p>[ ] GO语言的ORC</p>
@@ -52,21 +53,21 @@
 <p>[ ] 利用我们之前的天气卡片</p>
 </li>
 <li>
-<p>[ ] Github action 自动化部署我们的hexo</p>
+<p>[x] Github action 自动化部署我们的hexo</p>
 </li>
 <li>
-<p>[ ] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)</p>
+<p>[x] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)</p>
 </li>
 <li>
-<p>[ ] LPA Local Page Application</p>
+<p>[x] LPA Local Page Application</p>
 <p>一种借助我们的浏览器进行开发的软件</p>
 <p>好处和坏处我们自己去分析</p>
 </li>
 <li>
-<p>[ ] github release</p>
+<p>[x] github release</p>
 </li>
 <li>
-<p>[ ] GitHub app and so</p>
+<p>[x] GitHub app and so</p>
 </li>
 <li>
 <p>[x] 开始使用我们的faker alice 了</p>
@@ -80,35 +81,37 @@
 <li>
 <p>[x] 利用go写cli工具 进行vue项目的初始化的创建</p>
 </li>
+<li>
+<p>[x] 是可以对一个全局变量进行修改的呢?</p>
+</li>
+</ul>
+<p>好吧就是说我还是早点回去吧 ,感觉其实这些知识点并不难啊,其实最大的问题是就是你看不懂注解和接口对象之类的</p>
+<ul>
+<li>
+<p>安全问题 电源 锁门 门禁</p>
+</li>
+<li>
+<p>沟通联系</p>
+</li>
+<li>
+<p>时间安排  学习模块 完成答辩</p>
+</li>
+<li>
+<p>项目开始 公众号</p>
+</li>
+<li>
+<p>打卡</p>
+</li>
 </ul>
 ]]></content>
   </entry>
   <entry>
     <title>垃圾桶</title>
     <url>/static-html/2023/03/10/%E5%9E%83%E5%9C%BE%E6%A1%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>中文符号替换</h1>
-<p>这里我们直接遍历全局就好了</p>
-<p>一键将中文的符号换成英文 这个是我的痛点 不知道我们是不是可以写出来</p>
-<p>用js</p>
-<p>目前已有的插件是针对实时输入的 无法解决我们的 问题 等等 它不会检测就是复制的内容 所以 我😄</p>
-<ul>
-<li>检测复制 将复制的内容修改</li>
-<li>一键替换 将全局的内容进行替换</li>
-</ul>
-<h1>Whether-card</h1>
-<p>技术分解: 爬虫+SVG动画+Vercel</p>
-<ul>
-<li>[ ] 获取天气信息 axios</li>
-<li>[ ] SVG动画 PS or</li>
-<li>[x] Vercel 托管我们的api</li>
-</ul>
-<p>最晚在我们的寒假写出来吧</p>
-<h1>基于GO语言的本地ORC</h1>
-<p>发现现在的ORC基本上都需要上传至服务器 我想实现一个本地的</p>
-<h1>动态的封面图</h1>
-<p>我想到了一个就是api获取随机的图片url这样会不会可以呢?试试看</p>
-<p>OK 完成了 就是花费了我们一个两个小时的时间 其实我觉得还可以</p>
-<p>文件型数据库</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>go中全局变量</h1>
+<p>是可以修改的</p>
+<h1>枚举类</h1>
+<p>当你的对象是固定个数的情况</p>
 ]]></content>
   </entry>
   <entry>
@@ -155,8 +158,288 @@
       </tags>
   </entry>
   <entry>
+    <title>中国的未来</title>
+    <url>/static-html/2023/03/20/%E4%B8%AD%E5%9B%BD%E7%9A%84%E6%9C%AA%E6%9D%A5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>为什么我们不能8小时工作制</h1>
+<p>首先,我国在世界的经济贸易地位是很低的,一部苹果手机,我们只能组装,但是像苹果公司它可以通过app store和硬件的利润,就可以转很多钱了.所以哪怕他们只工作了6个小时,他们获取的经济要比我们多得多.我们的唯一优势就是只有更加低廉劳动力价格.如果老板现在把工资提高,为了保证利润,就必须提高代工订单的费用,苹果公司就会将它的工厂搬到像越南等劳动力更加低廉的国家,很明显,目前阶段中,我们还是很需要富士康的存在.</p>
+<h1>恶性循环</h1>
+<p>疫情的爆发,让大多数普通人没有工作\感染,总之就是储蓄金额减少,没有问题吧.储蓄金额减少,大家的消费欲望就会降低,(可以参考今年的双11消费数据),大家不愿意去消费,企业相对的就没有订单\订单减少,为了保证盈利,就只能进行裁员或者降低员工的薪水,但是员工的薪水降低后,他们就没有钱去消费了啊.</p>
+<p>这里就是一个恶性循环,真的令人感到很痛苦不是吗?太难受了.</p>
+<h1>结构性失业</h1>
+<p>中国的新生婴儿只有不到1000万,但是大学毕业生也有1000万.</p>
+<p>就是过多的“高学历人口” 并且集中于20-30这个年龄段,导致就业市场中大学生之类的人并不值钱.再加上普通消费者对于新事物的购买意愿是很低的</p>
+<p>这一点真的是恶心死我了,疫情的三年来,国内GDP增速放缓,但是在奢侈品消费领域反而是在高速增长,真的我不能理解.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230320170002843.png" alt="image-20230320170002843" /></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>pip_Guide&#39;</title>
+    <url>/static-html/2023/03/20/pip-Guide/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>不要开vpn</h1>
+<p>这里很好笑,你开启vpn后pip将会无法下载</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Pronunciation</title>
+    <url>/static-html/2023/03/19/Pronunciation/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Mistake</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">thank              $\theta$</th>
+<th style="text-align:left">sank $s$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>I donot know why national people are so kind and friendly.</p>
+<p>In this video,a girl from china perform with a lot mistake.But all people</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230319161850034.png" alt="image-20230319161850034" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230319161901751.png" alt="image-20230319161901751" /></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>不是很难过</title>
+    <url>/static-html/2023/03/19/%E4%B8%8D%E6%98%AF%E5%BE%88%E9%9A%BE%E8%BF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>面向对象手册</title>
+    <url>/static-html/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>手册的作用</h1>
+<p>面向对象是一种编程范式,不是哪一种编程语言的专属,不过不同的编程语言对于一些具体的实现上存在差异<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<h1>三大特点</h1>
+<ul>
+<li>封装<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
+<li>继承<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
+<li>多态<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
+</ul>
+<h1>类 和 对象</h1>
+<p>表征 和 具体的事物.</p>
+<h1>对象成员 对象方法</h1>
+<p>对象的属性,比如people的age,gender,都可以成为对象成员.</p>
+<p>对象方法,和对象有关的函数.</p>
+<p>我们通过将对象成员和对象方法组合成为一个类,就是封装.</p>
+<h1>静态成员 静态方法</h1>
+<p>静态就是不在和对象绑定在一起,而是和类绑定在一起.</p>
+<p>通常情况下,静态</p>
+<h1>继承</h1>
+<h1>多态</h1>
+<h1>抽象类 抽象方法</h1>
+<p>主要是为了实现多态,通过一个基类</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如c++存在析构函数,java中因为内存管理是交给jvm的,导致无法控制一个对象内存回收的时间,自然就将析构函数移除了;python中构造函数是不能重载的,甚至都没有重载这个概念,当然你还是可以通过一些手段去实现罢了,因为没有提供重载的必要性. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>通过对象和方法,将具体的变量和实现组合到一起,不仅可以提高开发效率,还可以提高隐私性. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>通过继承,复用基类中的成员和方法,同时为多态提供实现方式. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>接受相同的消息,做出不同的响应. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+  </entry>
+  <entry>
+    <title>设计模式</title>
+    <url>/static-html/2023/03/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>设计模式</h1>
+<p>前人的经验.</p>
+<h1>单例模式</h1>
+<p>一个类只能有一个对象/实例.</p>
+<p>这里不是说你只在你的程序中只进行一次 new的操作导致只有一个对象,而是通过将对象本身设置为类的属性,强制保证了对象的唯一性.</p>
+<h2 id="实现方式">实现方式</h2>
+<ul>
+<li>饿汉式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>&#123;</span><br><span class="line">    <span class="comment">// 构造函数为private后 就无法通过new去创建对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Book</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Book</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">    <span class="comment">// 我们现在只能通过getInstance这个静态方法获取该对象</span></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> Book <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>懒汉式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Bank</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Bank</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  Bank <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">return</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Bank</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="对比分析">对比分析</h2>
+<ul>
+<li>饿汉式在类被加载时就创建了对象,懒汉式只有调用getInstance方法才会创建.前者会占据内存更多的时间,但是它是并发安全的(你就不该在一个并发的程序里写创建对象这种事情)</li>
+<li>其实差别不是很大</li>
+</ul>
+<h1>抽象模板</h1>
+<p>额,这里其实就是创建一个虚基类,然后继承,重写,指向之类对象的父类指针</p>
+<p>因为java中并没有template这样的关键字,我就认为他是在利用抽象类,其实也不对,只是实现方式不太一样.</p>
+<p>这里我只先给出一个抽象类继承的例子.</p>
+<p>这里的例子中,我们创建了一个虚基类<code>PayMent</code>,并继承它创建了一个<code>Alipay</code>,我们也可以创建<code>wechatpay</code>,我们可以将注意力放到就是具体的支付流程实现上,而不是每一个都需要去重写一次流程,当然了这里其实应该利用基类指针的.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">abstracttest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Alipay</span> <span class="variable">pay</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>();</span><br><span class="line">        pay.PayAction(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> money;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>   <span class="title function_">CheckMoney</span><span class="params">()</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PayAction</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">         <span class="built_in">this</span>.CheckMoney();</span><br><span class="line">         <span class="built_in">this</span>.Pay(price);</span><br><span class="line">         <span class="built_in">this</span>.SaveMoney();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">extends</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">CheckMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询支付宝账户余额 访问支付宝的api&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;支付中&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="built_in">this</span>.money - price;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;账户剩余金额为&quot;</span>+<span class="built_in">this</span>.money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>愿景 使命 价值观</p>
+<p>我们是谁 我们做什么</p>
+<p>愿景 : 青年创客</p>
+<p>使命 :</p>
+<p>价值观 : 组织能力 协作能力 愿不愿 能不能 许不许</p>
+<p>团队合作 拥抱变化</p>
+<p>做事 此时此刻 非你莫属</p>
+<p>凡事有交代 件件有着落</p>
+<p>今天比明天好</p>
+<p>人生没有捷径</p>
+<p>遇到我是你的运气,遇到你是我的福气</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Ffmpeg简单使用</title>
+    <url>/static-html/2023/03/18/ffmpeg%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>提取视频封面</h1>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>压缩视频</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v libx265 -preset medium -crf 28 -r 24 output.mp4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i %1 -c:v libx265 -preset medium -crf 28 -r 24 H265%1</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java重要知识点回顾</title>
+    <url>/static-html/2023/03/18/java%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>对象</h1>
+<h2 id="构造函数">构造函数</h2>
+<p>首先我们需要知道,java中是不存在手动的内存管理机制,依赖于jvm的gc,所以java中就不存在析构函数这个概念–因为你无法决定这个对象内存空间的释放.</p>
+<ul>
+<li>无参构造函数</li>
+</ul>
+<p>主要的意义是为了帮助对象自身的属性进行初始化.这里的第二行就会报错了,原因是i没有初始化.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i ;</span><br><span class="line">System.out.println(i);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">System.out.println(j);</span><br></pre></td></tr></table></figure>
+<p>而对于一个对象来说,即使你没有创建构造函数,编译器会自动为你生成一个构造函数进行对象属性的初始化.通常会将对象的默认值设置为null,int则为0,float为0.0.</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>default_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>bull</td>
+</tr>
+<tr>
+<td>int long</td>
+<td>0</td>
+</tr>
+<tr>
+<td>float double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>char</td>
+<td>U0000</td>
+</tr>
+</tbody>
+</table>
+<p>每一个类都会自动生成一个无参的构造函数,前提是你没有对构造函数进行重载.</p>
+<p>如果你创建了一个有参的构造函数,但是没有编写无参构造函数,就会报错.</p>
+<h2 id="this-和-super">this 和 super</h2>
+<p>this 集合本身 super 超集 这样其实就好理解和区分了.</p>
+<p>和C++一样,优先执行基类或者说是父类的构造函数.(我这里默认大家就是有一定的C++语言基础的)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">如何用代码去体现自己的思考我看来才是最复杂的不是吗?</span><br></pre></td></tr></table></figure>
+<h3 id="通过this去调用构造函数">通过this去调用构造函数</h3>
+<p>Object类</p>
+<p>java中任何一个类都直接或者间接继承于Object类</p>
+<h2 id="重要的方法">重要的方法</h2>
+<h1>枚举类</h1>
+<p>有限的对象</p>
+<p>数据来源于stackoverflow 这里的人不说每个人都是技术大牛吗,但是也是正在在从事计算机相关行业的人了.可以见的,全世界范围内,我们这帮臭写代码的人,工作时间就是比较久,真的是服了,早知道还是得去读医啊,毕竟一位印度老哥说过</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230319175903730.png" alt="image-20230319175903730" /></p>
+<h1>包装类</h1>
+<p>warpper</p>
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>对象数据数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>Interg</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>Boolen</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>数据类型转换</h1>
+<p>对象数据类型 ———字符串</p>
+<p>这里其实和我们</p>
+<h1>异常处理</h1>
+<p>其实你是会异常处理的,不过没有怎么见过java中的异常类型</p>
+<ul>
+<li></li>
+</ul>
+<h1>多线程</h1>
+<p>并发编程</p>
+<h2 id="如何使用">如何使用</h2>
+<ul>
+<li>继承一个线程类 Thread</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">theadertest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">PrintNum</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintNum</span>();</span><br><span class="line">        t.start();</span><br><span class="line">        <span class="comment">// 这里是下面的hell先输出 说明不再是阻塞的了 我们成功的并发了 哈哈哈</span></span><br><span class="line">        System.out.println(<span class="string">&quot;hell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PrintNum</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">  <span class="comment">// 这个重载是必要的 并且不要携带参数 这里的通信是一个问题</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span> <span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>实现runable 接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Runtest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Run</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Run</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">newt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(t);</span><br><span class="line">        newt.start();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;<span class="number">100</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;hell&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Run</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;i = &quot;</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>泛型</h1>
+<p>其实就是在c++中模板函数</p>
+<p>其实我只是希望可以对于字符串的需要一个泛型,可以很轻松的将去</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Why You Need to Learn English</title>
+    <url>/static-html/2023/03/18/English/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E5%AD%A6%E4%B9%A0%E8%8B%B1%E8%AF%AD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Profitable reason</h1>
+<p>now</p>
+<h1>How to learn</h1>
+<h2 id="Input">Input</h2>
+<p>you need to find some English aricl just like Youtube video,post and any thing could help you learn English.You need to put yourself into a English environment.</p>
+<h1>Output</h1>
+<h1>Study</h1>
+<p>you analy your english,which topic is you are not famliy just need to learn some vocabulary right?</p>
+]]></content>
+  </entry>
+  <entry>
     <title>从自行车到Spring</title>
-    <url>/static-html/2023/03/16/%E4%BB%8E%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%88%B0spring/</url>
+    <url>/static-html/2023/03/16/Life/%E4%BB%8E%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%88%B0spring/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>自行车</h1>
 <p>首先,自行车并不是什么高科技,大部分都是很简单的传动结构,你可以很直观地看出其工作原理.比如我们的U刹,在刹车线被拉伸后,产生的压力和自行车的轮组一起摩擦,实现制动的效果.</p>
 <p>确实也是很简单的原理不是吗?</p>
@@ -176,7 +459,31 @@
   <entry>
     <title>Spring入门教程</title>
     <url>/static-html/2023/03/16/spring%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>开始解析参数</h1>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>知道你在学什么</h1>
+<p>额,一开始我就把spring和springboot两个搞混淆了.</p>
+<p>我们现在学习就是直接去学习springboot就好了,配置相对较为简单不是吗?</p>
+<p>其他的东西你是已经有经验了对吧,就不重点开始将了</p>
+<h1>环境搭建</h1>
+<p>讲真的,java的环境搭建应该是我目前为止,看到最为麻烦的了,其他的语言都可以通过命令行输入几条简单的命令就可以解决,但是java不行,有的时候甚至需要你自己去修改pom文件去选择你要使用的版本,我真的不是很喜欢,不过没有办法啊,你就是需要学会这些东西不是吗?</p>
+<h2 id="使用idea">使用idea</h2>
+<p>假设我们现在的技术栈是 springboot +junit+ mysql + mybatis_plus + lombok</p>
+<p>这里我们先一步一步的来并且认识一下配置文件.</p>
+<h3 id="网络不好的我们">网络不好的我们</h3>
+<p>因为网络问题 所以我们需要使用的就是阿里云的镜像服务</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>start.aliyun.com</span><br></pre></td></tr></table></figure>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230317133706808.png" alt="image-20230317133706808" /></p>
+<h3 id="spring-web">spring web</h3>
+<p>在创建项目的时候选择spring web即可</p>
+<p>这里你只需要确保就是你的maven下载完毕即可</p>
+<p>这里我并不想开始讲REST风格的api就算了,你可以直接运行我们application文件.</p>
+<h3 id="Junit">Junit</h3>
+<p>这个其实已经和我们的spring高度绑定了不需要你自己去配置了已经.</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="mysql-mybatis">mysql + mybatis</h3>
+<p>这两个放到一起讲的原因很简单啊 一个是数据库的驱动,一个是orm框架,两个需要配合着使用.</p>
+<p>这里存在一个mysql的版本问题,就是大家不是很想更新我们的数据库导致对应的驱动开发和适配工作也没有很好的推进,就导致你如果使用8.0以上版本的驱动很有可能就是找不到包,就会pom就会报错的结果.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>开始解析参数</h1>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="comment">//    开始解析参数 </span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>两种格式 第一种</p>
 <ul>
@@ -556,7 +863,7 @@ The story tells us that resolve the problem as soon as possible to avoid further
   </entry>
   <entry>
     <title>键盘侠</title>
-    <url>/static-html/2023/03/11/%E9%94%AE%E7%9B%98%E4%BE%A0/</url>
+    <url>/static-html/2023/03/11/Cookie/%E9%94%AE%E7%9B%98%E4%BE%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>terminal</h1>
 <p>首先你应该挑选一个自己喜欢的terminal,可以都下载下来使用一下,选一个最喜欢就够了.</p>
 <p><a href="">windterm</a> 开源免费 我本人在用</p>
