@@ -105,6 +105,51 @@ warpper
 
 
 
+# String
+
+* string 只有同一个环境空间 如果存在两个相同的字符串 就会 出现这个问题 就是 
+
+```
+
+```
+
+
+
+# ADT
+
+* dict 一般是 一对一
+* map 可以是一对多
+* arraylist 数据类型可变的  数组
+* venctro 数据类型不可变的  数组
+* set 内部数据不可重复 
+
+```java
+ArrayList：基于动态数组实现，支持快速随机访问，插入和删除元素效率较低。
+
+LinkedList：基于双向链表实现，支持快速插入和删除元素，随机访问元素效率较低。
+
+Vector：与ArrayList类似，但是是线程安全的，因此效率较低。
+
+Stack：基于Vector实现，是一种后进先出的数据结构。
+
+CopyOnWriteArrayList：基于可重入锁实现，是一种线程安全的List，支持快速随机访问，但是插入和删除元素效率较低。
+
+```
+
+```java
+HashMap：基于哈希表实现，支持快速随机访问，插入和删除元素效率较高，但是不保证元素的顺序。
+
+TreeMap：基于红黑树实现，支持按照元素的自然顺序或者指定的比较器顺序遍历元素。
+
+LinkedHashMap：基于哈希表和双向链表实现，保证元素的插入顺序和访问顺序一致。
+
+WeakHashMap：基于哈希表实现，但是键是弱引用，当键不再被引用时，会被自动从Map中删除。
+```
+
+关键是我们需要知道什么时候该使用何种数据类型 你懂吧 
+
+
+
 # 多线程
 
 并发编程
@@ -166,11 +211,215 @@ class PrintNum extends Thread {
 
   
 
-
-
 # 泛型
 
-其实就是在c++中模板函数
+其实就是在c++中模板函数 作用是一样的 我目前还不知道具体的使用场景,这里就先知道如何使用
 
-其实我只是希望可以对于字符串的需要一个泛型,可以很轻松的将去
+主要有两类 分别是泛型类和泛型方法
 
+```java
+public class tem {
+  public static void main(String[] args) {
+    // 为什么需要使用泛型 可以让我们的代码更加的灵活 我们这里的学生分数可以是各种不同的形式
+    Student math_student = new Student();
+    math_student.MathTeacher(100);
+    Student chinese_student = new Student();
+    chinese_student.ChineseTeacher("优秀");
+    Student english_student = new Student();
+    english_student.EnglishTeacher("A");
+  }
+}
+
+class Student<T> {
+  public String Teacher;
+  private T score;
+
+  public void MathTeacher(T score) {
+    this.Teacher = "Math";
+    this.score = score;
+  }
+
+  public void ChineseTeacher(T score) {
+    this.Teacher = "Chinese";
+    this.score = score;
+
+  }
+
+  public void EnglishTeacher(T score) {
+    this.Teacher = "English";
+    this.score = score;
+  }
+
+  public Student() {
+  }
+
+  public Student(T score) {
+    this.score = score;
+  }
+
+  public T getScore() {
+    return score;
+  }
+
+  public void setScore(T score) {
+    this.score = score;
+  }
+
+  public String toString() {
+    return "Student [Teacher=" + Teacher + ", score=" + score + "]";
+  }
+}
+```
+
+
+
+# 反射
+
+反射可以让你获取/修改类的私有属性和方法 这里我们还是只给出如何使用的例子
+
+* 实例化一个对象
+
+* 获取属性 (无论私有还是公有都是一样的)
+* 调用方法 并获取其返回值 
+
+```java
+public class refla {
+  public static void main(String[] args) throws InstantiationException, IllegalAccessException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException {
+    Class DogClass = Dog.class;
+    // 实例化一个对象 这里还是会调用构造方法
+    Dog newDog = (Dog) DogClass.newInstance();
+    // 获取类的属性
+    Field Echo_Field = DogClass.getDeclaredField("echo");
+    // private属性就必须要设置为可访问的
+    Echo_Field.setAccessible(true);
+    // 这里就是获取某一个对象的 private 属性
+    String Echo = (String) Echo_Field.get(newDog);
+    System.out.println("echo is " + Echo);
+    // 调用返回值为空的方法
+    Method Void_Echo_Method = DogClass.getDeclaredMethod("Echo");
+    Void_Echo_Method.setAccessible(true);
+    Void_Echo_Method.invoke(newDog);
+    // 调用返回值不为空的方法 这里需要声明返回值的类型
+    Method String_Echo_Method = DogClass.getDeclaredMethod("Echo", String.class);
+    String_Echo_Method.setAccessible(true);
+    String echo = (String) String_Echo_Method.invoke(newDog, "wangwangwang");
+    System.out.println("echo is " + echo);
+  }
+}
+class Dog {
+  private Integer age;
+  private String echo = "wangwang";
+
+  public Dog() {
+    Echo();
+  }
+
+  private void Echo() {
+    System.out.println(echo);
+  }
+
+  private String Echo(String echo) {
+    this.echo = echo;
+    System.out.println(echo);
+    return this.echo;
+  }
+
+  public Dog(Integer age) {
+    Echo();
+    this.age = age;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
+  }
+
+  public Integer getAge() {
+    return age;
+  }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+# lambda
+
+学过python了 λ表达式 其实就是更加简单的一个写函数的方法.
+
+# 为什么需要使用接口
+
+> 一句话回答: 对于不存在继承关系,但是存在相同功能的类就需要接口.
+
+例子A:
+
+动物 --> 猫
+
+动物 --> 狗
+
+​      存在继承关系的两个类,其内部的方法可以是重载基类,也可以通过实现接口.这种时候你使用继承和接口都是一样的.
+
+​      但是接口是无法定义数据成员的,所以无法确定这两个类存在哪些具体的属性.如果该方法是需要获取类的属性的时候,特别是共同的属性的时候,我还是觉得使用继承的方式更好.
+
+```java
+class Animal {
+    // 动物的属性 比如说生活在水里,陆地上,或者是两栖
+    // 属于是哪一个物种
+    // ......
+    public String Species;
+
+    // 动物们都可以移动
+    public void move(){}
+}
+class Cat extends Animal{
+    Cat() {
+        this.Species = "小猫";
+    }
+    public void move() {
+        System.out.println(this.Species+"画梅花");
+    }
+}
+class Dog extends Animal{
+    Dog(){
+        this.Species = "小狗";
+    }
+    public void move() {
+        System.out.println(this.Species+"画月牙");
+    }
+}
+```
+
+例子B
+
+动物 --> 狗
+
+机器 --> 机器狗
+
+两个不存在继承关系,但是存在相同功能的,我们就应该使用接口了.
+
+当然了你还是可以让我们的机器和动物都继承一个基类,该基类有move这个方法.但是是否是所有的机器类都是可以移动的呢?不见得吧,这个时候使用接口就是最合理的选择.
+
+至于你说只有一个类,并且也不会对其进行扩展,就直接定义该方法就好了.
+
+## 题外话
+
+很多人说接口是一种规范,定义了该方法的参数和返回值,这样的回答没有答到点子上,就是为什么用接口,因为使用继承同样可以实现上面的效果.
+
+## 总结
+
+- 只是为了实现一个类,直接在类中写实现就好了.
+- 当两个类存在相同的属性和方法时,使用继承.
+- 当两个类不存在继承关系,但是具有相同的功能,使用接口.
+
+​       接口提供了一种更强的抽象能力,不再依靠相同的基类而存在.如果你的需求完全可以通过继承实现,就没有必要逼着自己去实现接口.
+
+
+
+这里其实我们应该开始就是使用mybitas

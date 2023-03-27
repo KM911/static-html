@@ -8,10 +8,21 @@ categories:
 
 #  Stream
 
--   [ ] java static 
--   [ ] 
+-   [ ]  泛型
+-   [ ] 基本的数据类型 
+-   [ ] 类型安全
+-   [x] 实现搜索的功能
+-   [ ] 更新自己博客
 
+自己写吧 数据双向绑定就是说 
 
+```
+picgo.exe token=0e3a8737%2C1695440185%2C3d9bc%2A31 csrf=ba2b8c7d739023ca3b030b949918d1fd
+0e3a8737%2C1695440185%2C3d9bc%2A31
+ba2b8c7d739023ca3b030b949918d1fd
+```
+
+![](D:\DOWNLOAD\pdf\1.webp)
 
 # Fin
 
