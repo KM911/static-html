@@ -5,9 +5,15 @@
     <url>/static-html/2023/03/12/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
-<li>[ ] java static</li>
-<li>[ ]</li>
+<li>[ ]  泛型</li>
+<li>[ ] 基本的数据类型</li>
+<li>[ ] 类型安全</li>
+<li>[x] 实现搜索的功能</li>
+<li>[ ] 更新自己博客</li>
 </ul>
+<p>自己写吧 数据双向绑定就是说</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">picgo.exe token<span class="operator">=</span><span class="number">0e3</span>a<span class="number">8737</span><span class="variable">%2</span>C<span class="number">1695440185</span><span class="variable">%2</span>C<span class="number">3</span>d<span class="number">9</span>bc<span class="variable">%2</span>A<span class="number">31</span> csrf<span class="operator">=</span>ba<span class="number">2</span>b<span class="number">8</span><span class="keyword">c</span><span class="number">7</span>d<span class="number">739023</span>ca<span class="number">3</span>b<span class="number">030</span>b<span class="number">949918</span>d<span class="number">1</span>fd</span><br><span class="line"><span class="number">0e3</span>a<span class="number">8737</span><span class="variable">%2</span>C<span class="number">1695440185</span><span class="variable">%2</span>C<span class="number">3</span>d<span class="number">9</span>bc<span class="variable">%2</span>A<span class="number">31</span></span><br><span class="line">ba<span class="number">2</span>b<span class="number">8</span><span class="keyword">c</span><span class="number">7</span>d<span class="number">739023</span>ca<span class="number">3</span>b<span class="number">030</span>b<span class="number">949918</span>d<span class="number">1</span>fd</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5CDOWNLOAD%5Cpdf%5C1.webp" alt="" /></p>
 <h1>Fin</h1>
 <ul>
 <li>
@@ -158,8 +164,123 @@
       </tags>
   </entry>
   <entry>
+    <title>Java基础答辩</title>
+    <url>/static-html/2023/03/25/java%E5%9F%BA%E7%A1%80%E7%AD%94%E8%BE%A9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>泛型</h1>
+<h2 id="解决了什么问题">解决了什么问题?</h2>
+<ul>
+<li>提高了代码复用性</li>
+<li>增强了类型安全</li>
+</ul>
+<h2 id="具体的例子">具体的例子</h2>
+<blockquote>
+<p>学生的考试成绩,语文课的评分为 “优秀” ,”良好”,”及格”: 数学课的评分为: 0-100 ;英语课的评分为 A,B,C,D ,</p>
+<p>假设该学生一次只能选择一门课</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student_test</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 为什么需要使用泛型 可以让我们的代码更加的灵活</span></span><br><span class="line">    <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">100</span>);</span><br><span class="line">    <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;优秀&quot;</span>);</span><br><span class="line">    <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">    s1.ShowScore();</span><br><span class="line">    s2.ShowScore();</span><br><span class="line">    s3.ShowScore();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> String class_name;</span><br><span class="line">  <span class="keyword">private</span> T score;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">    <span class="keyword">if</span> (score.getClass() == Integer.class) &#123;</span><br><span class="line">      <span class="built_in">this</span>.class_name = <span class="string">&quot;数学&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score.getClass() == String.class) &#123;</span><br><span class="line">      <span class="built_in">this</span>.class_name = <span class="string">&quot;语文&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score.getClass() == Character.class) &#123;</span><br><span class="line">    <span class="built_in">this</span>.class_name = <span class="string">&quot;英语&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ShowScore</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;这个学生的&quot;</span> + <span class="built_in">this</span>.class_name + <span class="string">&quot;成绩是&quot;</span> + <span class="built_in">this</span>.score);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span>  T <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.score;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span>  Object <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.score;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就不用为每一们课都创造一个类了,提高了代码的复用性.</p>
+<p>类型安全</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="java泛型实现原理">java泛型实现原理</h2>
+<p>简单来讲就是用Object代替泛型参数.当实例化对象时,根据不同的参数,去创建不同的对象.</p>
+<p>我们可以将我们上面的Student类写成它原始的类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String class_name;</span><br><span class="line">  <span class="keyword">private</span> Object score;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(Object score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">    <span class="keyword">if</span> (score.getClass() == Integer.class) &#123;</span><br><span class="line">      <span class="built_in">this</span>.class_name = <span class="string">&quot;数学&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score.getClass() == String.class) &#123;</span><br><span class="line">      <span class="built_in">this</span>.class_name = <span class="string">&quot;语文&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score.getClass() == Character.class) &#123;</span><br><span class="line">    <span class="built_in">this</span>.class_name = <span class="string">&quot;英语&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="java泛型存在的问题">java泛型存在的问题</h2>
+<ul>
+<li>无法使用基本的数据类型 只能使用包装类 因为是Object实现的</li>
+<li>无法区分两个类型参数不同的对象.</li>
+<li>无法创建数组. (数组的数据类型必须要确定)</li>
+<li>静态方法无法使用泛型</li>
+</ul>
+<h2 id="泛型的高阶用法">泛型的高阶用法</h2>
+<h3 id="限制参数类型">限制参数类型</h3>
+<h1>反射</h1>
+<h1>数据结构</h1>
+<ul>
+<li>知道基本数据类型的实现原理</li>
+<li>时间复杂度和空间复杂度的分析</li>
+<li>在何时选取什么样的数据结构</li>
+</ul>
+<h2 id="Benchmark">Benchmark</h2>
+<ul>
+<li>在头部或者尾部插入删除 链式结构</li>
+<li>随机访问 顺序结构</li>
+<li>奇怪的hashmap</li>
+</ul>
+<ol>
+<li>
+<p>对比ArrayList和LinkedList在插入删除上的性能差异</p>
+<p>不用想因为ArrayList是通过动态数组实现的,到一定大的时候就需要重新开辟内存空间然后拷贝,性能表现就是没有用链表实现的好.</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>M计划</title>
+    <url>/static-html/2023/03/23/M%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>require</h1>
+<h2 id="You-haven’t-applied-for-community-recommendation-yet">You haven’t applied for community recommendation yet</h2>
+<p>To be eligible for the Rural and Northern Immigration Pilot (RNIP), you must</p>
+<ul>
+<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#experience">have qualifying work experience</a> <strong>or</strong> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#intl-students">have graduated</a> from a publicly funded post-secondary institution in the recommending community</li>
+<li>meet or exceed the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#language">language requirements</a></li>
+<li>meet or exceed the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#education">educational requirements</a></li>
+<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#funds">prove you have enough money</a> to support your transition into the community</li>
+<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#intent">intend to live in the community</a></li>
+<li>meet <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#community">community-specific requirements</a></li>
+<li>have temporary resident status (if you’re in Canada when you apply)</li>
+</ul>
+<p>If you meet all of the requirements, you can <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/community-partners.html">start to look for an eligible job in the community</a>.</p>
+<ul>
+<li>work experience</li>
+<li>language requiments  CLB 6 ITES 6</li>
+<li></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>出国的决心</title>
+    <url>/static-html/2023/03/22/%E5%87%BA%E5%9B%BD%E7%9A%84%E5%86%B3%E5%BF%83/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>为Go应用程序添加图标</title>
+    <url>/static-html/2023/03/21/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>将文件拖到Exe程序上,发生了什么?</title>
+    <url>/static-html/2023/03/21/%E5%B0%86%E6%96%87%E4%BB%B6%E6%8B%96%E5%88%B0exe%E7%A8%8B%E5%BA%8F%E4%B8%8A-%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>如何进行推断</h1>
+<p>很简单,通过print之类的输出信息啊</p>
+<p>错.因为你的程序会在结束后立即关闭窗口,你根本就来不及,当然了你会说 可以让窗口sleep啊,对的? 这里我用go时是没有办法通过就是sleep暂停的 当然了 这里是go的问题.</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/KM911/oslib&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;path&quot;</span></span><br><span class="line">	<span class="string">&quot;runtime&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RunPath</span><span class="params">()</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	_, fullFilename, _, _ := runtime.Caller(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> path.Dir(fullFilename)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	Info := <span class="string">&quot;&quot;</span></span><br><span class="line">	Info = Info + <span class="string">&quot;cmdpath is &quot;</span> + oslib.CmdPath()</span><br><span class="line">	Info = Info + <span class="string">&quot; \nrunpath is &quot;</span> + RunPath()</span><br><span class="line">	cwd, _ := os.Getwd()</span><br><span class="line">	Info = Info + <span class="string">&quot; \ncwd is &quot;</span> + cwd</span><br><span class="line">	Info = Info + <span class="string">&quot; \nos.Args is &quot;</span> + os.Args[<span class="number">0</span>]</span><br><span class="line">	Info = Info + <span class="string">&quot; \nos.Args is &quot;</span> + os.Args[<span class="number">1</span>]</span><br><span class="line">	os.WriteFile(<span class="string">&quot;test.txt&quot;</span>, []<span class="type">byte</span>(Info), <span class="number">0666</span>)</span><br><span class="line">	<span class="comment">// 卡死</span></span><br><span class="line">	time.Sleep(<span class="number">100000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>将一个其他地方的文件拖给它后,得到这样的txt文件</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">cmdpath is D:\SOFT\BIN </span><br><span class="line">runpath is D:/CODE/go/snap </span><br><span class="line">cwd is D:\SOFT\BIN </span><br><span class="line">os.Args is D:\CODE\go\snap\test.exe </span><br><span class="line">os.Args is D:\SOFT\BIN\video.go</span><br></pre></td></tr></table></figure>
+<p>很明显了 首先 我们的参数1 就是我们程序的绝对路径  参数2 是你拖动给我的文件 或者文件的绝对路径</p>
+<p>关键是 这里的cmdpath 和 runpath 和 cwd</p>
+<p>也就是我们的拖动文件的位置 ,知道该如何进行就是一个打包了吧.</p>
+]]></content>
+      <categories>
+        <category>计算机基础</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的Kata</title>
+    <url>/static-html/2023/03/21/%E6%88%91%E7%9A%84kata/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>what is kata</h1>
+<p>这个单词是我看 [代码整洁之道]学习到的,简单来说,就是一个小的练习,可以让你保持对于代码的认识和手感.</p>
+<p>每个人都应该有自己的kata就是说 : 不需要很困难 如果可以最好是一个就是可以只用几分钟就写完的,并且可以快速进行校验.</p>
+<h1>待定的kata</h1>
+<p>我还不知道就是说</p>
+]]></content>
+  </entry>
+  <entry>
     <title>中国的未来</title>
-    <url>/static-html/2023/03/20/%E4%B8%AD%E5%9B%BD%E7%9A%84%E6%9C%AA%E6%9D%A5/</url>
+    <url>/static-html/2023/03/20/Life/%E4%B8%AD%E5%9B%BD%E7%9A%84%E6%9C%AA%E6%9D%A5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>为什么我们不能8小时工作制</h1>
 <p>首先,我国在世界的经济贸易地位是很低的,一部苹果手机,我们只能组装,但是像苹果公司它可以通过app store和硬件的利润,就可以转很多钱了.所以哪怕他们只工作了6个小时,他们获取的经济要比我们多得多.我们的唯一优势就是只有更加低廉劳动力价格.如果老板现在把工资提高,为了保证利润,就必须提高代工订单的费用,苹果公司就会将它的工厂搬到像越南等劳动力更加低廉的国家,很明显,目前阶段中,我们还是很需要富士康的存在.</p>
 <h1>恶性循环</h1>
@@ -173,50 +294,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pip_Guide&#39;</title>
+    <title>pip_Guide</title>
     <url>/static-html/2023/03/20/pip-Guide/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>不要开vpn</h1>
 <p>这里很好笑,你开启vpn后pip将会无法下载</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Pronunciation</title>
-    <url>/static-html/2023/03/19/Pronunciation/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Mistake</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">thank              $\theta$</th>
-<th style="text-align:left">sank $s$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>I donot know why national people are so kind and friendly.</p>
-<p>In this video,a girl from china perform with a lot mistake.But all people</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230319161850034.png" alt="image-20230319161850034" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230319161901751.png" alt="image-20230319161901751" /></p>
 ]]></content>
   </entry>
   <entry>
@@ -406,6 +487,22 @@
 <ul>
 <li></li>
 </ul>
+<h1>String</h1>
+<ul>
+<li>string 只有同一个环境空间 如果存在两个相同的字符串 就会 出现这个问题 就是</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>ADT</h1>
+<ul>
+<li>dict 一般是 一对一</li>
+<li>map 可以是一对多</li>
+<li>arraylist 数据类型可变的  数组</li>
+<li>venctro 数据类型不可变的  数组</li>
+<li>set 内部数据不可重复</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ArrayList：基于动态数组实现，支持快速随机访问，插入和删除元素效率较低。</span><br><span class="line"></span><br><span class="line">LinkedList：基于双向链表实现，支持快速插入和删除元素，随机访问元素效率较低。</span><br><span class="line"></span><br><span class="line">Vector：与ArrayList类似，但是是线程安全的，因此效率较低。</span><br><span class="line"></span><br><span class="line">Stack：基于Vector实现，是一种后进先出的数据结构。</span><br><span class="line"></span><br><span class="line">CopyOnWriteArrayList：基于可重入锁实现，是一种线程安全的List，支持快速随机访问，但是插入和删除元素效率较低。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HashMap：基于哈希表实现，支持快速随机访问，插入和删除元素效率较高，但是不保证元素的顺序。</span><br><span class="line"></span><br><span class="line">TreeMap：基于红黑树实现，支持按照元素的自然顺序或者指定的比较器顺序遍历元素。</span><br><span class="line"></span><br><span class="line">LinkedHashMap：基于哈希表和双向链表实现，保证元素的插入顺序和访问顺序一致。</span><br><span class="line"></span><br><span class="line">WeakHashMap：基于哈希表实现，但是键是弱引用，当键不再被引用时，会被自动从Map中删除。</span><br></pre></td></tr></table></figure>
+<p>关键是我们需要知道什么时候该使用何种数据类型 你懂吧</p>
 <h1>多线程</h1>
 <p>并发编程</p>
 <h2 id="如何使用">如何使用</h2>
@@ -420,21 +517,77 @@
 </li>
 </ul>
 <h1>泛型</h1>
-<p>其实就是在c++中模板函数</p>
-<p>其实我只是希望可以对于字符串的需要一个泛型,可以很轻松的将去</p>
+<p>其实就是在c++中模板函数 作用是一样的 我目前还不知道具体的使用场景,这里就先知道如何使用</p>
+<p>主要有两类 分别是泛型类和泛型方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">tem</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 为什么需要使用泛型 可以让我们的代码更加的灵活 我们这里的学生分数可以是各种不同的形式</span></span><br><span class="line">    <span class="type">Student</span> <span class="variable">math_student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">    math_student.MathTeacher(<span class="number">100</span>);</span><br><span class="line">    <span class="type">Student</span> <span class="variable">chinese_student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">    chinese_student.ChineseTeacher(<span class="string">&quot;优秀&quot;</span>);</span><br><span class="line">    <span class="type">Student</span> <span class="variable">english_student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">    english_student.EnglishTeacher(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">public</span> String Teacher;</span><br><span class="line">  <span class="keyword">private</span> T score;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">MathTeacher</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.Teacher = <span class="string">&quot;Math&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ChineseTeacher</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.Teacher = <span class="string">&quot;Chinese&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">EnglishTeacher</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.Teacher = <span class="string">&quot;English&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> T <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(T score)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Student [Teacher=&quot;</span> + Teacher + <span class="string">&quot;, score=&quot;</span> + score + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>反射</h1>
+<p>反射可以让你获取/修改类的私有属性和方法 这里我们还是只给出如何使用的例子</p>
+<ul>
+<li>
+<p>实例化一个对象</p>
+</li>
+<li>
+<p>获取属性 (无论私有还是公有都是一样的)</p>
+</li>
+<li>
+<p>调用方法 并获取其返回值</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">refla</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InstantiationException, IllegalAccessException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException &#123;</span><br><span class="line">    <span class="type">Class</span> <span class="variable">DogClass</span> <span class="operator">=</span> Dog.class;</span><br><span class="line">    <span class="comment">// 实例化一个对象 这里还是会调用构造方法</span></span><br><span class="line">    <span class="type">Dog</span> <span class="variable">newDog</span> <span class="operator">=</span> (Dog) DogClass.newInstance();</span><br><span class="line">    <span class="comment">// 获取类的属性</span></span><br><span class="line">    <span class="type">Field</span> <span class="variable">Echo_Field</span> <span class="operator">=</span> DogClass.getDeclaredField(<span class="string">&quot;echo&quot;</span>);</span><br><span class="line">    <span class="comment">// private属性就必须要设置为可访问的</span></span><br><span class="line">    Echo_Field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// 这里就是获取某一个对象的 private 属性</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">Echo</span> <span class="operator">=</span> (String) Echo_Field.get(newDog);</span><br><span class="line">    System.out.println(<span class="string">&quot;echo is &quot;</span> + Echo);</span><br><span class="line">    <span class="comment">// 调用返回值为空的方法</span></span><br><span class="line">    <span class="type">Method</span> <span class="variable">Void_Echo_Method</span> <span class="operator">=</span> DogClass.getDeclaredMethod(<span class="string">&quot;Echo&quot;</span>);</span><br><span class="line">    Void_Echo_Method.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    Void_Echo_Method.invoke(newDog);</span><br><span class="line">    <span class="comment">// 调用返回值不为空的方法 这里需要声明返回值的类型</span></span><br><span class="line">    <span class="type">Method</span> <span class="variable">String_Echo_Method</span> <span class="operator">=</span> DogClass.getDeclaredMethod(<span class="string">&quot;Echo&quot;</span>, String.class);</span><br><span class="line">    String_Echo_Method.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">echo</span> <span class="operator">=</span> (String) String_Echo_Method.invoke(newDog, <span class="string">&quot;wangwangwang&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;echo is &quot;</span> + echo);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> Integer age;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">String</span> <span class="variable">echo</span> <span class="operator">=</span> <span class="string">&quot;wangwang&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">()</span> &#123;</span><br><span class="line">    Echo();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">Echo</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(echo);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String <span class="title function_">Echo</span><span class="params">(String echo)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.echo = echo;</span><br><span class="line">    System.out.println(echo);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.echo;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(Integer age)</span> &#123;</span><br><span class="line">    Echo();</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(Integer age)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> Integer <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>lambda</h1>
+<p>学过python了 λ表达式 其实就是更加简单的一个写函数的方法.</p>
+<h1>为什么需要使用接口</h1>
+<blockquote>
+<p>一句话回答: 对于不存在继承关系,但是存在相同功能的类就需要接口.</p>
+</blockquote>
+<p>例子A:</p>
+<p>动物 --&gt; 猫</p>
+<p>动物 --&gt; 狗</p>
+<p>​      存在继承关系的两个类,其内部的方法可以是重载基类,也可以通过实现接口.这种时候你使用继承和接口都是一样的.</p>
+<p>​      但是接口是无法定义数据成员的,所以无法确定这两个类存在哪些具体的属性.如果该方法是需要获取类的属性的时候,特别是共同的属性的时候,我还是觉得使用继承的方式更好.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="comment">// 动物的属性 比如说生活在水里,陆地上,或者是两栖</span></span><br><span class="line">    <span class="comment">// 属于是哪一个物种</span></span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">    <span class="keyword">public</span> String Species;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 动物们都可以移动</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    Cat() &#123;</span><br><span class="line">        <span class="built_in">this</span>.Species = <span class="string">&quot;小猫&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.Species+<span class="string">&quot;画梅花&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    Dog()&#123;</span><br><span class="line">        <span class="built_in">this</span>.Species = <span class="string">&quot;小狗&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.Species+<span class="string">&quot;画月牙&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子B</p>
+<p>动物 --&gt; 狗</p>
+<p>机器 --&gt; 机器狗</p>
+<p>两个不存在继承关系,但是存在相同功能的,我们就应该使用接口了.</p>
+<p>当然了你还是可以让我们的机器和动物都继承一个基类,该基类有move这个方法.但是是否是所有的机器类都是可以移动的呢?不见得吧,这个时候使用接口就是最合理的选择.</p>
+<p>至于你说只有一个类,并且也不会对其进行扩展,就直接定义该方法就好了.</p>
+<h2 id="题外话">题外话</h2>
+<p>很多人说接口是一种规范,定义了该方法的参数和返回值,这样的回答没有答到点子上,就是为什么用接口,因为使用继承同样可以实现上面的效果.</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>只是为了实现一个类,直接在类中写实现就好了.</li>
+<li>当两个类存在相同的属性和方法时,使用继承.</li>
+<li>当两个类不存在继承关系,但是具有相同的功能,使用接口.</li>
+</ul>
+<p>​       接口提供了一种更强的抽象能力,不再依靠相同的基类而存在.如果你的需求完全可以通过继承实现,就没有必要逼着自己去实现接口.</p>
+<p>这里其实我们应该开始就是使用mybitas</p>
 ]]></content>
   </entry>
   <entry>
     <title>Why You Need to Learn English</title>
     <url>/static-html/2023/03/18/English/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E5%AD%A6%E4%B9%A0%E8%8B%B1%E8%AF%AD/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Profitable reason</h1>
-<p>now</p>
-<h1>How to learn</h1>
-<h2 id="Input">Input</h2>
-<p>you need to find some English aricl just like Youtube video,post and any thing could help you learn English.You need to put yourself into a English environment.</p>
-<h1>Output</h1>
-<h1>Study</h1>
-<p>you analy your english,which topic is you are not famliy just need to learn some vocabulary right?</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>观点</h1>
+<p>这里只是给出一些就是观点和例子</p>
+<p><a href="https://www.youtube.com/watch?v=sQEWEPIHLzQ">史嘉琳 回音学习法</a></p>
+<ol>
+<li>你的发音需要比较标准 这样别人才可以听懂你说的话 not need 100% but at least 80%</li>
+<li>echo listen and repeat just in 10 minius</li>
+</ol>
+<p><a href="https://www.youtube.com/watch?v=d0yGdNEWdn0">Learn English in 6 monuth</a></p>
+<ul>
+<li>forget is right</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=NiTsduRreug&amp;t=4s">how do we acquire english teh same way</a></p>
+<ul>
+<li>motivate</li>
+<li>self</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=J_EQDtpYSNM">How to Learn a Language: INPUT (Why most methods don’t work)</a></p>
+<p><a href="https://www.youtube.com/watch?v=NVNf1Du3U5g">英式音标</a></p>
+<p><a href="youtube.com/watch?v=zRFFvCrlf1w">美式音标</a></p>
+<h1>装 你 吗 ?</h1>
+<p>学英语 和 专业技能 其他的东西都不是很重要</p>
 ]]></content>
   </entry>
   <entry>
@@ -1677,12 +1830,6 @@ server.listen(3000);</p>
       <tags>
         <tag>教程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Reason</title>
-    <url>/static-html/2023/01/12/English/reason/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>why you need to learn english</h1>
-]]></content>
   </entry>
   <entry>
     <title>CLI工具入门</title>
@@ -2966,152 +3113,6 @@ server.listen(3000);</p>
       <categories>
         <category>胡言乱语</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Git教程</title>
-    <url>/static-html/2022/09/11/Guides/git%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>环境搭建</h1>
-<h2 id="git下载和安装">git下载和安装</h2>
-<p>这里推荐去腾讯下载 毕竟国内的网速相对较快</p>
-<p><a href="https://pc.qq.com/search.html#!keyword=git">腾讯软件下载</a></p>
-<p>下载和电脑匹配的位数 32位和64位 (记得点普通下载 而不是高速下载)</p>
-<p><a href="https://webcdn.m.qq.com/spcmgr/download/Git-2.37.3-64-bit.exe">64位</a></p>
-<p><a href="https://webcdn.m.qq.com/spcmgr/download/Git-2.37.3-32-bit.exe">32位</a></p>
-<p><img src="http://localhost:3000/picgo/1668762156326.webp" alt="image-20220911091043294" /></p>
-<p>如果打开控制台 输入git 会有反应 说明配置成功了</p>
-<h2 id="基本信息配制">基本信息配制</h2>
-<p>这里不要用我的信息 啊 (其实就算用了也不会出什么问题)</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">git config <span class="attr">--global</span> user<span class="selector-class">.name</span> <span class="string">&quot;KM911&quot;</span></span><br><span class="line">git config <span class="attr">--global</span> user<span class="selector-class">.email</span> <span class="number">2547715095</span>@qq.com</span><br></pre></td></tr></table></figure>
-<h3 id="关闭服务器代理">关闭服务器代理</h3>
-<p>很关键 不然容易443 time out 不过其实就算用了 还是会是不是443的 没办法 谁让人家微软不是中国企业呢 w</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">git config <span class="attr">--global</span> <span class="attr">--unset</span> http<span class="selector-class">.proxy</span></span><br><span class="line">git config <span class="attr">--global</span> <span class="attr">--unset</span> https.proxy</span><br></pre></td></tr></table></figure>
-<h3 id="生成密匙">生成密匙</h3>
-<figure class="highlight moonscript"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="number">2547715095</span>@qq.com</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&#x27;2547715095@qq.com&#x27;</span> -f <span class="name">D</span>:\<span class="number">0.</span>SOFT\ssh\.ssh\github</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&#x27;2547715095@qq.com&#x27;</span> -f <span class="name">D</span>:\<span class="number">0.</span>SOFT\ssh\.ssh\gitee</span><br><span class="line"></span><br><span class="line">这里其实可以设置ssh的生成位置 默认c盘 就算没了 再重新生成一个就好了</span><br></pre></td></tr></table></figure>
-<h4 id="关于生成密钥的过程中-可选">关于生成密钥的过程中(可选)</h4>
-<p>我们可以指定生成的密钥位置(很关键 可以移动到D盘)和名字(不关键)</p>
-<p>在上述指令后 输入</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">D:<span class="regexp">/0.SOFT/</span>ssh<span class="regexp">/.ssh/</span>key</span><br></pre></td></tr></table></figure>
-<p>然后我们需要去设置git 去告诉它我们的密匙的位置</p>
-<figure class="highlight vbnet"><table><tr><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> core.sshCommand <span class="string">&quot;D:\0.SOFT\ssh\.ssh\&quot;</span></span><br><span class="line">ssh-add D:\<span class="number">0</span>.SOFT\ssh\.ssh\gitee</span><br><span class="line">这里是因为我的<span class="keyword">key</span>就是叫做<span class="keyword">key</span></span><br><span class="line"></span><br><span class="line">我想到了 其实我们可以控制变量</span><br><span class="line"><span class="number">1</span>: 不设置我们的<span class="keyword">key</span> 只是修改目录 (共用一个<span class="keyword">key</span> 不修改邮箱 ) </span><br><span class="line"><span class="number">2</span>: 设置不同的邮箱 生成两个<span class="keyword">key</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="添加密钥">添加密钥</h2>
-<hr />
-<h3 id="关闭ssl认证">关闭ssl认证</h3>
-<p>其实还是为了解决网络 问题 最好还是科学上网</p>
-<p>这里推荐一个(不是广告 我自己也在用)</p>
-<p><a href="">pigcha</a> 按流量付费的话 30元 15g 我用了好久 还是因为拿去看V才用光的 啊哈哈哈 如果只是用来上github 还有一个软件可以使用</p>
-<p><a href="">steam++</a> 好像改名字了 不过这个不重要 免费软件 可以给开发者一点支持 让他买杯咖啡 不过因为是DNS代理或者修改host 容易出现浏览器无法使用的情况 对于新人来说 问题有点多 当然了 steam++还是很强大的</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">git config --global http.sslverify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="基本使用流程">基本使用流程</h3>
-<p>先在GitHub上创建一个仓库 然后将其clone到本地</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">仓库的链接</span></span><br></pre></td></tr></table></figure>
-<p>将想要上传的文件添加到缓存区 提交到本地后 上传到仓库</p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">add</span> filename</span><br><span class="line"><span class="symbol">git</span> commit -m <span class="string">&quot;updata&quot;</span></span><br><span class="line"><span class="symbol">git</span> <span class="keyword">push</span> </span><br></pre></td></tr></table></figure>
-<p>稍等一下 你就可以在你的仓库 看见你的文件了</p>
-<p>反正我就是只是使用这些最基本的命令 依然很强大 分支什么的对于我们来说还没有必要</p>
-<p>恭喜你 你基本上已经学会了git的80% 可以愉快的玩耍了</p>
-<h2 id="其他参考教程">其他参考教程</h2>
-<p>安装git 这些东西都不是问题啊 其实我还是推荐 你去使用我们ubuntu系统来学习 因为有 apt get 这种很方便的命令行指令 (windos也有 不过支持相对没有那么好 毕竟术业有专攻)</p>
-<p><a href="https://www.liaoxuefeng.com/wiki/896043488029600">参考教程_雪峰</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/30044692">参考教程_知乎_</a></p>
-<h1>情景再现</h1>
-<p><a href="https://www.jianshu.com/p/5f99380597de">参考教程</a></p>
-<p>在具体的情况下学习 有助于我们理解和记忆具体的内容</p>
-<h2 id="获取云端新的分支">获取云端新的分支</h2>
-<p><code>git branch -a</code> 查看本地和云端的分支</p>
-<p><code>git branch -b new_baanch</code> 切换到一个新的分支</p>
-<p><code>git fetch --all</code> 获取云端的全部修改</p>
-<p><code>git branch --set-upstream-to=origin/new_branch</code> 将该分支进行追踪新的分支</p>
-<p><code>git pull</code> 获取新的内容</p>
-<h2 id="本地和云端的代码冲突问题">本地和云端的代码冲突问题</h2>
-<p>直接放弃本地的方法</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">fetch</span> <span class="comment">--all  </span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard origin/master</span></span><br></pre></td></tr></table></figure>
-<p>当然了 这样肯定不是很好 我们应该可以这样解决</p>
-<h2 id="缺少文件没有提交">缺少文件没有提交</h2>
-<p>将本次提交 和上一次提交合并</p>
-<p>但是如果你已经将代码提交到云端了 就不要在修改了</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
-<p>git rebase</p>
-<p>git cherry-pick</p>
-<h1>工作流</h1>
-<p>为了保证多人合作项目的时候 不会影响master分支的代码 我们使用如下的工作流</p>
-<p>下面的指令 需要在<strong>当前文件夹</strong>下 打开cmd powershell 或者git-bash 进行输入</p>
-<h2 id="克隆仓库到本地">克隆仓库到本地</h2>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>tee.com<span class="regexp">/dong-zuoge/</span>node.git</span><br></pre></td></tr></table></figure>
-<h2 id="开辟自己的分支">开辟自己的分支</h2>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> checkout -<span class="keyword">b</span> &lt;your-branch&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i0.hdslb.com/bfs/album/2a9a4da5fda911f3430143a8d753d517d2d7045e.png" alt="image-20221014211305053" /></p>
-<p>这样就算你修改了文件 不会影响主分支</p>
-<h2 id="查看自己修改">查看自己修改</h2>
-<p>你可能修改了一些代码 但是自己记不清了  使用如下的指令进行查看修改</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git diff</span></span><br></pre></td></tr></table></figure>
-<p>我们可以借助一些可视化的工具<a href="https://desktop.github.com/">Github Desktop</a></p>
-<p>如果只是修改了几行 或许还可以使用原生的git 但是如果对于项目进行了大量的修改 并且涉及到不同层级的文件时 还是比较推荐使用这种工具</p>
-<h2 id="将修改提交到本地">将修改提交到本地</h2>
-<p>将修改提交到本地 这里我们还是没有修改云端 需要等待项目的主要负责人将其合并</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> *</span><br><span class="line">git <span class="keyword">commit</span> -m &quot;提交的信息 最好可以描述清楚 自己做了什么修改 如何实现的 当然了其实就算很简单 也没有关系&quot;</span><br></pre></td></tr></table></figure>
-<p><img src="http://localhost:3000/picgo/1668762175877.webp" alt="image-20221014220330151" /></p>
-<p>左上角的对应我们的 git add *</p>
-<p>GitHub Desktop 默认会将全部的修改进行提交  你也可以选择不提交某些文件<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<p>左下角对应我们的 git commit -m “提交的信息”</p>
-<p>这里就是让我们输入提交信息的地方 下面的是Description(描述) 更加详细的描述</p>
-<h2 id="将提交合并-不重要">将提交合并(不重要)</h2>
-<p>有的时候 我们只是做了一点点小的修改 如果还是进行一样的提交方式 就会产生很多无效的commit</p>
-<p>为了简化我们的提交信息 我们可以这样做</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> <span class="operator">*</span> </span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
-<p>这样就会将本次的提交合并到上一次提交上</p>
-<p>这里会进入我们的编辑模式 让你查看修改</p>
-<p><code>CTRL</code>+<code>C</code> 进入命令模式 然后输入 <code>qa</code> 就会退出了</p>
-<p>不要在已经将commit 上传了以后进行此操作 会出现比较复杂的修改</p>
-<p>尽管不会影响项目的运行 但是会产生垃圾信息</p>
-<p><img src="https://i0.hdslb.com/bfs/album/03d12b99fb8418ed5ba0f55469867e1a221620f9.png" alt="image-20221014222626888" /></p>
-<h2 id="将修改提交到云端">将修改提交到云端</h2>
-<p>如果你以及确保自己的修改已经完毕了 (这期间里你可能进行了多次的 add commit的操作)</p>
-<p><img src="https://i0.hdslb.com/bfs/album/2628cec54613bc4caf8ed00d477bcbb7f74f2cf4.png" alt="image-20221014214558020" /></p>
-<p>将修改提交到云端</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">push</span> </span><br></pre></td></tr></table></figure>
-<p>对应的操作是 点击紫色的按钮</p>
-<p>这里特别将 上面的<code>Pull origin</code>按钮圈出来 是想说明 这里两个箭头的含义 向上的箭头表示 我们本地有多少次提交没有上传到云端 同理 向下的箭头 表示云端有多少修改没有同步到本地<img src="https://i0.hdslb.com/bfs/album/853cb81c06843cdcc3679919ba2b3ece79755cb8.png" alt="image-20221014221814260" /></p>
-<h2 id="将分支合并-不重要">将分支合并(不重要)</h2>
-<p>这部分内容其实很简单的 因为都有可视化</p>
-<p>进入我们的<a href="https://gitee.com/dong-zuoge/node">仓库地址</a></p>
-<p><img src="https://i0.hdslb.com/bfs/album/8806e9b053d999a2fffe3269b1773acafde481d4.png" alt="image-20221014223615538" /></p>
-<p><code>Pull Request</code> 申请将分支合并</p>
-<p>这里需要等待项目的负责人和审查员进行检查后 才会进行合并</p>
-<p>为了防止我这样的菜鸟直接修改master分支 影响系统的运行 很有必要</p>
-<p><img src="https://i0.hdslb.com/bfs/album/f927dc8b71aff07f8e098325f921476c57bf00a3.png" alt="image-20221014225035523" /></p>
-<p>这里推荐使用 扁平化合并</p>
-<p>这样不会将其他分支的每一次提交信息都合并到master分支上</p>
-<p>可以保持我们的master分支的整洁性</p>
-<h2 id="移除本地的分支">移除本地的分支</h2>
-<p>等到我们发现 自己的pull request 被合并以后 (说明你的修改是没有问题的) 我们也不再需要该分支了</p>
-<p>进行如下的操作  将本地分支移除</p>
-<p>我们的仓库就变成了 只有master分支的样子了</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git checkout <span class="keyword">master</span> </span><br><span class="line"><span class="title">git</span> branch -D <span class="tag">&lt;your-branch&gt;</span></span><br></pre></td></tr></table></figure>
-<h1>总结</h1>
-<p>其实对于一般的情况 就比如说 我们个人开发 我们只需要进行</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> *</span><br><span class="line">git <span class="keyword">commit</span> -m &quot;提交的信息&quot;</span><br></pre></td></tr></table></figure>
-<p>多次提交和修改之后</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">push</span> </span><br></pre></td></tr></table></figure>
-<p>完成了 是不是很简单啊 但是我还是推荐你养成良好的git使用习惯 这样对于自己代码回滚 还是为工作打下良好的基础 都是很好的练习</p>
-<h1>题外话</h1>
-<p>工具是为了提高效率 我并不觉得使用gui就一定 怎么这么样 使用命令行就 巴拉巴拉</p>
-<p>如果你觉得使用某种方式更加适合自己 有助于提高自己的效率 这样就够了 没有必要花费时间和别人争论怎么做更好之类的</p>
-<p>就算你对于一个工具不是非常了解 就比如这里的git 和 Github Desktop</p>
-<p>掌握一些基本的技巧 就可以体验到新的工具 带来的好处 所以多看看 有什么新奇的玩意 然后学习一下吧</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>我们可以专门创建一个<code>.gitingore</code>文件 告知什么文件不要进行提交 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
   </entry>
   <entry>
     <title>中秋节快乐</title>
