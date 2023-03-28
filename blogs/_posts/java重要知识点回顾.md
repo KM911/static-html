@@ -209,7 +209,15 @@ class PrintNum extends Thread {
   
   ```
 
+  ## 参数传递
   
+  * 获取线程运行结果
+  
+  线程的常用方法
+  
+  ![image-20230328142413350](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230328142413350.png)
+  
+  当然了线程的优先级并不是绝对的,也就是说就算你的优先级很高,也并一定就是一直在运行的,可以理解为就是提高中奖概率
 
 # 泛型
 
