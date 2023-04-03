@@ -8,13 +8,26 @@ categories:
 
 #  Stream
 
--   [ ] 泛型
+-   [ ] hashmap 
 
--   [ ] 基本的数据类型 
-
--   [ ] 类型安全
+-   [ ] 封装文件流
 
 -   [ ] 
+
+-   [ ] 
+
+-   [ ] 
+
+-   [ ] 
+
+-   [ ] go tool    build and realse ?     go install   go format project 
+
+* build realse
+* go install 
+* go format project
+* setx PATH "%PATH%;D:\GITHUB\KM911\my-tool"
+
+-   [ ] my tool
 
     
 
@@ -99,4 +112,16 @@ picgo.exe token=0e3a8737%2C1695440185%2C3d9bc%2A31 csrf=ba2b8c7d739023ca3b030b94
 
 * 打卡
 
+
+
+
+
+
+* 留白均与 并且 对称
+
+* 修改书评和影评的初始位置 
+
+* 导航栏移动根据当前页面移动
+
   
+

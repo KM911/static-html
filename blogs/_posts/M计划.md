@@ -25,3 +25,22 @@ If you meet all of the requirements, you can [start to look for an eligible job 
 * work experience 
 * language requiments  CLB 6 ITES 6
 
+
+
+![image-20230331191233875](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230331191233875.png)
+
+![image-20230331191310385](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230331191310385.png)
+
+![image-20230331191350478](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230331191350478.png)
+
+![image-20230401134447818](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134447818.png)
+
+![image-20230401134501964](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134501964.png)
+
+![image-20230401134524893](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134524893.png)
+
+![image-20230401134537490](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134537490.png)
+
+![image-20230401134549076](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134549076.png)
+
+![image-20230401134653648](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230401134653648.png)

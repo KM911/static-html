@@ -2,12 +2,12 @@
 title: java基础答辩
 mathjax: false
 date: 2023-03-25 17:14:30
-tags:
+tags: java
 categories:
 ---
 # 泛型
 
-> 泛型是运行时确定函数/类的数据类型.
+> 泛型是运行时确定函数/类的类型.
 
 ## 解决了什么问题?
 
@@ -67,7 +67,6 @@ class Student<T> {
 
 ```java
 public class Ser {
-
 
   public static void main(String[] args) {
       // 创建一个ArrayList去存储学生的成绩
@@ -134,7 +133,7 @@ class Student{
 ## java泛型存在的问题
 
 * 无法使用基本的数据类型
-* 无法区分两个类型参数不同的对象.
+* 无法区分两个类型参数不同的对象的类.
 * 无法创建数组. (数组的数据类型必须要确定)
 * 静态方法无法使用泛型
 
@@ -194,7 +193,7 @@ class Zoo<T extends Animal & Flyable> {
 
 > 反射提供了一种方式,让你可以自由地操作对象.
 
-因为面向对象的封装性,你无法直接调用一个对象的私有方法/获取私有属性.但是利用反射就可以直接调用该方法了.
+因为面向对象的封装性,你无法直接调用一个对象的私有方法/获取私有属性.但是利用反射就可以在程序运行时获取该对象的全部信息.
 
 其实反射的内容就只有这么一点.
 
@@ -262,21 +261,22 @@ class Dog {
 * 时间复杂度和空间复杂度的分析
 * 在何时选取什么样的数据结构
 
-## 性能分析
+## 分析对比
 
 1. 对比ArrayList和LinkedList在插入删除上的性能差异
 
    不用想因为ArrayList是通过动态数组实现的,到一定大的时候就需要重新开辟内存空间然后拷贝,性能表现就是没有用链表实现的好.
 2. Arraylist从头部插入的性能要比从尾部插入的性能低.因为从头部插入,你每次都需要将数组中的数据向后移动一位.删除同理
 3. 对于没有顺序要求的数据,直接使用hashmap就好了,在绝大部分情况下,我们的hashmap是比他们要快的,尤其是在大数据量上.
+4. …
 
-### 例子
+## 并发安全
+
+当使用了多线程后,普通的数据结构就不安全了.
 
 
 
 ## 用hashmap实现栈
-
-这里其实我是想说明,你懂了以后,用什么其实都是很随意的.
 
 ```java
 package benchmark;
@@ -284,7 +284,7 @@ import java.util.HashMap;
 
 // 规定有如下的方法
 // push 用来向栈中添加元素
-// pop 返回栈顶元素
+// pop 返回栈顶元素 没有元素返回-1
 // length 用来获取栈的长度
 public class stack_hashmap {
   public static void main(String[] args)
@@ -330,15 +330,15 @@ class Stack {
 
 > 提高程序的运行效率.
 
-* 读取大文件 避免IO阻塞导致程序一直在等待状态
-* 游戏需要同时播放音乐和播放动画
+* 读取大文件 避免IO阻塞导致主程序一直在等待状态
+* 游戏需要“同时”播放音乐和动画,还有后台发送各种请求
 * 按钮组件绑定的事件 …
 
 ## 实现多线程的方式
 
-* 继承thread类 并 重写run方法
-* 实现runable接口 的 run方法
-* 实现callable接口 并重写call方法
+* 继承thread类
+* 实现runable接口
+* 实现callable接口 
 
 如果需要获取到线程运行的结果,应该使用第三种方法.
 
@@ -348,9 +348,11 @@ class Stack {
 
 ## 线程同步
 
-> 商品库存
+> 商品库存问题
 
-使用关键字 synchronized 或者 lock 两个方法来实现只有一个线程在执行当前任务
+使用关键字 synchronized 或者  ReentrantLock阻塞队列实现线程同步来实现只有一个线程在执行当前任务.
+
+我目前比较喜欢的方式是利用synchronized
 
 ```java
 package threading_demo;
@@ -396,9 +398,10 @@ class SyncThread extends Thread {
 
 这里两个线程都在等待对方释放锁,就陷入了卡死的地步.死锁是我们软件开发过程中,应该避免出现的情况.
 
+多个锁嵌套.
+
 ```java
 package threading_demo;
-
 // 死锁的演示
 public class loop_lock {
   public static void main(String[] args) {
@@ -458,5 +461,5 @@ class Thread_B extends Thread {
     }
   }
 }
-
+ 
 ```
