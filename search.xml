@@ -197,6 +197,73 @@
       </tags>
   </entry>
   <entry>
+    <title>手写一个Http解析器</title>
+    <url>/static-html/2023/04/03/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAhttp%E8%A7%A3%E6%9E%90%E5%99%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>手写一个http解析器</h1>
+<p>之前一直都是对于我们的http的格式一知半解,现在正好有机会可以学习java网络编程,就顺带着将其内容学完就好了.</p>
+<h1>HTTP请求</h1>
+<h2 id="Request-Header">Request Header</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">GET</span> /js/app.<span class="property">dc20dbd2</span>.<span class="property">js</span> <span class="variable constant_">HTTP</span>/<span class="number">1.1</span></span><br><span class="line"><span class="title class_">Accept</span>: *<span class="comment">/*</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate, br</span></span><br><span class="line"><span class="comment">Accept-Language: en-US,en;q=0.9</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Host: localhost:8080</span></span><br><span class="line"><span class="comment">Sec-Fetch-Dest: script</span></span><br><span class="line"><span class="comment">Sec-Fetch-Mode: no-cors</span></span><br><span class="line"><span class="comment">Sec-Fetch-Site: same-origin</span></span><br><span class="line"><span class="comment">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="comment">sec-ch-ua: &quot;Google Chrome&quot;;v=&quot;111&quot;, &quot;Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;111&quot;</span></span><br><span class="line"><span class="comment">sec-ch-ua-mobile: ?0</span></span><br><span class="line"><span class="comment">sec-ch-ua-platform: &quot;Windows&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="paramas">paramas</h3>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/api/download?filename=config.<span class="property">xml</span></span><br><span class="line">/api/download/check?filename=name.<span class="property">txt</span>&amp;filadata=asdfasdfcfasf</span><br></pre></td></tr></table></figure>
+<p>这里我们先通过?解析出来,然后利用 &amp; split 存到我们的hashmap利用 split = 然后分别交到里面去</p>
+<p>通过我们的api里内部参数中,我只喜欢就是使用这个内容的功能</p>
+<h3 id="path">path</h3>
+<h2 id="Body">Body</h2>
+<p>这里根据你的参数不同结果也不太一样.所以我们body的解析应该是放到最后去做的,也就是我们需要给我们的heandler 如何解析才可以知道</p>
+<p>不然就是没有用的就是说 哈哈哈</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line"><span class="string">&quot;passwd&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;</span><br><span class="line">    </span><br><span class="line">&#123;<span class="string">&quot;filename&quot;</span>:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span>:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br><span class="line"><span class="comment">// 这里是第二个 , 号 的水平 我拿不到 其实应该是 : 拿偶数 对称的  </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span>:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span>:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span></span><br><span class="line">:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span></span><br><span class="line">:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br><span class="line"><span class="comment">// 从前后两个 &quot; 去解析就好了  </span></span><br></pre></td></tr></table></figure>
+<p>我的解析完成了 可以解析param 和 body JSON 了 就是</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java与模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jdbc:mysql//localhost:3306/java?useSSL=<span class="literal">false</span>&amp;allowPublicKeyRetrieval=<span class="literal">true</span>&amp;serverTimezone=UTC</span><br><span class="line">jdbc:mysql://localhost:3306/java?useSSL=<span class="literal">false</span>&amp;allowPublicKeyRetrieval=<span class="literal">true</span>&amp;serverTimezone=UTC</span><br></pre></td></tr></table></figure>
+<p>直接文件内容写入就好了 将文件乱码的名字存储在这里</p>
+<h3 id="AES">AES</h3>
+]]></content>
+  </entry>
+  <entry>
+    <title>Http详解</title>
+    <url>/static-html/2023/04/03/Http%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Windows</title>
+    <url>/static-html/2023/04/03/Windows/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Windows</h1>
+<p>不出意外的话 我日后应该只会使用我们的Win了,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.</p>
+<h1>需要的软件列表</h1>
+<ul>
+<li>pigcha</li>
+<li>clash for windows</li>
+</ul>
+<h1>环境变量</h1>
+<ul>
+<li>nodejs</li>
+<li>vscode</li>
+</ul>
+<h1>软件源和安装位置修改</h1>
+<h1>NPM</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line"></span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line"></span><br><span class="line">npm config set prefix &quot;F:\nodejs\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;F:\nodejs\node_cache&quot;   </span><br><span class="line"></span><br><span class="line">path add F:\nodejs\node_global</span><br><span class="line">path add </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install cnpm -g for test</span><br><span class="line"></span><br><span class="line">PNPM_HOME and add it to path</span><br></pre></td></tr></table></figure>
+<p>just need to use pnpm oK ?</p>
+<h1>GO</h1>
+<p>只需要设置我们的goPath 和 module就OK了</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="VScode">VScode</h2>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">--extensions-dir <span class="string">&quot;D:\Software\Microsoft\.vscode\extensions&quot;</span></span><br><span class="line">--user-<span class="meta">data</span>-dir D:\<span class="number">0</span>.SOFT\<span class="meta">Code</span>\<span class="meta">data</span></span><br></pre></td></tr></table></figure>
+<h2 id="pip">pip</h2>
+<h1>不要开vpn</h1>
+<p>这里很好笑,你开启vpn后pip将会无法下载</p>
+<p>超时默认事件是100秒 如果你超市了 可以去看看 特别是大的东西</p>
+<p>换源 创建pip.ini文件</p>
+<p>这里我们可以使用就是xcopy命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<p>超时设置</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">--timeout</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
+<p>修改默认安装路径 修改lib\site.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">USER_SITE = <span class="string">&quot;D:/SOFT/Path/Python/Lib/site-packages&quot;</span></span><br><span class="line">USER_BASE = <span class="string">&quot;D:/SOFT/Path/Python/Scripts&quot;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Java高级答辩</title>
     <url>/static-html/2023/04/01/java%E9%AB%98%E7%BA%A7%E7%AD%94%E8%BE%A9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>流 和 文件</h1>
@@ -228,7 +295,7 @@
   </entry>
   <entry>
     <title>Hashmap源码</title>
-    <url>/static-html/2023/03/31/hashmap%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8k%E5%92%8Cv/</url>
+    <url>/static-html/2023/03/31/Github/hashmap%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8k%E5%92%8Cv/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>阅读hashmap源码</h1>
 <ul>
 <li>环境 openjdk 19.0.2</li>
@@ -450,13 +517,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pip_Guide</title>
-    <url>/static-html/2023/03/20/pip-Guide/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>不要开vpn</h1>
-<p>这里很好笑,你开启vpn后pip将会无法下载</p>
-]]></content>
-  </entry>
-  <entry>
     <title>不是很难过</title>
     <url>/static-html/2023/03/19/%E4%B8%8D%E6%98%AF%E5%BE%88%E9%9A%BE%E8%BF%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
@@ -512,6 +572,11 @@
 <ul>
 <li>饿汉式</li>
 </ul>
+<ol>
+<li>构造函数为private</li>
+<li>自己的实例作为自己的属性 static</li>
+<li>返回自己实例的方法 static</li>
+</ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>&#123;</span><br><span class="line">    <span class="comment">// 构造函数为private后 就无法通过new去创建对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Book</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Book</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">    <span class="comment">// 我们现在只能通过getInstance这个静态方法获取该对象</span></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> Book <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>懒汉式</li>
@@ -539,6 +604,14 @@
 <p>今天比明天好</p>
 <p>人生没有捷径</p>
 <p>遇到我是你的运气,遇到你是我的福气</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Css机器合集</title>
+    <url>/static-html/2023/03/18/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Css 技巧合集</h1>
+<h2 id="消除滚动条">消除滚动条</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
