@@ -109,3 +109,8 @@ USER_SITE = "D:/SOFT/Path/Python/Lib/site-packages"
 USER_BASE = "D:/SOFT/Path/Python/Scripts"
 ```
 
+
+
+## JAVA 
+
+我们直接利用IDEA就好了让他帮我们下一个JDK不需要管太多的事情.
