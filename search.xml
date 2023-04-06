@@ -6,10 +6,10 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
 <li>
-<p>[ ] hashmap</p>
+<p>[ ] 数据库的操作部分</p>
 </li>
 <li>
-<p>[ ] 封装文件流</p>
+<p>[ ] 因为我们的就是remove比较麻烦就先不管ta</p>
 </li>
 <li>
 <p>[ ]</p>
@@ -197,28 +197,139 @@
       </tags>
   </entry>
   <entry>
+    <title>Go编译优化</title>
+    <url>/static-html/2023/04/05/go%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>go编译优化</h1>
+<p>go语言的编译优化并不像gcc之类有的有 <code>-o3</code>之类的方式</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>编译多版本</h1>
+<p>不过这里其实有一个问题,就是你在 <code>win</code>上编译好了以后,你还是无法运行的,这样的软件有什么意义呢?</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何高效检索信息</title>
+    <url>/static-html/2023/04/05/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E6%A3%80%E7%B4%A2%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>如何高效检索信息</h1>
+<p>基本法则是</p>
+<ul>
+<li>减少无用的信息</li>
+<li>提高检索的准确性</li>
+</ul>
+<h1>例子</h1>
+<p>下面是我要检索一本名为 &lt;&lt;java核心技术卷1&gt;&gt;的pdf版。</p>
+<p>我打开浏览器输入* &lt;&lt;java核心技术卷1&gt;&gt;pdf</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405110757383.png" alt="image-20230405110757383" /></p>
+<h2 id="减少无用信息">减少无用信息</h2>
+<p>因为百度的盈利模式是依赖于广告和竞价排名，所以你的搜索结果中会出现很多广告甚至是毫不相干的元素。</p>
+<p>比较明显的几个特点是</p>
+<ol>
+<li>
+<p>会优先推荐自己的产品，比如搜索文档时更有可能将百度文档放在更加靠前的位置，还有百度贴吧等其他应用引流。我并不是想否定百度的产品，只是你很难想在这里找到你想要的内容，如果很幸运找到了，大概率也是需要登录或者付费下载。（其实你看里面只有3页，就应该可以看出来，这绝对不会是一本书该有的页数，进一步说明了，这个网页其实根本就没有点开的必要了）</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405110410801.png" alt="image-20230405110410801" /></p>
+</li>
+<li>
+<p>广告是真的多，而且一不小心就会点错。辨别方法是右下角会有广告的灰色小字，一般还有“保障”这个显眼的蓝色字样。因为广告并不是为了解决你的问题而存在的，或者说，广告是为了给特定产品引流用的，我并不看好其可以带来的价值。</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405110351513.png" alt="image-20230405110351513" /></p>
+</li>
+<li>
+<p>类似2，因为竞价排名，导致几乎毫不相干的事情也会出现在你的推荐页。</p>
+</li>
+<li>
+<p>右侧的热搜栏更是一点作用没有,除非你是想上网冲浪看看今天发送了什么事情,不然这个对你没有任何的帮助.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405111227241.png" alt="image-20230405111227241" /></p>
+</li>
+</ol>
+<h2 id="如何过滤信息">如何过滤信息</h2>
+<p>首先最简单的方法就是更换<code>搜索引擎</code> 这里我推荐大家使用微软的 <code>bing</code> 相对来说,它的使用体验要好得多.至少不会有过多的广告和奇奇怪怪的推荐.</p>
+<p>很多人会说,我用过的就是<code>edge</code>   <code>360浏览器</code>啊,是要重新下一个别的浏览器吗?</p>
+<p>这里其实很多人都搞错了一点,浏览器和搜索引擎的关系,其实就算是百度也可以使用<code>google</code>更何况是同一个浏览器内核的呢? 😂</p>
+<p>打开你的设置,将搜索引擎更改为<code>bing</code> ,如果你不会的话,也可以换一种方法,直接在搜索栏中输入<code>bing</code>.</p>
+<p>第一个带有 <code>官方</code> 字眼的就是我们需要的,点击之后其实就是一个搜索框,就可以自由的使用了.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405112618127.png" alt="image-20230405112618127" /></p>
+<hr />
+<p>输入 <code>java核心技术卷1pdf</code>得到了如下的结果,第一个是<code>csdn</code>的网页,里面是一个百度云链接,就有我们想要的资源.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230405112820985.png" alt="image-20230405112820985" /></p>
+<h2 id="提到信息的精确度">提到信息的精确度</h2>
+<p>这里其实想表达的思想是,你应该去最相关的网站寻找内容.你肯定是会去菜市场买菜,而不是跑到一家婚纱摄影店去要求老板给你上一桌烧烤.</p>
+<p>信息检索也是一样的,你应该去和你的结果最相关的地方.</p>
+<p>你想看动漫,你就首先应该去找一些知名度相对较高的动漫网站,再在网站内部检索动漫就会简单得多.比如B站,A站,Netflix的动漫板块.</p>
+<p>对于代码相关的网站其实也不少,下面是中文互联网上比较活跃的社区.</p>
+<ul>
+<li>
+<p><a href="https://www.csdn.net/">csdn</a></p>
+</li>
+<li>
+<p><a href="https://juejin.cn/">掘金</a></p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/">思否</a></p>
+</li>
+<li>
+<p><a href="https://www.cnblogs.com/">博客园</a></p>
+</li>
+<li>
+<p><a href="https://cloud.tencent.com/developer/column">腾讯云开发者社区</a></p>
+</li>
+<li>
+<p><a href="https://developer.aliyun.com/">阿里云开发者社区</a></p>
+<p>当然了很多技术大牛都会编写自己的技术啊博客,将自己的心得分享出来,如果感兴趣的话,也可以去看看.</p>
+</li>
+<li>
+<p><a href="https://www.liaoxuefeng.com/">廖雪峰</a></p>
+</li>
+<li></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>JAVA对称加密算法实现</title>
+    <url>/static-html/2023/04/04/JAVA%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>对称加密算法</h1>
+<blockquote>
+<p>将数据加密后还可以解密获取原始信息的算法.</p>
+</blockquote>
+<p>想我们的AES算法就是一种十分安全的加密算法就是说 还是不错的哈哈哈.</p>
+<h1>类的设计</h1>
+<ul>
+<li>String getSalt  生成固定长度的随机数 用作加密salt</li>
+<li>String Encoding 编码</li>
+<li>String  解码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.security.SecureRandom;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Encryption</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SALT_LENGTH</span> <span class="operator">=</span> <span class="number">48</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getSalt</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">SecureRandom</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecureRandom</span>();</span><br><span class="line">    <span class="type">byte</span>[] salt = <span class="keyword">new</span> <span class="title class_">byte</span>[SALT_LENGTH];</span><br><span class="line">    random.nextBytes(salt);</span><br><span class="line">    <span class="keyword">return</span> Base64.getEncoder().encodeToString(salt);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">encode</span><span class="params">(String input, String salt)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">byte</span>[] inputBytes = input.getBytes(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    <span class="type">byte</span>[] saltBytes = Base64.getDecoder().decode(salt);</span><br><span class="line">    <span class="type">byte</span>[] keyBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="type">byte</span>[] ivBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">0</span>, keyBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">16</span>, ivBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    <span class="type">SecretKeySpec</span> <span class="variable">keySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecretKeySpec</span>(keyBytes, <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">    <span class="type">IvParameterSpec</span> <span class="variable">ivSpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IvParameterSpec</span>(ivBytes);</span><br><span class="line">    <span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">    cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);</span><br><span class="line">    <span class="type">byte</span>[] encryptedBytes = cipher.doFinal(inputBytes);</span><br><span class="line">    <span class="keyword">return</span> Base64.getEncoder().encodeToString(encryptedBytes);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decode</span><span class="params">(String input, String salt)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">byte</span>[] inputBytes = Base64.getDecoder().decode(input);</span><br><span class="line">    <span class="type">byte</span>[] saltBytes = Base64.getDecoder().decode(salt);</span><br><span class="line">    <span class="type">byte</span>[] keyBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="type">byte</span>[] ivBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">0</span>, keyBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">16</span>, ivBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    <span class="type">SecretKeySpec</span> <span class="variable">keySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecretKeySpec</span>(keyBytes, <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">    <span class="type">IvParameterSpec</span> <span class="variable">ivSpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IvParameterSpec</span>(ivBytes);</span><br><span class="line">    <span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">    cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);</span><br><span class="line">    <span class="type">byte</span>[] decryptedBytes = cipher.doFinal(inputBytes);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(decryptedBytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>手写一个Http解析器</title>
     <url>/static-html/2023/04/03/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAhttp%E8%A7%A3%E6%9E%90%E5%99%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>手写一个http解析器</h1>
 <p>之前一直都是对于我们的http的格式一知半解,现在正好有机会可以学习java网络编程,就顺带着将其内容学完就好了.</p>
+<p>我们先不考虑TCP三次挥手两次握手这样轱辘话我们就直接看socket.</p>
 <h1>HTTP请求</h1>
 <h2 id="Request-Header">Request Header</h2>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">GET</span> /js/app.<span class="property">dc20dbd2</span>.<span class="property">js</span> <span class="variable constant_">HTTP</span>/<span class="number">1.1</span></span><br><span class="line"><span class="title class_">Accept</span>: *<span class="comment">/*</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate, br</span></span><br><span class="line"><span class="comment">Accept-Language: en-US,en;q=0.9</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Host: localhost:8080</span></span><br><span class="line"><span class="comment">Sec-Fetch-Dest: script</span></span><br><span class="line"><span class="comment">Sec-Fetch-Mode: no-cors</span></span><br><span class="line"><span class="comment">Sec-Fetch-Site: same-origin</span></span><br><span class="line"><span class="comment">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="comment">sec-ch-ua: &quot;Google Chrome&quot;;v=&quot;111&quot;, &quot;Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;111&quot;</span></span><br><span class="line"><span class="comment">sec-ch-ua-mobile: ?0</span></span><br><span class="line"><span class="comment">sec-ch-ua-platform: &quot;Windows&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="paramas">paramas</h3>
+<h2 id="Request-Body">Request Body</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line"><span class="string">&quot;passwd&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Respond-Header">Respond  Header</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">HTTP</span>/<span class="number">1.1</span> <span class="number">200</span> ok</span><br><span class="line"><span class="title class_">Content</span>-<span class="title class_">Type</span>: text/html</span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Credentials</span>: <span class="literal">true</span></span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span>: *</span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span>: <span class="title class_">Origin</span>, X-<span class="title class_">Requested</span>-<span class="title class_">With</span>, <span class="title class_">Content</span>-<span class="title class_">Type</span>, <span class="title class_">Accept</span></span><br></pre></td></tr></table></figure>
+<h2 id="Respond-Body">Respond Body</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span>:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span>:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>如果用图像表示的话就是</p>
+<p><code>cr == \r    lf == \n</code></p>
+<p><img src="https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E9%94%AE%E5%85%A5%E7%BD%91%E5%9D%80%E8%BF%87%E7%A8%8B/4.jpg" alt=" " /></p>
+<p>这样看来其实还是挺富有规则的感觉也不是很难啊.</p>
+<h1>一些关键术语</h1>
+<h3 id="Params">Params</h3>
+<p>从?开始就是一个</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/api/download?filename=config.<span class="property">xml</span></span><br><span class="line">/api/download/check?filename=name.<span class="property">txt</span>&amp;filadata=asdfasdfcfasf</span><br></pre></td></tr></table></figure>
 <p>这里我们先通过?解析出来,然后利用 &amp; split 存到我们的hashmap利用 split = 然后分别交到里面去</p>
 <p>通过我们的api里内部参数中,我只喜欢就是使用这个内容的功能</p>
-<h3 id="path">path</h3>
 <h2 id="Body">Body</h2>
 <p>这里根据你的参数不同结果也不太一样.所以我们body的解析应该是放到最后去做的,也就是我们需要给我们的heandler 如何解析才可以知道</p>
 <p>不然就是没有用的就是说 哈哈哈</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line"><span class="string">&quot;passwd&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;</span><br><span class="line">    </span><br><span class="line">&#123;<span class="string">&quot;filename&quot;</span>:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span>:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br><span class="line"><span class="comment">// 这里是第二个 , 号 的水平 我拿不到 其实应该是 : 拿偶数 对称的  </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span>:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span>:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span></span><br><span class="line">:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span></span><br><span class="line">:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br><span class="line"><span class="comment">// 从前后两个 &quot; 去解析就好了  </span></span><br></pre></td></tr></table></figure>
-<p>我的解析完成了 可以解析param 和 body JSON 了 就是</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java与模式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jdbc:mysql//localhost:3306/java?useSSL=<span class="literal">false</span>&amp;allowPublicKeyRetrieval=<span class="literal">true</span>&amp;serverTimezone=UTC</span><br><span class="line">jdbc:mysql://localhost:3306/java?useSSL=<span class="literal">false</span>&amp;allowPublicKeyRetrieval=<span class="literal">true</span>&amp;serverTimezone=UTC</span><br></pre></td></tr></table></figure>
-<p>直接文件内容写入就好了 将文件乱码的名字存储在这里</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;filename&quot;</span></span><br><span class="line">:<span class="string">&quot;package-lock.json&quot;</span>,<span class="string">&quot;filedata&quot;</span></span><br><span class="line">:<span class="string">&quot;data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo=&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="AES">AES</h3>
+<p>想cookie我们就是可以将其</p>
 ]]></content>
   </entry>
   <entry>
@@ -261,28 +372,25 @@
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">--timeout</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
 <p>修改默认安装路径 修改lib\site.py</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">USER_SITE = <span class="string">&quot;D:/SOFT/Path/Python/Lib/site-packages&quot;</span></span><br><span class="line">USER_BASE = <span class="string">&quot;D:/SOFT/Path/Python/Scripts&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="JAVA">JAVA</h2>
+<p>我们直接利用IDEA就好了让他帮我们下一个JDK不需要管太多的事情.</p>
 ]]></content>
   </entry>
   <entry>
     <title>Java高级答辩</title>
     <url>/static-html/2023/04/01/java%E9%AB%98%E7%BA%A7%E7%AD%94%E8%BE%A9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>流 和 文件</h1>
-<blockquote>
-<p>流媒体</p>
-</blockquote>
-<p>提升文件读写的效率</p>
-<p>buffer流</p>
-<h1>xml</h1>
-<blockquote>
-<p>xml一般用于配置文件例如spring,</p>
-</blockquote>
-<p>但是其实xml使用的频率其实是越来越少了,</p>
-<p>我用一个什么来进行就是答辩 用一个小项目 什么小项目 局域网内的文件共享</p>
 <h1>技术栈</h1>
 <p>xml 是配置文件</p>
 <p>jdb存储数据</p>
 <p>telnet 进行http / UPD请求的发送</p>
 <p>stream 进行传输</p>
+<h2 id="私有方法无法获取到注解">私有方法无法获取到注解</h2>
+<p>准确的说是<code>private</code> 的方法是无法通过 <code>Class.class.getMethods()</code> 获取注解的,一开始我还以为是因为我没有设置 <code>method.setAccess(true)</code> 经过测试就可以发现,</p>
+<p>当然了你肯定还是可以通过 <code>invoke(&quot;methodname&quot;)</code>的方式去调用这个方法,只是你都已经可以在编译前就知道调用哪个方法了,为什么还需要就是使用反射呢?总不能是为了去强行调用私有方法吧.</p>
+<p>并且这里案例也告诉我们, <code>Class.class.getMethods()</code>是会获取到诸如 <code>toString</code>这样的方法,为了调用正确的方法,你需要便利该对象全部的方法,肯定是会有一定的性能损失在其中的.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">api</span> &#123;</span><br><span class="line">  <span class="comment">// 直接传递值 或者说是默认值</span></span><br><span class="line">  <span class="meta">@RUNWITHVALUE(&quot;http://www.baidu.com&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">ECHO</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;ECHO&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@RUN</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Hello</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@RUN</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">World</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;World&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> gen;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">check</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InvocationTargetException, IllegalAccessException &#123;</span><br><span class="line">    Method[] methods = api.class.getMethods();</span><br><span class="line">    <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">      <span class="comment">// 判断是否有RUN注解</span></span><br><span class="line">      <span class="type">RUNWITHVALUE</span> <span class="variable">a</span> <span class="operator">=</span> method.getAnnotation(RUNWITHVALUE.class);</span><br><span class="line">      <span class="comment">// 也可以就是说 private</span></span><br><span class="line">      method.setAccessible(<span class="literal">true</span>);</span><br><span class="line">      <span class="keyword">if</span> (a != <span class="literal">null</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这个方法有注解&quot;</span> + method.getName());</span><br><span class="line">        <span class="comment">// 这里还是需要一个对象哈哈哈哈 其实不是很困难就是说 哈哈啊哈</span></span><br><span class="line">        <span class="comment">// 获取到注解的值</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> a.value();</span><br><span class="line">        System.out.println(value);</span><br><span class="line">        method.invoke(<span class="keyword">new</span> <span class="title class_">api</span>(), <span class="literal">null</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这个方法没有注解&quot;</span> + method.getName());</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -291,6 +399,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>GPT-4 卢安克</h1>
 <p>这个世界有的时候觉得变化得好快, 之前我还在用chat-gpt帮助我写Latex,现在就更新到了4.0版本了.有的时候又觉得这个世界好像什么也没有改变.卢老师确实是一个高尚的人,脱离了低级趣味的人.</p>
 <p>这个世界真的很奇妙,就是说我们的</p>
+<h1>我有点难过</h1>
 ]]></content>
   </entry>
   <entry>
@@ -309,15 +418,6 @@
 <h2 id="hash">hash</h2>
 <p>java的hash不是对象的hash值,而是做了一个异或处理. 移动16位是为了让高位和低位都参加到</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">hash</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">  <span class="type">int</span> h;</span><br><span class="line">  <span class="keyword">return</span> (key == <span class="literal">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>短视频信息茧房独立思考</title>
-    <url>/static-html/2023/03/28/%E7%9F%AD%E8%A7%86%E9%A2%91%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>短视频</h1>
-<p>首先,我们必须承认,短视频是无法传递知识的,只能传递观点.因为可以通过几句话传播的“知识”,真的很难称作“知识”.</p>
-<p>比如</p>
-<embed src="https://www.bilibili.com/">
 ]]></content>
   </entry>
   <entry>
@@ -431,42 +531,6 @@
       </tags>
   </entry>
   <entry>
-    <title>M计划</title>
-    <url>/static-html/2023/03/23/M%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>require</h1>
-<h2 id="You-haven’t-applied-for-community-recommendation-yet">You haven’t applied for community recommendation yet</h2>
-<p>To be eligible for the Rural and Northern Immigration Pilot (RNIP), you must</p>
-<ul>
-<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#experience">have qualifying work experience</a> <strong>or</strong> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#intl-students">have graduated</a> from a publicly funded post-secondary institution in the recommending community</li>
-<li>meet or exceed the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#language">language requirements</a></li>
-<li>meet or exceed the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#education">educational requirements</a></li>
-<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#funds">prove you have enough money</a> to support your transition into the community</li>
-<li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#intent">intend to live in the community</a></li>
-<li>meet <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/pr-eligibility.html#community">community-specific requirements</a></li>
-<li>have temporary resident status (if you’re in Canada when you apply)</li>
-</ul>
-<p>If you meet all of the requirements, you can <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot/community-partners.html">start to look for an eligible job in the community</a>.</p>
-<ul>
-<li>work experience</li>
-<li>language requiments  CLB 6 ITES 6</li>
-</ul>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230331191233875.png" alt="image-20230331191233875" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230331191310385.png" alt="image-20230331191310385" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230331191350478.png" alt="image-20230331191350478" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134447818.png" alt="image-20230401134447818" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134501964.png" alt="image-20230401134501964" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134524893.png" alt="image-20230401134524893" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134537490.png" alt="image-20230401134537490" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134549076.png" alt="image-20230401134549076" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230401134653648.png" alt="image-20230401134653648" /></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>出国的决心</title>
-    <url>/static-html/2023/03/22/%E5%87%BA%E5%9B%BD%E7%9A%84%E5%86%B3%E5%BF%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
-  </entry>
-  <entry>
     <title>为Go应用程序添加图标</title>
     <url>/static-html/2023/03/21/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
@@ -515,11 +579,6 @@
 <p>这一点真的是恶心死我了,疫情的三年来,国内GDP增速放缓,但是在奢侈品消费领域反而是在高速增长,真的我不能理解.</p>
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230320170002843.png" alt="image-20230320170002843" /></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>不是很难过</title>
-    <url>/static-html/2023/03/19/%E4%B8%8D%E6%98%AF%E5%BE%88%E9%9A%BE%E8%BF%87/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
   </entry>
   <entry>
     <title>面向对象手册</title>
@@ -610,8 +669,13 @@
     <title>Css机器合集</title>
     <url>/static-html/2023/03/18/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Css 技巧合集</h1>
+<p>这里我还是想可以搭建一个就是我们的runcode 开始去了解一下好吗 这里就是交给你一个任务就好了 不是吗 其实还是不错的</p>
+<h2 id="通用css">通用css</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="消除滚动条">消除滚动条</h2>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现渐变色下划线">实现渐变色下划线</h2>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -948,6 +1012,7 @@
 <p>:happy:</p>
 <p>😆</p>
 <p>😅 😊 😫 😉 😦</p>
+<p>😂</p>
 ]]></content>
   </entry>
   <entry>
