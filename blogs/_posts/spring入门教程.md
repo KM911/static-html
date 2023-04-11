@@ -28,15 +28,11 @@ categories:
 
 ### 网络不好的我们
 
-因为网络问题 所以我们需要使用的就是阿里云的镜像服务
+因为网络问题 所以我们需要使用的就是阿里云的镜像服务 
 
 ```
 https://start.aliyun.com
 ```
-
-![image-20230317133706808](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230317133706808.png)
-
-
 
 
 
@@ -98,4 +94,14 @@ public String hello() {
 body又有好几种了 就是说.
 
 这里其实是一个反思吧 就是可以看出来你其实没有很好的学习 就是模仿才是学习的第一步  而不是你自己去抓瞎 不是吗?至少你看上去可以学习到很多东西都是可以的 他还记得我的课程表 不是吗
+
+
+
+
+
+
+
+
+
+
 

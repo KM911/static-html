@@ -13,14 +13,7 @@ categories:
 *   html 元素
 *   emoji 表情
 *   表格
-
-
-
-
-
 因为我们的typora是用electron写的,所以它可以兼容我们的html.
-
-
 
 
 

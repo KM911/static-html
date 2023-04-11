@@ -69,6 +69,4 @@ func main() {
 
 # 如果remote更新了会发生什么结果
 
-```go
-
-```
+你可以随时使用 `go mod tidy` 获取最新的修改

@@ -67,14 +67,6 @@ java中任何一个类都直接或者间接继承于Object类
 
 #  枚举类
 
-有限的对象
-
-数据来源于stackoverflow 这里的人不说每个人都是技术大牛吗,但是也是正在在从事计算机相关行业的人了.可以见的,全世界范围内,我们这帮臭写代码的人,工作时间就是比较久,真的是服了,早知道还是得去读医啊,毕竟一位印度老哥说过
-
-![image-20230319175903730](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230319175903730.png)
-
-
-
 # 包装类 
 
 warpper

@@ -98,7 +98,3 @@ Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
 :"data:application/json;base64,ewogICJuYW1lIjogIkFkbWluaXN0cmF0b3IiLAogICJsb2NrZmlsZVZlcnNpb24iOiAzLAogICJyZXF1aXJlcyI6IHRydWUsCiAgInBhY2thZ2VzIjoge30KfQo="}
 ```
 
-### AES
-
-想cookie我们就是可以将其
-
