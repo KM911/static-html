@@ -132,23 +132,89 @@
   <entry>
     <title>垃圾桶</title>
     <url>/static-html/2023/03/10/%E5%9E%83%E5%9C%BE%E6%A1%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>go中全局变量</h1>
-<p>是可以修改的</p>
-<h2 id="Windterm-关闭master-password">Windterm 关闭master password</h2>
-<p>安装docker 的脚本其实还是很简单的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">wsl --<span class="keyword">set</span>-default-version <span class="comment">2</span></span><br><span class="line">wsl <span class="comment">--update</span></span><br><span class="line">下载我们的Ubuntu <span class="comment">OR OTHER Linux</span> </span><br></pre></td></tr></table></figure>
-<p>docker不是一个很友好的东西 ??? 错了 其实对于发布的话 我觉得我还是更加喜欢使用docker的 其实</p>
-<p>找到对应的image 然后使用我们的run</p>
-<p>vscode 远程连接ssh</p>
-<p>这里需要修改我们的Hostname 带上我们的@</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Host</span> <span class="string">root@81.68.91.70</span></span><br><span class="line">  <span class="string">HostName</span> <span class="number">81.68</span><span class="number">.91</span><span class="number">.70</span></span><br><span class="line">  <span class="string">User</span> <span class="string">root</span></span><br></pre></td></tr></table></figure>
-<p>然后就是使用我们的</p>
-<h1>枚举类</h1>
-<p>当你的对象是固定个数的情况</p>
-<h2 id="hexo中文章的标题应该统一使用二级标题">hexo中文章的标题应该统一使用二级标题</h2>
-<p>主要是这样可以方便跳转,一级标题是无法跳转的 这两句话其实是同一个意思就是说</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="后端查询方式">后端查询方式</h2>
+<ul>
+<li>普通查询 select</li>
+<li>条件查询 where</li>
+<li>模糊查询 like</li>
+<li>排序 order by desc</li>
+<li>范围查询</li>
+<li>分组查询</li>
+<li>分页查询</li>
+<li>链接查询</li>
+<li>合并查询</li>
+<li>子查询</li>
+</ul>
+<h2 id="代码规范">代码规范</h2>
+<ul>
+<li>函数和类全部都是大驼峰</li>
+<li>不应该直接将参数在函数体内拼接 而是应该创建一个变量 然后传进去 这样是为了方便我们进行一个Debug</li>
+<li></li>
+</ul>
+<h2 id="数据库查询的疑问">数据库查询的疑问</h2>
+<ol>
+<li>数据表的字段数量是否需要控制 比如20以内, 其实超过10个的时候,我就不是很能直观地看出来这个表的逻辑了.</li>
+<li>分页查询中如果是带条件的,数据并不是连续的,这个是如何处理的呢? 尽管我们可以查询到全部符合条件的有多少个</li>
+</ol>
+<h2 id="重新开始tingpicgo">重新开始tingpicgo</h2>
+<p>核心功能一个图片上传的功能</p>
+<p>我还不会用JSON去解析这个呢</p>
+<h1>后端测试模板</h1>
+<h2 id="目的">目的</h2>
+<p>其实就是为了用一套统一的方式去检验我们的后端模板的正确性.</p>
+<h2 id="模板内容">模板内容</h2>
+<ul>
+<li>get post请求</li>
+<li>query 和 parma , body JSON</li>
+<li>返回json 和 带有列表的JSON</li>
+</ul>
+<h2 id="接口详情">接口详情</h2>
+<p>其实这里让我觉得自己就是一个debu</p>
+<h1>提取视频封面</h1>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>压缩视频</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v libx265 -preset medium -crf 28 -r 24 output.mp4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i %1 -c:v libx265 -preset medium -crf 28 -r 24 H265%1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>安装宝塔面板</p>
+</li>
+<li>
+<p>使用bbr</p>
+</li>
+<li>
+<p>修改mysql的登录密码和权限</p>
+</li>
+<li>
+<p>语言环境 比如 go java之类的 这里我在测试是否需要nginx 才可以访问 就是好奇在没有的情况下会发生什么问题</p>
+</li>
+<li>
+<p>其实没有什么内容了 不是吗?</p>
+</li>
+</ol>
+<h2 id="mysql">mysql</h2>
+<p>这里主要是为了可以让我们远程访问</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line">use mysql</span><br><span class="line"><span class="keyword">select</span>  <span class="keyword">User</span>,authentication_string,Host <span class="keyword">from</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h1>方差</h1>
+<p>$$<br />
+\frac{\sum x_i - u }{N}<br />
+$$</p>
+<h1>标准差 均方差</h1>
+<p>就是根号下的方差</p>
+<p>$$\sqrt{\frac{\sum x_i - u }{N}}$$</p>
+<h1>自由度</h1>
+<p>样本总体的数量-1</p>
+<p>单次检验 我们还没有学双边检验</p>
+<p>样本容量计算</p>
+<p>n=1.96<sup>2*P(1-P)/E</sup>2</p>
+<p>1.96是95的t值</p>
+<p>p是某事件的概率</p>
+<p>E是误差不超过多少</p>
+<h1>置信区间</h1>
+<p>对于正态分布是有固定的</p>
+<p>但是对于普通的统计计算</p>
+<p>样本均值 就是均值</p>
+<p>我们的抽样统计也是正态分布的就是说.</p>
 ]]></content>
   </entry>
   <entry>
@@ -195,42 +261,60 @@
       </tags>
   </entry>
   <entry>
-    <title>后端测试模板</title>
-    <url>/static-html/2023/04/11/%E5%90%8E%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>后端测试模板</h1>
-<h2 id="目的">目的</h2>
-<p>其实就是为了用一套统一的方式去检验我们的后端模板的正确性.</p>
-<h2 id="模板内容">模板内容</h2>
-<ul>
-<li>get post请求</li>
-<li>query 和 parma , body JSON</li>
-<li>返回json 和 带有列表的JSON</li>
-</ul>
-<h2 id="接口详情">接口详情</h2>
-]]></content>
-  </entry>
-  <entry>
-    <title>Chatgpt</title>
-    <url>/static-html/2023/04/11/chatgpt/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
-  </entry>
-  <entry>
     <title></title>
-    <url>/static-html/2023/04/11/TODO/</url>
+    <url>/static-html/2023/04/17/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><hr />
 <hr />
 <h1>Stream</h1>
 <ul>
-<li>[ ] 中间件 代理ip 一个 get post 请求 限制请求 代理ip池 多线程 这里其实就是 通过其他的服务器去访问 这里是一个中间件 我不可能虚拟出自己的ip 还是需要别的服务器的就是说 不然我就没有办法 还是很困难</li>
-<li>[ ] 利用我们的 代理ip是什么东西 去检测代理ip</li>
-<li>[ ] 记录当前的ip</li>
-<li>[ ] 自己去设计接口 只有查询接口就好了 我们这里就根本不需要我们的其他方法 还是不错的啊 还是不错的</li>
+<li>[ ] OKhttp</li>
+<li>[ ] cli 将图片进行格式转化 any to webp any to ico</li>
+<li>[ ] go语言进行to ico 还是没有写好就是说 其实这里是一个很复杂的过程也说不定</li>
+<li>[ ]</li>
 </ul>
-<p>设置商品接口其实就是还是不错的就是说</p>
-<p>一个商品详情信息</p>
-<p>一个商品列表信息</p>
-<p>这两个就是不一样的内容</p>
-<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">27.18.86.214</span></span><br></pre></td></tr></table></figure>
+<h1>Task</h1>
+<ul>
+<li>
+<p>[x] 有自己一套键盘规则</p>
+</li>
+<li>
+<p>[ ] VSCode插件 中文符号替换</p>
+</li>
+<li>
+<p>[x] 一个本地化的文件共享工具</p>
+</li>
+<li>
+<p>[ ] 网站防抖</p>
+</li>
+<li>
+<p>[ ] GO语言的ORC</p>
+</li>
+<li>
+<p>[ ] 利用我们之前的天气卡片</p>
+</li>
+<li>
+<p>[x] Github action 自动化部署我们的hexo</p>
+</li>
+<li>
+<p>[x] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)</p>
+</li>
+<li>
+<p>[x] LPA Local Page Application</p>
+</li>
+</ul>
+<p>一种借助我们的浏览器进行开发的软件</p>
+<p>好处和坏处我们自己去分析</p>
+<ul>
+<li>
+<p>[ ] github release</p>
+</li>
+<li>
+<p>[ ] 用go重写我们的图床软件 但是并不是很好用的呢</p>
+</li>
+<li>
+<p>[x] 利用go写cli工具 进行vue项目的初始化的创建</p>
+</li>
+</ul>
 <h1>Fin</h1>
 <ul>
 <li>
@@ -247,95 +331,6 @@
 <p>就是同步和测试存在一些麻烦不是吗?包括还有就是对于绝对路径和相对路径处理也是不清楚的</p>
 </li>
 </ul>
-<h1>Task</h1>
-<ul>
-<li>
-<p>[x] tiktok极简版</p>
-</li>
-<li>
-<p>[x] school 这个也是可以的 是吧</p>
-</li>
-<li>
-<p>[x] java 这个可以先敷衍一下 其实主要是 我不是很喜欢java 不过可以将其做为真正的项目开始接触</p>
-</li>
-<li>
-<p>[x] 有自己一套键盘规则</p>
-</li>
-<li>
-<p>[ ] VSCode插件 中文符号替换</p>
-</li>
-<li>
-<p>[x] 一个本地化的文件共享工具</p>
-</li>
-<li>
-<p>[ ] GO语言的ORC</p>
-</li>
-<li>
-<p>[ ] 利用我们之前的天气卡片</p>
-</li>
-<li>
-<p>[x] Github action 自动化部署我们的hexo</p>
-</li>
-<li>
-<p>[x] 动态的封面图 (但是存在BUG 短时间内的大量 请求会导致我们的封面变成同一张图片)</p>
-</li>
-<li>
-<p>[x] LPA Local Page Application</p>
-<p>一种借助我们的浏览器进行开发的软件</p>
-<p>好处和坏处我们自己去分析</p>
-</li>
-<li>
-<p>[x] github release</p>
-</li>
-<li>
-<p>[x] GitHub app and so</p>
-</li>
-<li>
-<p>[x] 开始使用我们的faker alice 了</p>
-</li>
-<li>
-<p>[x] 用go重写我们的图床软件 但是并不是很好用的呢</p>
-</li>
-<li>
-<p>[x] 就是成为一个键盘侠 将自己的全部软件进行一个用命令行进行输入然后打开 基本上是完成了</p>
-</li>
-<li>
-<p>[x] 利用go写cli工具 进行vue项目的初始化的创建</p>
-</li>
-<li>
-<p>[x] 是可以对一个全局变量进行修改的呢?</p>
-</li>
-<li>
-<p>[ ]</p>
-</li>
-</ul>
-<p>好吧就是说我还是早点回去吧 ,感觉其实这些知识点并不难啊,其实最大的问题是就是你看不懂注解和接口对象之类的</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>和自己对话</title>
-    <url>/static-html/2023/04/07/%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>现在我们想可以学习一个东西吗?</h1>
-<h1>方差</h1>
-<p>$$<br />
-\frac{\sum x_i - u }{N}<br />
-$$</p>
-<h1>标准差 均方差</h1>
-<p>就是根号下的方差</p>
-<p>$$\sqrt{\frac{\sum x_i - u }{N}}$$</p>
-<h1>自由度</h1>
-<p>样本总体的数量-1</p>
-<p>单次检验 我们还没有学双边检验</p>
-<p>样本容量计算</p>
-<p>n=1.96<sup>2*P(1-P)/E</sup>2</p>
-<p>1.96是95的t值</p>
-<p>p是某事件的概率</p>
-<p>E是误差不超过多少</p>
-<h1>置信区间</h1>
-<p>对于正态分布是有固定的</p>
-<p>但是对于普通的统计计算</p>
-<p>样本均值 就是均值</p>
-<p>我们的抽样统计也是正态分布的就是说.</p>
 ]]></content>
   </entry>
   <entry>
@@ -348,23 +343,6 @@ $$</p>
 <p>不过这里其实有一个问题,就是你在 <code>win</code>上编译好了以后,你还是无法运行的,这样的软件有什么意义呢?</p>
 <h2 id="使用UPX">使用UPX</h2>
 <p>UPX其实不光可以给go使用,它可以给任何一个exe文件进行压缩,提高他们的运行效率和减少他们占用的空间</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>JAVA对称加密算法实现</title>
-    <url>/static-html/2023/04/04/JAVA%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>对称加密算法</h1>
-<blockquote>
-<p>将数据加密后还可以解密获取原始信息的算法.</p>
-</blockquote>
-<p>想我们的AES算法就是一种十分安全的加密算法就是说 还是不错的哈哈哈.</p>
-<h1>类的设计</h1>
-<ul>
-<li>String getSalt  生成固定长度的随机数 用作加密salt</li>
-<li>String Encoding 编码</li>
-<li>String  解码</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.security.SecureRandom;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Encryption</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SALT_LENGTH</span> <span class="operator">=</span> <span class="number">48</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getSalt</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">SecureRandom</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecureRandom</span>();</span><br><span class="line">    <span class="type">byte</span>[] salt = <span class="keyword">new</span> <span class="title class_">byte</span>[SALT_LENGTH];</span><br><span class="line">    random.nextBytes(salt);</span><br><span class="line">    <span class="keyword">return</span> Base64.getEncoder().encodeToString(salt);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">encode</span><span class="params">(String input, String salt)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">byte</span>[] inputBytes = input.getBytes(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    <span class="type">byte</span>[] saltBytes = Base64.getDecoder().decode(salt);</span><br><span class="line">    <span class="type">byte</span>[] keyBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="type">byte</span>[] ivBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">0</span>, keyBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">16</span>, ivBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    <span class="type">SecretKeySpec</span> <span class="variable">keySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecretKeySpec</span>(keyBytes, <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">    <span class="type">IvParameterSpec</span> <span class="variable">ivSpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IvParameterSpec</span>(ivBytes);</span><br><span class="line">    <span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">    cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);</span><br><span class="line">    <span class="type">byte</span>[] encryptedBytes = cipher.doFinal(inputBytes);</span><br><span class="line">    <span class="keyword">return</span> Base64.getEncoder().encodeToString(encryptedBytes);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decode</span><span class="params">(String input, String salt)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">byte</span>[] inputBytes = Base64.getDecoder().decode(input);</span><br><span class="line">    <span class="type">byte</span>[] saltBytes = Base64.getDecoder().decode(salt);</span><br><span class="line">    <span class="type">byte</span>[] keyBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="type">byte</span>[] ivBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">16</span>];</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">0</span>, keyBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    System.arraycopy(saltBytes, <span class="number">16</span>, ivBytes, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">    <span class="type">SecretKeySpec</span> <span class="variable">keySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SecretKeySpec</span>(keyBytes, <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">    <span class="type">IvParameterSpec</span> <span class="variable">ivSpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IvParameterSpec</span>(ivBytes);</span><br><span class="line">    <span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">    cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);</span><br><span class="line">    <span class="type">byte</span>[] decryptedBytes = cipher.doFinal(inputBytes);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(decryptedBytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -400,33 +378,111 @@ $$</p>
 ]]></content>
   </entry>
   <entry>
-    <title>Http详解</title>
-    <url>/static-html/2023/04/03/Http%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
-  </entry>
-  <entry>
     <title>Windows</title>
     <url>/static-html/2023/04/03/Windows/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Windows</h1>
 <p>不出意外的话 我日后应该只会使用我们的Win了,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.</p>
-<h1>需要的软件列表</h1>
-<ul>
-<li>pigcha</li>
-<li>clash for windows</li>
-</ul>
-<h1>环境变量</h1>
-<ul>
-<li>nodejs</li>
-<li>vscode</li>
-</ul>
+<h1>需要的软件列表 (这表还挺大的不是吗)</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编译器</th>
+<th style="text-align:center">IDE</th>
+<th style="text-align:center">生活</th>
+<th style="text-align:center">工具</th>
+<th style="text-align:center">代码相关</th>
+<th style="text-align:center">其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GO</td>
+<td style="text-align:center">GOland</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">JAVA</td>
+<td style="text-align:center">Idea</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">NODE</td>
+<td style="text-align:center">vscode</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">R</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Python</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 <h1>软件源和安装位置修改</h1>
+<p>我之前其实尝试修改过软件的默认安装路径,其实这样不好,像 <code>edge</code> 就会因为这个原因导致无法安装.</p>
 <h1>NPM</h1>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line"></span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line"></span><br><span class="line">npm config set prefix &quot;F:\nodejs\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;F:\nodejs\node_cache&quot;   </span><br><span class="line"></span><br><span class="line">path add F:\nodejs\node_global</span><br><span class="line">path add </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install cnpm -g for test</span><br><span class="line"></span><br><span class="line">PNPM_HOME and add it to path</span><br></pre></td></tr></table></figure>
 <p>just need to use pnpm oK ?</p>
 <h1>GO</h1>
-<p>只需要设置我们的goPath 和 module就OK了</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>只需要设置我们的goPath 和 module就OK了,当然了还需要换源.</p>
+<p><code>GOPATH</code> 理论上是我们项目的地址,可以有多个,但是可以存在一个唯一的就是说,代表着全局仓库.</p>
+<p>%GOPATH%\bin 需要将其添加到环境变量中,这里就是为了让我们下载的包可以直接运行是吧</p>
+<p>其实我还是不理解,是否可以就是  <code>GOROOT</code> 和 <code>GOPATH</code> ,因为他们两个的项目结构是高度相似的.</p>
+<p>编译的版本可以新一些,其实没有什么问题,作为一个工具就是主打的一个叫做更新.</p>
+<p>我们还需要</p>
 <h2 id="VScode">VScode</h2>
+<p>主要解决的问题是,用户数据和插件安装问题,在启动方式上添加如下的参数就好了,可能位置需要调整一下,但是大体是一样的.</p>
 <figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">--extensions-dir <span class="string">&quot;D:\Software\Microsoft\.vscode\extensions&quot;</span></span><br><span class="line">--user-<span class="meta">data</span>-dir D:\<span class="number">0</span>.SOFT\<span class="meta">Code</span>\<span class="meta">data</span></span><br></pre></td></tr></table></figure>
 <h2 id="pip">pip</h2>
 <h1>不要开vpn</h1>
@@ -441,6 +497,19 @@ $$</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">USER_SITE = <span class="string">&quot;D:/SOFT/Path/Python/Lib/site-packages&quot;</span></span><br><span class="line">USER_BASE = <span class="string">&quot;D:/SOFT/Path/Python/Scripts&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id="JAVA">JAVA</h2>
 <p>我们直接利用IDEA就好了让他帮我们下一个JDK不需要管太多的事情.</p>
+<p><code>MAVEN_HOME</code> maven的位置 maven是一个工具</p>
+<p><code>M2_HOME</code> maven的安装位置</p>
+<p>我直接把两位位置设置成为一样的了 哈哈哈哈.</p>
+<h3 id="Docker">Docker</h3>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">wsl</span> </span><br></pre></td></tr></table></figure>
+<p>导出wsl子系统镜像:</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">wsl</span> --<span class="meta">export</span> docker-desktop docker-desktop.tar</span><br><span class="line"><span class="symbol">wsl</span> --<span class="meta">export</span> docker-desktop-<span class="meta">data</span> docker-desktop-<span class="meta">data</span>.tar</span><br></pre></td></tr></table></figure>
+<p>删除现有的wsl子系统：</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">wsl <span class="comment">--unregister docker-desktop</span></span><br><span class="line">wsl <span class="comment">--unregister docker-desktop-data</span></span><br></pre></td></tr></table></figure>
+<p>重新创建wsl子系统：</p>
+<figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">wsl --<span class="keyword">import</span> docker-desktop d:\your-install-<span class="built_in">path</span> docker-desktop.tar</span><br><span class="line">wsl --<span class="keyword">import</span> docker-desktop-<span class="keyword">data</span> d:\your-install-<span class="built_in">path</span> docker-desktop-<span class="keyword">data</span>.tar</span><br></pre></td></tr></table></figure>
+<h3 id="WSL">WSL</h3>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">wsl</span> --export Ubuntu-<span class="number">20</span>.<span class="number">04</span> d:\wsl-ubuntu20.<span class="number">04</span>.tar</span><br><span class="line"></span><br><span class="line"><span class="attribute">wsl</span> --unregister Ubuntu-<span class="number">20</span>.<span class="number">04</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">wsl</span> --import Ubuntu-<span class="number">20</span>.<span class="number">04</span> D:\SOFT\COMPUTER\Docker\wsl d:\wsl-ubuntu20.<span class="number">04</span>.tar --version <span class="number">2</span></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -647,11 +716,23 @@ $$</p>
   <entry>
     <title>为Go应用程序添加图标</title>
     <url>/static-html/2023/03/21/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="环境准备">环境准备</h2>
+<ul>
+<li><a href="https://github.com/akavel/rsrc">rsrc可执行文件</a></li>
+<li>ico图片</li>
+<li>可build的go项目</li>
+</ul>
+<h2 id="模板">模板</h2>
+<p>创建一个名为 <code>main.exe.manifest</code>的文件 内容如下</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> standalone=<span class="string">&quot;yes&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">assembly</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:schemas-microsoft-com:asm.v1&quot;</span> <span class="attr">manifestVersion</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">assemblyIdentity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">version</span>=<span class="string">&quot;1.0.0.0&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">processorArchitecture</span>=<span class="string">&quot;x86&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;controls&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;win32&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">assemblyIdentity</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">assemblyIdentity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">&quot;win32&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">&quot;Microsoft.Windows.Common-Controls&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">version</span>=<span class="string">&quot;6.0.0.0&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">processorArchitecture</span>=<span class="string">&quot;*&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">publicKeyToken</span>=<span class="string">&quot;6595b64144ccf1df&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">language</span>=<span class="string">&quot;*&quot;</span></span></span><br><span class="line"><span class="tag">        &gt;</span><span class="tag">&lt;/<span class="name">assemblyIdentity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsrc -arch amd64 -manifest main.manifest -ico main.ico -o main.syso</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go build</span><br></pre></td></tr></table></figure>
+<p>这样就成功了 其实还是很简单的就是说 我们可以写一个模板 将其简化</p>
+]]></content>
   </entry>
   <entry>
     <title>将文件拖到Exe程序上,发生了什么?</title>
-    <url>/static-html/2023/03/21/%E5%B0%86%E6%96%87%E4%BB%B6%E6%8B%96%E5%88%B0exe%E7%A8%8B%E5%BA%8F%E4%B8%8A%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</url>
+    <url>/static-html/2023/03/21/Cookie/%E5%B0%86%E6%96%87%E4%BB%B6%E6%8B%96%E5%88%B0exe%E7%A8%8B%E5%BA%8F%E4%B8%8A%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>如何进行推断</h1>
 <p>很简单,通过print之类的输出信息啊</p>
 <p>错.因为你的程序会在结束后立即关闭窗口,你根本就来不及,当然了你会说 可以让窗口sleep啊,对的? 这里我用go是没有办法通过就是sleep暂停的 当然了 这里是go的问题.</p>
@@ -670,16 +751,6 @@ $$</p>
       <tags>
         <tag>教程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>我的Kata</title>
-    <url>/static-html/2023/03/21/%E6%88%91%E7%9A%84kata/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>what is kata</h1>
-<p>这个单词是我看 [代码整洁之道]学习到的,简单来说,就是一个小的练习,可以让你保持对于代码的认识和手感.</p>
-<p>每个人都应该有自己的kata就是说 : 不需要很困难 如果可以最好是一个就是可以只用几分钟就写完的,并且可以快速进行校验.</p>
-<h1>待定的kata</h1>
-<p>我还不知道就是说</p>
-]]></content>
   </entry>
   <entry>
     <title>面向对象手册</title>
@@ -705,95 +776,9 @@ $$</p>
 <h1>多态</h1>
 <h1>抽象类 抽象方法</h1>
 <p>主要是为了实现多态,通过一个基类</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>如c++存在析构函数,java中因为内存管理是交给jvm的,导致无法控制一个对象内存回收的时间,自然就将析构函数移除了;python中构造函数是不能重载的,甚至都没有重载这个概念,当然你还是可以通过一些手段去实现罢了,因为没有提供重载的必要性. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>通过对象和方法,将具体的变量和实现组合到一起,不仅可以提高开发效率,还可以提高隐私性. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>通过继承,复用基类中的成员和方法,同时为多态提供实现方式. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p>接受相同的消息,做出不同的响应. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-  </entry>
-  <entry>
-    <title>设计模式</title>
-    <url>/static-html/2023/03/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>设计模式</h1>
-<p>前人的经验.</p>
-<h1>单例模式</h1>
-<p>一个类只能有一个对象/实例.</p>
-<p>这里不是说你只在你的程序中只进行一次 new的操作导致只有一个对象,而是通过将对象本身设置为类的属性,强制保证了对象的唯一性.</p>
-<h2 id="实现方式">实现方式</h2>
-<ul>
-<li>饿汉式</li>
-</ul>
-<ol>
-<li>构造函数为private</li>
-<li>自己的实例作为自己的属性 static</li>
-<li>返回自己实例的方法 static</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>&#123;</span><br><span class="line">    <span class="comment">// 构造函数为private后 就无法通过new去创建对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Book</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Book</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">    <span class="comment">// 我们现在只能通过getInstance这个静态方法获取该对象</span></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> Book <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>懒汉式</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Bank</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Bank</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  Bank <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">return</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Bank</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="对比分析">对比分析</h2>
-<ul>
-<li>饿汉式在类被加载时就创建了对象,懒汉式只有调用getInstance方法才会创建.前者会占据内存更多的时间,但是它是并发安全的(你就不该在一个并发的程序里写创建对象这种事情)</li>
-<li>其实差别不是很大</li>
-</ul>
-<h1>抽象模板</h1>
-<p>额,这里其实就是创建一个虚基类,然后继承,重写,指向之类对象的父类指针</p>
-<p>因为java中并没有template这样的关键字,我就认为他是在利用抽象类,其实也不对,只是实现方式不太一样.</p>
-<p>这里我只先给出一个抽象类继承的例子.</p>
-<p>这里的例子中,我们创建了一个虚基类<code>PayMent</code>,并继承它创建了一个<code>Alipay</code>,我们也可以创建<code>wechatpay</code>,我们可以将注意力放到就是具体的支付流程实现上,而不是每一个都需要去重写一次流程,当然了这里其实应该利用基类指针的.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">abstracttest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Alipay</span> <span class="variable">pay</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>();</span><br><span class="line">        pay.PayAction(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> money;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>   <span class="title function_">CheckMoney</span><span class="params">()</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PayAction</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">         <span class="built_in">this</span>.CheckMoney();</span><br><span class="line">         <span class="built_in">this</span>.Pay(price);</span><br><span class="line">         <span class="built_in">this</span>.SaveMoney();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">extends</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">CheckMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询支付宝账户余额 访问支付宝的api&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;支付中&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="built_in">this</span>.money - price;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;账户剩余金额为&quot;</span>+<span class="built_in">this</span>.money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>愿景 使命 价值观</p>
-<p>我们是谁 我们做什么</p>
-<p>愿景 : 青年创客</p>
-<p>使命 :</p>
-<p>价值观 : 组织能力 协作能力 愿不愿 能不能 许不许</p>
-<p>团队合作 拥抱变化</p>
-<p>做事 此时此刻 非你莫属</p>
-<p>凡事有交代 件件有着落</p>
-<p>今天比明天好</p>
-<p>人生没有捷径</p>
-<p>遇到我是你的运气,遇到你是我的福气</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Css机器合集</title>
-    <url>/static-html/2023/03/18/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Css 技巧合集</h1>
-<p>这里我还是想可以搭建一个就是我们的runcode 开始去了解一下好吗 这里就是交给你一个任务就好了 不是吗 其实还是不错的</p>
-<h2 id="通用css">通用css</h2>
-<p>其实主要目的是为了消除自带的不好的样式,这样其实是最简单的说.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="消除滚动条">消除滚动条</h2>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实现渐变色下划线">实现渐变色下划线</h2>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Ffmpeg简单使用</title>
-    <url>/static-html/2023/03/18/ffmpeg%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>提取视频封面</h1>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h1>压缩视频</h1>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v libx265 -preset medium -crf 28 -r 24 output.mp4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ffmpeg -i %1 -c:v libx265 -preset medium -crf 28 -r 24 H265%1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Java重要知识点回顾</title>
-    <url>/static-html/2023/03/18/java%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>对象</h1>
+<h1>JAVA 实践</h1>
+<p>java是一门面向对象的编程语言,其设计模式被大家广泛实践</p>
+<h1>对象</h1>
 <h2 id="构造函数">构造函数</h2>
 <p>首先我们需要知道,java中是不存在手动的内存管理机制,依赖于jvm的gc,所以java中就不存在析构函数这个概念–因为你无法决定这个对象内存空间的释放.</p>
 <ul>
@@ -942,8 +927,10 @@ $$</p>
 <p>例子A:</p>
 <p>动物 --&gt; 猫</p>
 <p>动物 --&gt; 狗</p>
-<p>​      存在继承关系的两个类,其内部的方法可以是重载基类,也可以通过实现接口.这种时候你使用继承和接口都是一样的.</p>
-<p>​      但是接口是无法定义数据成员的,所以无法确定这两个类存在哪些具体的属性.如果该方法是需要获取类的属性的时候,特别是共同的属性的时候,我还是觉得使用继承的方式更好.</p>
+<pre><code>  存在继承关系的两个类,其内部的方法可以是重载基类,也可以通过实现接口.这种时候你使用继承和接口都是一样的.
+
+  但是接口是无法定义数据成员的,所以无法确定这两个类存在哪些具体的属性.如果该方法是需要获取类的属性的时候,特别是共同的属性的时候,我还是觉得使用继承的方式更好.
+</code></pre>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="comment">// 动物的属性 比如说生活在水里,陆地上,或者是两栖</span></span><br><span class="line">    <span class="comment">// 属于是哪一个物种</span></span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">    <span class="keyword">public</span> String Species;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 动物们都可以移动</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    Cat() &#123;</span><br><span class="line">        <span class="built_in">this</span>.Species = <span class="string">&quot;小猫&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.Species+<span class="string">&quot;画梅花&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    Dog()&#123;</span><br><span class="line">        <span class="built_in">this</span>.Species = <span class="string">&quot;小狗&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.Species+<span class="string">&quot;画月牙&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>例子B</p>
 <p>动物 --&gt; 狗</p>
@@ -955,12 +942,92 @@ $$</p>
 <p>很多人说接口是一种规范,定义了该方法的参数和返回值,这样的回答没有答到点子上,就是为什么用接口,因为使用继承同样可以实现上面的效果.</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>只是为了实现一个类,直接在类中写实现就好了.</li>
-<li>当两个类存在相同的属性和方法时,使用继承.</li>
-<li>当两个类不存在继承关系,但是具有相同的功能,使用接口.</li>
+<li>
+<p>只是为了实现一个类,直接在类中写实现就好了.</p>
+</li>
+<li>
+<p>当两个类存在相同的属性和方法时,使用继承.</p>
+</li>
+<li>
+<p>当两个类不存在继承关系,但是具有相同的功能,使用接口.</p>
+<pre><code> 接口提供了一种更强的抽象能力,不再依靠相同的基类而存在.如果你的需求完全可以通过继承实现,就没有必要逼着自己去实现接口.
+</code></pre>
+</li>
 </ul>
-<p>​       接口提供了一种更强的抽象能力,不再依靠相同的基类而存在.如果你的需求完全可以通过继承实现,就没有必要逼着自己去实现接口.</p>
 <p>这里其实我们应该开始就是使用mybitas</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如c++存在析构函数,java中因为内存管理是交给jvm的,导致无法控制一个对象内存回收的时间,自然就将析构函数移除了;python中构造函数是不能重载的,甚至都没有重载这个概念,当然你还是可以通过一些手段去实现罢了,因为没有提供重载的必要性. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>通过对象和方法,将具体的变量和实现组合到一起,不仅可以提高开发效率,还可以提高隐私性. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>通过继承,复用基类中的成员和方法,同时为多态提供实现方式. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>接受相同的消息,做出不同的响应. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+  </entry>
+  <entry>
+    <title>设计模式</title>
+    <url>/static-html/2023/03/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>设计模式</h1>
+<p>前人的经验.</p>
+<h1>单例模式</h1>
+<p>一个类只能有一个对象/实例.</p>
+<p>这里不是说你只在你的程序中只进行一次 new的操作导致只有一个对象,而是通过将对象本身设置为类的属性,强制保证了对象的唯一性.</p>
+<h2 id="实现方式">实现方式</h2>
+<ul>
+<li>饿汉式</li>
+</ul>
+<ol>
+<li>构造函数为private</li>
+<li>自己的实例作为自己的属性 static</li>
+<li>返回自己实例的方法 static</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>&#123;</span><br><span class="line">    <span class="comment">// 构造函数为private后 就无法通过new去创建对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Book</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Book</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">    <span class="comment">// 我们现在只能通过getInstance这个静态方法获取该对象</span></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> Book <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>懒汉式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Bank</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Bank</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  Bank <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">return</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Bank</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="对比分析">对比分析</h2>
+<ul>
+<li>饿汉式在类被加载时就创建了对象,懒汉式只有调用getInstance方法才会创建.前者会占据内存更多的时间,但是它是并发安全的(你就不该在一个并发的程序里写创建对象这种事情)</li>
+<li>其实差别不是很大</li>
+</ul>
+<h1>抽象模板</h1>
+<p>额,这里其实就是创建一个虚基类,然后继承,重写,指向之类对象的父类指针</p>
+<p>因为java中并没有template这样的关键字,我就认为他是在利用抽象类,其实也不对,只是实现方式不太一样.</p>
+<p>这里我只先给出一个抽象类继承的例子.</p>
+<p>这里的例子中,我们创建了一个虚基类<code>PayMent</code>,并继承它创建了一个<code>Alipay</code>,我们也可以创建<code>wechatpay</code>,我们可以将注意力放到就是具体的支付流程实现上,而不是每一个都需要去重写一次流程,当然了这里其实应该利用基类指针的.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">abstracttest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Alipay</span> <span class="variable">pay</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>();</span><br><span class="line">        pay.PayAction(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> money;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>   <span class="title function_">CheckMoney</span><span class="params">()</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PayAction</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">         <span class="built_in">this</span>.CheckMoney();</span><br><span class="line">         <span class="built_in">this</span>.Pay(price);</span><br><span class="line">         <span class="built_in">this</span>.SaveMoney();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">extends</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">CheckMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询支付宝账户余额 访问支付宝的api&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;支付中&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="built_in">this</span>.money - price;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;账户剩余金额为&quot;</span>+<span class="built_in">this</span>.money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>愿景 使命 价值观</p>
+<p>我们是谁 我们做什么</p>
+<p>愿景 : 青年创客</p>
+<p>使命 :</p>
+<p>价值观 : 组织能力 协作能力 愿不愿 能不能 许不许</p>
+<p>团队合作 拥抱变化</p>
+<p>做事 此时此刻 非你莫属</p>
+<p>凡事有交代 件件有着落</p>
+<p>今天比明天好</p>
+<p>人生没有捷径</p>
+<p>遇到我是你的运气,遇到你是我的福气</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Css机器合集</title>
+    <url>/static-html/2023/03/18/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Css 技巧合集</h1>
+<p>这里我还是想可以搭建一个就是我们的runcode 开始去了解一下好吗 这里就是交给你一个任务就好了 不是吗 其实还是不错的</p>
+<h2 id="通用css">通用css</h2>
+<p>其实主要目的是为了消除自带的不好的样式,这样其实是最简单的说.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="消除滚动条">消除滚动条</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现渐变色下划线">实现渐变色下划线</h2>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -1063,38 +1130,6 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>重新认识Typora</title>
-    <url>/static-html/2023/03/12/typora/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><p>#<a href="https://www.electronjs.org/zh/docs/latest/">electron</a></p>
-<div id="top">
-*   latex 数学公式
-*   html 元素
-*   emoji 表情
-*   表格
-因为我们的typora是用electron写的,所以它可以兼容我们的html.
-<h2 id="music">music</h2>
-<h3 id="music-control">music control</h3>
-<h3 id="play-music-without-player">play music without player</h3>
-<audio src="http://81.68.91.70/web/music/one_last_kiss.mp3">
-<h2 id="video">video</h2>
-<h3 id="play-video-in-any-everywhere">play video in any everywhere</h3>
-<embed src="://www.bilibili.com/bangumi/play/ss44152">
-<h2 id="tag">tag</h2>
-<p><a href="#top">return to top</a></p>
-<h2 id="emoji大全">emoji大全</h2>
-<p>😢</p>
-<p>🚽</p>
-<p>🗾 🇦🇺 📞 👩‍🏫</p>
-<p>🐔</p>
-<p>🐓</p>
-<p>🍵</p>
-<p>:happy:</p>
-<p>😆</p>
-<p>😅 😊 😫 😉 😦</p>
-<p>😂</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Mysql环境搭建</title>
     <url>/static-html/2023/03/12/BACKEND/MySql%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>MySql 环境搭建</h1>
@@ -1122,25 +1157,28 @@ $$</p>
 <li>nginx中有</li>
 </ol>
 <h1>Nginx</h1>
-<p>我们先不用管它是什么 我们先看看我们如何使用它 我们现在有了一台服务器 假设它的ip是 192.168.1.5 现在你用浏览器去访问它 你会发现得不到任何的响应</p>
-<p>很好理解 你的服务器并不知道是否需要回应的你的消息以及如何回应</p>
-<p>现在我们开始进行配置nginx     对nginx conf 进行配置</p>
+<p>我们先不用管它是什么 我们先看看我们如何使用它 我们现在有了一台服务器 假设它的ip是 192.168.1.5 现在你用浏览器去访问它 你会发现得不到任何的响应.这很好理解,你的服务器并不知道是否需要回应的你的消息以及如何回应.我们可以使用nginx进行一些简单的代理,就可以得到消息了.</p>
+<p>现在我们开始进行配置nginx,让你可以访问你的服务器.</p>
 <h2 id="hello-world">hello world</h2>
 <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">worker_processes</span> <span class="number">1</span>;</span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>;&#125;</span><br><span class="line">http&#123;</span><br><span class="line">  <span class="attribute">include</span> mime.types;</span><br><span class="line">  <span class="attribute">default_type</span> application/octet-stream;</span><br><span class="line">  <span class="attribute">sendfile</span> <span class="literal">on</span>;</span><br><span class="line">  <span class="attribute">keepalive_timeout</span> <span class="number">65</span>;</span><br><span class="line">  <span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">      <span class="attribute">root</span> /www/wwwroot/app/public/BLOG ;</span><br><span class="line">      <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="location">location</h2>
+<h2 id="基础命令">基础命令</h2>
+<h3 id="location">location</h3>
 <p>假设我们的 css文件都是 web/css/*.css 这样的形式存储的 我们可以写这样的语句 原因和简单 因为我们的 这里它还是会将全部的 url作为参数 而不是匹配后的</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">location</span> <span class="title">/css</span>&#123;</span><br><span class="line">	root /www/web</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /css&#123;</span><br><span class="line">	<span class="attribute">root</span> /www/web</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>让我们去看看吧 它存放在我们的nginx目录中的</p>
 <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">types</span> &#123;</span><br><span class="line">    text/<span class="attribute">html</span>                                        html htm shtml;</span><br><span class="line">    text/<span class="attribute">css</span>                                         css;</span><br><span class="line">    text/<span class="attribute">xml</span>                                         xml;</span><br><span class="line">    image/<span class="attribute">gif</span>                                        gif;</span><br><span class="line">    image/<span class="attribute">jpeg</span>                                       jpeg jpg;</span><br><span class="line">    application/<span class="attribute">javascript</span>                           js;</span><br><span class="line">    application/atom+<span class="attribute">xml</span>                             atom;</span><br><span class="line">    application/rss+<span class="attribute">xml</span>                              rss;</span><br><span class="line"></span><br><span class="line">    text/<span class="attribute">mathml</span>                                      mml;</span><br><span class="line">    text/<span class="attribute">plain</span>                                       txt;</span><br><span class="line">    text/vnd.sun.j2me.app-<span class="attribute">descriptor</span>                 jad;</span><br><span class="line">    text/vnd.wap.<span class="attribute">wml</span>                                 wml;</span><br><span class="line">    text/x-<span class="attribute">component</span>                                 htc;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
 <p>很明显 这里是为了说明文件的类型  错 而是为了决定如何处理我们的文件 是对该文件进行下载 还是运行js 或者渲染html</p>
 <p>错误处理</p>
-<h2 id="sendfile">sendfile</h2>
+<h3 id="端口管理">端口管理</h3>
+<p>我们在8080端口运行了一个springboot的项目 我们当然可以让用户直接通过8080端口访问,但是这样并不好,首先是用户需要记住你的端口号,这非非常麻烦,其次是直接将端口暴露出来本身就是一个十分危险的行为.</p>
+<p>这里如果你的springboot项目是80端口的,也可以直接使用sprinboot而不必使用nginx做一个代理.但是如果你的服务上有很多服务,它们分别运行在不同的端口上,这个时候你就需要利用我们的 <code>nginx</code>进行端口的一个管理了,其实就是将不同的 <code>url</code> 解析到不同的端口上去.</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /tinypicog&#123;</span><br><span class="line">	<span class="attribute">proxy_pass</span> localhost:<span class="number">8080</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">localtion</span> /proxy&#123;</span><br><span class="line">	<span class="attribute">proxy_pass</span> localhost:<span class="number">8000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="sendfile">sendfile</h3>
 <p>是否进行缓存 还是直接发送 这里很明显对于大批量请求 还是需要做缓存的 小请求可以就是</p>
-<h2 id="GZip-Br">GZip Br</h2>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line">      <span class="attribute">gzip_min_length</span>  <span class="number">1k</span>;</span><br><span class="line">      <span class="attribute">gzip_buffers</span>     <span class="number">4</span> <span class="number">16k</span>;</span><br><span class="line">      <span class="attribute">gzip_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">      <span class="attribute">gzip_comp_level</span> <span class="number">5</span>;</span><br><span class="line">      <span class="attribute">gzip_types</span>     text/plain application/javascript application/x-javascript text/javascript text/css application/xml;</span><br><span class="line">      <span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line">      <span class="attribute">gzip_proxied</span>   expired <span class="literal">no</span>-cache <span class="literal">no</span>-store private auth;</span><br><span class="line">      <span class="attribute">gzip_disable</span>   <span class="string">&quot;MSIE [1-6]\.&quot;</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="Tengin-concat">Tengin concat</h2>
-<p>将我们的静态文件请求合并 这里其实也好理解</p>
-<p>因为我们的每一个http请求都需要创建会话 这里就</p>
+<h3 id="GZip-Br">GZip Br</h3>
+<p>这是一种压缩文件的格式,可以减少对于网络带宽的压力.</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_min_length</span>  <span class="number">1k</span>;   <span class="comment"># 当文件大小大于1k才会开启压缩</span></span><br><span class="line"><span class="attribute">gzip_buffers</span>     <span class="number">4</span> <span class="number">16k</span>;   <span class="comment"># buffer </span></span><br><span class="line"><span class="attribute">gzip_http_version</span> <span class="number">1</span>.<span class="number">1</span>;   <span class="comment"># 对 http1.1 进行压缩</span></span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">5</span>;  <span class="comment"># 压缩的程度 1-9 数字越大 压缩程度越高,但是会增大cpu的占用</span></span><br><span class="line"><span class="attribute">gzip_types</span>     text/plain application/javascript application/x-javascript text/javascript text/css application/xml;  <span class="comment"># 针对何种格式的文件进行压缩    </span></span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_proxied</span>   expired <span class="literal">no</span>-cache <span class="literal">no</span>-store private auth;</span><br><span class="line"><span class="attribute">gzip_disable</span>   <span class="string">&quot;MSIE [1-6]\.&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="高级命令">高级命令</h2>
 ]]></content>
   </entry>
   <entry>
@@ -1859,6 +1897,23 @@ The story tells us that resolve the problem as soon as possible to avoid further
 <p>用b用户登录 用户名不存在 然后密码错误 最后登录成功   1111 托尼有点忧伤</p>
 <p>最后登录c用户查看消息发送. 123456789 一算</p>
 <p>我绝对欧克</p>
+<h2 id="SQL预编译">SQL预编译</h2>
+<p>其实我就一直都在使用只是我自己没有意识到,笑死我了.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用PreparedStatement实现SQL预编译</span></span><br><span class="line"><span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT * FROM user WHERE id=?&quot;</span>;</span><br><span class="line"><span class="type">PreparedStatement</span> <span class="variable">pstmt</span> <span class="operator">=</span> conn.prepareStatement(sql);</span><br><span class="line">pstmt.setInt(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">// 给参数设置值</span></span><br><span class="line"><span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> pstmt.executeQuery();</span><br><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">    <span class="comment">// 处理结果集</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Statement实现普通SQL语句执行</span></span><br><span class="line"><span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT * FROM user WHERE id=1&quot;</span>;</span><br><span class="line"><span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> conn.createStatement();</span><br><span class="line"><span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(sql);</span><br><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">    <span class="comment">// 处理结果集</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当然了很多SQL框架都可以进行SQL预编译的操作,并且将其简化了</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// mybitas中使用SQL预编译的例子</span></span><br><span class="line"><span class="meta">@Update(&quot;update goods set status = 1 where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">DropGoods</span><span class="params">(<span class="type">int</span> id)</span>;</span><br></pre></td></tr></table></figure>
+<p>SQL预编译的好处如下：</p>
+<ol>
+<li>提高性能：SQL预编译可以将SQL语句预处理成一个可重复利用的模板，当需要执行相同的SQL语句时，只需要传入不同的参数即可，避免了每次执行都需要解析和优化SQL语句的开销，提高了执行效率。</li>
+<li>防止SQL注入：使用SQL预编译时，所有的参数都会被当作参数占位符传递给SQL语句，而不是将参数直接拼接在SQL语句中，避免了SQL注入攻击。</li>
+<li>代码可读性：使用SQL预编译可以让代码更加清晰易懂，通过将SQL语句和参数分离，可以使代码更易于维护和调试。</li>
+</ol>
+<p>SQL预编译的缺点如下：</p>
+<ol>
+<li>内存占用：在执行预编译语句时，需要为每个预编译语句分配内存，如果预编译的语句过多，会占用大量的内存。</li>
+<li>网络开销：由于预编译语句的结果需要传输到客户端，所以在网络传输方面会增加一些开销，特别是当预编译的语句较多时，会占用更多的网络带宽。</li>
+</ol>
+<p>总的来说，SQL预编译是一种提高数据库操作性能的有效方式，通过将SQL语句预处理成一个可重复利用的模板，可以避免每次执行都需要解析和优化SQL语句的开销，提高了执行效率，并且可以防止SQL注入攻击。但是，预编译语句的过多会占用大量的内存，并且增加网络开销。</p>
 ]]></content>
   </entry>
   <entry>
@@ -3021,20 +3076,6 @@ server.listen(3000);</p>
       <tags>
         <tag>教程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Novel Ai</title>
-    <url>/static-html/2022/09/24/Github/Novel%20ai/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>环境搭建</h1>
-<p>这里网上很多破解版</p>
-<p>比如B站上面的 到处都是  不解释了</p>
-<h1>TEXT2IMG</h1>
-<h2 id="使用好的tag">使用好的tag</h2>
-<p><strong>提升画质</strong></p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;&#123;<span class="name">masterpiece</span>&#125;&#125;&#125;</span><span class="language-xml">, best quality,</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用不好的tag">使用不好的tag</h2>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>我的计算机之路</title>
