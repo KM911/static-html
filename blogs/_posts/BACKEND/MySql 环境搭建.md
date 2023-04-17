@@ -35,10 +35,6 @@ update user set host = '%' where user = 'root';
 
 我们是用ip连接的 只需要输入ip 就好了
 
-
-
-
-
 ## 无法用密码登录
 
 

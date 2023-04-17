@@ -12,19 +12,23 @@ categories:
 
 
 
-# 需要的软件列表
+# 需要的软件列表 (这表还挺大的不是吗)
 
-* pigcha
-* clash for windows
-
-# 环境变量
-
-* nodejs
-* vscode
-
-
+| 编译器 |  IDE   | 生活 | 工具 | 代码相关 | 其他 |
+| :----: | :----: | :--: | :--: | :------: | :--: |
+|   GO   | GOland |      |      |          |      |
+|  JAVA  |  Idea  |      |      |          |      |
+|  NODE  | vscode |      |      |          |      |
+|   C    |        |      |      |          |      |
+|   R    |        |      |      |          |      |
+| Python |        |      |      |          |      |
+|        |        |      |      |          |      |
+|        |        |      |      |          |      |
+|        |        |      |      |          |      |
 
 # 软件源和安装位置修改
+
+我之前其实尝试修改过软件的默认安装路径,其实这样不好,像 `edge` 就会因为这个原因导致无法安装.
 
 
 
@@ -54,24 +58,26 @@ just need to use pnpm oK ?
 
 # GO
 
-只需要设置我们的goPath 和 module就OK了
+只需要设置我们的goPath 和 module就OK了,当然了还需要换源.
 
-```
+`GOPATH` 理论上是我们项目的地址,可以有多个,但是可以存在一个唯一的就是说,代表着全局仓库.
 
-```
+%GOPATH%\bin 需要将其添加到环境变量中,这里就是为了让我们下载的包可以直接运行是吧
 
+其实我还是不理解,是否可以就是  `GOROOT` 和 `GOPATH` ,因为他们两个的项目结构是高度相似的.
 
+编译的版本可以新一些,其实没有什么问题,作为一个工具就是主打的一个叫做更新.
+
+我们还需要
 
 ## VScode
+
+主要解决的问题是,用户数据和插件安装问题,在启动方式上添加如下的参数就好了,可能位置需要调整一下,但是大体是一样的.
 
 ```
 --extensions-dir "D:\Software\Microsoft\.vscode\extensions"
 --user-data-dir D:\0.SOFT\Code\data
 ```
-
-
-
-
 
 ## pip
 
@@ -79,17 +85,11 @@ just need to use pnpm oK ?
 
 这里很好笑,你开启vpn后pip将会无法下载
 
-
-
 超时默认事件是100秒 如果你超市了 可以去看看 特别是大的东西
-
-
 
 换源 创建pip.ini文件 
 
 这里我们可以使用就是xcopy命令
-
-
 
 ```shell
 [global]
@@ -109,8 +109,56 @@ USER_SITE = "D:/SOFT/Path/Python/Lib/site-packages"
 USER_BASE = "D:/SOFT/Path/Python/Scripts"
 ```
 
-
-
 ## JAVA 
 
 我们直接利用IDEA就好了让他帮我们下一个JDK不需要管太多的事情.
+
+`MAVEN_HOME` maven的位置 maven是一个工具
+
+`M2_HOME` maven的安装位置
+
+我直接把两位位置设置成为一样的了 哈哈哈哈.
+
+
+
+
+
+### Docker 
+
+```
+wsl 
+```
+
+导出wsl子系统镜像:
+
+```
+wsl --export docker-desktop docker-desktop.tar
+wsl --export docker-desktop-data docker-desktop-data.tar
+```
+
+删除现有的wsl子系统：
+
+```
+wsl --unregister docker-desktop
+wsl --unregister docker-desktop-data
+```
+
+重新创建wsl子系统：
+
+```
+wsl --import docker-desktop d:\your-install-path docker-desktop.tar
+wsl --import docker-desktop-data d:\your-install-path docker-desktop-data.tar
+```
+
+### WSL
+
+```
+wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar
+
+wsl --unregister Ubuntu-20.04
+
+wsl --import Ubuntu-20.04 D:\SOFT\COMPUTER\Docker\wsl d:\wsl-ubuntu20.04.tar --version 2
+```
+
+
+

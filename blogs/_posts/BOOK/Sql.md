@@ -477,3 +477,63 @@ defer callback()
 最后登录c用户查看消息发送. 123456789 一算 
 
 我绝对欧克
+
+
+
+
+
+
+
+## SQL预编译
+
+其实我就一直都在使用只是我自己没有意识到,笑死我了.
+
+```java
+// 使用PreparedStatement实现SQL预编译
+String sql = "SELECT * FROM user WHERE id=?";
+PreparedStatement pstmt = conn.prepareStatement(sql);
+pstmt.setInt(1, 1); // 给参数设置值
+ResultSet rs = pstmt.executeQuery();
+while (rs.next()) {
+    // 处理结果集
+}
+
+// 使用Statement实现普通SQL语句执行
+String sql = "SELECT * FROM user WHERE id=1";
+Statement stmt = conn.createStatement();
+ResultSet rs = stmt.executeQuery(sql);
+while (rs.next()) {
+    // 处理结果集
+}
+
+```
+
+当然了很多SQL框架都可以进行SQL预编译的操作,并且将其简化了
+
+```java
+// mybitas中使用SQL预编译的例子
+@Update("update goods set status = 1 where id = #{id}")
+public void DropGoods(int id);
+```
+
+SQL预编译的好处如下：
+
+1. 提高性能：SQL预编译可以将SQL语句预处理成一个可重复利用的模板，当需要执行相同的SQL语句时，只需要传入不同的参数即可，避免了每次执行都需要解析和优化SQL语句的开销，提高了执行效率。
+2. 防止SQL注入：使用SQL预编译时，所有的参数都会被当作参数占位符传递给SQL语句，而不是将参数直接拼接在SQL语句中，避免了SQL注入攻击。
+3. 代码可读性：使用SQL预编译可以让代码更加清晰易懂，通过将SQL语句和参数分离，可以使代码更易于维护和调试。
+
+SQL预编译的缺点如下：
+
+1. 内存占用：在执行预编译语句时，需要为每个预编译语句分配内存，如果预编译的语句过多，会占用大量的内存。
+2. 网络开销：由于预编译语句的结果需要传输到客户端，所以在网络传输方面会增加一些开销，特别是当预编译的语句较多时，会占用更多的网络带宽。
+
+总的来说，SQL预编译是一种提高数据库操作性能的有效方式，通过将SQL语句预处理成一个可重复利用的模板，可以避免每次执行都需要解析和优化SQL语句的开销，提高了执行效率，并且可以防止SQL注入攻击。但是，预编译语句的过多会占用大量的内存，并且增加网络开销。
+
+
+
+
+
+
+
+
+
