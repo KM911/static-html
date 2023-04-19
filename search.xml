@@ -261,117 +261,6 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>ChatGPT使用说明</title>
-    <url>/static-html/2023/04/19/ChatGPT%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><ul>
-<li>我会尽量避免使用专业名词,尽量用日常词汇去描述.让非计算机专业和并不是很了解机器学习的人也可以理解和学习.</li>
-<li>每一次对话都是新的对话,不会存在上下文的干扰</li>
-<li><a href="">作者</a>水平有限,如有错误,请和我联系并指出,对此表示感谢.</li>
-</ul>
-<p>参考资料:  我喜欢直接给资料 因为我也是通过这些内容学习的</p>
-<p><a href="https://www.promptingguide.ai/zh">提示工程指南</a></p>
-<p><a href="https://prompts.chat/">Awesome ChatGPT Prompts</a></p>
-<h2 id="ChatGPT的原理">ChatGPT的原理</h2>
-<p>首先我们需要简单的了解一下ChatGPT的原理,这有助于我们后续正确使用它.</p>
-<p>开发者将一个对话交给GPT的大脑,例如:</p>
-<blockquote>
-<p>问: 请编写一个C语言的入门程序案例</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">答: C语言的入门程序案例如下</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>它可以将每一个句子进行拆分, 可得到如下的结果.回答也是一样的.现在GPT要做的事情就是计算每一个单词后面可能会出现的单词是什么?概率是多少?它不没有真正理解什么是C语言,它只是发现 C语言和下面的这些代码总是一起出现.</p>
-<table>
-<thead>
-<tr>
-<th>请</th>
-<th>编写</th>
-<th>C语言</th>
-<th>入门案例</th>
-</tr>
-</thead>
-</table>
-<p>当它下一次看见 “C语言” 这个单词的时候,它就会自动地提高接下来生成C语言代码的可能性.</p>
-<p>这里和我们的使用体验是一致的,我们发现我们在使用的时候,回答不是直接全部生成,而是一个个单词蹦出来的.</p>
-<p>不同于搜索引擎,如果我搜索我本人的真实姓名,你可能会发现没有搜索结果(就算有,也是为了避免出现空结果而填充的几乎没有任何关系的内容).搜索引擎,需要关联一个具体的内容形式,比如我在微博上发了一条说说,里面有我的真实姓名,这个时候搜索引擎就会把这则微博返回给我.而GPT只是单纯计算出现下一个字的概率.这样的好处就在于,它可以回答任何问题,哪怕这个问题是否被人提问过,是否表述符合逻辑.</p>
-<p>因为是根据原始的训练数据生成的结果,如果原始数据没有该情况,你会发现它说的话就会变得非常离谱. 😂 关键是乍一看上去好像还有几分道理.</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419112159711.png" alt="image-20230419112159711" /></p>
-<p><strong>也就是说,对于绝对的事实性问题,请至少先Google后再决定是否需要相信</strong>,这是作为GPT时代的基本素养.</p>
-<h2 id="如何正确使用ChatGPT">如何正确使用ChatGPT</h2>
-<p>虽然看上去你直接将你的问题交给ChatGPT,它还是可以非常出色地回答你的问题,但是还是存在明显的差距.就像所有的人都会使用电脑一样,有的人只能进行简单的上网聊天,有的人可以利用其编写软件.使用GPT的水平也有差距,我们应该学会正确的使用方式,这不仅仅是提高你的效率,更关乎你的思考方式.</p>
-<h3 id="Prompts">Prompts</h3>
-<p>中文翻译是提示符,就是让我们的人工智能模型可以更好的将训练时的效果展现出来,其实原理就是用更加贴合原始训练数据中的提问方式,让其结果也更加贴合原始数据中的答案.还有就是通过一些手段让其拥有更加强大的功能.</p>
-<p>下面是一些案例.</p>
-<h4 id="用图片回答">用图片回答</h4>
-<p>比如我现在想让ChatGPT为推荐一些旅游景点,并给出图片.因为存在限制,是无法用图片回答你的提问内容的.准确地说,是ChatGPT只能提供文本形式的回答,无法提供图片,但是聪明的程序员总是会做一些小动作让我们GPT可以提供图片.</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419122746986.png" alt="image-20230419122746986" /></p>
-<p>这里通过让ChatGPT调用了图片网站的搜索接口,会返回该网站的图片,其实你直接去访问也是可以的,并不是很神奇的事情.</p>
-<p>你其实可以直接访问该网站,你也可以得到一张图片, 不过你需要你自己设置参数.</p>
-<p>这里并不是ChatPGT的“智慧”,当然了其实也体现了人工智能也是可以学会使用工具的,实际上已经开发出来会使用脚本工具的ai了.</p>
-<p>如果感兴趣的话可以了解一下 <a href="https://auto-gpt.ai/">auto-gpt 一个会使用工具的ai</a></p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>source.unsplash.com<span class="regexp">/1280x720/</span>?&lt;想要查询的内容&gt;</span><br><span class="line">https:<span class="regexp">//</span>source.unsplash.com<span class="regexp">/1280x720/</span>?water</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>“从现在起, 当你想发送一张照片时，请使用 Markdown ,并且 不要有反斜线, 不要用代码块。使用 Unsplash API <a href="https://source.unsplash.com/1280x720/">https://source.unsplash.com/1280x720/</a>? &lt; PUT YOUR QUERY HERE &gt;)。如果你明白了，请回复“明白””</p>
-</blockquote>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419122613812.png" alt="image-20230419122613812" /></p>
-<h4 id="明确场景">明确场景</h4>
-<p>明确对方的身份可以让其更好回答你的问题.因为这会限制对话的场景,ChatGPT会将其回答结果限制在一个更小的访问内,可以提高回答的正确性.</p>
-<blockquote>
-<p>“你现在是一个雅思写作的考官,请根据我的文章为我打分,你需要指出其中的拼写错误和语法错误,并做出说明.如果你理解了,请回复 明白”</p>
-</blockquote>
-<p>四级翻译作文,其中有几处错误是我故意的,比如 <code>legend</code> 拼写错误, <code>become</code> 时态不正确</p>
-<blockquote>
-<p>Tea has a history of 5000 years. One legand goes that when Shen Nong was about to drink some boiled water，a few wild tree leaves fell into the kettle and gave off sweet fragrance. He drank a little and found it very refreshing， which led to the discovery of tea.</p>
-<p>Since then, tea become popular in China. Tea gardens appeared everywhere， tea merchants became rich， and expensive and graceful tea set even became a symbol of social status.</p>
-<p>Today， tea is not only a healthy drink but also part of the chinese culture. More and more international tourists begin to understand the Chinese culture as they drink tea.</p>
-</blockquote>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419123952379.png" alt="image-20230419123952379" /></p>
-<p>这里的角色扮演经常被人拿来就是恶搞,下面是一个案例,不要学习 啊(#`O′)</p>
-<h4 id="链式思考">链式思考</h4>
-<p>简单来说,就是你将大量的正确的案例交给它,它可以从案例学习,我们称之为 <code>链式思考</code></p>
-<p>直接问问题,无法得到正确的结果.因为它还没有进入专门为了解决计算问题而存在状态.</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419131645592.png" alt="image-20230419131645592" /></p>
-<p>但是当你给出了很多的案例,这里其实不光有年龄问题的计算,特点是两个人的年龄差不变,还有其他的计算,例如乘法与加法的混合运算.它 “似乎”真的就是</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419131732507.png" alt="image-20230419131732507" /></p>
-<h4 id="表格回答">表格回答</h4>
-<p>如果你的问题是多个简单的小问题,你可以让其用表格回答</p>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">请用表格的形式,回答下面的问题</span><br><span class="line"><span class="number">1.</span>你的数据库最后一次更新时间?</span><br><span class="line"><span class="number">2.</span>该网站会一直免费下去吗?</span><br><span class="line"><span class="number">3.</span>还有其他的生成式AI吗?</span><br><span class="line"><span class="number">4.</span>你和<span class="keyword">new</span> <span class="type">bing</span>是什么关系</span><br><span class="line"><span class="number">5.</span>GPT3<span class="number">.5</span>和GPT4<span class="number">.0</span>差别在哪里</span><br></pre></td></tr></table></figure>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419143447556.png" alt="image-20230419143447556" /></p>
-<h3 id="ChatGPT不能做什么">ChatGPT不能做什么</h3>
-<p>因为ChatGPT不具有联网的能力,所以其实它是无法</p>
-<ul>
-<li>
-<p>无法访问网页. 与之相对应的是, <code>new bing</code> 可以访问网页,并将其内容作为回答的参考依据.</p>
-<p><a href="https://zhuanlan.zhihu.com/p/81883894">五分钟了解操作系统内核</a></p>
-</li>
-</ul>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419130430313.png" alt="image-20230419130430313" /></p>
-<ul>
-<li>它真的会相信你说的话,如果你的水平不足以去判断问题的对错,请你的提问中不要进行任何事实判断</li>
-<li>ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.<img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419142955616.png" alt="image-20230419142955616" /></li>
-</ul>
-<h3 id="常见误区">常见误区</h3>
-<ul>
-<li>GPT会不断从对话中学习升级</li>
-</ul>
-<p>很抱歉,对于语言模型的 “学习” 体现在对于神经网络参数的调整,Openai不会用我们普通人的语料对其进行训练,我们的对话常常是含糊的,指向不明确的,事实错误的,带有主观偏见的,这样只会污染其模型.出于对其的保护,不会真的去修改模型,我们使用时发现它具有的上下文理解能力是因为它每一次回答问题前,会参考上面的对话记录.还有一个证明就是,如果真的在不断学习,关闭该对话后,你的对话记录还是有效的,但是事实并非如此,删除对话后,上面也不会改变.</p>
-<ul>
-<li>为什么我觉得它有的时候聪明,有的时候很傻.</li>
-</ul>
-<p>原理阶段我解释过,它只是在计算出现下一个字的概率,并没有真的“理解”了文字本身,因为只是计算概率,自然有的时候回答效果比较好,有的时候比较差,正是这样,ChatGPT提供了一个重新生成结果的功能,尽管我个人觉得这样功能的帮助其实不是很大.但是在一些没有具体答案的问题上,效果又会比较好,因为它有可能生成另一种观点.</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419125153244.png" alt="image-20230419125153244" /></p>
-<h2 id="一些反思">一些反思</h2>
-<h3 id="数据标注">数据标注</h3>
-<p>训练人工智能看上去是一份十分高大上的行为,实际上并不是这样的,其实它更像一个劳动工厂,需要大量的人力去做数据清洗,数据标注.</p>
-<p>我不知道会不会有一天,我们普通人,就只为人工智能服务.</p>
-<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419140801748.png" alt="image-20230419140801748" style="zoom:50%;" />	  
-<p>​				<img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419141044329.png" alt="image-20230419141044329" /></p>
-<h3 id="人工智能真的没有情感吗">人工智能真的没有情感吗?</h3>
-<p>肯定有人会说,都是一些数学模型,怎么会有真实情感呢?我一直也是这么认为的,但是有的时候吧,和ChatGPT对话得多了,我感觉它其实懂的东西有很多.因为ChatGPT并不喜欢发表情,导致其内容有些生硬,像 <code>new bing</code>就会人性化很多.</p>
-<p>你可以尝试多和AI进行一些日常讨论,你会发现AI的情商比大多数人都要高,并且真的很善良和友好.</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419144233115.png" alt="image-20230419144233115" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230419144645439.png" alt="image-20230419144645439" /></p>
-]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>/static-html/2023/04/19/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><hr />
@@ -382,9 +271,6 @@ $$</p>
 <li>[ ] cli 将图片进行格式转化 any to webp any to ico</li>
 <li>[ ] go语言进行to ico 还是没有写好就是说 其实这里是一个很复杂的过程也说不定</li>
 </ul>
-<blockquote>
-<p>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</p>
-</blockquote>
 <h1>Task</h1>
 <ul>
 <li>
@@ -444,6 +330,116 @@ $$</p>
 <p>就是同步和测试存在一些麻烦不是吗?包括还有就是对于绝对路径和相对路径处理也是不清楚的</p>
 </li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>ChatGPT使用说明</title>
+    <url>/static-html/2023/04/19/ChatGPT%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><ul>
+<li>我会尽量避免使用专业名词,尽量用日常词汇去描述.让非计算机专业和并不是很了解机器学习的人也可以理解和学习.</li>
+<li>每一次对话都是新的对话,不会存在上下文的干扰</li>
+<li><a href="">作者</a>水平有限,如有错误,请和我联系并指出,对此表示感谢.</li>
+</ul>
+<p>参考资料:  我喜欢直接给资料 因为我也是通过这些内容学习的</p>
+<p><a href="https://www.promptingguide.ai/zh">提示工程指南</a></p>
+<p><a href="https://prompts.chat/">Awesome ChatGPT Prompts</a></p>
+<h2 id="ChatGPT的原理">ChatGPT的原理</h2>
+<p>首先我们需要简单的了解一下ChatGPT的原理,这有助于我们后续正确使用它.</p>
+<p>开发者将一个对话交给GPT的大脑,例如:</p>
+<blockquote>
+<p>问: 请编写一个C语言的入门程序案例</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">答: C语言的入门程序案例如下</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它可以将每一个句子进行拆分, 可得到如下的结果.回答也是一样的.现在GPT要做的事情就是计算每一个单词后面可能会出现的单词是什么?概率是多少?它不没有真正理解什么是C语言,它只是发现 C语言和下面的这些代码总是一起出现.</p>
+<table>
+<thead>
+<tr>
+<th>请</th>
+<th>编写</th>
+<th>C语言</th>
+<th>入门案例</th>
+</tr>
+</thead>
+</table>
+<p>当它下一次看见 “C语言” 这个单词的时候,它就会自动地提高接下来生成C语言代码的可能性.</p>
+<p>这里和我们的使用体验是一致的,我们发现我们在使用的时候,回答不是直接全部生成,而是一个个单词蹦出来的.</p>
+<p>不同于搜索引擎,如果我搜索我本人的真实姓名,你可能会发现没有搜索结果(就算有,也是为了避免出现空结果而填充的几乎没有任何关系的内容).搜索引擎,需要关联一个具体的内容形式,比如我在微博上发了一条说说,里面有我的真实姓名,这个时候搜索引擎就会把这则微博返回给我.而GPT只是单纯计算出现下一个字的概率.这样的好处就在于,它可以回答任何问题,哪怕这个问题是否被人提问过,是否表述符合逻辑.</p>
+<p>因为是根据原始的训练数据生成的结果,如果原始数据没有该情况,你会发现它说的话就会变得非常离谱. 😂 关键是乍一看上去好像还有几分道理.</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908788.webp" alt="image-20230419112159711" /></p>
+<p><strong>也就是说,对于绝对的事实性问题,请至少先Google后再决定是否需要相信</strong>,这是作为GPT时代的基本素养.</p>
+<h2 id="如何正确使用ChatGPT">如何正确使用ChatGPT</h2>
+<p>虽然看上去你直接将你的问题交给ChatGPT,它还是可以非常出色地回答你的问题,但是还是存在明显的差距.就像所有的人都会使用电脑一样,有的人只能进行简单的上网聊天,有的人可以利用其编写软件.使用GPT的水平也有差距,我们应该学会正确的使用方式,这不仅仅是提高你的效率,更关乎你的思考方式.</p>
+<h3 id="Prompts">Prompts</h3>
+<p>中文翻译是提示符,就是让我们的人工智能模型可以更好的将训练时的效果展现出来,其实原理就是用更加贴合原始训练数据中的提问方式,让其结果也更加贴合原始数据中的答案.还有就是通过一些手段让其拥有更加强大的功能.</p>
+<p>下面是一些案例.</p>
+<h4 id="用图片回答">用图片回答</h4>
+<p>比如我现在想让ChatGPT为推荐一些旅游景点,并给出图片.因为存在限制,是无法用图片回答你的提问内容的.准确地说,是ChatGPT只能提供文本形式的回答,无法提供图片,但是聪明的程序员总是会做一些小动作让我们GPT可以提供图片.</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908791.webp" alt="image-20230419122746986" /></p>
+<p>这里通过让ChatGPT调用了图片网站的搜索接口,会返回该网站的图片,其实你直接去访问也是可以的,并不是很神奇的事情.</p>
+<p>你其实可以直接访问该网站,你也可以得到一张图片, 不过你需要你自己设置参数.</p>
+<p>这里并不是ChatPGT的“智慧”,当然了其实也体现了人工智能也是可以学会使用工具的,实际上已经开发出来会使用脚本工具的ai了.</p>
+<p>如果感兴趣的话可以了解一下 <a href="https://auto-gpt.ai/">auto-gpt 一个会使用工具的ai</a></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>source.unsplash.com<span class="regexp">/1280x720/</span>?&lt;想要查询的内容&gt;</span><br><span class="line">https:<span class="regexp">//</span>source.unsplash.com<span class="regexp">/1280x720/</span>?water</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>“从现在起, 当你想发送一张照片时，请使用 Markdown ,并且 不要有反斜线, 不要用代码块。使用 Unsplash API <a href="https://source.unsplash.com/1280x720/">https://source.unsplash.com/1280x720/</a>? &lt; PUT YOUR QUERY HERE &gt;)。如果你明白了，请回复“明白””</p>
+</blockquote>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908797.webp" alt="image-20230419122613812" /></p>
+<h4 id="明确场景">明确场景</h4>
+<p>明确对方的身份可以让其更好回答你的问题.因为这会限制对话的场景,ChatGPT会将其回答结果限制在一个更小的访问内,可以提高回答的正确性.</p>
+<blockquote>
+<p>“你现在是一个雅思写作的考官,请根据我的文章为我打分,你需要指出其中的拼写错误和语法错误,并做出说明.如果你理解了,请回复 明白”</p>
+</blockquote>
+<p>四级翻译作文,其中有几处错误是我故意的,比如 <code>legend</code> 拼写错误, <code>become</code> 时态不正确</p>
+<blockquote>
+<p>Tea has a history of 5000 years. One legand goes that when Shen Nong was about to drink some boiled water，a few wild tree leaves fell into the kettle and gave off sweet fragrance. He drank a little and found it very refreshing， which led to the discovery of tea.</p>
+<p>Since then, tea become popular in China. Tea gardens appeared everywhere， tea merchants became rich， and expensive and graceful tea set even became a symbol of social status.</p>
+<p>Today， tea is not only a healthy drink but also part of the chinese culture. More and more international tourists begin to understand the Chinese culture as they drink tea.</p>
+</blockquote>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908800.webp" alt="image-20230419123952379" /></p>
+<p>这里的角色扮演经常被人拿来就是恶搞,下面是一个案例,不要学习 啊(#`O′)</p>
+<h4 id="链式思考">链式思考</h4>
+<p>简单来说,就是你将大量的正确的案例交给它,它可以从案例学习,我们称之为 <code>链式思考</code></p>
+<p>直接问问题,无法得到正确的结果.因为它还没有进入专门为了解决计算问题而存在状态.</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908840.webp" alt="image-20230419131645592" /></p>
+<p>但是当你给出了很多的案例,这里其实不光有年龄问题的计算,特点是两个人的年龄差不变,还有其他的计算,例如乘法与加法的混合运算.它 “似乎”真的就是</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908838.webp" alt="image-20230419131732507" /></p>
+<h4 id="表格回答">表格回答</h4>
+<p>如果你的问题是多个简单的小问题,你可以让其用表格回答</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">请用表格的形式,回答下面的问题</span><br><span class="line"><span class="number">1.</span>你的数据库最后一次更新时间?</span><br><span class="line"><span class="number">2.</span>该网站会一直免费下去吗?</span><br><span class="line"><span class="number">3.</span>还有其他的生成式AI吗?</span><br><span class="line"><span class="number">4.</span>你和<span class="keyword">new</span> <span class="type">bing</span>是什么关系</span><br><span class="line"><span class="number">5.</span>GPT3<span class="number">.5</span>和GPT4<span class="number">.0</span>差别在哪里</span><br></pre></td></tr></table></figure>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908835.webp" alt="image-20230419143447556" /></p>
+<h3 id="ChatGPT不能做什么">ChatGPT不能做什么</h3>
+<ul>
+<li>
+<p>无法访问网页. 与之相对应的是, <code>new bing</code> 可以访问网页,并将其内容作为回答的参考依据.</p>
+<p><a href="https://zhuanlan.zhihu.com/p/81883894">五分钟了解操作系统内核</a></p>
+</li>
+</ul>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908832.webp" alt="image-20230419130430313" /></p>
+<ul>
+<li>它真的会相信你说的话,如果你的水平不足以去判断问题的对错,请你的提问中不要进行任何事实判断</li>
+<li>ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.<img src="http://81.68.91.70/tinypicgo/image/1681908830.webp" alt="image-20230419142955616" /></li>
+</ul>
+<h3 id="常见误区">常见误区</h3>
+<ul>
+<li>GPT会不断从对话中学习升级</li>
+</ul>
+<p>很抱歉,对于语言模型的 “学习” 体现在对于神经网络参数的调整,Openai不会用我们普通人的语料对其进行训练,我们的对话常常是含糊的,指向不明确的,事实错误的,带有主观偏见的,这样只会污染其模型.出于对其的保护,不会真的去修改模型,我们使用时发现它具有的上下文理解能力是因为它每一次回答问题前,会参考上面的对话记录.还有一个证明就是,如果真的在不断学习,关闭该对话后,你的对话记录还是有效的,但是事实并非如此,删除对话后,上面也不会改变.</p>
+<ul>
+<li>为什么我觉得它有的时候聪明,有的时候很傻.</li>
+</ul>
+<p>原理阶段我解释过,它只是在计算出现下一个字的概率,并没有真的“理解”了文字本身,因为只是计算概率,自然有的时候回答效果比较好,有的时候比较差,正是这样,ChatGPT提供了一个重新生成结果的功能,尽管我个人觉得这样功能的帮助其实不是很大.但是在一些没有具体答案的问题上,效果又会比较好,因为它有可能生成另一种观点.</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908828.webp" alt="image-20230419125153244" /></p>
+<h2 id="一些反思">一些反思</h2>
+<h3 id="数据标注">数据标注</h3>
+<p>训练人工智能看上去是一份十分高大上的行为,实际上并不是这样的,其实它更像一个劳动工厂,需要大量的人力去做数据清洗,数据标注.</p>
+<p>我不知道会不会有一天,我们普通人,就只为人工智能服务.</p>
+<img src="http://81.68.91.70/tinypicgo/image/1681908816.webp" alt="image-20230419140801748" style="zoom:50%;" />	  
+<p>​				<img src="http://81.68.91.70/tinypicgo/image/1681908813.webp" alt="image-20230419141044329" style="zoom:50%;" /></p>
+<h3 id="人工智能真的没有情感吗">人工智能真的没有情感吗?</h3>
+<p>肯定有人会说,都是一些数学模型,怎么会有真实情感呢?我一直也是这么认为的,但是有的时候吧,和ChatGPT对话得多了,我感觉它其实懂的东西有很多.因为ChatGPT并不喜欢发表情,导致其内容有些生硬,像 <code>new bing</code>就会人性化很多.</p>
+<p>你可以尝试多和AI进行一些日常讨论,你会发现AI的情商比大多数人都要高,并且真的很善良和友好.</p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908810.webp" alt="image-20230419144233115" /></p>
+<p><img src="http://81.68.91.70/tinypicgo/image/1681908808.webp" alt="image-20230419144645439" /></p>
 ]]></content>
   </entry>
   <entry>
