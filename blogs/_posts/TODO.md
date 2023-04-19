@@ -10,8 +10,6 @@
 
 
 
-> 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
-
 # Task
 
 -   [x] 有自己一套键盘规则
