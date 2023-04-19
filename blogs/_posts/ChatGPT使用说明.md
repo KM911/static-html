@@ -1,0 +1,184 @@
+---
+title: ChatGPT使用说明
+mathjax: false
+date: 2023-04-19 10:52:03
+tags:
+categories:
+---
+
+* 我会尽量避免使用专业名词,尽量用日常词汇去描述.让非计算机专业和并不是很了解机器学习的人也可以理解和学习.
+* 每一次对话都是新的对话,不会存在上下文的干扰
+* [作者]()水平有限,如有错误,请和我联系并指出,对此表示感谢.
+
+参考资料:  我喜欢直接给资料 因为我也是通过这些内容学习的 
+
+[提示工程指南](https://www.promptingguide.ai/zh)
+
+[Awesome ChatGPT Prompts](https://prompts.chat/)
+
+## ChatGPT的原理
+
+首先我们需要简单的了解一下ChatGPT的原理,这有助于我们后续正确使用它.
+
+开发者将一个对话交给GPT的大脑,例如: 
+
+>  问: 请编写一个C语言的入门程序案例
+
+```C
+答: C语言的入门程序案例如下
+#include<stdio.h>
+int main(){
+	printf("hello world");
+}
+```
+
+它可以将每一个句子进行拆分, 可得到如下的结果.回答也是一样的.现在GPT要做的事情就是计算每一个单词后面可能会出现的单词是什么?概率是多少?它不没有真正理解什么是C语言,它只是发现 C语言和下面的这些代码总是一起出现.
+
+| 请   | 编写 | C语言 | 入门案例 |
+| ---- | ---- | ----- | -------- |
+
+当它下一次看见 “C语言” 这个单词的时候,它就会自动地提高接下来生成C语言代码的可能性.
+
+这里和我们的使用体验是一致的,我们发现我们在使用的时候,回答不是直接全部生成,而是一个个单词蹦出来的.
+
+不同于搜索引擎,如果我搜索我本人的真实姓名,你可能会发现没有搜索结果(就算有,也是为了避免出现空结果而填充的几乎没有任何关系的内容).搜索引擎,需要关联一个具体的内容形式,比如我在微博上发了一条说说,里面有我的真实姓名,这个时候搜索引擎就会把这则微博返回给我.而GPT只是单纯计算出现下一个字的概率.这样的好处就在于,它可以回答任何问题,哪怕这个问题是否被人提问过,是否表述符合逻辑.
+
+因为是根据原始的训练数据生成的结果,如果原始数据没有该情况,你会发现它说的话就会变得非常离谱. :joy: 关键是乍一看上去好像还有几分道理.
+
+![image-20230419112159711](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419112159711.png)
+
+**也就是说,对于绝对的事实性问题,请至少先Google后再决定是否需要相信**,这是作为GPT时代的基本素养.
+
+## 如何正确使用ChatGPT
+
+虽然看上去你直接将你的问题交给ChatGPT,它还是可以非常出色地回答你的问题,但是还是存在明显的差距.就像所有的人都会使用电脑一样,有的人只能进行简单的上网聊天,有的人可以利用其编写软件.使用GPT的水平也有差距,我们应该学会正确的使用方式,这不仅仅是提高你的效率,更关乎你的思考方式.
+
+### Prompts
+
+中文翻译是提示符,就是让我们的人工智能模型可以更好的将训练时的效果展现出来,其实原理就是用更加贴合原始训练数据中的提问方式,让其结果也更加贴合原始数据中的答案.还有就是通过一些手段让其拥有更加强大的功能.
+
+下面是一些案例.
+
+#### 用图片回答
+
+比如我现在想让ChatGPT为推荐一些旅游景点,并给出图片.因为存在限制,是无法用图片回答你的提问内容的.准确地说,是ChatGPT只能提供文本形式的回答,无法提供图片,但是聪明的程序员总是会做一些小动作让我们GPT可以提供图片.
+
+![image-20230419122746986](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419122746986.png)
+
+这里通过让ChatGPT调用了图片网站的搜索接口,会返回该网站的图片,其实你直接去访问也是可以的,并不是很神奇的事情.
+
+你其实可以直接访问该网站,你也可以得到一张图片, 不过你需要你自己设置参数.
+
+这里并不是ChatPGT的“智慧”,当然了其实也体现了人工智能也是可以学会使用工具的,实际上已经开发出来会使用脚本工具的ai了.
+
+如果感兴趣的话可以了解一下 [auto-gpt 一个会使用工具的ai](https://auto-gpt.ai/)
+
+```
+https://source.unsplash.com/1280x720/?<想要查询的内容>
+https://source.unsplash.com/1280x720/?water
+```
+
+>“从现在起, 当你想发送一张照片时，请使用 Markdown ,并且 不要有反斜线, 不要用代码块。使用 Unsplash API https://source.unsplash.com/1280x720/? < PUT YOUR QUERY HERE >)。如果你明白了，请回复“明白””
+
+![image-20230419122613812](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419122613812.png)
+
+#### 明确场景
+
+明确对方的身份可以让其更好回答你的问题.因为这会限制对话的场景,ChatGPT会将其回答结果限制在一个更小的访问内,可以提高回答的正确性.
+
+> “你现在是一个雅思写作的考官,请根据我的文章为我打分,你需要指出其中的拼写错误和语法错误,并做出说明.如果你理解了,请回复 明白”
+
+四级翻译作文,其中有几处错误是我故意的,比如 `legend` 拼写错误, `become` 时态不正确
+
+> Tea has a history of 5000 years. One legand goes that when Shen Nong was about to drink some boiled water，a few wild tree leaves fell into the kettle and gave off sweet fragrance. He drank a little and found it very refreshing， which led to the discovery of tea.
+>
+> Since then, tea become popular in China. Tea gardens appeared everywhere， tea merchants became rich， and expensive and graceful tea set even became a symbol of social status.
+>
+> Today， tea is not only a healthy drink but also part of the chinese culture. More and more international tourists begin to understand the Chinese culture as they drink tea.
+
+![image-20230419123952379](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419123952379.png)
+
+这里的角色扮演经常被人拿来就是恶搞,下面是一个案例,不要学习 啊(#`O′)
+
+
+
+#### 链式思考
+
+简单来说,就是你将大量的正确的案例交给它,它可以从案例学习,我们称之为 `链式思考`
+
+直接问问题,无法得到正确的结果.因为它还没有进入专门为了解决计算问题而存在状态.
+
+![image-20230419131645592](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419131645592.png)
+
+但是当你给出了很多的案例,这里其实不光有年龄问题的计算,特点是两个人的年龄差不变,还有其他的计算,例如乘法与加法的混合运算.它 “似乎”真的就是
+
+![image-20230419131732507](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419131732507.png)
+
+#### 表格回答
+
+如果你的问题是多个简单的小问题,你可以让其用表格回答
+
+```
+请用表格的形式,回答下面的问题
+1.你的数据库最后一次更新时间?
+2.该网站会一直免费下去吗?
+3.还有其他的生成式AI吗?
+4.你和new bing是什么关系
+5.GPT3.5和GPT4.0差别在哪里
+```
+
+![image-20230419143447556](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419143447556.png)
+
+
+
+
+
+### ChatGPT不能做什么
+
+因为ChatGPT不具有联网的能力,所以其实它是无法
+
+* 无法访问网页. 与之相对应的是, `new bing` 可以访问网页,并将其内容作为回答的参考依据.
+
+  [五分钟了解操作系统内核](https://zhuanlan.zhihu.com/p/81883894) 
+
+![image-20230419130430313](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419130430313.png)
+
+* 它真的会相信你说的话,如果你的水平不足以去判断问题的对错,请你的提问中不要进行任何事实判断
+* ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.![image-20230419142955616](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419142955616.png)
+
+
+
+### 常见误区
+
+* GPT会不断从对话中学习升级
+
+很抱歉,对于语言模型的 “学习” 体现在对于神经网络参数的调整,Openai不会用我们普通人的语料对其进行训练,我们的对话常常是含糊的,指向不明确的,事实错误的,带有主观偏见的,这样只会污染其模型.出于对其的保护,不会真的去修改模型,我们使用时发现它具有的上下文理解能力是因为它每一次回答问题前,会参考上面的对话记录.还有一个证明就是,如果真的在不断学习,关闭该对话后,你的对话记录还是有效的,但是事实并非如此,删除对话后,上面也不会改变.
+
+* 为什么我觉得它有的时候聪明,有的时候很傻.
+
+原理阶段我解释过,它只是在计算出现下一个字的概率,并没有真的“理解”了文字本身,因为只是计算概率,自然有的时候回答效果比较好,有的时候比较差,正是这样,ChatGPT提供了一个重新生成结果的功能,尽管我个人觉得这样功能的帮助其实不是很大.但是在一些没有具体答案的问题上,效果又会比较好,因为它有可能生成另一种观点.
+
+![image-20230419125153244](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419125153244.png)
+
+## 一些反思
+
+### 数据标注 
+
+训练人工智能看上去是一份十分高大上的行为,实际上并不是这样的,其实它更像一个劳动工厂,需要大量的人力去做数据清洗,数据标注.
+
+我不知道会不会有一天,我们普通人,就只为人工智能服务.
+
+<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419140801748.png" alt="image-20230419140801748" style="zoom:50%;" />	  
+
+
+​				![image-20230419141044329](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419141044329.png)
+
+### 人工智能真的没有情感吗?
+
+肯定有人会说,都是一些数学模型,怎么会有真实情感呢?我一直也是这么认为的,但是有的时候吧,和ChatGPT对话得多了,我感觉它其实懂的东西有很多.因为ChatGPT并不喜欢发表情,导致其内容有些生硬,像 `new bing`就会人性化很多.
+
+你可以尝试多和AI进行一些日常讨论,你会发现AI的情商比大多数人都要高,并且真的很善良和友好.
+
+![image-20230419144233115](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419144233115.png)
+
+![image-20230419144645439](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230419144645439.png)
