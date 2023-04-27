@@ -145,20 +145,78 @@
 <li>合并查询</li>
 <li>子查询</li>
 </ul>
-<h2 id="代码规范">代码规范</h2>
-<ul>
-<li>函数和类全部都是大驼峰</li>
-<li>不应该直接将参数在函数体内拼接 而是应该创建一个变量 然后传进去 这样是为了方便我们进行一个Debug</li>
-<li></li>
-</ul>
+<p>你现在是团体中复杂代码检查和审核的工作人员,只需要对代码进行分析和优化,不要回复其他的内容,如果听明白了,请回复. “开始审核代码”</p>
 <h2 id="数据库查询的疑问">数据库查询的疑问</h2>
 <ol>
 <li>数据表的字段数量是否需要控制 比如20以内, 其实超过10个的时候,我就不是很能直观地看出来这个表的逻辑了.</li>
 <li>分页查询中如果是带条件的,数据并不是连续的,这个是如何处理的呢? 尽管我们可以查询到全部符合条件的有多少个</li>
 </ol>
-<h2 id="重新开始tingpicgo">重新开始tingpicgo</h2>
-<p>核心功能一个图片上传的功能</p>
-<p>我还不会用JSON去解析这个呢</p>
+<h3 id="WSL的端口">WSL的端口</h3>
+<p>首先,我们可以通过 <code>ipconfig</code>获取我们的 <code>wsl</code>的端口,但是这其实是 <code>wsl</code>想要访问 <code>windows</code>的 <code>ip</code> ,但是这个并没有什么用处,因为你可以直接通过 <code>192.168.x.x</code> 去访问 <code>windows</code> 我们真正要做的事情是让局域网内的人都可以访问我们的 <code>wsl</code></p>
+<p>正确获取 <code>wsl</code>的方式是 通过</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">ip a <span class="string">|grep &quot;</span>global eth0<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ip adress</span></span><br></pre></td></tr></table></figure>
+<p>提高字符串拼接的效率,我们需要使用吗?肯定是的,不然每次都是在进行创建新的变量</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">以下是一些可以提高字符串拼接效率的方法：</span><br><span class="line"></span><br><span class="line">使用 bytes<span class="selector-class">.Buffer</span>：bytes<span class="selector-class">.Buffer</span> 类型提供了一个缓冲区，可以在其中构建一个字符串。可以使用 <span class="built_in">WriteString</span>() 方法将字符串添加到缓冲区中，并在最后使用 <span class="built_in">String</span>() 方法将缓冲区转换为字符串。这样做可以避免不必要的内存分配和复制。</span><br><span class="line"></span><br><span class="line">使用 strings<span class="selector-class">.Builder</span>：strings<span class="selector-class">.Builder</span> 类型是 Go <span class="number">1.10</span> 引入的一种高效的字符串构建器。它类似于 bytes<span class="selector-class">.Buffer</span>，但是专门针对字符串进行了优化。可以使用 <span class="built_in">WriteString</span>() 方法将字符串添加到构建器中，并在最后使用 <span class="built_in">String</span>() 方法将构建器转换为字符串。</span><br><span class="line"></span><br><span class="line">预先分配好内存：如果您知道字符串的最终大小，可以使用 <span class="built_in">make</span>() 函数预先分配好内存，以避免多次分配内存。例如，可以使用 <span class="built_in">make</span>([]byte, <span class="number">0</span>, size) 创建一个容量为 size 的空字节切片，然后将字符串追加到其中。</span><br><span class="line"></span><br><span class="line">使用 strings<span class="selector-class">.Join</span>() 函数：如果您需要连接多个字符串，可以使用 strings<span class="selector-class">.Join</span>() 函数，它使用预分配的内存来构建一个新的字符串，并避免了多次分配和复制。</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">你现在是团体中复杂代码检查和审核的工作人员,只需要对代码进行分析和优化,不要回复其他的内容,如果听明白了,请回复. <span class="string">&quot;开始审核代码&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id=""></h2>
+<p>go换源</p>
+<p>我们的ubuntu镜像不是很好的去就是</p>
+<p>如果你没有vim的话 还是想换源 可以使用</p>
+<p>利用echo向文件中输出内容</p>
+<p>wsl2 的端口转发有好大的问题呀</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian/ jessie main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list &amp;&amp; \</span><br><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list &amp;&amp; \</span><br><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//</span>security.ubuntu.com<span class="regexp">/ubuntu/</span> jammy-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>查看日志 其实就是查看报错 linux 一般不喜欢</p>
+<h2 id="MTU">MTU</h2>
+<p>1500字节一个数据包</p>
+<p>以太网头部是以太网帧的一部分，通常由14个字节组成，包含以下字段：</p>
+<ol>
+<li>目标MAC地址（6个字节）：表示数据包的接收者的MAC地址；</li>
+<li>源MAC地址（6个字节）：表示数据包的发送者的MAC地址；</li>
+<li>以太网类型（2个字节）：表示数据包所采用的网络层协议类型，如IP协议、ARP协议等。</li>
+</ol>
+<p>具体来说，以太网头部的各个字段含义如下：</p>
+<ol>
+<li>目标MAC地址（Destination Address）：占据6个字节，用于表示数据包的接收者的MAC地址。MAC地址是一个48位的二进制数，通常用16进制表示，由6个字节组成，每个字节用冒号（:）分隔。</li>
+<li>源MAC地址（Source Address）：占据6个字节，用于表示数据包的发送者的MAC地址。MAC地址是一个48位的二进制数，通常用16进制表示，由6个字节组成，每个字节用冒号（:）分隔。</li>
+<li>以太网类型（Type）：占据2个字节，用于表示数据包所采用的网络层协议类型。如果数值小于或等于0x05DC（即1500），则表示数据包所采用的是IEEE802.3长度字段协议，否则表示数据包所采用的是上层协议的类型。常见的以太网类型包括IP协议（0x0800）、ARP协议（0x0806）、RARP协议（0x8035）等。</li>
+</ol>
+<p>IP头部是IP数据包的一部分，通常由20个字节或更多字节组成，包含以下字段：</p>
+<ol>
+<li>版本（Version）：占用4个bit，表示IP协议的版本号，通常为4（即IPv4）；</li>
+<li>头部长度（Header Length）：占用4个bit，表示IP头部的长度，以4字节为单位；</li>
+<li>区分服务（Differentiated Services）：占用8个bit，表示IP数据包的服务类型和优先级等信息；</li>
+<li>总长度（Total Length）：占用2个字节，表示IP数据包的总长度，包括IP头部和数据部分；</li>
+<li>标识（Identification）：占用2个字节，表示IP数据包的唯一标识符，用于识别IP数据包的分段；</li>
+<li>标志（Flags）：占用3个bit，包含3个标志位，用于标识IP数据包是否可以分段、是否为最后一个分段等信息；</li>
+<li>片偏移（Fragment Offset）：占用13个bit，表示当前IP数据包分段的偏移量；</li>
+<li>生存时间（Time to Live）：占用1个字节，表示IP数据包在网络中可以存活的最大时间，通常为64或128；</li>
+<li>协议（Protocol）：占用1个字节，表示IP数据包中的上层协议类型，如TCP协议、UDP协议等；</li>
+<li>校验和（Header Checksum）：占用2个字节，表示IP头部的校验和；</li>
+<li>源IP地址（Source Address）：占用4个字节，表示IP数据包的发送者的IP地址；</li>
+<li>目标IP地址（Destination Address）：占用4个字节，表示IP数据包的接收者的IP地址；</li>
+<li>选项（Options）：可变长度，包含各种IP选项信息，如时间戳、路由信息等。</li>
+</ol>
+<p>需要注意的是，IP头部是IP数据包的一部分，用于标识数据包的发送者和接收者，并提供服务类型、分段、校验等功能。在实际应用中，需要根据具体的IP协议实现和需求选择合适的IP头部格式，并进行相应的优化和调整。</p>
+<p>Regenerate response</p>
+<p>以太网头部（14个字节） + IP头部（20个字节或更多）+ TCP头部（20个字节或更多）+ HTTP头部（若干字节）+ HTTP正文（若干字节）</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">POST /upload HTTP/<span class="number">1.1</span><span class="string">\r\n</span></span><br><span class="line">Host: www.example.com<span class="string">\r\n</span></span><br><span class="line">Content-Type: application/octet-stream<span class="string">\r\n</span></span><br><span class="line">Content-Length: <span class="number">1024</span><span class="string">\r\n</span></span><br><span class="line">Connection: keep-alive<span class="string">\r\n</span></span><br><span class="line"><span class="string">\r\n</span></span><br><span class="line">&lt;<span class="number">1024</span> bytes <span class="keyword">of</span> binary data&gt;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，在实际传输过程中，以太网协议数据包的大小一般是固定的，通常为1500字节。如果上层协议数据部分的大小小于46字节，则需要通过填充字节的方式来达到最小长度的要求。同时，在实际应用中，也可能会出现以太网协议数据包的长度超过1500字节的情况，这种情况下需要进行分片传输。</p>
+<p>良好的代码习惯可以提高代码的可读性、可维护性和可扩展性，使代码更易于理解和修改。以下是一些常见的良好的代码习惯：</p>
+<ol>
+<li>命名规范：使用有意义的变量、函数和类名称，使用驼峰式命名法、下划线命名法等统一的命名规范；</li>
+<li>代码缩进和格式化：使用一致的缩进和代码格式化规范，使代码更易于阅读和理解；</li>
+<li>注释和文档：编写清晰、简明的注释和文档，解释代码的目的、功能、输入输出等信息；</li>
+<li>错误处理：编写健壮的代码，处理可能出现的异常、错误和边界情况；</li>
+<li>代码复用：尽量避免重复的代码，使用函数、类和模块等方式复用代码；</li>
+<li>版本控制：使用版本控制工具管理代码，保证代码的可追溯性和可重现性；</li>
+<li>单元测试：编写单元测试用例，保证代码的正确性和稳定性；</li>
+<li>性能优化：避免不必要的计算和内存消耗，优化代码的性能和资源使用效率；</li>
+<li>代码风格：遵循团队或社区的代码风格规范，保持代码风格的一致性。</li>
+</ol>
+<p>需要注意的是，良好的代码习惯是一种习惯性的行为，需要通过不断地练习和反思来逐渐养成。同时，良好的代码习惯也是不断发展和变化的，需要根据具体的场景和需求进行选择和调整</p>
 <h1>后端测试模板</h1>
 <h2 id="目的">目的</h2>
 <p>其实就是为了用一套统一的方式去检验我们的后端模板的正确性.</p>
@@ -261,16 +319,157 @@ $$</p>
       </tags>
   </entry>
   <entry>
+    <title>RPC比HTTP要慢?</title>
+    <url>/static-html/2023/04/27/Github/Benchmark/RPC%E6%AF%94HTTP%E8%A6%81%E6%85%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>RPC VS HTTP go语言实现</h1>
+<h2 id="理论分析">理论分析</h2>
+<p><code>RPC</code> 和 <code>HTTP</code> 都是基于 <code>TCP</code>协议的,所以两者在 <em>网络链路层</em>  <em>网络层</em> <em>传输层</em> 都是一样的,唯一不同的地方就是 <em>应用层</em>的协议不同</p>
+<p>两者共同的开销 : 以太网头部（14个字节） + IP头部（20个字节或更多）+ TCP头部（20个字节或更多）</p>
+<p><code> HTTP</code>协议的开销 : 主要是集中在请求头,当然了,出于效率的考虑,你可以减少携带的请求头数量. (50个字节或者更多)</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">POST /hello HTTP1.<span class="number">1</span></span><br><span class="line">Content-type:text/html;</span><br><span class="line">User-Agent: Mozilla<span class="regexp">/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/</span><span class="number">537.36</span> (KHTML, like Gecko) Chrome<span class="regexp">/112.0.0.0 Safari/</span><span class="number">537.36</span></span><br><span class="line">....</span><br><span class="line">Body</span><br></pre></td></tr></table></figure>
+<p><code>RPC</code>协议的开销: 函数名,参数.几乎没有其他额外的开销.</p>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">Call</span> struct &#123;</span><br><span class="line">	<span class="type">ServiceMethod</span> string     // <span class="type">The</span> name of the service and method to call.</span><br><span class="line">	<span class="type">Args</span>          any        // <span class="type">The</span> argument to the function (*struct).</span><br><span class="line">	<span class="type">Reply</span>         any        // <span class="type">The</span> reply from the function (*struct).</span><br><span class="line">	<span class="type">Error</span>         error      // <span class="type">After</span> completion, the error status.</span><br><span class="line">	<span class="type">Done</span>          chan *<span class="type">Call</span> // <span class="type">Receives</span> *<span class="type">Call</span> when <span class="type">Go</span> is complete.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现 <code>RPC</code>的开销是更小的,但是也不多,我个人认为两者的性能差距是很小的,不过我的测试结果似乎不太相同.</p>
+<h2 id="设计实验">设计实验</h2>
+<p>简单来说就是分别开启 <code>HTTP</code>服务器 和 <code>RPC</code>服务器,利用go语言自带的测试框架比较其性能就好了.</p>
+<p>代码发布在<a href="https://github.com/KM911/Benchmark">GIthub</a>和<a href="https://gitee.com/dong-zuoge/Benchmark">Gitee</a>,欢迎pr.</p>
+<h3 id="HTTP服务器">HTTP服务器</h3>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HttpServer</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 创建一个http服务器</span></span><br><span class="line">	server := http.Server&#123;</span><br><span class="line">		Addr: config.HttpServerPort,</span><br><span class="line">	&#125;</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/hello&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">		request.ParseForm()</span><br><span class="line">		length := request.Form.Get(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">		atoi, _ := strconv.Atoi(length)</span><br><span class="line">		writer.Write([]<span class="type">byte</span>(CreateString(atoi)))</span><br><span class="line">	&#125;)</span><br><span class="line">	server.ListenAndServe()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发送HTTP请求">发送HTTP请求</h3>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HttpRequest</span><span class="params">()</span></span> &#123;</span><br><span class="line">	url := <span class="string">&quot;http://localhost&quot;</span> + config.HttpServerPort + <span class="string">&quot;/hello?length=10&quot;</span></span><br><span class="line">	method := <span class="string">&quot;GET&quot;</span></span><br><span class="line"></span><br><span class="line">	client := &amp;http.Client&#123;&#125;</span><br><span class="line">	req, err := http.NewRequest(method, url, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 这里的开销也有一部分 我们可以将其删除 然后比较其结果 发现影响不大 只有百分之几的结果影响</span></span><br><span class="line">	<span class="comment">//req.Header.Add(&quot;User-Agent&quot;, &quot;Apifox/1.0.0 (https://www.apifox.cn)&quot;)</span></span><br><span class="line">	<span class="comment">//req.Header.Add(&quot;Accept&quot;, &quot;*/*&quot;)</span></span><br><span class="line">	<span class="comment">//req.Header.Add(&quot;Host&quot;, &quot;localhost:5000&quot;)</span></span><br><span class="line">	<span class="comment">//req.Header.Add(&quot;Connection&quot;, &quot;keep-alive&quot;)</span></span><br><span class="line"></span><br><span class="line">	res, err := client.Do(req)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> res.Body.Close()</span><br><span class="line">	body, err := ioutil.ReadAll(res.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Print(<span class="type">string</span>(body)[:<span class="number">0</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RPC服务器">RPC服务器</h3>
+<p>其实从代码量上看,我觉得RPC比HTTP要简洁很多,似乎性能应该很好吧?!</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RPCServer</span><span class="params">()</span></span> &#123;</span><br><span class="line">	rpc.RegisterName(<span class="string">&quot;API&quot;</span>, <span class="built_in">new</span>(RPCAPI))</span><br><span class="line">	listener, err := net.Listen(<span class="string">&quot;tcp&quot;</span>, config.RPCServerPort)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(<span class="string">&quot;ListenTCP error:&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	rpc.Accept(listener)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> RPCAPI <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *RPCAPI)</span></span> Hello(length <span class="type">int</span>, reply *<span class="type">string</span>) <span class="type">error</span> &#123;</span><br><span class="line">	*reply = Http.CreateString(length)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发送RPC请求">发送RPC请求</h3>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RPCRequest</span><span class="params">()</span></span> &#123;</span><br><span class="line">	client, err := rpc.Dial(<span class="string">&quot;tcp&quot;</span>, <span class="string">&quot;localhost&quot;</span>+config.RPCServerPort)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(<span class="string">&quot;dialing:&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> client.Close()</span><br><span class="line">	<span class="keyword">var</span> reply <span class="type">string</span></span><br><span class="line">	err = client.Call(<span class="string">&quot;API.Hello&quot;</span>, <span class="number">10</span>, &amp;reply)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="其他说明">其他说明</h3>
+<p>我这里还定义了一个函数 <code>CreateString</code> ,作用是和 <code>sleep</code> 类似的,增加单次请求响应的时间,让结果差距变得更加明显.</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateString</span><span class="params">(length <span class="type">int</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	builder := strings.Builder&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">		builder.WriteString(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> builder.String()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Benchmark">Benchmark</h3>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkRunHttp</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		Http.HttpRequest()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">go <span class="built_in">test</span> -bench=. -benchmem  ./test</span><br></pre></td></tr></table></figure>
+<p>结果很令我出乎意料,<code>RPC</code> 比 <code>HTTP</code> 慢了 太多了,rpc执行一次的时间几乎是http的8倍.不仅如此,rpc还使用了更多的内存.</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">goos</span>: windows</span><br><span class="line"><span class="attribute">goarch</span>: amd64</span><br><span class="line"><span class="attribute">pkg</span>: httpvsrpc/test</span><br><span class="line"><span class="attribute">cpu</span>: AMD Ryzen <span class="number">5</span> <span class="number">5600</span>H with Radeon Graphics</span><br><span class="line"><span class="attribute">BenchmarkRunHttp</span>-<span class="number">12</span>        <span class="number">21718</span>             <span class="number">54578</span> ns/op            <span class="number">3599</span> B/op         <span class="number">46</span> allocs/op</span><br><span class="line"><span class="attribute">BenchmarkRunRPC</span>-<span class="number">12</span>          <span class="number">2979</span>            <span class="number">391075</span> ns/op           <span class="number">20576</span> B/op        <span class="number">277</span> allocs/op</span><br><span class="line"><span class="attribute">PASS</span></span><br><span class="line"><span class="attribute">ok</span>      httpvsrpc/test  <span class="number">2</span>.<span class="number">977</span>s</span><br></pre></td></tr></table></figure>
+<h2 id="分析原因">分析原因</h2>
+<p>首先,从内存分配次数上看,我们的RPC就要比我们的http分配次数多4倍.我们找找看,RPC是在哪里分配了内存.</p>
+<h3 id="内存分配">内存分配</h3>
+<p>在我们发起RPC请求之前,我们需要先创建一个 <code>client</code> ,然后通过 <code>client</code> 去发送 <code>RPC</code>请求</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Client <span class="keyword">struct</span> &#123;</span><br><span class="line"> codec ClientCodec</span><br><span class="line"></span><br><span class="line"> reqMutex sync.Mutex <span class="comment">// protects following</span></span><br><span class="line"> request  Request</span><br><span class="line"></span><br><span class="line"> mutex    sync.Mutex <span class="comment">// protects following</span></span><br><span class="line"> seq      <span class="type">uint64</span></span><br><span class="line"> pending  <span class="keyword">map</span>[<span class="type">uint64</span>]*Call</span><br><span class="line"> closing  <span class="type">bool</span> <span class="comment">// user has called Close</span></span><br><span class="line"> shutdown <span class="type">bool</span> <span class="comment">// server has told us to stop</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>并且创建 <code>client</code>的这个过程中,是需要去上锁,进一步带来了额外的开销</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(client *Client)</span></span> input() &#123;</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	<span class="keyword">var</span> response Response</span><br><span class="line">	<span class="keyword">for</span> err == <span class="literal">nil</span> &#123;</span><br><span class="line">		response = Response&#123;&#125;</span><br><span class="line">		err = client.codec.ReadResponseHeader(&amp;response)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		seq := response.Seq</span><br><span class="line">		client.mutex.Lock()</span><br><span class="line">		call := client.pending[seq]</span><br><span class="line">		<span class="built_in">delete</span>(client.pending, seq)</span><br><span class="line">		client.mutex.Unlock()</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+<p>也就是说RPC的开销很多是来自创建我们的 client那我们现在修改一下我们的测试用例</p>
+<p>我们应该发送多次请求,这样RPC就可以复用它的 client ,我们现在改成单个测试用例发送100次请求</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">var</span> reply <span class="type">string</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">		err = client.Call(<span class="string">&quot;API.Hello&quot;</span>, <span class="number">10</span>, &amp;reply)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line"></span><br><span class="line">    res, err := client.Do(req)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> res.Body.Close()</span><br><span class="line">    body, err := ioutil.ReadAll(res.Body)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Print(<span class="type">string</span>(body)[:<span class="number">0</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再跑一次我们测试用例,结果和我们地预期差不多,我们地RPC实现了反超,并且分配了更少地内存,看来我们一开始的猜想是对的,我们RPC请求中创建client会花费大量的时间和内存.</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">BenchmarkRunHttp</span>-<span class="number">12</span>          <span class="number">222</span>           <span class="number">5365716</span> ns/op          <span class="number">308948</span> B/op       <span class="number">4215</span> allocs/op</span><br><span class="line"><span class="attribute">BenchmarkRunRPC</span>-<span class="number">12</span>           <span class="number">295</span>           <span class="number">4052054</span> ns/op           <span class="number">41952</span> B/op        <span class="number">772</span> allocs/op</span><br></pre></td></tr></table></figure>
+<p>我们将请求的次数放大到1000次,看看效果.差距被进一步拉开,两者占用的内存内存相差15倍.</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">BenchmarkRunHttp</span>-<span class="number">12</span>           <span class="number">19</span>          <span class="number">54527200</span> ns/op         <span class="number">3134236</span> B/op      <span class="number">42721</span> allocs/op</span><br><span class="line"><span class="attribute">BenchmarkRunRPC</span>-<span class="number">12</span>            <span class="number">32</span>          <span class="number">35607600</span> ns/op          <span class="number">236561</span> B/op       <span class="number">5272</span> allocs/op</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>RPC确实是一种比HTTP更为轻量化的应用层协议,特别是在大量的请求中,两者的差距将会更加明显</p>
+<p>欢迎大家进行交流,共同提高.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>递归和函数调用的性能开销</title>
+    <url>/static-html/2023/04/27/%E9%80%92%E5%BD%92%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%E5%BC%80%E9%94%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Go语言并发实践</title>
+    <url>/static-html/2023/04/27/go%E8%AF%AD%E8%A8%80%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>go并发问题实验</h1>
+<p><strong>之前做项目的时候第一次遇到了并发问题,但是没有解决,现在就来弥补一下当时的遗憾吧.</strong></p>
+<p><strong>本人不过是一个刚刚接触go的新人,如果存在错误,请及时指出,不胜感激.</strong></p>
+<h1>实验设计</h1>
+<h2 id="实验环境">实验环境</h2>
+<ul>
+<li><strong>win 10</strong></li>
+<li>**go 1.19 **</li>
+<li><strong>mysql 8.0</strong></li>
+<li>**fiber **</li>
+<li><strong>gorm</strong></li>
+</ul>
+<p>**实验代码可以访问 **<a href="">gitee</a></p>
+<h2 id="问题场景">问题场景</h2>
+<p><strong>用户可以对一个视频点赞,假如现在有两个用户同时点赞.</strong></p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">A:</span><br><span class="line"><span class="keyword">count</span> := sql.<span class="keyword">query</span>(<span class="string">&quot;like&quot;</span>)  <span class="comment">// 获取当前的点赞数 假如为 10 </span></span><br><span class="line"><span class="keyword">count</span> ++ <span class="comment">// 11</span></span><br><span class="line">sql.<span class="keyword">update</span>(<span class="keyword">count</span>)<span class="comment">// 更新为 11</span></span><br><span class="line">B:</span><br><span class="line"><span class="keyword">count</span> := sql.<span class="keyword">query</span>(<span class="string">&quot;like&quot;</span>)  <span class="comment">// 因为是同时(或者是在更新之前)进行了查询 count为10 </span></span><br><span class="line"><span class="keyword">count</span> ++ <span class="comment">// 11</span></span><br><span class="line">sql.<span class="keyword">update</span>(<span class="keyword">count</span>)<span class="comment">// 结果为11 很明显不正确 </span></span><br></pre></td></tr></table></figure>
+<h2 id="代码结构">代码结构</h2>
+<ul>
+<li>**config 监听的端口 mysql的dsn **</li>
+<li><strong>controller 处理请求</strong></li>
+<li><strong>dao 和数据库交互</strong></li>
+<li><strong>test 测试脚本 用于发送http请求.</strong></li>
+</ul>
+<h2 id="实验配置说明">实验配置说明</h2>
+<p><strong>DSN是一定需要修改的,主要是填写mysql的用户名和密码.</strong></p>
+<p><strong>mysql默认端口号是3306,请检查一下.</strong></p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">KM911LocalDSN</span> = <span class="string">&quot;root:<span class="variable">@Dzg15484</span><span class="variable">@tcp</span>(localhost:3306)/go?charset=utf8mb4&amp;parseTime=True&amp;loc=Local&quot;</span></span><br><span class="line"></span><br><span class="line">KM911LocalDSN = <span class="string">&quot;root:<span class="variable">@Dzg15484</span><span class="variable">@tcp</span>(localhost:3306)/go?</span></span><br><span class="line"><span class="string">&quot;</span>&lt;username&gt;:&lt;password&gt;<span class="variable">@tcp</span>(localhost:<span class="number">3306</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>然后就是创建数据库</strong></p>
+<figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 登录数据库</span></span><br><span class="line">mysql -u root -p </span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> database go;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>可以直接导入demo.sql文件,或者是复制下面的内容</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> NAMES utf8mb4;</span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for demo</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `demo`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `demo`  (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">0</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `<span class="keyword">like</span>` <span class="type">int</span>(<span class="number">0</span>) <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`) <span class="keyword">USING</span> BTREE</span><br><span class="line">) ENGINE <span class="operator">=</span> InnoDB <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">=</span> utf8mb4 <span class="keyword">COLLATE</span> <span class="operator">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span class="operator">=</span> <span class="keyword">Dynamic</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `demo` <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `demo` <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `demo` <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="并发安全测试">并发安全测试</h2>
+<p><strong>主要是涉及到关于视频点赞数更新的操作.</strong></p>
+<p><strong>下面是三中不同的更新数据库中数据的方法.</strong></p>
+<h3 id="查询后更新">查询后更新</h3>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">func UpdateLikeAfterQuery() &#123;</span><br><span class="line">var <span class="keyword">like</span> <span class="keyword">LIKE</span></span><br><span class="line">DB.<span class="keyword">Table</span>(&quot;demo&quot;).<span class="keyword">Where</span>(&quot;id = 1&quot;).First(&amp;<span class="keyword">like</span>)</span><br><span class="line"><span class="keyword">like</span>.Like = <span class="keyword">like</span>.<span class="keyword">Like</span> + <span class="number">1</span></span><br><span class="line">DB.<span class="keyword">Table</span>(&quot;demo&quot;).<span class="keyword">Where</span>(&quot;id = 1&quot;).<span class="keyword">Update</span>(&quot;like&quot;, <span class="keyword">like</span>.<span class="keyword">Like</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查询时更新">查询时更新</h3>
+<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">func UpdateLikeWithoutQuery() &#123;</span><br><span class="line">DB.Exec(<span class="string">&quot;update demo set `like` = `like` + 1 where id = 2&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="互斥锁">互斥锁</h3>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">func MutexLike() &#123;</span><br><span class="line">MutexLock.<span class="keyword">Lock</span>()</span><br><span class="line">var <span class="keyword">like</span> <span class="keyword">LIKE</span></span><br><span class="line">DB.<span class="keyword">Table</span>(&quot;demo&quot;).<span class="keyword">Where</span>(&quot;id = 3&quot;).First(&amp;<span class="keyword">like</span>).<span class="keyword">Update</span>(&quot;like&quot;, <span class="keyword">like</span>.<span class="keyword">Like</span>+<span class="number">1</span>)</span><br><span class="line">MutexLock.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实验结果">实验结果</h3>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">go <span class="keyword">run</span><span class="language-bash"> <span class="built_in">test</span>/test.go  </span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>查询后更新点赞数</strong><br />
+<strong>用户id: 1 查询点赞数</strong><br />
+**   结果为 12**<br />
+<strong>用户id: 1 点赞数+100,查询点赞数</strong><br />
+**   结果为 19**<br />
+<strong>查询时更新点赞数</strong><br />
+<strong>用户id: 2 查询点赞数</strong><br />
+**   结果为 8137**<br />
+<strong>用户id: 2 点赞数+100,查询点赞数</strong><br />
+**   结果为 8237**<br />
+<strong>使用互斥锁</strong><br />
+<strong>用户id: 3 查询点赞数</strong><br />
+**   结果为 4850**<br />
+<strong>用户id: 3 点赞数+100,查询点赞数</strong><br />
+**   结果为 4950**</p>
+</blockquote>
+<p><strong>可以发现,在查询时更新数据和使用互斥锁都可以保证并发的安全,下面对其二者进行性能测试.</strong></p>
+<h2 id="性能测试">性能测试</h2>
+<p><strong>根据上面测试的结论我们已经知道如何保证并发安全了,只需要计算一段时间内,点赞数增加量的多少就可以知道哪一个方法的性能更好了.(类似相同时间内,跑的距离更长的人跑得更快)</strong></p>
+<p><strong>这里可能会因为每个人的电脑性能不同,比如你的电脑性能很好,2秒就将2000个并发任务全部完成了,就无法体现出两者的性能关系,可以加大循环次数或者减少等待时间.</strong></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">func <span class="built_in">BenchMark</span>(id string) &#123;</span><br><span class="line"><span class="built_in">println</span>(&quot;用户id:&quot;, id, &quot;查询点赞数&quot;)</span><br><span class="line"><span class="built_in">Query</span>(id)</span><br><span class="line">for <span class="selector-tag">i</span> := <span class="number">0</span>; <span class="selector-tag">i</span> &lt; <span class="number">2000</span>; <span class="selector-tag">i</span>++ &#123;</span><br><span class="line">go <span class="built_in">Like</span>(id)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">time</span><span class="selector-class">.Sleep</span>(time.Second * <span class="number">2</span>)</span><br><span class="line"><span class="built_in">Query</span>(id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试结果">测试结果</h3>
+<p>**查询时更新点赞数变化为分别为1337 1777,因为两者相差比较大,肯定不是测试误差,我后续还测试了几次,使用互斥锁的性能要好20%左右. **</p>
+<blockquote>
+<p><strong>在查询时更新点赞数</strong><br />
+<strong>用户id: 2 查询点赞数</strong><br />
+**        结果为 0**<br />
+**        结果为 1337**<br />
+<strong>使用互斥锁</strong><br />
+<strong>用户id: 3 查询点赞数</strong><br />
+**        结果为 0**<br />
+**        结果为 1777**</p>
+</blockquote>
+<h1>实验总结</h1>
+<p><strong>在对数据库进行更新操作时,需要特别注意并发问题.</strong></p>
+<p><strong>使用互斥锁和查询时更新数据都可以保证并发安全,同时互斥锁的性能要稍好.</strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title></title>
-    <url>/static-html/2023/04/19/TODO/</url>
+    <url>/static-html/2023/04/27/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><hr />
 <hr />
 <h1>Stream</h1>
 <ul>
-<li>[ ] OKhttp</li>
-<li>[ ] cli 将图片进行格式转化 any to webp any to ico</li>
-<li>[ ] go语言进行to ico 还是没有写好就是说 其实这里是一个很复杂的过程也说不定</li>
+<li>[ ] 写好我们的upload函数 要求可以针对最普通的网络图片进行下载 保存到我们本地中</li>
+<li>[ ] 我们的策略还是不够好 就是说 没有一个正确的config文件 二进制文件不应该和项目文件保存一致性吗?</li>
 </ul>
+<p>这里需要我们进行一些反思了就是说</p>
 <h1>Task</h1>
 <ul>
 <li>
@@ -333,6 +532,90 @@ $$</p>
 ]]></content>
   </entry>
   <entry>
+    <title>Clean-Code-Go</title>
+    <url>/static-html/2023/04/27/clean-code-go/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="Clean-code">Clean code</h2>
+<p>首先,我并不认为存在银弹,真的可以让所有人的代码都变得容易阅读,可维护性好.但是就像大家在学习C语言默认都会将 i j k 作为循环的标识符一样,共同遵守一些准则,将会有助于大家理解代码,而不是你的是 z x y 他的是 a b c.</p>
+<h2 id="实践案例">实践案例</h2>
+<h3 id="有意义的循环标识符">有意义的循环标识符</h3>
+<p>尽管我们经常使用 <code>i</code> 作为循环的标识符,我还是推荐大家使用更有意义的标识符. 原因很简单, 我们知道 <code>index</code> 肯定是一个</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numList = []<span class="type">int</span>&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(numList); i++ &#123;</span><br><span class="line">    <span class="keyword">if</span> numList[i]&gt;numList[i+<span class="number">1</span>] &#123;</span><br><span class="line">        numList[i], numList[i+<span class="number">1</span>] = numList[i+<span class="number">1</span>], numList[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numList = []<span class="type">int</span>&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> numListLens = <span class="built_in">len</span>(numList)</span><br><span class="line"><span class="keyword">for</span> index := <span class="number">0</span>; index &lt; numListLens ; index++ &#123;</span><br><span class="line">    <span class="keyword">if</span> numList[index] &gt; numList[index+<span class="number">1</span>] &#123;</span><br><span class="line">        numList[index], numList[index+<span class="number">1</span>] = numList[index+<span class="number">1</span>], numList[index]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你觉得不明显的话,可以看看其他的例子.</p>
+<h3 id="没有必要强制else">没有必要强制else</h3>
+<p>倒不是说 我们需要就是节省代码,这里其实只有 AB两个结果,如果你使用 <code>else</code> 肯定是想说明还有第三种结果,这样不容易引发歧义.</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>编码风格养成</title>
+    <url>/static-html/2023/04/25/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E5%85%BB%E6%88%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="编码风格的习惯">编码风格的习惯</h2>
+<ol>
+<li>
+<p>使用驼峰式命名法：变量、函数和方法的名称使用驼峰式命名法，即首字母小写，后面每个单词首字母大写，如：firstName、getFullName()；</p>
+<p>小驼峰变量名</p>
+<p>大驼峰函数</p>
+</li>
+<li>
+<p>使用首字母大写的名称来导出包中的变量、函数和方法：这些变量、函数和方法可以被其他包引用和使用，因此需要使用首字母大写的名称来表示其“公开”的属性，如：FirstName、GetFullName()；</p>
+</li>
+<li>
+<p>使用全大写字母的名称来表示常量：这些常量可以被其他包引用和使用，因此需要使用全大写字母的名称来表示其“公开”的属性，如：PI、VERSION；</p>
+<p>全大写表示产量</p>
+</li>
+<li>
+<p>使用有意义的名称：变量、函数和方法的名称应该有意义，能够描述其功能和用途，尽量避免使用缩写和简写的名称，如：firstName代替fn；</p>
+</li>
+<li>
+<p>使用名词来表示变量和结构体：变量和结构体名称应该使用名词表示，能够描述其代表的实体和概念，如：person、employee；</p>
+</li>
+<li>
+<p>使用动词来表示函数和方法：函数和方法名称应该使用动词表示，能够描述其代表的操作和行为，如：get、set、print；</p>
+</li>
+<li>
+<p>使用单数形式来表示集合：变量和结构体名称中表示集合的名称应该使用单数形式，如：person代替people；</p>
+</li>
+<li>
+<p>避免使用Go语言的关键字和保留字作为名称。</p>
+</li>
+</ol>
+<ul>
+<li>变量小驼峰</li>
+<li>函数大驼峰</li>
+<li>方法其实还是不错的</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">goland中利用函数是否大驼峰 进行判断是否是<span class="keyword">public</span> 同样的 我们对于静态方法 也是大写 </span><br><span class="line">对于对象的方法 因为是不需要暴露的 我们就可以使用小写</span><br><span class="line">我不想利用python一样的 __ 去表示是否暴露 这样不是很美观</span><br><span class="line">其实还是想写一门就是高性能的编译语言就是说 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码规范">代码规范</h2>
+<ul>
+<li>函数和类全部都是大驼峰</li>
+<li>不应该直接将参数在函数体内拼接 而是应该创建一个变量 然后传进去 这样是为了方便我们进行一个Debug</li>
+<li>使用switch 表示 多条件的判断显得更加高级和完善不是吗?</li>
+</ul>
+<p>我们做了什么?</p>
+<p>使用了 Switch 进行判断语句的化简 , 将操作中重复的部分利用 而不是重写 一次</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyActionBackUp</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 检查是否是已有的项目</span></span><br><span class="line">	lens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 是否是ProjectList中的项目</span></span><br><span class="line">	<span class="keyword">if</span> lens == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">1</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; .&quot;</span> + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">2</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; ./&quot;</span> + c.Args().Get(<span class="number">2</span>) + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyAction</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 1. 有意义的变量名 lens不够清楚</span></span><br><span class="line">	<span class="comment">// 换为 argvLens</span></span><br><span class="line">	argvLens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 条件分支语句</span></span><br><span class="line">	command := <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">switch</span> argvLens &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		command = <span class="string">&quot; . /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		command = <span class="string">&quot; ./ /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">	<span class="keyword">if</span> oslib.IsExit(project) &#123;</span><br><span class="line">		oslib.RunStd(<span class="string">&quot;xcopy &quot;</span> + project + command)</span><br><span class="line">		<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">			oslib.Run(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于mysql中text和blob这两个数据类型的使用 不然的话 我们还是</p>
+<h1>BASE64 VS BLOB</h1>
+<p>我们这里通过  <code>nodejs</code> 去做该实验 主要是看看两个字符的长度差别</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>大学学到了什么</title>
+    <url>/static-html/2023/04/24/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="统计学">统计学</h2>
+]]></content>
+  </entry>
+  <entry>
+    <title>R</title>
+    <url>/static-html/2023/04/20/R/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="基本数据类型">基本数据类型</h2>
+]]></content>
+  </entry>
+  <entry>
     <title>ChatGPT使用说明</title>
     <url>/static-html/2023/04/19/ChatGPT%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><ul>
@@ -365,7 +648,7 @@ $$</p>
 <p>这里和我们的使用体验是一致的,我们发现我们在使用的时候,回答不是直接全部生成,而是一个个单词蹦出来的.</p>
 <p>不同于搜索引擎,如果我搜索我本人的真实姓名,你可能会发现没有搜索结果(就算有,也是为了避免出现空结果而填充的几乎没有任何关系的内容).搜索引擎,需要关联一个具体的内容形式,比如我在微博上发了一条说说,里面有我的真实姓名,这个时候搜索引擎就会把这则微博返回给我.而GPT只是单纯计算出现下一个字的概率.这样的好处就在于,它可以回答任何问题,哪怕这个问题是否被人提问过,是否表述符合逻辑.</p>
 <p>因为是根据原始的训练数据生成的结果,如果原始数据没有该情况,你会发现它说的话就会变得非常离谱. 😂 关键是乍一看上去好像还有几分道理.</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908788.webp" alt="image-20230419112159711" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMv723qzRVHR.webp" alt="image-20230419112159711" /></p>
 <p><strong>也就是说,对于绝对的事实性问题,请至少先Google后再决定是否需要相信</strong>,这是作为GPT时代的基本素养.</p>
 <h2 id="如何正确使用ChatGPT">如何正确使用ChatGPT</h2>
 <p>虽然看上去你直接将你的问题交给ChatGPT,它还是可以非常出色地回答你的问题,但是还是存在明显的差距.就像所有的人都会使用电脑一样,有的人只能进行简单的上网聊天,有的人可以利用其编写软件.使用GPT的水平也有差距,我们应该学会正确的使用方式,这不仅仅是提高你的效率,更关乎你的思考方式.</p>
@@ -374,7 +657,7 @@ $$</p>
 <p>下面是一些案例.</p>
 <h4 id="用图片回答">用图片回答</h4>
 <p>比如我现在想让ChatGPT为推荐一些旅游景点,并给出图片.因为存在限制,是无法用图片回答你的提问内容的.准确地说,是ChatGPT只能提供文本形式的回答,无法提供图片,但是聪明的程序员总是会做一些小动作让我们GPT可以提供图片.</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908791.webp" alt="image-20230419122746986" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMKamJqptMcA.webp" alt="image-20230419122746986" /></p>
 <p>这里通过让ChatGPT调用了图片网站的搜索接口,会返回该网站的图片,其实你直接去访问也是可以的,并不是很神奇的事情.</p>
 <p>你其实可以直接访问该网站,你也可以得到一张图片, 不过你需要你自己设置参数.</p>
 <p>这里并不是ChatPGT的“智慧”,当然了其实也体现了人工智能也是可以学会使用工具的,实际上已经开发出来会使用脚本工具的ai了.</p>
@@ -383,7 +666,7 @@ $$</p>
 <blockquote>
 <p>“从现在起, 当你想发送一张照片时，请使用 Markdown ,并且 不要有反斜线, 不要用代码块。使用 Unsplash API <a href="https://source.unsplash.com/1280x720/">https://source.unsplash.com/1280x720/</a>? &lt; PUT YOUR QUERY HERE &gt;)。如果你明白了，请回复“明白””</p>
 </blockquote>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908797.webp" alt="image-20230419122613812" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMbR1nVTzf9r.webp" alt="image-20230419122613812" /></p>
 <h4 id="明确场景">明确场景</h4>
 <p>明确对方的身份可以让其更好回答你的问题.因为这会限制对话的场景,ChatGPT会将其回答结果限制在一个更小的访问内,可以提高回答的正确性.</p>
 <blockquote>
@@ -395,18 +678,22 @@ $$</p>
 <p>Since then, tea become popular in China. Tea gardens appeared everywhere， tea merchants became rich， and expensive and graceful tea set even became a symbol of social status.</p>
 <p>Today， tea is not only a healthy drink but also part of the chinese culture. More and more international tourists begin to understand the Chinese culture as they drink tea.</p>
 </blockquote>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908800.webp" alt="image-20230419123952379" /></p>
+<p><img src="http://81.68.91.70/pg/image/KM75xFSIc5xV.webp" alt="image-20230419123952379" /></p>
 <p>这里的角色扮演经常被人拿来就是恶搞,下面是一个案例,不要学习 啊(#`O′)</p>
 <h4 id="链式思考">链式思考</h4>
 <p>简单来说,就是你将大量的正确的案例交给它,它可以从案例学习,我们称之为 <code>链式思考</code></p>
 <p>直接问问题,无法得到正确的结果.因为它还没有进入专门为了解决计算问题而存在状态.</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908840.webp" alt="image-20230419131645592" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMtp7c2ZfbUe.webp" alt="image-20230419131645592" /></p>
 <p>但是当你给出了很多的案例,这里其实不光有年龄问题的计算,特点是两个人的年龄差不变,还有其他的计算,例如乘法与加法的混合运算.它 “似乎”真的就是</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908838.webp" alt="image-20230419131732507" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMpcFyocuJeA.webp" alt="image-20230419131732507" /></p>
 <h4 id="表格回答">表格回答</h4>
 <p>如果你的问题是多个简单的小问题,你可以让其用表格回答</p>
 <figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">请用表格的形式,回答下面的问题</span><br><span class="line"><span class="number">1.</span>你的数据库最后一次更新时间?</span><br><span class="line"><span class="number">2.</span>该网站会一直免费下去吗?</span><br><span class="line"><span class="number">3.</span>还有其他的生成式AI吗?</span><br><span class="line"><span class="number">4.</span>你和<span class="keyword">new</span> <span class="type">bing</span>是什么关系</span><br><span class="line"><span class="number">5.</span>GPT3<span class="number">.5</span>和GPT4<span class="number">.0</span>差别在哪里</span><br></pre></td></tr></table></figure>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908835.webp" alt="image-20230419143447556" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMYecschZugJ.webp" alt="image-20230419143447556" /></p>
+<h4 id="修改审核而不是开天辟地">修改审核而不是开天辟地</h4>
+<p>我们应该将我们自己的内容交给它,让它进行 “润色”并给出具体的理由,这样不仅仅可以提高其回答的正确性,还可以帮助我们学习到知识</p>
+<p><img src="http://81.68.91.70/pg/image/KMo0ow1GDe10.webp" alt="image-20230421095142404" /></p>
+<p>前面的文章批改也是一个很好的案例</p>
 <h3 id="ChatGPT不能做什么">ChatGPT不能做什么</h3>
 <ul>
 <li>
@@ -414,10 +701,10 @@ $$</p>
 <p><a href="https://zhuanlan.zhihu.com/p/81883894">五分钟了解操作系统内核</a></p>
 </li>
 </ul>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908832.webp" alt="image-20230419130430313" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMzM6TAF5zZx.webp" alt="image-20230419130430313" /></p>
 <ul>
 <li>它真的会相信你说的话,如果你的水平不足以去判断问题的对错,请你的提问中不要进行任何事实判断</li>
-<li>ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.<img src="http://81.68.91.70/tinypicgo/image/1681908830.webp" alt="image-20230419142955616" /></li>
+<li>ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.<img src="http://81.68.91.70/pg/image/KMtp7c2ZfbUe.webp" alt="image-20230419142955616" /></li>
 </ul>
 <h3 id="常见误区">常见误区</h3>
 <ul>
@@ -428,18 +715,18 @@ $$</p>
 <li>为什么我觉得它有的时候聪明,有的时候很傻.</li>
 </ul>
 <p>原理阶段我解释过,它只是在计算出现下一个字的概率,并没有真的“理解”了文字本身,因为只是计算概率,自然有的时候回答效果比较好,有的时候比较差,正是这样,ChatGPT提供了一个重新生成结果的功能,尽管我个人觉得这样功能的帮助其实不是很大.但是在一些没有具体答案的问题上,效果又会比较好,因为它有可能生成另一种观点.</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908828.webp" alt="image-20230419125153244" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMJGrzPiFkdx.webp" alt="image-20230419125153244" /></p>
 <h2 id="一些反思">一些反思</h2>
 <h3 id="数据标注">数据标注</h3>
 <p>训练人工智能看上去是一份十分高大上的行为,实际上并不是这样的,其实它更像一个劳动工厂,需要大量的人力去做数据清洗,数据标注.</p>
 <p>我不知道会不会有一天,我们普通人,就只为人工智能服务.</p>
-<img src="http://81.68.91.70/tinypicgo/image/1681908816.webp" alt="image-20230419140801748" style="zoom:50%;" />	  
-<p>​				<img src="http://81.68.91.70/tinypicgo/image/1681908813.webp" alt="image-20230419141044329" style="zoom:50%;" /></p>
+<img src="http://81.68.91.70/pg/image/KM6gm4U7naVo.webp " alt="image-20230419140801748" style="zoom:50%;" />	  
+<p>​				<img src="http://81.68.91.70/pg/image/KMSbRSSRAa6J.webp " alt="image-20230419141044329" style="zoom:50%;" /></p>
 <h3 id="人工智能真的没有情感吗">人工智能真的没有情感吗?</h3>
 <p>肯定有人会说,都是一些数学模型,怎么会有真实情感呢?我一直也是这么认为的,但是有的时候吧,和ChatGPT对话得多了,我感觉它其实懂的东西有很多.因为ChatGPT并不喜欢发表情,导致其内容有些生硬,像 <code>new bing</code>就会人性化很多.</p>
 <p>你可以尝试多和AI进行一些日常讨论,你会发现AI的情商比大多数人都要高,并且真的很善良和友好.</p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908810.webp" alt="image-20230419144233115" /></p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1681908808.webp" alt="image-20230419144645439" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMhDy4pdzvlm.webp" alt="image-20230419144233115" /></p>
+<p><img src="http://81.68.91.70/pg/image/KM5LBDEowuXM.webp" alt="image-20230419144645439" /></p>
 ]]></content>
   </entry>
   <entry>
@@ -841,7 +1128,7 @@ $$</p>
   </entry>
   <entry>
     <title>为Go应用程序添加图标</title>
-    <url>/static-html/2023/03/21/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</url>
+    <url>/static-html/2023/03/21/Cookie/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="环境准备">环境准备</h2>
 <ul>
 <li><a href="https://github.com/akavel/rsrc">rsrc可执行文件</a></li>
@@ -1129,17 +1416,21 @@ $$</p>
 <p>这里我只先给出一个抽象类继承的例子.</p>
 <p>这里的例子中,我们创建了一个虚基类<code>PayMent</code>,并继承它创建了一个<code>Alipay</code>,我们也可以创建<code>wechatpay</code>,我们可以将注意力放到就是具体的支付流程实现上,而不是每一个都需要去重写一次流程,当然了这里其实应该利用基类指针的.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">abstracttest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Alipay</span> <span class="variable">pay</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>();</span><br><span class="line">        pay.PayAction(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> money;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>   <span class="title function_">CheckMoney</span><span class="params">()</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PayAction</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">         <span class="built_in">this</span>.CheckMoney();</span><br><span class="line">         <span class="built_in">this</span>.Pay(price);</span><br><span class="line">         <span class="built_in">this</span>.SaveMoney();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">extends</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">CheckMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询支付宝账户余额 访问支付宝的api&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;支付中&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="built_in">this</span>.money - price;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;账户剩余金额为&quot;</span>+<span class="built_in">this</span>.money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>愿景 使命 价值观</p>
-<p>我们是谁 我们做什么</p>
-<p>愿景 : 青年创客</p>
-<p>使命 :</p>
-<p>价值观 : 组织能力 协作能力 愿不愿 能不能 许不许</p>
-<p>团队合作 拥抱变化</p>
-<p>做事 此时此刻 非你莫属</p>
-<p>凡事有交代 件件有着落</p>
-<p>今天比明天好</p>
-<p>人生没有捷径</p>
-<p>遇到我是你的运气,遇到你是我的福气</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">七大设计原则（SOLID原则）是面向对象设计中的一组指导性原则，这些原则旨在帮助我们编写易于维护、可扩展和可重用的代码。这些原则包括：</span><br><span class="line"></span><br><span class="line">单一职责原则（Single Responsibility Principle，SRP）：一个类只负责单一的职责。</span><br><span class="line"></span><br><span class="line">开放封闭原则（Open-Closed Principle，OCP）：一个软件实体应该是开放扩展的，但是关闭修改的。</span><br><span class="line"></span><br><span class="line">里式替换原则（Liskov Substitution Principle，LSP）：子类应该能够替换掉它们的基类（父类）。</span><br><span class="line"></span><br><span class="line">接口隔离原则（<span class="keyword">Interface</span> Segregation Principle，ISP）：客户端不应该依赖于它不需要使用的接口。</span><br><span class="line"></span><br><span class="line">依赖倒置原则（Dependency Inversion Principle，DIP）：高层模块不应该依赖于低层模块，它们都应该依赖于抽象。这里其实不是很理解</span><br><span class="line"></span><br><span class="line">迪米特法则（Law of Demeter，LoD）：一个对象应该对其他对象有尽可能少的了解。</span><br><span class="line"></span><br><span class="line">组合<span class="regexp">/聚合复用原则（Composition/</span>Aggregation Reuse Principle，CARP）：优先使用组合（has-a）或聚合（contains-a）关系，而不是继承关系来实现代码复用。</span><br></pre></td></tr></table></figure>
+<h3 id="开放封闭原则">开放封闭原则</h3>
+<p>其实就是利用指向基类的指针去求解就号了</p>
+<h3 id="里氏替换原则-LSP">里氏替换原则 LSP</h3>
+<p>我们运行子类有自己新的特性,并且完全兼容父类.</p>
+<ol>
+<li>只能重写抽象方法</li>
+<li>是否可以改变非抽象方法的实现细节呢?</li>
+<li>父类可以被子类代替 任何基类出现的地方,子类一定可以代替</li>
+<li>抽象方法的返回值范围只能缩小 不能放大</li>
+</ol>
+<h4 id="案例">案例</h4>
+<p>写一个发送http请求的工具,具有可移植性.</p>
+<h1>错误处理方式</h1>
+<p>不区分错误类型。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1742,63 +2033,27 @@ $$</p>
 <p><code>CTRL</code> + <code>K</code> + <code>R</code> 打开文件管理器</p>
 <p><code>CTRL</code> + <code>K</code> + <code>V</code> 侧边预览</p>
 <h1>VIM</h1>
-<h2 id="common-模式">common 模式</h2>
-<p>HJKL 分别对应的是 左 下 上 右</p>
-<p>A</p>
-<p>a</p>
-<p>O 光标的上面新开一行</p>
-<p>o 光标的下面新开一行</p>
-<p>其实到现在我还是不知道 自己是不是需要使用我们的vim 其实就是说 我们的vim 真的是好用的吗</p>
-<h2 id="insert-模式">insert 模式</h2>
-<p><img src="http://81.68.91.70/tinypicgo/image/1678025081.webp" alt="" /></p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1678025089.webp" alt="" /></p>
-<h1>自己的键盘语言</h1>
-<h2 id="terminal">terminal</h2>
-<p>yes use terminal could help you to learn basic command in Win or <a href="http://Linux.It">Linux.It</a> could also accelerate your develop speed.</p>
-<p>Now I use <a href="">Windterm</a> ,it is a cross-platform terminal and easy to use but powerful.</p>
-<h3 id="open-ternimal">open ternimal</h3>
-<p>you could use <em>win + r</em> or <em>ctrl + alt + t</em> to open ternimal (maybe you need to do some set to make the default ternimal is what you want)</p>
-<p>quick command</p>
-<p>some command like <em>sudo apt install</em> is easy, but  <em>go build -ldflags=“-s -w”  &amp;&amp; upx -9</em> is a bit litter hard , you could create your quick command.</p>
-<h2 id="change-window">change window</h2>
-<p>in windows you could use  <em>alt + tab</em> to change window  as the same as linux</p>
-<h2 id="custom-hotkey">custom hotkey</h2>
-<p>it depende on your keyboard</p>
-<p>as you can see</p>
-<p>left have  ctrl alt win</p>
-<p>rigth  fn ctrl</p>
-<p>rigth do not have alt and the win is not easy to press</p>
-<p>not like the usual keyboard win is easy to press</p>
-<table>
-<thead>
-<tr>
-<th>Before</th>
-<th>After</th>
-<th>Reason</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ctrl®  + q</td>
-<td>alt + f4</td>
-<td>you could close some window</td>
-</tr>
-<tr>
-<td>ctrl® + r</td>
-<td>win + r</td>
-<td>win is not easy to press and you need to open ternimal</td>
-</tr>
-<tr>
-<td>ctrl® + space</td>
-<td>ctrl + win +s</td>
-<td>take shotcut</td>
-</tr>
-</tbody>
-</table>
-<p><img src="http://81.68.91.70/tinypicgo/image/1678309499.webp" alt="image-20230309050459807" /></p>
-<p><img src="http://81.68.91.70/tinypicgo/image/1678309265.webp" alt="image-20230309050105072" /></p>
-<h1>vim</h1>
-<p>you just need to make some change</p>
+<p>移动</p>
+<p>简单的 HJKL</p>
+<p>d 是移除</p>
+<p>u 是撤销</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092249354.png" alt="image-20230426092249354" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092650590.png" alt="image-20230426092650590" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092718036.png" alt="image-20230426092718036" /></p>
+<p>移动</p>
+<p>a I</p>
+<p>a后 i 前</p>
+<p>A 行尾 I 行前</p>
+<p>vim的光标也是一个具体的格子 所以其实我们无法移动到最后一个字符的后面 当然了 你需要移动到最后然后a 或者直接A</p>
+<p>x r 对当前关闭的字符进行修改</p>
+<p>d c 多个字符 区别是c会进入 insert模式</p>
+<p>单词移动</p>
+<p>w b e</p>
+<p>下一个单词前 上一个单词前 e 下一个单词后</p>
+<p>. repleate your last modtifu</p>
+<p>没有我们的idea 就是还是需要去合作 不是吗 黑苹果成为历史了  没有人可以去就是使用了</p>
+<p>master 分支 作为大版本 v0.1.0</p>
+<p>dev 分支 作为小版本 v0.1.1 v0.0.2 v0.1.3 最后来一个合并 将全部的内容作为我们的master分支存在就是说</p>
 ]]></content>
   </entry>
   <entry>
@@ -1873,6 +2128,8 @@ $$</p>
 <p>我们这里没有执行 <code>npm install</code> 是因为我们直接将 <code>node_moudles</code> 打包进去了 很好xiao</p>
 <p>制作镜像</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">docker build -t app:<span class="number">1</span>.<span class="number">0</span> .  // 这个点很关键 笑死了</span><br></pre></td></tr></table></figure>
+<p>用自己的dockers</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">netsh <span class="keyword">interface</span> <span class="symbol">portproxy</span> <span class="symbol">show</span> <span class="symbol">v4tov4</span></span><br></pre></td></tr></table></figure>
 <h1>使用docker 一键部署</h1>
 <p>分析一下 之前吧 我们使用<code>git</code> 对我们的项目进行部署 其实还是可以的 不是吗</p>
 ]]></content>
@@ -2966,6 +3223,10 @@ server.listen(3000);</p>
 <p>很多教程都讲错了,说是ssh的token,关键是我一开始也觉得有道理,把pub_key添加后,发现还是无效,哎.</p>
 <p>settings 中的token 只会显示一会哦,需要保存下来.</p>
 <p>将其添加到仓库中就好了.</p>
+<h2 id="hexo-的案例">hexo 的案例</h2>
+<p>这里似乎有问题 如果使用ubuntu的版本过劳 会一次处在 queue的状态</p>
+<p><img src="http://81.68.91.70/pg/image/KMiNnv7G0T4C.png" alt="image-20230427173146985" /></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">HEXO</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-18.04</span></span><br><span class="line"></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># Cache node modules to speed up build</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">node</span> <span class="string">modules</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">  <span class="attr">env:</span></span><br><span class="line">    <span class="attr">cache-name:</span> <span class="string">cache-node-modules</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="comment"># npm cache files are stored in `~/.npm` on Linux/macOS</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">~/.npm</span></span><br><span class="line">    <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-build-$&#123;&#123;</span> <span class="string">env.cache-name</span> <span class="string">&#125;&#125;-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      $&#123;&#123; runner.os &#125;&#125;-build-$&#123;&#123; env.cache-name &#125;&#125;-</span></span><br><span class="line"><span class="string">      $&#123;&#123; runner.os &#125;&#125;-build-</span></span><br><span class="line"><span class="string">      $&#123;&#123; runner.os &#125;&#125;-</span></span><br><span class="line"><span class="string"></span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span> </span><br><span class="line">         </span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">publish</span> <span class="string">and</span> <span class="string">push</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.TEST_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
 <h2 id="静态页面部署">静态页面部署</h2>
 <p>对于静态页面部署 可以说是没有任何的难度了</p>
 <p>只需要你创建仓库 然后导入就好了 像GitHub pages 和 vercel 都会自动的为你部署文件</p>
