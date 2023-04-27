@@ -92,6 +92,51 @@ settings 中的token 只会显示一会哦,需要保存下来.
 
 
 
+## hexo 的案例 
+
+
+
+```yaml
+name: HEXO
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+steps:
+- uses: actions/checkout@v2
+ 
+# Cache node modules to speed up build
+- name: Cache node modules
+  uses: actions/cache@v2
+  env:
+    cache-name: cache-node-modules
+  with:
+    # npm cache files are stored in `~/.npm` on Linux/macOS
+    path: ~/.npm
+    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-build-${{ env.cache-name }}-
+      ${{ runner.os }}-build-
+      ${{ runner.os }}-
+ 
+- name: Install Dependencies
+  run: npm install
+ 
+- name: Build
+  run: npm run build 
+         
+- name: publish and push
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.TEST_TOKEN }}
+    publish_dir: ./public
+```
+
+
+
 
 
 

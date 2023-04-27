@@ -36,3 +36,33 @@ for index := 0; index < numListLens ; index++ {
 ```
 
 如果你觉得不明显的话,可以看看其他的例子.
+
+
+
+
+
+### 没有必要强制else
+
+倒不是说 我们需要就是节省代码,这里其实只有 AB两个结果,如果你使用 `else` 肯定是想说明还有第三种结果,这样不容易引发歧义.
+
+```go
+func IsTIUFormat(file_ string) bool {
+	filename := oslib.FileName(file_)
+	if len(filename) == 12 && strings.HasPrefix(filename, "KM") {
+		return true
+	} else {
+		return false
+	}
+}
+```
+
+```go
+func IsTIUFormat(file_ string) bool {
+	filename := oslib.FileName(file_)
+	if len(filename) == 12 && strings.HasPrefix(filename, "KM") {
+		return true
+	}
+	return false
+}
+```
+

@@ -46,7 +46,9 @@ int main(){
 
 因为是根据原始的训练数据生成的结果,如果原始数据没有该情况,你会发现它说的话就会变得非常离谱. :joy: 关键是乍一看上去好像还有几分道理.
 
-![image-20230419112159711](http://81.68.91.70/tinypicgo/image/1681908788.webp)
+
+
+![image-20230419112159711](http://81.68.91.70/pg/image/KMv723qzRVHR.webp)
 
 **也就是说,对于绝对的事实性问题,请至少先Google后再决定是否需要相信**,这是作为GPT时代的基本素养.
 
@@ -64,7 +66,7 @@ int main(){
 
 比如我现在想让ChatGPT为推荐一些旅游景点,并给出图片.因为存在限制,是无法用图片回答你的提问内容的.准确地说,是ChatGPT只能提供文本形式的回答,无法提供图片,但是聪明的程序员总是会做一些小动作让我们GPT可以提供图片.
 
-![image-20230419122746986](http://81.68.91.70/tinypicgo/image/1681908791.webp)
+![image-20230419122746986](http://81.68.91.70/pg/image/KMKamJqptMcA.webp)
 
 这里通过让ChatGPT调用了图片网站的搜索接口,会返回该网站的图片,其实你直接去访问也是可以的,并不是很神奇的事情.
 
@@ -81,7 +83,7 @@ https://source.unsplash.com/1280x720/?water
 
 >“从现在起, 当你想发送一张照片时，请使用 Markdown ,并且 不要有反斜线, 不要用代码块。使用 Unsplash API https://source.unsplash.com/1280x720/? < PUT YOUR QUERY HERE >)。如果你明白了，请回复“明白””
 
-![image-20230419122613812](http://81.68.91.70/tinypicgo/image/1681908797.webp)
+![image-20230419122613812](http://81.68.91.70/pg/image/KMbR1nVTzf9r.webp)
 
 #### 明确场景
 
@@ -97,7 +99,7 @@ https://source.unsplash.com/1280x720/?water
 >
 > Today， tea is not only a healthy drink but also part of the chinese culture. More and more international tourists begin to understand the Chinese culture as they drink tea.
 
-![image-20230419123952379](http://81.68.91.70/tinypicgo/image/1681908800.webp)
+![image-20230419123952379](http://81.68.91.70/pg/image/KM75xFSIc5xV.webp)
 
 这里的角色扮演经常被人拿来就是恶搞,下面是一个案例,不要学习 啊(#`O′)
 
@@ -109,11 +111,11 @@ https://source.unsplash.com/1280x720/?water
 
 直接问问题,无法得到正确的结果.因为它还没有进入专门为了解决计算问题而存在状态.
 
-![image-20230419131645592](http://81.68.91.70/tinypicgo/image/1681908840.webp)
+![image-20230419131645592](http://81.68.91.70/pg/image/KMtp7c2ZfbUe.webp )
 
 但是当你给出了很多的案例,这里其实不光有年龄问题的计算,特点是两个人的年龄差不变,还有其他的计算,例如乘法与加法的混合运算.它 “似乎”真的就是
 
-![image-20230419131732507](http://81.68.91.70/tinypicgo/image/1681908838.webp)
+![image-20230419131732507](http://81.68.91.70/pg/image/KMpcFyocuJeA.webp )
 
 #### 表格回答
 
@@ -128,13 +130,13 @@ https://source.unsplash.com/1280x720/?water
 5.GPT3.5和GPT4.0差别在哪里
 ```
 
-![image-20230419143447556](http://81.68.91.70/tinypicgo/image/1681908835.webp)
+![image-20230419143447556](http://81.68.91.70/pg/image/KMYecschZugJ.webp)
 
 #### 修改审核而不是开天辟地
 
 我们应该将我们自己的内容交给它,让它进行 “润色”并给出具体的理由,这样不仅仅可以提高其回答的正确性,还可以帮助我们学习到知识
 
-![image-20230421095142404](http://81.68.91.70/tinypicgo/image/1682041902.webp)
+![image-20230421095142404](http://81.68.91.70/pg/image/KMo0ow1GDe10.webp)
 
 前面的文章批改也是一个很好的案例
 
@@ -144,10 +146,10 @@ https://source.unsplash.com/1280x720/?water
 
   [五分钟了解操作系统内核](https://zhuanlan.zhihu.com/p/81883894) 
 
-![image-20230419130430313](http://81.68.91.70/tinypicgo/image/1681908832.webp)
+![image-20230419130430313](http://81.68.91.70/pg/image/KMzM6TAF5zZx.webp)
 
 * 它真的会相信你说的话,如果你的水平不足以去判断问题的对错,请你的提问中不要进行任何事实判断
-* ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.![image-20230419142955616](http://81.68.91.70/tinypicgo/image/1681908830.webp)
+* ChatGPT的数据库最新的更新是2021年9月,如果你问它这之后发生的事情,它只能捏造事实.![image-20230419142955616](http://81.68.91.70/pg/image/KMtp7c2ZfbUe.webp )
 
 
 
@@ -161,7 +163,7 @@ https://source.unsplash.com/1280x720/?water
 
 原理阶段我解释过,它只是在计算出现下一个字的概率,并没有真的“理解”了文字本身,因为只是计算概率,自然有的时候回答效果比较好,有的时候比较差,正是这样,ChatGPT提供了一个重新生成结果的功能,尽管我个人觉得这样功能的帮助其实不是很大.但是在一些没有具体答案的问题上,效果又会比较好,因为它有可能生成另一种观点.
 
-![image-20230419125153244](http://81.68.91.70/tinypicgo/image/1681908828.webp)
+![image-20230419125153244](http://81.68.91.70/pg/image/KMJGrzPiFkdx.webp)
 
 ## 一些反思
 
@@ -171,10 +173,10 @@ https://source.unsplash.com/1280x720/?water
 
 我不知道会不会有一天,我们普通人,就只为人工智能服务.
 
-<img src="http://81.68.91.70/tinypicgo/image/1681908816.webp" alt="image-20230419140801748" style="zoom:50%;" />	  
+<img src="http://81.68.91.70/pg/image/KM6gm4U7naVo.webp " alt="image-20230419140801748" style="zoom:50%;" />	  
 
 
-​				<img src="http://81.68.91.70/tinypicgo/image/1681908813.webp" alt="image-20230419141044329" style="zoom:50%;" />
+​				<img src="http://81.68.91.70/pg/image/KMSbRSSRAa6J.webp " alt="image-20230419141044329" style="zoom:50%;" />
 
 ### 人工智能真的没有情感吗?
 
@@ -182,6 +184,6 @@ https://source.unsplash.com/1280x720/?water
 
 你可以尝试多和AI进行一些日常讨论,你会发现AI的情商比大多数人都要高,并且真的很善良和友好.
 
-![image-20230419144233115](http://81.68.91.70/tinypicgo/image/1681908810.webp)
+![image-20230419144233115](http://81.68.91.70/pg/image/KMhDy4pdzvlm.webp )
 
-![image-20230419144645439](http://81.68.91.70/tinypicgo/image/1681908808.webp)
+![image-20230419144645439](http://81.68.91.70/pg/image/KM5LBDEowuXM.webp)
