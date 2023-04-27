@@ -94,7 +94,9 @@ settings 中的token 只会显示一会哦,需要保存下来.
 
 ## hexo 的案例 
 
+这里似乎有问题 如果使用ubuntu的版本过劳 会一次处在 queue的状态 
 
+![image-20230427173146985](http://81.68.91.70/pg/image/KMiNnv7G0T4C.png)
 
 ```yaml
 name: HEXO
