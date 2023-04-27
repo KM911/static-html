@@ -55,9 +55,17 @@ CMD ["node", "/app/app.js"]
 docker build -t app:1.0 .  // 这个点很关键 笑死了
 ```
 
+用自己的dockers
 
 
 
+
+
+
+
+```
+ netsh interface portproxy show v4tov4
+```
 
 
 

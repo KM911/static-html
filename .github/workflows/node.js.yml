@@ -4,11 +4,12 @@ on: push
  
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
  
     steps:
     - uses: actions/checkout@v2
  
+    # Cache node modules to speed up build
     - name: Cache node modules
       uses: actions/cache@v2
       env:
