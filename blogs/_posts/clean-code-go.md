@@ -66,3 +66,15 @@ func IsTIUFormat(file_ string) bool {
 }
 ```
 
+## 利用switch替换同质化的if
+
+```go
+
+
+```
+
+```go
+
+	
+```
+
