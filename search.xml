@@ -137,7 +137,7 @@
 <li>[ ] 写好我们的upload函数 要求可以针对最普通的网络图片进行下载 保存到我们本地中</li>
 <li>[ ] 我们的策略还是不够好 就是说 没有一个正确的config文件 二进制文件不应该和项目文件保存一致性吗?</li>
 </ul>
-<p>这里需要我们进行一些反思了就是说</p>
+<p>有太多的项目内容需要我们来写了 这里就是一些很 handy</p>
 <h1>Task</h1>
 <ul>
 <li>
@@ -241,6 +241,66 @@
       <tags>
         <tag>博客</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Redis</title>
+    <url>/static-html/2023/04/28/redis/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="redis安装">redis安装</h2>
+<p>像这样的常用服务端软件,一般的包管理工具都会提供.其实不必太担心.</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> redis</span><br></pre></td></tr></table></figure>
+<h2 id="启动redis">启动redis</h2>
+<p>我去 centos的redis我是真的找不到啊就是说 服了 真的搞笑就是说</p>
+<p><img src="http://81.68.91.70/pg/image/KMdv8ylTK5nA.png" alt="image-20230430084417189" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMnGu2yK32ug.png" alt="image-20230430084515975" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMBDHSqdwGr8.png" alt="image-20230430085041078" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMdWSQiYWoNw.png" alt="image-20230430085600325" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMcBZXFIkV1R.png" alt="image-20230430085936608" /></p>
+<p><img src="http://81.68.91.70/pg/image/KM8j0kUVibuX.png" alt="image-20230430090234537" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMP1D9mlw11E.png" alt="image-20230430091130264" /></p>
+<h3 id="redis-持久化">redis 持久化</h3>
+<p>redis将自己的数据复制一份保存到磁盘中,下次启动会自动加载</p>
+<ul>
+<li>
+<h3 id="RDB">RDB</h3>
+</li>
+<li>
+<h3 id="AOF持久化">AOF持久化</h3>
+</li>
+<li>
+<p>混合持久化</p>
+</li>
+</ul>
+<p>平常使用AOF进行持久化</p>
+<h3 id="内存回收机制-内存淘汰机制">内存回收机制  内存淘汰机制</h3>
+<p>当我们的内存使用到达上限了,我们就需要进行回收.这里是决定如何进行回收的地方.</p>
+<ul>
+<li>LUR Least Used Resently</li>
+<li>LFU  Least Frequent Used</li>
+</ul>
+<p><img src="http://81.68.91.70/pg/image/KMFuvZRwoNKj.webp" alt="image-20230430094151976" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMx0R6VrF4mZ.png" alt="image-20230430094012193" /></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Systemctl到底是在做什么?</title>
+    <url>/static-html/2023/04/28/systemctl%E5%88%B0%E5%BA%95%E6%98%AF%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="systemctl到底是在做什么">systemctl到底是在做什么?</h2>
+<p>我们在使用 <code>Linux</code> 系统的时候,当我们需要使用某个服务的时候,经常会使用 <code>systemctl</code>命令,例如 <code>systemctl start service</code> 就是启动一个服务.有些就无法使用.今天正好就学习 <code>redis</code> 顺带着去</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何进行调试和开发</title>
+    <url>/static-html/2023/04/28/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95%E5%92%8C%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="如何进行调试和开发">如何进行调试和开发</h2>
+<p>如果你的软件要交给其他人使用的话,你就必须使用相对路径,因为环境改变了,现在我们想找到一种方法,一种可以进行调试和开发环境的修改.</p>
+<h2 id="Dev-config">Dev config</h2>
+<p>我们编写两套规则,一个是用户的,另一个是开发的.以我们的go语言为基准.</p>
+<ul>
+<li>因为我们没</li>
+<li>有</li>
+</ul>
+<p>:</p>
+]]></content>
   </entry>
   <entry>
     <title>我们和顶尖大学的学生差距大吗?</title>
@@ -412,6 +472,9 @@
 <p>倒不是说 我们需要就是节省代码,这里其实只有 AB两个结果,如果你使用 <code>else</code> 肯定是想说明还有第三种结果,这样不容易引发歧义.</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="利用switch替换同质化的if">利用switch替换同质化的if</h2>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -1252,12 +1315,34 @@
   <entry>
     <title>设计模式</title>
     <url>/static-html/2023/03/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>设计模式</h1>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="七大设计原则">七大设计原则</h2>
+<p>七大设计原则（SOLID原则）是面向对象设计中的一组指导性原则，这些原则旨在帮助我们编写易于维护、可扩展和可重用的代码。这些原则包括：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">单一职责原则（Single Responsibility Principle，SRP）：一个类只负责单一的职责。</span><br><span class="line"></span><br><span class="line">开放封闭原则（Open-Closed Principle，OCP）：一个软件实体应该是开放扩展的，但是关闭修改的。</span><br><span class="line"></span><br><span class="line">里式替换原则（Liskov Substitution Principle，LSP）：子类应该能够替换掉它们的基类（父类）。</span><br><span class="line"></span><br><span class="line">接口隔离原则（<span class="keyword">Interface</span> Segregation Principle，ISP）：客户端不应该依赖于它不需要使用的接口。</span><br><span class="line"></span><br><span class="line">依赖倒置原则（Dependency Inversion Principle，DIP）：高层模块不应该依赖于低层模块，它们都应该依赖于抽象。这里其实不是很理解</span><br><span class="line"></span><br><span class="line">迪米特法则（Law of Demeter，LoD）：一个对象应该对其他对象有尽可能少的了解。</span><br><span class="line"></span><br><span class="line">组合<span class="regexp">/聚合复用原则（Composition/</span>Aggregation Reuse Principle，CARP）：优先使用组合（has-a）或聚合（contains-a）关系，而不是继承关系来实现代码复用。</span><br></pre></td></tr></table></figure>
+<p>我们的设计模式就是基于这些原则的实践.</p>
+<h3 id="开放封闭原则">开放封闭原则</h3>
+<p>其实就是利用指向基类的指针去求解就号了</p>
+<h3 id="里氏替换原则-LSP">里氏替换原则 LSP</h3>
+<p>我们运行子类有自己新的特性,并且完全兼容父类.</p>
+<ol>
+<li>只能重写抽象方法</li>
+<li>是否可以改变非抽象方法的实现细节呢?</li>
+<li>父类可以被子类代替 任何基类出现的地方,子类一定可以代替</li>
+<li>抽象方法的返回值范围只能缩小 不能放大</li>
+</ol>
+<h4 id="案例">案例</h4>
+<p>写一个发送http请求的工具,具有可移植性.</p>
+<h2 id="设计模式">设计模式</h2>
 <p>前人的经验.</p>
-<h1>单例模式</h1>
+<ul>
+<li>创建型模式 如果创建对象</li>
+<li>结构型模式 如何将对象组合到一起</li>
+<li>行为型模式 对象如何信息交互 如果共同完成任务</li>
+</ul>
+<h2 id="创建型模式">创建型模式</h2>
+<h3 id="单例模式">单例模式</h3>
 <p>一个类只能有一个对象/实例.</p>
 <p>这里不是说你只在你的程序中只进行一次 new的操作导致只有一个对象,而是通过将对象本身设置为类的属性,强制保证了对象的唯一性.</p>
-<h2 id="实现方式">实现方式</h2>
+<h4 id="实现方式">实现方式</h4>
 <ul>
 <li>饿汉式</li>
 </ul>
@@ -1271,32 +1356,19 @@
 <li>懒汉式</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Bank</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Bank</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  Bank <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">return</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Bank</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="对比分析">对比分析</h2>
+<h4 id="对比分析">对比分析</h4>
 <ul>
 <li>饿汉式在类被加载时就创建了对象,懒汉式只有调用getInstance方法才会创建.前者会占据内存更多的时间,但是它是并发安全的(你就不该在一个并发的程序里写创建对象这种事情)</li>
 <li>其实差别不是很大</li>
 </ul>
+<h3 id="工厂模式">工厂模式</h3>
+<p>工厂模式有三个细分的: 简单工厂模式  抽象工厂模式</p>
 <h1>抽象模板</h1>
 <p>额,这里其实就是创建一个虚基类,然后继承,重写,指向之类对象的父类指针</p>
 <p>因为java中并没有template这样的关键字,我就认为他是在利用抽象类,其实也不对,只是实现方式不太一样.</p>
 <p>这里我只先给出一个抽象类继承的例子.</p>
 <p>这里的例子中,我们创建了一个虚基类<code>PayMent</code>,并继承它创建了一个<code>Alipay</code>,我们也可以创建<code>wechatpay</code>,我们可以将注意力放到就是具体的支付流程实现上,而不是每一个都需要去重写一次流程,当然了这里其实应该利用基类指针的.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">abstracttest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Alipay</span> <span class="variable">pay</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Alipay</span>();</span><br><span class="line">        pay.PayAction(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> money;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>   <span class="title function_">CheckMoney</span><span class="params">()</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PayAction</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">         <span class="built_in">this</span>.CheckMoney();</span><br><span class="line">         <span class="built_in">this</span>.Pay(price);</span><br><span class="line">         <span class="built_in">this</span>.SaveMoney();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alipay</span> <span class="keyword">extends</span> <span class="title class_">PayMent</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">CheckMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询支付宝账户余额 访问支付宝的api&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Pay</span><span class="params">(<span class="type">int</span> price)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;支付中&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money = <span class="built_in">this</span>.money - price;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SaveMoney</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;账户剩余金额为&quot;</span>+<span class="built_in">this</span>.money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">七大设计原则（SOLID原则）是面向对象设计中的一组指导性原则，这些原则旨在帮助我们编写易于维护、可扩展和可重用的代码。这些原则包括：</span><br><span class="line"></span><br><span class="line">单一职责原则（Single Responsibility Principle，SRP）：一个类只负责单一的职责。</span><br><span class="line"></span><br><span class="line">开放封闭原则（Open-Closed Principle，OCP）：一个软件实体应该是开放扩展的，但是关闭修改的。</span><br><span class="line"></span><br><span class="line">里式替换原则（Liskov Substitution Principle，LSP）：子类应该能够替换掉它们的基类（父类）。</span><br><span class="line"></span><br><span class="line">接口隔离原则（<span class="keyword">Interface</span> Segregation Principle，ISP）：客户端不应该依赖于它不需要使用的接口。</span><br><span class="line"></span><br><span class="line">依赖倒置原则（Dependency Inversion Principle，DIP）：高层模块不应该依赖于低层模块，它们都应该依赖于抽象。这里其实不是很理解</span><br><span class="line"></span><br><span class="line">迪米特法则（Law of Demeter，LoD）：一个对象应该对其他对象有尽可能少的了解。</span><br><span class="line"></span><br><span class="line">组合<span class="regexp">/聚合复用原则（Composition/</span>Aggregation Reuse Principle，CARP）：优先使用组合（has-a）或聚合（contains-a）关系，而不是继承关系来实现代码复用。</span><br></pre></td></tr></table></figure>
-<h3 id="开放封闭原则">开放封闭原则</h3>
-<p>其实就是利用指向基类的指针去求解就号了</p>
-<h3 id="里氏替换原则-LSP">里氏替换原则 LSP</h3>
-<p>我们运行子类有自己新的特性,并且完全兼容父类.</p>
-<ol>
-<li>只能重写抽象方法</li>
-<li>是否可以改变非抽象方法的实现细节呢?</li>
-<li>父类可以被子类代替 任何基类出现的地方,子类一定可以代替</li>
-<li>抽象方法的返回值范围只能缩小 不能放大</li>
-</ol>
-<h4 id="案例">案例</h4>
-<p>写一个发送http请求的工具,具有可移植性.</p>
-<h1>错误处理方式</h1>
-<p>不区分错误类型。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1952,6 +2024,7 @@
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ip adress</span></span><br></pre></td></tr></table></figure>
 <p>提高字符串拼接的效率,我们需要使用吗?肯定是的,不然每次都是在进行创建新的变量</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">以下是一些可以提高字符串拼接效率的方法：</span><br><span class="line"></span><br><span class="line">使用 bytes<span class="selector-class">.Buffer</span>：bytes<span class="selector-class">.Buffer</span> 类型提供了一个缓冲区，可以在其中构建一个字符串。可以使用 <span class="built_in">WriteString</span>() 方法将字符串添加到缓冲区中，并在最后使用 <span class="built_in">String</span>() 方法将缓冲区转换为字符串。这样做可以避免不必要的内存分配和复制。</span><br><span class="line"></span><br><span class="line">使用 strings<span class="selector-class">.Builder</span>：strings<span class="selector-class">.Builder</span> 类型是 Go <span class="number">1.10</span> 引入的一种高效的字符串构建器。它类似于 bytes<span class="selector-class">.Buffer</span>，但是专门针对字符串进行了优化。可以使用 <span class="built_in">WriteString</span>() 方法将字符串添加到构建器中，并在最后使用 <span class="built_in">String</span>() 方法将构建器转换为字符串。</span><br><span class="line"></span><br><span class="line">预先分配好内存：如果您知道字符串的最终大小，可以使用 <span class="built_in">make</span>() 函数预先分配好内存，以避免多次分配内存。例如，可以使用 <span class="built_in">make</span>([]byte, <span class="number">0</span>, size) 创建一个容量为 size 的空字节切片，然后将字符串追加到其中。</span><br><span class="line"></span><br><span class="line">使用 strings<span class="selector-class">.Join</span>() 函数：如果您需要连接多个字符串，可以使用 strings<span class="selector-class">.Join</span>() 函数，它使用预分配的内存来构建一个新的字符串，并避免了多次分配和复制。</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">sudo EXTERNAL_URL<span class="operator">=</span><span class="string">&quot;http://172.28.4.162/&quot;</span> yum install -y gitlab-ce</span><br></pre></td></tr></table></figure>
 <figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">你现在是团体中复杂代码检查和审核的工作人员,只需要对代码进行分析和优化,不要回复其他的内容,如果听明白了,请回复. <span class="string">&quot;开始审核代码&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id=""></h2>
 <p>go换源</p>

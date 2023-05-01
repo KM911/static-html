@@ -6,7 +6,7 @@
   <link href="https://www.zuoge.online/atom.xml" rel="self"/>
   
   <link href="https://www.zuoge.online/"/>
-  <updated>2023-04-28T02:28:08.235Z</updated>
+  <updated>2023-05-01T01:04:10.031Z</updated>
   <id>https://www.zuoge.online/</id>
   
   <author>
@@ -17,11 +17,74 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Redis</title>
+    <link href="https://www.zuoge.online/2023/04/28/redis/"/>
+    <id>https://www.zuoge.online/2023/04/28/redis/</id>
+    <published>2023-04-28T18:31:04.000Z</published>
+    <updated>2023-05-01T01:04:10.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Systemctl到底是在做什么?</title>
+    <link href="https://www.zuoge.online/2023/04/28/systemctl%E5%88%B0%E5%BA%95%E6%98%AF%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88/"/>
+    <id>https://www.zuoge.online/2023/04/28/systemctl%E5%88%B0%E5%BA%95%E6%98%AF%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88/</id>
+    <published>2023-04-28T18:10:26.000Z</published>
+    <updated>2023-05-01T01:04:10.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何进行调试和开发</title>
+    <link href="https://www.zuoge.online/2023/04/28/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95%E5%92%8C%E5%BC%80%E5%8F%91/"/>
+    <id>https://www.zuoge.online/2023/04/28/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95%E5%92%8C%E5%BC%80%E5%8F%91/</id>
+    <published>2023-04-28T11:02:03.000Z</published>
+    <updated>2023-05-01T01:04:10.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>我们和顶尖大学的学生差距大吗?</title>
     <link href="https://www.zuoge.online/2023/04/28/%E6%88%91%E4%BB%AC%E5%92%8C%E9%A1%B6%E5%B0%96%E5%A4%A7%E5%AD%A6%E7%9A%84%E5%AD%A6%E7%94%9F%E5%B7%AE%E8%B7%9D%E5%A4%A7%E5%90%97/"/>
     <id>https://www.zuoge.online/2023/04/28/%E6%88%91%E4%BB%AC%E5%92%8C%E9%A1%B6%E5%B0%96%E5%A4%A7%E5%AD%A6%E7%9A%84%E5%AD%A6%E7%94%9F%E5%B7%AE%E8%B7%9D%E5%A4%A7%E5%90%97/</id>
     <published>2023-04-28T08:35:32.000Z</published>
-    <updated>2023-04-28T02:28:08.235Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -42,7 +105,7 @@
     <link href="https://www.zuoge.online/2023/04/27/Github/Benchmark/RPC%E6%AF%94HTTP%E8%A6%81%E6%85%A2/"/>
     <id>https://www.zuoge.online/2023/04/27/Github/Benchmark/RPC%E6%AF%94HTTP%E8%A6%81%E6%85%A2/</id>
     <published>2023-04-27T17:34:17.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -63,7 +126,7 @@
     <link href="https://www.zuoge.online/2023/04/27/%E9%80%92%E5%BD%92%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%E5%BC%80%E9%94%80/"/>
     <id>https://www.zuoge.online/2023/04/27/%E9%80%92%E5%BD%92%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%E5%BC%80%E9%94%80/</id>
     <published>2023-04-27T17:33:45.000Z</published>
-    <updated>2023-04-28T02:28:08.235Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -84,7 +147,7 @@
     <link href="https://www.zuoge.online/2023/04/27/go%E8%AF%AD%E8%A8%80%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/"/>
     <id>https://www.zuoge.online/2023/04/27/go%E8%AF%AD%E8%A8%80%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/</id>
     <published>2023-04-27T17:33:30.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -105,7 +168,7 @@
     <link href="https://www.zuoge.online/2023/04/27/clean-code-go/"/>
     <id>https://www.zuoge.online/2023/04/27/clean-code-go/</id>
     <published>2023-04-27T07:59:29.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -126,7 +189,7 @@
     <link href="https://www.zuoge.online/2023/04/25/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E5%85%BB%E6%88%90/"/>
     <id>https://www.zuoge.online/2023/04/25/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E5%85%BB%E6%88%90/</id>
     <published>2023-04-25T08:14:30.000Z</published>
-    <updated>2023-04-28T02:28:08.235Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -147,7 +210,7 @@
     <link href="https://www.zuoge.online/2023/04/24/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/"/>
     <id>https://www.zuoge.online/2023/04/24/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/</id>
     <published>2023-04-24T20:40:27.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -168,7 +231,7 @@
     <link href="https://www.zuoge.online/2023/04/20/R/"/>
     <id>https://www.zuoge.online/2023/04/20/R/</id>
     <published>2023-04-20T07:33:51.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -189,7 +252,7 @@
     <link href="https://www.zuoge.online/2023/04/19/ChatGPT%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
     <id>https://www.zuoge.online/2023/04/19/ChatGPT%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</id>
     <published>2023-04-19T10:52:03.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -210,7 +273,7 @@
     <link href="https://www.zuoge.online/2023/04/18/English/%E5%9B%9B%E7%BA%A7%E7%BF%BB%E8%AF%91/"/>
     <id>https://www.zuoge.online/2023/04/18/English/%E5%9B%9B%E7%BA%A7%E7%BF%BB%E8%AF%91/</id>
     <published>2023-04-18T17:05:49.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -231,7 +294,7 @@
     <link href="https://www.zuoge.online/2023/04/09/Life/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     <id>https://www.zuoge.online/2023/04/09/Life/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</id>
     <published>2023-04-09T09:51:51.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -252,7 +315,7 @@
     <link href="https://www.zuoge.online/2023/04/05/Guides/go%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/"/>
     <id>https://www.zuoge.online/2023/04/05/Guides/go%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/</id>
     <published>2023-04-05T12:41:43.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -273,7 +336,7 @@
     <link href="https://www.zuoge.online/2023/04/03/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAhttp%E8%A7%A3%E6%9E%90%E5%99%A8/"/>
     <id>https://www.zuoge.online/2023/04/03/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAhttp%E8%A7%A3%E6%9E%90%E5%99%A8/</id>
     <published>2023-04-03T21:03:14.000Z</published>
-    <updated>2023-04-28T02:28:08.235Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -294,7 +357,7 @@
     <link href="https://www.zuoge.online/2023/04/03/TODO/"/>
     <id>https://www.zuoge.online/2023/04/03/TODO/</id>
     <published>2023-04-03T13:07:34.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -315,7 +378,7 @@
     <link href="https://www.zuoge.online/2023/04/03/Windows/"/>
     <id>https://www.zuoge.online/2023/04/03/Windows/</id>
     <published>2023-04-03T13:07:34.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -336,7 +399,7 @@
     <link href="https://www.zuoge.online/2023/04/01/java%E9%AB%98%E7%BA%A7%E7%AD%94%E8%BE%A9/"/>
     <id>https://www.zuoge.online/2023/04/01/java%E9%AB%98%E7%BA%A7%E7%AD%94%E8%BE%A9/</id>
     <published>2023-04-01T13:02:43.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -357,7 +420,7 @@
     <link href="https://www.zuoge.online/2023/03/31/Github/hashmap%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8k%E5%92%8Cv/"/>
     <id>https://www.zuoge.online/2023/03/31/Github/hashmap%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8k%E5%92%8Cv/</id>
     <published>2023-03-31T13:03:51.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
+    <updated>2023-05-01T01:04:10.031Z</updated>
     
     
       
@@ -370,75 +433,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Java基础答辩</title>
-    <link href="https://www.zuoge.online/2023/03/25/Guides/java%E5%9F%BA%E7%A1%80%E7%AD%94%E8%BE%A9/"/>
-    <id>https://www.zuoge.online/2023/03/25/Guides/java%E5%9F%BA%E7%A1%80%E7%AD%94%E8%BE%A9/</id>
-    <published>2023-03-25T17:14:30.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="java" scheme="https://www.zuoge.online/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为Go应用程序添加图标</title>
-    <link href="https://www.zuoge.online/2023/03/21/Cookie/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/"/>
-    <id>https://www.zuoge.online/2023/03/21/Cookie/%E4%B8%BAgo%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87/</id>
-    <published>2023-03-21T17:33:09.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>将文件拖到Exe程序上,发生了什么?</title>
-    <link href="https://www.zuoge.online/2023/03/21/Cookie/%E5%B0%86%E6%96%87%E4%BB%B6%E6%8B%96%E5%88%B0exe%E7%A8%8B%E5%BA%8F%E4%B8%8A%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"/>
-    <id>https://www.zuoge.online/2023/03/21/Cookie/%E5%B0%86%E6%96%87%E4%BB%B6%E6%8B%96%E5%88%B0exe%E7%A8%8B%E5%BA%8F%E4%B8%8A%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</id>
-    <published>2023-03-21T15:42:31.000Z</published>
-    <updated>2023-04-28T02:28:08.231Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="计算机基础" scheme="https://www.zuoge.online/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="教程" scheme="https://www.zuoge.online/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
