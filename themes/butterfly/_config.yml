@@ -8,7 +8,7 @@
 #  又学到一个东西 这个就是一个图标的库 哈哈哈
 menu:
   主页: / || fas fa-home
-  # 笔记: /tags/笔记/ || fas fa-book
+  Alist: http://81.68.91.70/alist || fas fa-book
   # 小游戏: /2048/2048.html || fas fa-gamepad
   时间线: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags

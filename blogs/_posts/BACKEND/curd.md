@@ -50,15 +50,7 @@ update test set username = 'test' where id = 2
 {"fieldCount":0,"affectedRows":1,"insertId":11,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
 ```
 
-
-
-
-
 ## select
-
-
-
-
 
 select 
 
@@ -126,8 +118,6 @@ select
 {"fieldCount":0,"affectedRows":5,"insertId":0,"serverStatus":2,"warningCount":0,"message":"","protocol41"
  :true,"changedRows":0}
 ```
-
-
 
 
 
