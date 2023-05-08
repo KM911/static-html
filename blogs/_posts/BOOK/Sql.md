@@ -13,6 +13,21 @@ categories:
 
 这里我们推荐你使用navicat进行数据库可视化的创建和管理 在vscode中是使用sql notebook编写sql语句
 
+## 后端查询方式
+
+* 普通查询 select
+* 条件查询 where
+* 模糊查询 like
+* 排序 order by desc 
+* 范围查询
+* 分组查询 
+* 分页查询
+* 链接查询
+* 合并查询
+* 子查询
+
+
+
 ## 登录和注册
 
 我们规定接口格式如下

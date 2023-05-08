@@ -16,7 +16,65 @@ yum -y install redis
 
 ## 启动redis
 
-我去 centos的redis我是真的找不到啊就是说 服了 真的搞笑就是说
+```shell
+redis-server config
+```
+
+这里我们编写一个就是systemctl
+
+```
+[Unit]
+Description=Redis
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
+ExecReload=/usr/local/bin/redis-server -s reload
+ExecStop=/usr/local/bin/redis-server -s stop
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+                                       
+```
+
+```
+[vagrant@xf-dev ~]sudo vim /usr/lib/systemd/system/redis.service
+[Unit]
+Description=The redis-server Process Manager
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/redis_6379.pid
+ExecStart=/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+ExecStop=/bin/kill -SIGINT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+```
+
+
+
+## 最简配置
+
+```
+requirepass 123456
+bind 0.0.0.0
+daemonize yes
+databases 1
+
+dbfilename database.rdb
+dir /root/redis/data
+rdbcompression yes
+logfile /root/redis/log
+```
+
+
+
+
 
 ![image-20230430084417189](http://81.68.91.70/pg/image/KMdv8ylTK5nA.png)
 
@@ -86,3 +144,6 @@ redis将自己的数据复制一份保存到磁盘中,下次启动会自动加�
 ![image-20230430094151976](http://81.68.91.70/pg/image/KMFuvZRwoNKj.webp)
 
 ![image-20230430094012193](http://81.68.91.70/pg/image/KMx0R6VrF4mZ.png)
+
+
+

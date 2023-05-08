@@ -5,8 +5,6 @@ tags: 教程
 categories: 
 ---
 
-
-
 ## markdown
 
 ### 基本语法
@@ -107,8 +105,6 @@ typora 的表格非常简单 只需要写下首栏即可
 [标题跳转](文件的路径#某个标题)
 ```
 
- [服务器](服务器ESC.md#bind)
-
 ## HTML
 
 很好奇对不对？为什么我要讲这个 其实我们的 typora 就是一个浏览器 将我们的文本进行渲染成 html 所以我们可以使用 html 标签进行编写 md
@@ -179,10 +175,10 @@ typora 是会做优化吗？为什么就是说 会自己去加载啊 而且加�
 
 ```
 <audio src = "https://zuoge-1307686113.cos.ap-nanjing.myqcloud.com/video/giegie.mp3">
-为什么无法显示呢? 原生组件 必须要写<\end> 
 ```
 
-<audio src = "https://zuoge-1307686113.cos.ap-nanjing.myqcloud.com/video/giegie.mp3">
+<audio src = "">
+
 
 ### 插入网页
 
@@ -195,7 +191,7 @@ typora 是会做优化吗？为什么就是说 会自己去加载啊 而且加�
 还可以玩游戏 我的天啊 太强大了吧 哈哈哈
 
 ```
-<embed src = "./BLOG/2048/" width ="100%" height= "500px">
+<embed src = "http://81.68.91.70/" width ="100%" height= "500px">
 ```
 
 <embed src = "./BLOG/2048/" width ="100%" height= "500px">
