@@ -27,7 +27,7 @@ for i := 0; i < len(numList); i++ {
 
 ```go
 var numList = []int{5, 4, 3, 2, 1}
-var numListLens = len(numList)
+var numListLens = len(numList) 
 for index := 0; index < numListLens ; index++ {
     if numList[index] > numList[index+1] {
         numList[index], numList[index+1] = numList[index+1], numList[index]
@@ -36,8 +36,6 @@ for index := 0; index < numListLens ; index++ {
 ```
 
 如果你觉得不明显的话,可以看看其他的例子.
-
-
 
 
 
@@ -51,8 +49,9 @@ func IsTIUFormat(file_ string) bool {
 	if len(filename) == 12 && strings.HasPrefix(filename, "KM") {
 		return true
 	} else {
-		return false
+		return false 
 	}
+
 }
 ```
 
@@ -68,13 +67,65 @@ func IsTIUFormat(file_ string) bool {
 
 ## 利用switch替换同质化的if
 
+我们做了什么?
+
+使用了 Switch 进行判断语句的化简 , 将操作中重复的部分利用 而不是重写 一次
+
 ```go
-
-
+func XcopyActionBackUp(c *cli.Context) error {
+	// 检查是否是已有的项目
+	lens := len(c.Args().Slice())
+	// 是否是ProjectList中的项目
+	if lens == 0 {
+		println("need a argv")
+	} else if lens == 1 {
+		project := viper.GetString("project_path") + c.Args().First()
+		if ok, _ := PathExists(project); ok {
+			oslib.RunReturn("xcopy " + project + " ." + " /E /Y /I")
+			if c.Args().First() == "git" {
+				oslib.RunReturn("git init")
+			}
+		} else {
+			println("invalid project name")
+		}
+	} else if lens == 2 {
+		project := viper.GetString("project_path") + c.Args().First()
+		if ok, _ := PathExists(project); ok {
+			oslib.RunReturn("xcopy " + project + " ./" + c.Args().Get(2) + " /E /Y /I")
+			if c.Args().First() == "git" {
+				oslib.RunReturn("git init")
+			}
+		} else {
+			println("invalid project name")
+		}
+	}
+	return nil
+}
 ```
 
 ```go
-
-	
+func XcopyAction(c *cli.Context) error {
+	// 1. 有意义的变量名 lens不够清楚
+	// 换为 argvLens
+	argvLens := len(c.Args().Slice())
+	// 条件分支语句
+	command := ""
+	switch argvLens {
+	case 1:
+		command = " . /E /Y /I"
+	case 2:
+		command = " ./ /E /Y /I"
+	default:
+		println("need a argv")
+		return nil
+	}
+	project := viper.GetString("project_path") + c.Args().First()
+	if oslib.IsExit(project) {
+		oslib.RunStd("xcopy " + project + command)
+		if c.Args().First() == "git" {
+			oslib.Run("git init")
+		}
+	}
+	return nil
+}
 ```
-

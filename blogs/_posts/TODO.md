@@ -9,9 +9,51 @@ categories:
 
 #  Stream
 
--   [ ] 从命令行中获取stream 这里我除了使用python 还可以使用其他的语言吗 就像我们之前做的一样就是说 
+-   [ ] 从命令行中获取stream 这里我除了使用python 还可以使用其他的语言吗 就像我们之前做的一样就是说  可以了 但是不够好 
 
-    
+-   [ ] 如果我想比较两个应用程序的时间消耗是可以比较的吗? 我觉得是可以的 这样比起直接对两个函数进行比较估计还是会简单一些
+
+-   [ ] makefile with cli x 这里需要优化不是吗
+
+-   [ ] 其实就是还是就是
+
+
+
+## 考试时间
+
+5.24 随机过程 
+
+5.31 统计学 
+
+6.
+
+6.19
+
+
+
+##  随机过程
+
+![image-20230515190014245](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190014245.png)
+
+
+
+
+
+![image-20230515190038905](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190038905.png)
+
+
+
+![image-20230515190114692](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190114692.png)
+
+![image-20230515190133681](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190133681.png)
+
+![image-20230515190150888](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190150888.png)
+
+![image-20230515190330328](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190330328.png)
+
+$$
+
+![image-20230515190351140](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230515190351140.png)
 
 
 
