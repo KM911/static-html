@@ -135,15 +135,34 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
 <li>
-<p>[ ] 命令行工具 主要是为了帮助我们进行一个命令行的提示</p>
+<p>[ ] 从命令行中获取stream 这里我除了使用python 还可以使用其他的语言吗 就像我们之前做的一样就是说  可以了 但是不够好</p>
 </li>
 <li>
-<p>[ ] 题库</p>
+<p>[ ] 如果我想比较两个应用程序的时间消耗是可以比较的吗? 我觉得是可以的 这样比起直接对两个函数进行比较估计还是会简单一些</p>
 </li>
 <li>
-<p>[ ] tiu 前端</p>
+<p>[ ] makefile with cli x 这里需要优化不是吗</p>
+</li>
+<li>
+<p>[ ] 其实就是还是就是</p>
 </li>
 </ul>
+<h2 id="考试时间">考试时间</h2>
+<p>5.24 随机过程</p>
+<p>5.31 统计学</p>
+<ol start="6">
+<li></li>
+</ol>
+<p>6.19</p>
+<h2 id="随机过程">随机过程</h2>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190014245.png" alt="image-20230515190014245" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190038905.png" alt="image-20230515190038905" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190114692.png" alt="image-20230515190114692" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190133681.png" alt="image-20230515190133681" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190150888.png" alt="image-20230515190150888" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190330328.png" alt="image-20230515190330328" /></p>
+<p>$$</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190351140.png" alt="image-20230515190351140" /></p>
 <h1>Task</h1>
 <ul>
 <li>
@@ -200,7 +219,9 @@
 </li>
 <li>
 <p>[x] go 发布自己的package 主要是为了做备份 其余都不重要 哈哈哈</p>
-<p>就是同步和测试存在一些麻烦不是吗?包括还有就是对于绝对路径和相对路径处理也是不清楚的</p>
+</li>
+<li>
+<p>[x] 命令行工具有了</p>
 </li>
 </ul>
 ]]></content>
@@ -249,13 +270,156 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust</title>
+    <url>/static-html/2023/05/14/rust/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="好吧我还是背叛了自己">好吧我还是背叛了自己</h2>
+<p>我在go中遇到了什么问题,我需要学习内存模型.</p>
+<p>然后就是我在文件读写的时候遇到的问题</p>
+<p>byte = u8</p>
+<p>int = u16 i16 是</p>
+<p>go语言中将 int to byte 是直接取余 我现在需要想想该如何调整一个</p>
+<h2 id="错误处理">错误处理</h2>
+<p>rust和<code>go</code>的错误处理逻辑有些相似 但是也不一太一样.</p>
+<p>一句话概括就是 <code>rust</code>将函数正确的结果和错误封装到了一个 <code>Result</code>的结构体中</p>
+<p><code>unwarp</code> 和 <code>expect</code> 可以说是没有什么用处</p>
+<p>不过可以减少代码 当你知道这里不会出现任何问题的时候.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">string</span> = fs::<span class="title function_ invoke__">read_to_string</span>(<span class="string">&quot;hello.txt&quot;</span>);</span><br><span class="line"><span class="keyword">match</span> string &#123;</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(string) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, string),</span><br><span class="line">    <span class="title function_ invoke__">Err</span>(error) =&gt; &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, error);</span><br><span class="line">        <span class="comment">// panic!(&quot;Failed to read hello.txt&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="循环语句">循环语句</h2>
+<h2 id="包管理">包管理</h2>
+<p>这里其实是挺麻烦的在 rust中反正我是没有看懂的</p>
+<ul>
+<li>每个文件都是一个单独的包,没有任何的问题</li>
+<li>关于 mod 和  <code>use</code> 可以理解为 一个是 import 另一个是 C++的use (用于简化作用域的名字长度)</li>
+</ul>
+<p>其实说了很多 不如给一个案例</p>
+<figure class="highlight rs"><table><tr><td class="code"><pre><span class="line"># 项目结构</span><br><span class="line">main.rs</span><br><span class="line">--oslib</span><br><span class="line">	<span class="keyword">mod</span>.rs</span><br><span class="line">	timeclock.rs</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"># <span class="keyword">mod</span>.rs</span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">mod</span> timeclock;</span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">use</span> timeclock::TimeClock;</span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"># timeclock.rs</span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">TimeClock</span> &#123;</span><br><span class="line">    start: std::time::Instant,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">TimeClock</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">new</span>() <span class="punctuation">-&gt;</span> <span class="keyword">Self</span> &#123;</span><br><span class="line">        <span class="keyword">Self</span> &#123;</span><br><span class="line">            start: std::time::Instant::<span class="title function_ invoke__">now</span>(),</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Drop</span> <span class="keyword">for</span> <span class="title class_">TimeClock</span> &#123;</span><br><span class="line">     <span class="keyword">fn</span> <span class="title function_">drop</span>(&amp;<span class="keyword">mut</span> <span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">duration</span> = <span class="keyword">self</span>.start.<span class="title function_ invoke__">elapsed</span>();</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Time elapsed in expensive_function() is: &#123;:?&#125;&quot;</span>, duration);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"># main.rs</span><br><span class="line"><span class="keyword">mod</span> oslib;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>()&#123;</span><br><span class="line">   <span class="keyword">let</span> <span class="variable">_clock</span> =  oslib::TimeClock::<span class="title function_ invoke__">new</span>();</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">data</span> = <span class="title function_ invoke__">Some</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你使用了 <code>use</code> 就可以将其简化 就像这样</p>
+<p>这样的化就需要多写一个mod.rs文件进行包的管理,需要花费更加多的时间</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="数据类型">数据类型</h2>
+<p>基本数据类型 : u8 char</p>
+<p>抽象数据类型 : tuple array  String Vec</p>
+<p>rust 的slice是真的有点没让人看懂</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">5319</span>  <span class="number">9387</span>  <span class="number">2570</span>  <span class="number">4338</span> <span class="number">04</span>/<span class="number">26</span> <span class="number">946</span></span><br><span class="line"><span class="attribute">YANHUI</span> LIAO</span><br><span class="line"><span class="attribute">3457</span> Kincheloe Road</span><br><span class="line"><span class="attribute">Portland</span>, <span class="number">97212</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="字符串处理">字符串处理</h2>
+<ul>
+<li>connect</li>
+<li>split</li>
+<li>index</li>
+<li>substr</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Markdonw编写规范</title>
+    <url>/static-html/2023/05/08/markdonw%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><ul>
+<li></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>装机说明书</title>
+    <url>/static-html/2023/05/07/%E8%A3%85%E6%9C%BA%E8%AF%B4%E6%98%8E%E4%B9%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="配置参数">配置参数</h2>
+<h3 id="机箱">机箱</h3>
+<p>宽 长 高</p>
+<p>当前 21.2 42  49</p>
+<p>整机 16 38 36</p>
+<p>目标</p>
+<p>显卡1060 3g 影驰</p>
+<h3 id="电源">电源</h3>
+<h3 id="内存">内存</h3>
+]]></content>
+  </entry>
+  <entry>
+    <title>时间流逝</title>
+    <url>/static-html/2023/05/06/%E6%97%B6%E9%97%B4%E6%B5%81%E9%80%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="5月">5月</h2>
+<ol>
+<li>redis启动</li>
+<li>redis配置文件</li>
+<li>systemctl 自动启动redis</li>
+<li>windterm theme</li>
+<li>vim</li>
+<li>vbs自动转发我们的wsl端口</li>
+<li>makefile  app template</li>
+<li></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>Makefile简明教程</title>
+    <url>/static-html/2023/05/06/Makefile%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="前置知识">前置知识</h2>
+<ul>
+<li>基本的命令行知识,了解过 <code>shell cmd</code></li>
+<li>最简单的编译命令,例如<code>gcc go build</code>.</li>
+</ul>
+<h2 id="编译命令">编译命令</h2>
+<p>我们假设你现在有一个 <code>go </code>的项目. 你想发布一个精简版需要以下命令. (编译优化和对exe文件进行压缩)</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">go</span> build -ldflags=<span class="string">&quot;-s -w&quot;</span> &amp;&amp; upx -<span class="number">9</span> <span class="regexp">*.exe</span></span><br></pre></td></tr></table></figure>
+<p>你有的时候还需要对文件进行调试</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> build &amp;&amp; app.<span class="keyword">exe</span> </span><br></pre></td></tr></table></figure>
+<p>如果想运行测试脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">go <span class="built_in">test</span> -v ./test</span><br></pre></td></tr></table></figure>
+<p>又或者是一个 <code>benchmark</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">go <span class="built_in">test</span> -bench=. -benchmem  ./benchmark</span><br></pre></td></tr></table></figure>
+<p>你会发现你需要重复键入大量的命名 而且很多的参数挺麻烦的,这个时候有没有一种工具可以帮助你管理这些命令呢?这个时候就需要我们的 <code>Makefile</code></p>
+<h2 id="Makefile">Makefile</h2>
+<p><code>makefile</code>的基本语法如下</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">[<span class="symbol">target</span>]:</span><br><span class="line">	<span class="link">[command]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">build </span>:</span><br><span class="line">	go <span class="keyword">build </span>-ldflags=<span class="string">&quot;-s -w&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>target</code> 是你需要的目标 ,例如当我执行命令 <code>make build</code> , makefile就会检查该目标是否达成,如果没有达成,就会执行下面的命令,达成目标.</p>
+<p><code>target</code>可以是一个文件名,这样就会检查文件是否存在,如果不存在就可以执行命令对其进行构建.</p>
+<p>这里有一个问题? 如果我们只是希望执行命名,而不是检查文件,我们可以提前声明. <code>.PHONY</code> 表示这些目标都是没有完成,也就是一定会执行下面的命令,并且不用担心文件名和命令重名的情况.</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: run build realse</span></span><br></pre></td></tr></table></figure>
+<h2 id="高级用法">高级用法</h2>
+<h3 id="依赖目标">依赖目标</h3>
+<p>有的时候我们的目标依赖于其他的目标,这个时候就可以这样做了</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">[<span class="symbol">target</span>]: <span class="link">[require]</span></span><br><span class="line"><span class="code">	[command]</span></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Go语言的面向对象</title>
+    <url>/static-html/2023/05/05/go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="很遗憾">很遗憾</h2>
+<p>我们的go语言其实不是严格意义上的面向对象的编程预言?</p>
+<p>其实只是和C++ Java这样的面向对象不太一样 毕竟连继承这样面向对象的特征都没有 实在是难以说是一</p>
+<h2 id="没有构造函数">没有构造函数</h2>
+<p>没有静态方法 不过其实也无所谓不是吗?</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CMU15213计算机系统导论</title>
+    <url>/static-html/2023/05/05/TODO/CMU15213%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="开始之前">开始之前</h2>
+<p>先说明一下我目前的水平,我学习过了基本的数据结构 例如树和队列,对于c,python有基本的语法了解.仅此而已,没有说明很特别的地方.</p>
+<h2 id="学术诚信">学术诚信</h2>
+<p><img src="http://81.68.91.70/pg/image/KM3hz75yM0p8.png" alt="image-20230506172428653" /></p>
+<blockquote>
+<p>But please please  whatever you do donot cheat</p>
+</blockquote>
+<p><img src="http://81.68.91.70/pg/image/KM55Tkge0qzc.png" alt="image-20230506172524737" /></p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;pjuser&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;pjpass2016&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5.5.37</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Redis</title>
     <url>/static-html/2023/04/28/TODO/redis/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="redis安装">redis安装</h2>
 <p>像这样的常用服务端软件,一般的包管理工具都会提供.其实不必太担心.</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> redis</span><br></pre></td></tr></table></figure>
 <h2 id="启动redis">启动redis</h2>
-<p>我去 centos的redis我是真的找不到啊就是说 服了 真的搞笑就是说</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redis-server config</span><br></pre></td></tr></table></figure>
+<p>这里我们编写一个就是systemctl</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Redis</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=forking</span><br><span class="line"><span class="attr">ExecStart</span>=/usr/local/bin/redis-server /etc/redis/redis.conf</span><br><span class="line"><span class="attr">ExecReload</span>=/usr/local/bin/redis-server -s reload</span><br><span class="line"><span class="attr">ExecStop</span>=/usr/local/bin/redis-server -s stop</span><br><span class="line"><span class="attr">PrivateTmp</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br><span class="line">                                       </span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">[vagrant@xf-dev ~]sudo vim <span class="regexp">/usr/</span>lib<span class="regexp">/systemd/</span>system/redis.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=The redis-server Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=<span class="regexp">/var/</span>run/redis_6379.pid</span><br><span class="line">ExecStart=<span class="regexp">/usr/</span>local<span class="regexp">/redis/</span>bin<span class="regexp">/redis-server /u</span>sr<span class="regexp">/local/</span>redis<span class="regexp">/etc/</span>redis.conf</span><br><span class="line">ExecReload=<span class="regexp">/bin/</span>kill -USR2 <span class="variable">$MAINPID</span></span><br><span class="line">ExecStop=<span class="regexp">/bin/</span>kill -SIGINT <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<h2 id="最简配置">最简配置</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">requirepass 123456</span><br><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">daemonize <span class="built_in">yes</span></span><br><span class="line">databases 1</span><br><span class="line"></span><br><span class="line">dbfilename database.rdb</span><br><span class="line"><span class="built_in">dir</span> /root/redis/data</span><br><span class="line">rdbcompression <span class="built_in">yes</span></span><br><span class="line">logfile /root/redis/log</span><br></pre></td></tr></table></figure>
 <p><img src="http://81.68.91.70/pg/image/KMdv8ylTK5nA.png" alt="image-20230430084417189" /></p>
 <p><img src="http://81.68.91.70/pg/image/KMnGu2yK32ug.png" alt="image-20230430084515975" /></p>
 <p><img src="http://81.68.91.70/pg/image/KMBDHSqdwGr8.png" alt="image-20230430085041078" /></p>
@@ -316,6 +480,11 @@
 <p>我并不是想 <code>贬低</code> 顶尖大学的学生,而是想承认一个事实,人不是生下来就会说话的–顶尖大学的学生的出色来自于他们后天的努力,哪怕他学习能力再强,不去学习,也注定无法取得任何成绩.</p>
 <p>在我有限的认识里,顶尖大学的学生并不是个个都如同超人一般(但有的 <code>初中生</code> 可能算法能力比像我一样的大学生都要强得多 毕竟他们在他们年幼时就已经花费了大量时间 没有理由比我们要差) . <code>MIT</code>的计算机学生中,一样有不会用 <code>bash</code>  <code>git</code> 的人存在,这很正常,之前的人生经历中根本就没有遇到,怎么可能学会如何使用呢? 很令我难受的事情是, <code>MIT</code>都愿意花费两周的时间给学生上一些实用技术课程  ,但是 <code>我</code> 的老师更加愿意强调大学的自学属性.</p>
 <p><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a></p>
+<h3 id="顶尖大学的学生也是人">顶尖大学的学生也是人</h3>
+<p>顶尖大学的学生也是人,对于之前没有学习过的知识,他们也一样不知道.图片是MIT的6.001上课时的小测验,还是有 $\frac{1}{4}$的学生没有回答对这样简单的问题,只要是学习过python的人,应该都可以回答正确.如果只看这一道题,好了你已经比MIT的部分学生要强了.</p>
+<p><img src="http://81.68.91.70/pg/image/KMxe4HlBkH9s.png" alt="image-20230505103103336" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMjENDLyHa0A.png" alt="image-20230505103141720" /></p>
+<p>他们和你上课的内容几乎是一样的,也是一样的去学 <code>for while if def </code> 然后是抽象数据类型 <code>list trupe set</code> 都一样,他们并不是在上课的时候就已经开始学习 <code>opencv</code>和 机器学习了 ,所以你有什么理由不去努力呢?</p>
 <h2 id="别怕">别怕</h2>
 <p>人不是生下来就什么都会的,你的身边中如果有谁在大家还什么都不会的时候就在某些方面表现很突出,只是因为他很早之前就已经学过了,或者是接触过相关的事物,学习过C的人来学习 <code>rust</code> 肯定比没有接触过任何编程语言的人要容易太多了.</p>
 <p>我记得我们的大作业需要用 <code>Latex</code> ,但是我们其实都不会,没有一个人之前接触过,都是第一次听说.组里有一个人在简单谷歌了一下,就说交给他了,我当时很好奇,因为他的电脑里并没有 <code>latex</code>的环境,他怎么可能会用呢?我后来和他交流过后我才知道,他会用 <code>typora</code>写笔记.</p>
@@ -473,15 +642,17 @@
 <h3 id="有意义的循环标识符">有意义的循环标识符</h3>
 <p>尽管我们经常使用 <code>i</code> 作为循环的标识符,我还是推荐大家使用更有意义的标识符. 原因很简单, 我们知道 <code>index</code> 肯定是一个</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numList = []<span class="type">int</span>&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(numList); i++ &#123;</span><br><span class="line">    <span class="keyword">if</span> numList[i]&gt;numList[i+<span class="number">1</span>] &#123;</span><br><span class="line">        numList[i], numList[i+<span class="number">1</span>] = numList[i+<span class="number">1</span>], numList[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numList = []<span class="type">int</span>&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> numListLens = <span class="built_in">len</span>(numList)</span><br><span class="line"><span class="keyword">for</span> index := <span class="number">0</span>; index &lt; numListLens ; index++ &#123;</span><br><span class="line">    <span class="keyword">if</span> numList[index] &gt; numList[index+<span class="number">1</span>] &#123;</span><br><span class="line">        numList[index], numList[index+<span class="number">1</span>] = numList[index+<span class="number">1</span>], numList[index]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numList = []<span class="type">int</span>&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> numListLens = <span class="built_in">len</span>(numList) </span><br><span class="line"><span class="keyword">for</span> index := <span class="number">0</span>; index &lt; numListLens ; index++ &#123;</span><br><span class="line">    <span class="keyword">if</span> numList[index] &gt; numList[index+<span class="number">1</span>] &#123;</span><br><span class="line">        numList[index], numList[index+<span class="number">1</span>] = numList[index+<span class="number">1</span>], numList[index]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果你觉得不明显的话,可以看看其他的例子.</p>
 <h3 id="没有必要强制else">没有必要强制else</h3>
 <p>倒不是说 我们需要就是节省代码,这里其实只有 AB两个结果,如果你使用 <code>else</code> 肯定是想说明还有第三种结果,这样不容易引发歧义.</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span> </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsTIUFormat</span><span class="params">(file_ <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	filename := oslib.FileName(file_)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(filename) == <span class="number">12</span> &amp;&amp; strings.HasPrefix(filename, <span class="string">&quot;KM&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="利用switch替换同质化的if">利用switch替换同质化的if</h2>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<p>我们做了什么?</p>
+<p>使用了 Switch 进行判断语句的化简 , 将操作中重复的部分利用 而不是重写 一次</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyActionBackUp</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 检查是否是已有的项目</span></span><br><span class="line">	lens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 是否是ProjectList中的项目</span></span><br><span class="line">	<span class="keyword">if</span> lens == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">1</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; .&quot;</span> + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">2</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; ./&quot;</span> + c.Args().Get(<span class="number">2</span>) + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyAction</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 1. 有意义的变量名 lens不够清楚</span></span><br><span class="line">	<span class="comment">// 换为 argvLens</span></span><br><span class="line">	argvLens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 条件分支语句</span></span><br><span class="line">	command := <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">switch</span> argvLens &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		command = <span class="string">&quot; . /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		command = <span class="string">&quot; ./ /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">	<span class="keyword">if</span> oslib.IsExit(project) &#123;</span><br><span class="line">		oslib.RunStd(<span class="string">&quot;xcopy &quot;</span> + project + command)</span><br><span class="line">		<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">			oslib.Run(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -529,14 +700,6 @@
 <li>不应该直接将参数在函数体内拼接 而是应该创建一个变量 然后传进去 这样是为了方便我们进行一个Debug</li>
 <li>使用switch 表示 多条件的判断显得更加高级和完善不是吗?</li>
 </ul>
-<p>我们做了什么?</p>
-<p>使用了 Switch 进行判断语句的化简 , 将操作中重复的部分利用 而不是重写 一次</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyActionBackUp</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 检查是否是已有的项目</span></span><br><span class="line">	lens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 是否是ProjectList中的项目</span></span><br><span class="line">	<span class="keyword">if</span> lens == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">1</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; .&quot;</span> + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> lens == <span class="number">2</span> &#123;</span><br><span class="line">		project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">		<span class="keyword">if</span> ok, _ := PathExists(project); ok &#123;</span><br><span class="line">			oslib.RunReturn(<span class="string">&quot;xcopy &quot;</span> + project + <span class="string">&quot; ./&quot;</span> + c.Args().Get(<span class="number">2</span>) + <span class="string">&quot; /E /Y /I&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">				oslib.RunReturn(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;invalid project name&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">XcopyAction</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 1. 有意义的变量名 lens不够清楚</span></span><br><span class="line">	<span class="comment">// 换为 argvLens</span></span><br><span class="line">	argvLens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="comment">// 条件分支语句</span></span><br><span class="line">	command := <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">switch</span> argvLens &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		command = <span class="string">&quot; . /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		command = <span class="string">&quot; ./ /E /Y /I&quot;</span></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;need a argv&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	project := viper.GetString(<span class="string">&quot;project_path&quot;</span>) + c.Args().First()</span><br><span class="line">	<span class="keyword">if</span> oslib.IsExit(project) &#123;</span><br><span class="line">		oslib.RunStd(<span class="string">&quot;xcopy &quot;</span> + project + command)</span><br><span class="line">		<span class="keyword">if</span> c.Args().First() == <span class="string">&quot;git&quot;</span> &#123;</span><br><span class="line">			oslib.Run(<span class="string">&quot;git init&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于mysql中text和blob这两个数据类型的使用 不然的话 我们还是</p>
-<h1>BASE64 VS BLOB</h1>
-<p>我们这里通过  <code>nodejs</code> 去做该实验 主要是看看两个字符的长度差别</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -681,6 +844,27 @@
 </blockquote>
 <blockquote>
 <p>In many regions of China, dumplings are a significant food since they stand for prosperity and luck.</p>
+</blockquote>
+<p>中国结</p>
+<blockquote>
+<p>中国结的传统源远流长.在古代,由于没有现在的配件,如纽扣或拉链,人们不得不把服装打结,来绑住他们的衣服.多年来,中国结从原来拥有实际用途变成一种优雅的,丰富多彩的工艺品.</p>
+</blockquote>
+<blockquote>
+<p>The tradition of Chinese knots has a long history. In ancient times, people had to tie their clothing in knots to tie their clothes because they did not have today’s accessories, such as buttons or zippers. Over the years, Chinese knots have gone from having a practical use to being an elegant and colorful craft.</p>
+</blockquote>
+<p>红包</p>
+<blockquote>
+<p>red envelope, also known as lucky money, is prepared for children by adults and the elderly and given after the reunion dinner. In folk culture, children will live safe and sound for the whole year if they get lucky money. This custom still remains and the amount of money is increasing. Children use their money to bug books or other school supplies. Some families also save money for future use or use it to help cultivate in their children the habit of saving.</p>
+</blockquote>
+<blockquote>
+<p>同时,居住在平遥的人民依旧保留着许多传统.这个与世隔绝的古城功能特殊,布局合理,城墙是由黑色的砖砌成,已经经历了600多年的风雨洗礼,一直保存完好,现在它已经成为古城的一个标志了.</p>
+</blockquote>
+<blockquote>
+<p>Also, many traditions are still preserved by the people living in Pingyao. The enclosed city is of distinct function and proper layout. The city wall that was built with black bricks has stood against rain and storms for over 600 years and has been well preserved. Now it has become a symbol of the old city.</p>
+</blockquote>
+<p>十二生肖</p>
+<blockquote>
+<p>The twelve Chinese Zodiacs play an important role in traditional Chinese culture. According to the twelve Chinese Zodiacs, each year is associated with one of the twelve animals. You have probably heard that Chinese people regard the twelve animals as the periodic system of counting years. In the west, the twelve creatures of the Chinese Zodiacs have become increasingly familiar with their own characteristics, with each animal representing relevant beliefs, connections and traditional wisdom. Among the twelve animals, the dragon is the only mythical beast, and to be born in the Year of Dragon is regarded as a proitions.</p>
 </blockquote>
 ]]></content>
   </entry>
@@ -1437,6 +1621,14 @@
 <h3 id="适配器模式">适配器模式</h3>
 <p>我觉得根本就不是一个设计模式,两个接口不同的对象,想要进行交互,可不得通过一个适配器进行链接吗?</p>
 <p>很好的例子就是我们的充电器,不同国家的接口都不一样,你需要带上一个适配器/转换头才可以充电</p>
+<h4 id="对象适配器">对象适配器</h4>
+<p>需要将一个对象作为参数进行new操作</p>
+<h4 id="类适配器">类适配器</h4>
+<p>利用继承实现</p>
+<h4 id="JAVA代码">JAVA代码</h4>
+<p>我们的家用电源提供220v的电压,手机需要20v的电压,现在就需要一个 <code>适配器</code> 也就是我们的充电器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Charger</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">MobliePhone</span> <span class="variable">mp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MobliePhone</span>();</span><br><span class="line">    <span class="type">Electric</span> <span class="variable">electric</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Electric</span>();</span><br><span class="line">    <span class="type">Adapter</span> <span class="variable">adapter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Adapter</span>(electric);</span><br><span class="line"><span class="comment">//    mp.Charge(adapter.getCharged());</span></span><br><span class="line">    mp.Charge(electric.getCharged());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 家用电压220V</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Electric</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCharged</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">220</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Electric e;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Electric e)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.e = e;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCharged</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> e.getCharged() / <span class="number">11</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MobliePhone</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Charge</span><span class="params">(<span class="type">int</span> e)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (e == <span class="number">20</span>) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;手机充电中...&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;电压不匹配，无法充电&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Charger</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">MobliePhone</span> <span class="variable">mp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MobliePhone</span>();</span><br><span class="line">    <span class="type">Electric</span> <span class="variable">electric</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Electric</span>();</span><br><span class="line">    <span class="type">Adapter</span> <span class="variable">adapter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Adapter</span>(electric);</span><br><span class="line">    mp.Charge(electric.getCharged());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 家用电压220V</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Electric</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCharged</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">220</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span> <span class="keyword">extends</span> <span class="title class_">Electric</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> Electric e;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Electric e)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.e = e;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCharged</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> e.getCharged() / <span class="number">11</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MobliePhone</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Charge</span><span class="params">(<span class="type">int</span> e)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (e == <span class="number">20</span>) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;手机充电中...&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;电压不匹配，无法充电&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="桥接模式">桥接模式</h3>
 <p>将不同测试</p>
 <h3 id="组合模式">组合模式</h3>
@@ -1592,16 +1784,22 @@
     <url>/static-html/2023/03/12/BACKEND/MySql%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>MySql 环境搭建</h1>
 <h1>环境搭建</h1>
-<p>我不想花费很多的精力在这种事情上了 这是运维的事情</p>
-<p>我们应该将重点放在数据库的设计上 这里需要我们立即业务</p>
+<p>我不想花费很多的精力在这种事情上了 这是运维的事情 我们的重点应该是对于数据库的性能负责就是.</p>
+<h3 id="创建用户并给予权限">创建用户并给予权限</h3>
+<p><code>host</code>的值为 % 表示允许全部的ip访问</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;password&#x27;</span>; </span><br><span class="line"># 直接给全部的权限 这样是最简单的不是吗</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">with</span> <span class="keyword">grant</span> option; </span><br></pre></td></tr></table></figure>
+<h2 id="无法用密码登录">无法用密码登录</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">ALTER</span> <span class="variable constant_">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="variable constant_">IDENTIFIED</span> <span class="variable constant_">BY</span> <span class="string">&#x27;@Dzg15484&#x27;</span> <span class="variable constant_">PASSWORD</span> <span class="variable constant_">EXPIRE</span> <span class="variable constant_">NEVER</span>; #修改加密规则</span><br><span class="line"><span class="variable constant_">ALTER</span> <span class="variable constant_">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="variable constant_">IDENTIFIED</span> <span class="variable constant_">WITH</span> mysql_native_password <span class="variable constant_">BY</span> <span class="string">&#x27;@Dzg15484&#x27;</span>; #修改密码</span><br><span class="line"><span class="variable constant_">FLUSH</span> <span class="variable constant_">PRIVILEGES</span>; #刷新数据</span><br></pre></td></tr></table></figure>
+<p>drop user ‘pjuser’@‘host’</p>
 <h2 id="开启远程连接">开启远程连接</h2>
 <p>首先 我们的mysql密码是在哪里的</p>
 <p>本来是在安装的时候设置的 但是在服务器端是一个什么情况 这里不理解 最好笑的是我不能本地登录 只能远程登录了 哈哈哈哈</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql <span class="operator">-</span>u root <span class="operator">-</span>p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host <span class="operator">=</span> <span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span> <span class="operator">=</span> <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql <span class="operator">-</span>u root <span class="operator">-</span>p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host <span class="operator">=</span> <span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span> <span class="operator">=</span> <span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>这里结果是 不能自己在本地 进入 了 我笑死了 哈哈哈</p>
-<p>我们是用ip连接的 只需要输入ip 就好了</p>
-<h2 id="无法用密码登录">无法用密码登录</h2>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">ALTER</span> <span class="variable constant_">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="variable constant_">IDENTIFIED</span> <span class="variable constant_">BY</span> <span class="string">&#x27;@Dzg15484&#x27;</span> <span class="variable constant_">PASSWORD</span> <span class="variable constant_">EXPIRE</span> <span class="variable constant_">NEVER</span>; #修改加密规则</span><br><span class="line"><span class="variable constant_">ALTER</span> <span class="variable constant_">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="variable constant_">IDENTIFIED</span> <span class="variable constant_">WITH</span> mysql_native_password <span class="variable constant_">BY</span> <span class="string">&#x27;@Dzg15484&#x27;</span>; #修改密码</span><br><span class="line"><span class="variable constant_">FLUSH</span> <span class="variable constant_">PRIVILEGES</span>; #刷新数据</span><br></pre></td></tr></table></figure>
+<p>我们是用ip连接的 只需要输入ip 就好了 或者你直接允许全部的ip访问 ,不过考虑到我们需要使用代理,可能导致我们无法正常登录</p>
+<p>redis创建副本</p>
+<h2 id="Mysql-版本问题">Mysql 版本问题</h2>
+<p>mysql 6.0 以后驱动版本直接变成了</p>
 ]]></content>
   </entry>
   <entry>
@@ -1665,6 +1863,17 @@
 <p>操作系统的数据交互的数据块 是4kb的是吗</p>
 <p>保证硬盘读写效率，所以就有了“4K对齐”</p>
 <p>懂了4K</p>
+<h2 id="自己实现一个sqlite">自己实现一个sqlite</h2>
+<p>我想自己实现一个sqlite就是很简单的内容 当然了 对于就是目前阶段的内容还是很不友好的不是吗? 哈哈哈哈 其实都是一样的就是说.</p>
+<h2 id="0-实现数据IO">0 实现数据IO</h2>
+<p>已经实现了</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Write</span><span class="params">(data <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">	file, _ := os.OpenFile(<span class="string">&quot;data.db&quot;</span>, os.O_RDWR, <span class="number">0666</span>)</span><br><span class="line">	file.Write([]<span class="type">byte</span>(data))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Read</span><span class="params">()</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	file, _ := os.ReadFile(<span class="string">&quot;data.db&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="type">string</span>(file)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	Write(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">	<span class="built_in">print</span>(Read())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-实现最简单的数据列">1 实现最简单的数据列</h2>
+<p>利用换行实现的 虽然其实你从这里就应该知道不应该使用就是换行符进行查找的 就是开始去限制我们的长度才是最好的选择</p>
+<p>我们现在就是需要存储字符串 存储不同的 就是带编号好吧</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Article <span class="keyword">struct</span> &#123;</span><br><span class="line">	id      <span class="type">int</span></span><br><span class="line">	content []<span class="type">byte</span></span><br><span class="line">	length  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们这里其实是一个切片就是说 我好同学</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	dbFileName = <span class="string">&quot;test.db&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateArticle</span><span class="params">(data <span class="type">string</span>)</span></span> *Article &#123;</span><br><span class="line">	<span class="comment">// 将string to 数组</span></span><br><span class="line">	<span class="keyword">return</span> &amp;Article&#123;</span><br><span class="line">		id:      <span class="number">1</span>,</span><br><span class="line">		length:  <span class="built_in">len</span>(data),</span><br><span class="line">		content: []<span class="type">byte</span>(data),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Article)</span></span> ToBytes() []<span class="type">byte</span> &#123;</span><br><span class="line">	id := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">0</span>)</span><br><span class="line">	length := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">0</span>)</span><br><span class="line">	content := a.content</span><br><span class="line">	id = <span class="built_in">append</span>(id, <span class="type">byte</span>(a.id))</span><br><span class="line">	length = <span class="built_in">append</span>(length, <span class="type">byte</span>(a.length))</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">append</span>(<span class="built_in">append</span>(id, length...), content...)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Article)</span></span> Show() &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;id is &quot;</span>, a.id)</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;length is &quot;</span>, a.length)</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;content is &quot;</span>, <span class="type">string</span>(a.content))</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Write</span><span class="params">(data <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">	os.Create(dbFileName)</span><br><span class="line">	file, _ := os.OpenFile(dbFileName, os.O_RDWR, <span class="number">0666</span>)</span><br><span class="line">	article := CreateArticle(data)</span><br><span class="line">	newdata := article.ToBytes()</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;lens is &quot;</span>, <span class="built_in">len</span>(newdata))</span><br><span class="line">	file.Write(newdata)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetArticle</span><span class="params">(data []<span class="type">byte</span>)</span></span> *Article &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;Article&#123;</span><br><span class="line">		id:      <span class="type">int</span>(data[<span class="number">0</span>]),</span><br><span class="line">		length:  <span class="type">int</span>(data[<span class="number">1</span>]),</span><br><span class="line">		content: data[<span class="number">2</span>:],</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Read</span><span class="params">()</span></span> *Article &#123;</span><br><span class="line">	file, _ := os.ReadFile(dbFileName)</span><br><span class="line">	article := GetArticle(file)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> article</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	Write(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">	article := Read()</span><br><span class="line">	article.Show()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-存储多个文章">2 存储多个文章</h2>
+<p>这里其实就已经可以实现我们的大部分功能了 这里开始其实是对于我们的length进行一个限制</p>
 ]]></content>
   </entry>
   <entry>
@@ -2046,19 +2255,83 @@
   </entry>
   <entry>
     <title>键盘侠</title>
-    <url>/static-html/2023/03/11/Cookie/%E9%94%AE%E7%9B%98%E4%BE%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>terminal</h1>
+    <url>/static-html/2023/03/11/TODO/%E9%94%AE%E7%9B%98%E4%BE%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="键盘侠">键盘侠</h2>
+<p>这里的键盘侠是☞哪些对于键盘十分熟悉的人,他们可以通过手指构建出美妙的乐章.本文主要涉及的是一些工具的使用来提升自己的输入速度.</p>
+<ul>
+<li>terminal</li>
+<li>vim</li>
+<li>改键</li>
+<li>编写规范</li>
+<li>ide</li>
+<li>vscode 还有必要做一个吗?</li>
+</ul>
+<h2 id="键盘和改键">键盘和改键</h2>
+<p>我现在使用的键盘是 <code>faker alice 80</code> 它和正常的键盘局部有些不太相同,导致很多快捷键就是需要去变化,然后就会发生很多连锁反应.</p>
+<p>我使用的改键工具是 <code>windows</code> 提供的  <code>powertoys</code> 当然了该软件的功能远不止如此,我们只是简单的使用一下改键的功能.</p>
+<h3 id="遇到的问题">遇到的问题</h3>
+<p>首先这个键盘没有 <code>Alt(right)</code>  没有 <code>没有功能键</code>Insert 之类的 其实是有的不过是残缺的 只有 “del” “ PgUp” “Pg Dn”</p>
+<p>下面的内容可能会变动所以需要小心一点.</p>
+<h3 id="按键替换">按键替换</h3>
+<h3 id="组合键替换">组合键替换</h3>
+<h2 id="terminal-and-tools">terminal and tools</h2>
 <p>首先你应该挑选一个自己喜欢的terminal,可以都下载下来使用一下,选一个最喜欢就够了.</p>
 <p><a href="">windterm</a> 开源免费 我本人在用</p>
 <p><a href="">xshell</a> 收费 功能强大 我也不想用破解版的</p>
+<p><a href="">mobaterm</a> 也是很不错的终端工具</p>
+<p>或许这里应该叫做我们的就是终端管理工具其实还是 ssh客户端管理工具呢?</p>
+<h3 id="windterm主题">windterm主题</h3>
+<p>我目前使用的主题是 <a href="">dracula</a></p>
+<p>使用方法是将主题文件放到 <code>windterm\global\themes</code>文件夹下</p>
+<p>然后在  <code>session -&gt; preferences -&gt; Apperance</code> 中选择就好了</p>
+<h3 id="fish">fish</h3>
+<p><code>fish</code>的全称是 <code> friendly interface s h</code></p>
+<p>就是为了帮助我们这些</p>
 <figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">vscode</span> 备份</span><br><span class="line">D:\<span class="number">0</span>.SOFT\<span class="meta">Code</span>\VsCode.exe --extensions-dir D:\SOFT\Path\<span class="meta">Code</span>\extensions --user-<span class="meta">data</span>-dir D:\SOFT\Path\<span class="meta">Code</span>\<span class="meta">data</span></span><br></pre></td></tr></table></figure>
-<h1>vscode快捷键</h1>
-<h2 id="重要的">重要的</h2>
+<h3 id="vim">vim</h3>
+<p><code>VIm</code>的哲学理念是:</p>
+<blockquote>
+<p>When programming, you spend most of your time reading/editing, not writing. For this reason, Vim is a <em>modal</em> editor: it has different modes for inserting text vs manipulating text. Vim is programmable (with Vimscript and also other languages like Python), and Vim’s interface itself is a programming language: keystrokes (with mnemonic names) are commands, and these commands are composable. Vim avoids the use of the mouse, because it’s too slow; Vim even avoids using the arrow keys because it requires too much movement.</p>
+<p>The end result is an editor that can match the speed at which you think.</p>
+</blockquote>
+<p>很明显, <code>vim</code>并不是用来写代码的,而是查阅和修改.一些操作,例如对一个函数进行全局替换和查找,这在 <code>vim</code>中就需要借助插件来实现,不过我并不喜欢做太多的处理,我觉得这样不符合</p>
+<h3 id="vimtutor">vimtutor</h3>
+<p>移动</p>
+<p>简单的 HJKL</p>
+<p>d 是移除</p>
+<p>u 是撤销</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092249354.png" alt="image-20230426092249354" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092650590.png" alt="image-20230426092650590" /></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092718036.png" alt="image-20230426092718036" /></p>
+<h3 id="很好用的快捷键">很好用的快捷键</h3>
+<p><code>CI &#123;&#125;</code> 修改内容 针对括号</p>
+<p><code>dd</code> 和 <code>d$</code> 两个指令其实是很像的 以至于就是我不太喜欢区分他们</p>
+<p>利用 <code>N</code> 表示数字啊</p>
+<p><code>N w</code> 向后移动 N个单词 同样的 其实我们使用 <code>b</code> 也是可以的 还有一个就是 <code>e</code> 都可以使用</p>
+<p>其实 是数字 + 移动 都会是这样的效果</p>
+<p>0 会移动到行首 这里最大的好处在就是不会移动到上面一行</p>
+<p>功能 + 移动 就实现将功能</p>
+<p><code>D 2w </code></p>
+<p><code> N DD</code> 就可以移动N行</p>
+<p>​</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<h3 id="vimrc">vimrc</h3>
+<figure class="highlight v"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;==============================================================================</span></span><br><span class="line"><span class="string">&quot;</span> set 一般设置</span><br><span class="line"><span class="string">&quot;==============================================================================</span></span><br><span class="line"><span class="string">set nocompatible                &quot;</span>不兼容vi</span><br><span class="line">syntax enable                   <span class="string">&quot;语法高亮使能</span></span><br><span class="line"><span class="string">syntax on                       &quot;</span>语法高亮开启</span><br><span class="line">set hlsearch                    <span class="string">&quot;开启高亮搜索</span></span><br><span class="line"><span class="string">set incsearch                   &quot;</span>输出字符串的同时进行搜索</span><br><span class="line">set ignorecase                  <span class="string">&quot;搜索时忽略大小写</span></span><br><span class="line"><span class="string">set ruler                       &quot;</span>右下角的状态栏下显示光标的坐标</span><br><span class="line">set showcmd                     <span class="string">&quot;显示normal模式下的命令</span></span><br><span class="line"><span class="string">set number                      &quot;</span>显示行号</span><br><span class="line">set relativenumber              <span class="string">&quot;相对行号</span></span><br><span class="line"><span class="string">set cmdheight=1                 &quot;</span>命令行高度为<span class="number">1</span>行<span class="string">&quot;</span></span><br><span class="line"><span class="string">set noshowmode                  &quot;</span>不显示&#x27;-- insert --&#x27; 等</span><br><span class="line">set autoindent                  <span class="string">&quot;自动缩进</span></span><br><span class="line"><span class="string">set smartindent                 &quot;</span>智能缩进</span><br><span class="line">set cindent                     <span class="string">&quot;c语言缩进</span></span><br><span class="line"><span class="string">set pastetoggle=&lt;F4&gt;            &quot;</span>系统paste</span><br><span class="line">set mouse=i                     <span class="string">&quot;仅在insert mode 下可使用mouse</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set autoread                    &quot;</span>当文件在外部被改变时, vim自动载入</span><br><span class="line">set showmatch                   <span class="string">&quot;显示匹配的括号</span></span><br><span class="line"><span class="string">set matchtime=0                 &quot;</span>显示匹配的括号的时间，单位：十分之一秒</span><br><span class="line">set t_Co=<span class="number">256</span>                    <span class="string">&quot;vim配色为256色</span></span><br><span class="line"><span class="string">set cursorline                  &quot;</span>高亮当前光标行</span><br><span class="line">set cursorcolumn                <span class="string">&quot;高亮当前光标列</span></span><br><span class="line"><span class="string">autocmd InsertEnter * se cul</span></span><br><span class="line"><span class="string">set shortmess=atI</span></span><br><span class="line"><span class="string">set scrolloff=3                 &quot;</span>光标移动到buffer的顶部和底部时保持<span class="number">3</span>行距离</span><br><span class="line">set laststatus=<span class="number">2</span>                <span class="string">&quot;指定什么时候对最后一个窗口显示状态条, 2表示永远有</span></span><br><span class="line"><span class="string">set cinoptions=g0,:0,N-s,(0     &quot;</span>设置C/C++语言的具体缩进方式, unkown</span><br><span class="line">set tabstop=<span class="number">4</span>                   <span class="string">&quot;读取到文件的\t时，解释的空白长度</span></span><br><span class="line"><span class="string">set softtabstop=4               &quot;</span>在编辑动作（按tab或backspace键）时，所输入或删除的空白长度</span><br><span class="line">set shiftwidth=<span class="number">4</span>                <span class="string">&quot;自动缩进时的空白长度</span></span><br><span class="line"><span class="string">set expandtab                   &quot;</span>将tab转换成space，文件中存储的将会是space</span><br><span class="line">set smarttab</span><br><span class="line"><span class="string">&quot; set list                      &quot;</span>显示tab键为^I, 行为显示$</span><br><span class="line">set listchars=tab:&gt;-,trail:-    <span class="string">&quot;tab显示为&quot;</span>&gt;---<span class="string">&quot; 行尾多余的空白字符显示为&quot;</span>-<span class="string">&quot;</span></span><br><span class="line"><span class="string">set history=1000                &quot;</span>命令历史个数</span><br><span class="line">set langmenu=en_US<span class="variable">.UTF</span>-<span class="number">8</span>        <span class="string">&quot;菜单语系</span></span><br><span class="line"><span class="string">set helplang=en                 &quot;</span>使用中文文档cn，英文则为en</span><br><span class="line">set autowrite                   <span class="string">&quot;自动保存, 否则切换buffer,文件后会会提示没有保存</span></span><br><span class="line"><span class="string">set magic                       &quot;</span>匹配正则表达式时(\m)：除了$.*^之外其他正则表达式的元字符都要加反斜杠\</span><br><span class="line">set confirm                     <span class="string">&quot;总是出现确认选项，如执行:qa等命令时</span></span><br><span class="line"><span class="string">set nobackup                    &quot;</span>vim当覆盖一个文件时不保留一个备份</span><br><span class="line">set noswapfile                  <span class="string">&quot;不使用交换空间</span></span><br><span class="line"><span class="string">set wildmenu                    &quot;</span>补全相关，unkown</span><br><span class="line">set completeopt=longest,menu    <span class="string">&quot;显示补全列表</span></span><br><span class="line"><span class="string">set backspace=indent,eol,start  &quot;</span>indent将<span class="number">4</span>个空格缩进当缩进删除，eol删除到上一行</span><br><span class="line">set report=<span class="number">0</span>                    <span class="string">&quot;当使用:commands命令时，总是报告文件的那一行被改变过</span></span><br><span class="line"><span class="string">set fillchars=vert:\ ,stl:\ ,stlnc:\  &quot;</span>设置多窗口时的窗口间分割线</span><br><span class="line"><span class="string">&quot; set iskeyword+=.                &quot;</span>追加.为判断一个word</span><br><span class="line">set termencoding=utf-<span class="number">8</span>          <span class="string">&quot;终端使用的字符编码</span></span><br><span class="line"><span class="string">set encoding=utf8               &quot;</span>vim内部buffer使用的字符编码</span><br><span class="line">set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030 <span class="string">&quot;依次判断文件字符编码</span></span><br><span class="line"><span class="string">&quot;</span> set foldmethod=indent         <span class="string">&quot;基于缩进的折叠</span></span><br><span class="line"><span class="string">set foldmethod=syntax           &quot;</span>基于语法的折叠</span><br><span class="line">set nofoldenable                <span class="string">&quot;启动 vim 时关闭折叠代码</span></span><br><span class="line"><span class="string">&quot;</span> set nowrap                      <span class="string">&quot;禁止折行</span></span><br><span class="line"><span class="string">set viminfo+=n~/.cache/vim/.viminfo</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">let $BASH_ENV=&quot;</span>~/<span class="variable">.bash_aliases</span><span class="string">&quot; &quot;</span>增加外部命令的<span class="keyword">alias</span></span><br><span class="line"><span class="keyword">let</span> mapleader = <span class="string">&quot;,&quot;</span>             <span class="string">&quot;修改&lt;leader&gt;键为&#x27;,&#x27;</span></span><br><span class="line"><span class="string">vnoremap &lt;leader&gt;y &quot;</span>+y</span><br><span class="line"></span><br><span class="line">filetype plugin on              <span class="string">&quot;根据文件类型读取插件</span></span><br><span class="line"><span class="string">filetype indent on              &quot;</span>使用缩进文件</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; 标签跳转快捷键，在gnome-terminal中无效</span></span><br><span class="line"><span class="string">&quot;</span> normal no recursive map</span><br><span class="line"><span class="string">&quot; insert no recursive map</span></span><br><span class="line"><span class="string">nnoremap &lt;C-c&gt; :tabclose&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-x&gt; :tabonly&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-k&gt; :tabs&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-n&gt; :tabnew&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-h&gt; :tabprevious&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-l&gt; :tabnext&lt;cr&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span> 光标闪烁，在插入模式下为‘|’，在norrmal 模式下为方块</span><br><span class="line"><span class="string">&quot; 若要不闪烁，则将改为后面的数字</span></span><br><span class="line"><span class="string">let &amp;t_SI = &quot;</span>\&lt;Esc&gt;[<span class="number">5</span> q<span class="string">&quot;                     &quot;</span> <span class="number">6</span></span><br><span class="line"><span class="keyword">let</span> &amp;t_SR = <span class="string">&quot;\&lt;Esc&gt;[3 q&quot;</span>                     <span class="string">&quot; 4</span></span><br><span class="line"><span class="string">let &amp;t_EI = &quot;</span>\&lt;Esc&gt;[<span class="number">1</span> q<span class="string">&quot;                     &quot;</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>很神奇我的配置就是那么简单哈哈哈哈 不想有太多有的没的东西 就是说</p>
+<figure class="highlight v"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot; basic config </span></span><br><span class="line"><span class="string">set nocompatible</span></span><br><span class="line"><span class="string">set bs=indent,eol,start</span></span><br><span class="line"><span class="string">set smartindent  </span></span><br><span class="line"><span class="string">set relativenumber</span></span><br><span class="line"><span class="string">set tabstop=2</span></span><br><span class="line"><span class="string">set shiftwidth=2</span></span><br><span class="line"><span class="string">set nofoldenable</span></span><br><span class="line"><span class="string">set noswapfile</span></span><br><span class="line"><span class="string">:syntax on </span></span><br><span class="line"><span class="string">&quot;</span> theme you should have a try</span><br><span class="line"><span class="string">&quot;:colorschem  elflord | ron | murphy | slate | darkblud | delek  </span></span><br><span class="line"><span class="string">:colorschem murphy </span></span><br><span class="line"><span class="string">&quot;</span> hot key</span><br><span class="line">:inoremap jk &lt;ESC&gt;</span><br><span class="line">noremap H ^</span><br><span class="line">noremap L $</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-a&gt; &lt;Home&gt;</span><br><span class="line">inoremap &lt;C-e&gt; &lt;End&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="推荐的改建位">推荐的改建位</h4>
+<p>其实有的时候 根本就不需要你强制去说明使用哪一种,因为你根本就无法做到在按下了 <code>Ctrl(left)</code>情况下再可以按下 反正我是做不到的 ,就和你打大写A 是利用 <code>Ctrl(eft)</code> 一样很奇怪.</p>
+<figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">C<span class="function"><span class="title">aps</span> --&gt;</span> Ctrl(left) 大小写锁定是真的没有任何的作用</span><br><span class="line">C<span class="function"><span class="title">trl</span> + PaDn --&gt;</span> Alt + Insert Ide的指能修复</span><br><span class="line">C<span class="function"><span class="title">trl</span> + Esc --&gt;</span> ` 因为我没有</span><br><span class="line"></span><br><span class="line">切换windterm窗口</span><br><span class="line">C<span class="function"><span class="title">trl</span> + 数字键 --&gt;</span> Alt + 数字键 </span><br></pre></td></tr></table></figure>
+<p>因为我是 <code>alice</code> 键盘 所以导致我的键盘和正常的不太一样就是说 哈哈哈</p>
+<h2 id="IDE">IDE</h2>
+<p>这里我想将两个ide配置成为就是一摸一样的这样就可以减少我们的</p>
+<h3 id="Vscode-快捷键">Vscode 快捷键</h3>
+<h4 id="重要的">重要的</h4>
 <p><code>ALT</code> + <code>click</code> 选中行 这个最关键</p>
 <p><code>CTRl</code> + <code>shift</code> + <code>H</code> 全局替换</p>
 <p><code>F2</code> rename</p>
 <p><code>CTRl</code> + ` 打开cmd</p>
-<h2 id="不是很重要">不是很重要</h2>
+<h4 id="不是很重要">不是很重要</h4>
 <p><code>ALT</code> + 箭头 上下移动</p>
 <p><code>ALT</code> + <code>Shift</code>+箭头 复制一行在上下</p>
 <p><code>CTRL</code> + <code>R</code> 切换文件夹</p>
@@ -2073,53 +2346,32 @@
 <p><code>CTRl</code> + <code>shift</code> + <code>c</code> 打开cmd</p>
 <p><code>CTRL</code> + <code>K</code> + <code>R</code> 打开文件管理器</p>
 <p><code>CTRL</code> + <code>K</code> + <code>V</code> 侧边预览</p>
-<h1>VIM</h1>
-<p>移动</p>
-<p>简单的 HJKL</p>
-<p>d 是移除</p>
-<p>u 是撤销</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092249354.png" alt="image-20230426092249354" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092650590.png" alt="image-20230426092650590" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426092718036.png" alt="image-20230426092718036" /></p>
-<p>移动</p>
-<p>a I</p>
-<p>a后 i 前</p>
-<p>A 行尾 I 行前</p>
-<p>vim的光标也是一个具体的格子 所以其实我们无法移动到最后一个字符的后面 当然了 你需要移动到最后然后a 或者直接A</p>
-<p>x r 对当前关闭的字符进行修改</p>
-<p>d c 多个字符 区别是c会进入 insert模式</p>
-<p>单词移动</p>
-<p>w b e</p>
-<p>下一个单词前 上一个单词前 e 下一个单词后</p>
-<p>. repleate your last modtifu</p>
-<p>没有我们的idea 就是还是需要去合作 不是吗 黑苹果成为历史了  没有人可以去就是使用了</p>
-<p>master 分支 作为大版本 v0.1.0</p>
-<p>dev 分支 作为小版本 v0.1.1 v0.0.2 v0.1.3 最后来一个合并 将全部的内容作为我们的master分支存在就是说</p>
+<h3 id="IDE的快捷键同步">IDE的快捷键同步</h3>
+<p>就连主题都是一样的就是 还是很开心的不是吗 就是配置可能需要花费一些时间了 不是</p>
+<ul>
+<li>运行程序 ctrl + shift + n</li>
+<li>重命名 ctrl + n</li>
+<li></li>
+</ul>
+<h3 id="为我们的ide添加模板">为我们的ide添加模板</h3>
+<p>打开设置选择 <code>live Template</code></p>
+<p>这里需要学习一些基础的语法就是说,主要是如何编写模板,这里的和我们之前的 <code>vscode</code>的语言要简单,因为不需要再插入到一个 <code>json</code>中而是直接写模板.</p>
+<p>其中我们的 <code>$Command$</code> 表示的是变量 ,这样你就可以直接编写多个地方</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> $Command$ = &amp;cli.Command&#123;</span><br><span class="line">	Name:		<span class="string">&quot;$Command$&quot;</span>,</span><br><span class="line">	Aliases:	[]<span class="type">string</span>&#123;<span class="string">&quot;$Aliases$&quot;</span>&#125;,</span><br><span class="line">	Usage:		<span class="string">&quot;$Usage$&quot;</span>,</span><br><span class="line">	Action:		$Command$Action,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> $<span class="title">Command</span>$<span class="title">Action</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	argvLens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="keyword">switch</span> argvLens &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">       $Action$</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;无效参数&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="markdown编写规范">markdown编写规范</h2>
+<h3 id="前情提要">前情提要</h3>
+<p>我是在hexo上写的博客,所以有些规范是为了帮助hexo渲染.</p>
+<h3 id="详细细节">详细细节</h3>
+<ul>
+<li>不要使用一级标题,一级标题过于大了,看起来的视觉效果不是很好,我们还是不要使用,避免过于大的字符传到无用的信息.</li>
+<li>不要让代码成为你的段落的最后一行,因为这样你就是无法添加新的内容的,你的光标会移动到代码块中去</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
     <title>垃圾桶</title>
     <url>/static-html/2023/03/10/%E5%9E%83%E5%9C%BE%E6%A1%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="后端查询方式">后端查询方式</h2>
-<ul>
-<li>普通查询 select</li>
-<li>条件查询 where</li>
-<li>模糊查询 like</li>
-<li>排序 order by desc</li>
-<li>范围查询</li>
-<li>分组查询</li>
-<li>分页查询</li>
-<li>链接查询</li>
-<li>合并查询</li>
-<li>子查询</li>
-</ul>
-<p>你现在是团体中复杂代码检查和审核的工作人员,只需要对代码进行分析和优化,不要回复其他的内容,如果听明白了,请回复. “开始审核代码”</p>
-<h2 id="为我们的ide添加模板">为我们的ide添加模板</h2>
-<p>打开设置选择 <code>live Template</code></p>
-<p>这里需要学习一些基础的语法就是说,主要是如何编写模板,这里的和我们之前的 <code>vscode</code>的语言要简单,因为不需要再插入到一个 <code>json</code>中而是直接写模板.</p>
-<p>其中我们的 <code>$Command$</code> 表示的是变量 ,这样你就可以直接编写多个地方</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> $Command$ = &amp;cli.Command&#123;</span><br><span class="line">	Name:		<span class="string">&quot;$Command$&quot;</span>,</span><br><span class="line">	Aliases:	[]<span class="type">string</span>&#123;<span class="string">&quot;$Aliases$&quot;</span>&#125;,</span><br><span class="line">	Usage:		<span class="string">&quot;$Usage$&quot;</span>,</span><br><span class="line">	Action:		$Command$Action,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> $<span class="title">Command</span>$<span class="title">Action</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">	argvLens := <span class="built_in">len</span>(c.Args().Slice())</span><br><span class="line">	<span class="keyword">switch</span> argvLens &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">       $Action$</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;无效参数&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="GORM的一些坑">GORM的一些坑</h2>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="GORM的一些坑">GORM的一些坑</h2>
 <h3 id="数据不存在时会报错">数据不存在时会报错</h3>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">2023/05/03 19:41:42 D:/GITHUB/KM911/commander/dao/Add.go:14 record not found</span><br><span class="line">[0.000ms] [rows:0] SELECT * FROM `command_tables` WHERE command = &quot;ls&quot; AND `command_tables`.`deleted_at` IS NULL ORDER BY `co</span><br><span class="line">mmand_tables`.`id` LIMIT 1</span><br></pre></td></tr></table></figure>
 <p>解决的方案是,使用列表进行查询,如何列表的长度为空,就表示数据不存在.</p>
@@ -2231,9 +2483,6 @@
 <p>其实没有什么内容了 不是吗?</p>
 </li>
 </ol>
-<h2 id="mysql">mysql</h2>
-<p>这里主要是为了可以让我们远程访问</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line">use mysql</span><br><span class="line"><span class="keyword">select</span>  <span class="keyword">User</span>,authentication_string,Host <span class="keyword">from</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <h1>方差</h1>
 <p>$$<br />
 \frac{\sum x_i - u }{N}<br />
@@ -2355,6 +2604,19 @@ $$</p>
 <p>我们不是第一次接触了 所以我想以一种面向使用场景的方式来进行记录</p>
 <p>你其实不需要知道什么是 DDL DML这些 也不需要知道如何create a database 这些并不能帮助你了解和认识我们数据库</p>
 <p>这里我们推荐你使用navicat进行数据库可视化的创建和管理 在vscode中是使用sql notebook编写sql语句</p>
+<h2 id="后端查询方式">后端查询方式</h2>
+<ul>
+<li>普通查询 select</li>
+<li>条件查询 where</li>
+<li>模糊查询 like</li>
+<li>排序 order by desc</li>
+<li>范围查询</li>
+<li>分组查询</li>
+<li>分页查询</li>
+<li>链接查询</li>
+<li>合并查询</li>
+<li>子查询</li>
+</ul>
 <h2 id="登录和注册">登录和注册</h2>
 <p>我们规定接口格式如下</p>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">/<span class="keyword">login</span>/?username=<span class="keyword">admin</span>&amp;<span class="keyword">password</span>=<span class="number">123456</span></span><br><span class="line">/register/?username=<span class="keyword">admin</span>&amp;<span class="keyword">password</span>=<span class="number">123456</span></span><br></pre></td></tr></table></figure>
@@ -2768,37 +3030,17 @@ server.listen(3000);</p>
 ]]></content>
   </entry>
   <entry>
-    <title>学会任何语言</title>
-    <url>/static-html/2023/01/12/BOOK/%E5%AD%A6%E4%BC%9A%E4%BB%BB%E4%BD%95%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>学会任何语言</h1>
-<p>这里很明显 不是☞英语 西班牙语之类的 而是说 让一个有编程基础的人 快速上手一个编程语言的通式</p>
-<ol start="0">
-<li>hello world</li>
-<li>变量 和 数据类型</li>
-<li>非顺序结构</li>
-<li>字符串处理</li>
-<li>文件读写</li>
-</ol>
-<p>我就用我学习GO 作为一个例子吧</p>
-<p>同时也希望可以帮助到后面想学习GO的人</p>
-<p>小声BB: 这里你会发现 我根本没有讲什么语言的特点 因为我觉得你根本就不了解一门语言 听到大量的名词堆砌 其实没有任何实际的帮助 在摸索中 你会有自己的体会的</p>
-<p>比如说 我们的GO error is value</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<p>等等啊 这里我没有时间了 其实</p>
-<p>我很快就要考试了 你说是不是</p>
-<h2 id="hello-world">hello world</h2>
-<p>这里主要是解决环境问题 不得不承认 这个真的挺麻烦的 虽然大体上都是一个样的</p>
-<p>下载一个 编译器/解释器/运行时</p>
-<p>将其路径添加到环境变量中</p>
-]]></content>
-  </entry>
-  <entry>
     <title>操作系统</title>
     <url>/static-html/2023/01/12/BOOK/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>玩为什么要学习操作系统</h1>
 <p>我们所有的软件都是运行在操作系统上的 (操作系统也是一个软件)</p>
 <p>我们学习操作系统 不是为了 自己写一个操作系统 而是理解操作系统 帮助我们写出更加优秀的程序 特别在<code>多进程</code> 和<code>多线程</code>方面</p>
 <p><a href="https://rawchen.com/307">技术博客参考</a> 五万字100图讲操作系统</p>
+<p>实现一个自己的sqlite 和 redis 只是为了满足就是单一的简单需求 不是吗 这里就够了 在我看来 其实已经非常不错了.</p>
+<p>理解我们的操作系统后 就可以知道了 其实这里</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span>写文章 </span><br><span class="line">字符串 </span><br><span class="line">任意长度的字符串 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>一个很简单的例子 其实就是对于我们的</p>
+<p><img src="http://81.68.91.70/pg/image/KMLzDWV8w5qd.png" alt="image-20230512164315567" /></p>
 <h1>操作系统全局理解</h1>
 <p>进程 线程</p>
 <p>进程和线程的操作</p>
@@ -2822,29 +3064,32 @@ server.listen(3000);</p>
 <li>用一门编程语言 创建多个进程 线程 协程</li>
 <li>用他们解决问题 并思考存在的问题</li>
 </ol>
-<p>​</p>
-<h2 id="nodejs">nodejs</h2>
-<p>我们使用如下的方法 在nodejs里创建子</p>
-<p>process and thread</p>
-<p>有<code>spawn</code> <code>fork</code> <code>exec</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// child.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;run child.js&quot;</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// fork.sj</span></span><br><span class="line"><span class="keyword">import</span> child_process <span class="keyword">from</span> <span class="string">&#x27;child_process&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"></span><br><span class="line">child_process.<span class="title function_">fork</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;child.js&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;parent process pid&#x27;</span>, process.<span class="property">pid</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>输出如下 可以看到确实是创建了新的进程 并且两个进程是共用一个输出窗口的</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221119155548858.png" alt="image-20221119155548858" /></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// spawn.js</span></span><br><span class="line"><span class="keyword">const</span> child = child_process.<span class="title function_">spawn</span>(<span class="string">&#x27;node&#x27;</span>, [path.<span class="title function_">resolve</span>(<span class="string">&#x27;child.js&#x27;</span>)]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听子进程的输出</span></span><br><span class="line">child.<span class="property">stdout</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;child stdout:\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>结果如下  	如果我们不对结果进行监听 子进程的输出不会显示</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// exec.js</span></span><br><span class="line">child_process.<span class="title function_">exec</span>(<span class="string">&#x27;node &#x27;</span> + path.<span class="title function_">resolve</span>(<span class="string">&#x27;child.js&#x27;</span>), <span class="function">(<span class="params">err, stdout, stderr</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;stdout&#x27;</span>, stdout);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;stderr&#x27;</span>, stderr); <span class="comment">// 默认返回字符串</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>结果如下</p>
-<p>其实三者之前区别不是很大 看你想做什么</p>
-<p>如果是只想完成一个事务 并且需要<code>callback</code> 你可以使用 <code>exec</code> 这样最简单快捷</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">child_process.<span class="title function_">exec</span>(<span class="string">&quot;node app.js&quot;</span>,<span class="function">(<span class="params">error,stdout,stderror</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 可以知道子进程运行完毕 和 成功与否</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>如果是需要频繁的信息交互 使用<code>spawn</code> 对你的子进程输入输出进行管理</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 监听子进程的输出</span></span><br><span class="line">child.<span class="property">stdout</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;child print&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>如果是两个并行的程序 比如说一个监听3000 一个监听5000 就使用<code>fork</code></p>
-<h2 id="总结一下">总结一下</h2>
-<p>首先 明白一点 异步并不能缩减程序运行的时间 就是说 IO操作还是需要占据我们的CPU的使用的 这个时间是跑不了的</p>
-<p>nodejs 是有多个</p>
+<pre><code>## 程序是什么? 程序是一个状态机
+</code></pre>
+<p>其实不光程序是状态机,我们的硬件也是一个状态机,电脑开机的时候就是固定去初始化到某一个状态就是说</p>
 <figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">STATUS_CODES: &#123;</span><br><span class="line">&#x27;100&#x27;: &#x27;Continue&#x27;,</span><br><span class="line">&#x27;101&#x27;: &#x27;Switching Protocols&#x27;,</span><br><span class="line">&#x27;102&#x27;: &#x27;Processing&#x27;,</span><br><span class="line">&#x27;103&#x27;: &#x27;Early Hints&#x27;,</span><br><span class="line">&#x27;200&#x27;: &#x27;OK&#x27;,</span><br><span class="line">&#x27;201&#x27;: &#x27;Created&#x27;,</span><br><span class="line">&#x27;202&#x27;: &#x27;Accepted&#x27;,</span><br><span class="line">&#x27;203&#x27;: &#x27;Non-Authoritative Information&#x27;,</span><br><span class="line">&#x27;204&#x27;: &#x27;No Content&#x27;,</span><br><span class="line">&#x27;205&#x27;: &#x27;Reset Content&#x27;,</span><br><span class="line">&#x27;206&#x27;: &#x27;Partial Content&#x27;,</span><br><span class="line">&#x27;207&#x27;: &#x27;Multi-Status&#x27;,</span><br><span class="line">&#x27;208&#x27;: &#x27;Already Reported&#x27;,</span><br><span class="line">&#x27;226&#x27;: &#x27;IM Used&#x27;,</span><br><span class="line">&#x27;300&#x27;: &#x27;Multiple Choices&#x27;,</span><br><span class="line">&#x27;301&#x27;: &#x27;Moved Permanently&#x27;,</span><br><span class="line">&#x27;302&#x27;: &#x27;Found&#x27;,</span><br><span class="line">&#x27;303&#x27;: &#x27;See Other&#x27;,</span><br><span class="line">&#x27;304&#x27;: &#x27;Not Modified&#x27;,</span><br><span class="line">&#x27;305&#x27;: &#x27;Use Proxy&#x27;,</span><br><span class="line">&#x27;307&#x27;: &#x27;Temporary Redirect&#x27;,</span><br><span class="line">&#x27;308&#x27;: &#x27;Permanent Redirect&#x27;,</span><br><span class="line">&#x27;400&#x27;: &#x27;Bad Request&#x27;,</span><br><span class="line">&#x27;401&#x27;: &#x27;Unauthorized&#x27;,</span><br><span class="line">&#x27;402&#x27;: &#x27;Payment Required&#x27;,</span><br><span class="line">&#x27;403&#x27;: &#x27;Forbidden&#x27;,</span><br><span class="line">&#x27;404&#x27;: &#x27;Not Found&#x27;,</span><br><span class="line">&#x27;405&#x27;: &#x27;Method Not Allowed&#x27;,</span><br><span class="line">&#x27;406&#x27;: &#x27;Not Acceptable&#x27;,</span><br><span class="line">&#x27;407&#x27;: &#x27;Proxy Authentication Required&#x27;,</span><br><span class="line">&#x27;408&#x27;: &#x27;Request Timeout&#x27;,</span><br><span class="line">&#x27;409&#x27;: &#x27;Conflict&#x27;,</span><br><span class="line">&#x27;410&#x27;: &#x27;Gone&#x27;,</span><br><span class="line">&#x27;411&#x27;: &#x27;Length Required&#x27;,</span><br><span class="line">&#x27;412&#x27;: &#x27;Precondition Failed&#x27;,</span><br><span class="line">&#x27;413&#x27;: &#x27;Payload Too Large&#x27;,</span><br><span class="line">&#x27;414&#x27;: &#x27;URI Too Long&#x27;,</span><br><span class="line">&#x27;415&#x27;: &#x27;Unsupported Media Type&#x27;,</span><br><span class="line">&#x27;416&#x27;: &#x27;Range Not Satisfiable&#x27;,</span><br><span class="line">&#x27;417&#x27;: &#x27;Expectation Failed&#x27;,</span><br><span class="line">&#x27;418&#x27;: <span class="string">&quot;I&#x27;m a Teapot&quot;</span>,</span><br><span class="line">&#x27;421&#x27;: &#x27;Misdirected Request&#x27;,</span><br><span class="line">&#x27;422&#x27;: &#x27;Unprocessable Entity&#x27;,</span><br><span class="line">&#x27;423&#x27;: &#x27;Locked&#x27;,</span><br><span class="line">&#x27;424&#x27;: &#x27;Failed Dependency&#x27;,</span><br><span class="line">&#x27;425&#x27;: &#x27;Too Early&#x27;,</span><br><span class="line">&#x27;426&#x27;: &#x27;Upgrade Required&#x27;,</span><br><span class="line">&#x27;428&#x27;: &#x27;Precondition Required&#x27;,</span><br><span class="line">&#x27;429&#x27;: &#x27;Too Many Requests&#x27;,</span><br><span class="line">&#x27;431&#x27;: &#x27;Request Header Fields Too Large&#x27;,</span><br><span class="line">&#x27;451&#x27;: &#x27;Unavailable For Legal Reasons&#x27;,</span><br><span class="line">&#x27;500&#x27;: &#x27;Internal Server Error&#x27;,</span><br><span class="line">&#x27;501&#x27;: &#x27;Not Implemented&#x27;,</span><br><span class="line">&#x27;502&#x27;: &#x27;Bad Gateway&#x27;,</span><br><span class="line">&#x27;503&#x27;: &#x27;Service Unavailable&#x27;,</span><br><span class="line">&#x27;504&#x27;: &#x27;Gateway Timeout&#x27;,</span><br><span class="line">&#x27;505&#x27;: &#x27;HTTP Version Not Supported&#x27;,</span><br><span class="line">&#x27;506&#x27;: &#x27;Variant Also Negotiates&#x27;,</span><br><span class="line">&#x27;507&#x27;: &#x27;Insufficient Storage&#x27;,</span><br><span class="line">&#x27;508&#x27;: &#x27;Loop Detected&#x27;,</span><br><span class="line">&#x27;509&#x27;: &#x27;Bandwidth Limit Exceeded&#x27;,</span><br><span class="line">&#x27;510&#x27;: &#x27;Not Extended&#x27;,</span><br><span class="line">&#x27;511&#x27;: &#x27;Network Authentication Required&#x27;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>学会任何编程语言</title>
+    <url>/static-html/2023/01/12/BOOK/%E5%AD%A6%E4%BC%9A%E4%BB%BB%E4%BD%95%E8%AF%AD%E8%A8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>学会任何语言</h1>
+<p>这里很明显 不是☞英语 西班牙语之类的 而是说 让一个有编程基础的人 快速上手一个编程语言的通式</p>
+<ol start="0">
+<li>hello world</li>
+<li>变量 和 数据类型</li>
+<li>非顺序结构</li>
+<li>字符串处理</li>
+<li>文件读写</li>
+</ol>
+<p>我就用我学习GO 作为一个例子吧</p>
+<p>同时也希望可以帮助到后面想学习GO的人</p>
+<p>小声BB: 这里你会发现 我根本没有讲什么语言的特点 因为我觉得你根本就不了解一门语言 听到大量的名词堆砌 其实没有任何实际的帮助 在摸索中 你会有自己的体会的</p>
+<p>比如说 我们的GO error is value</p>
+<h2 id="hello-world">hello world</h2>
+<p>这里主要是解决环境问题 不得不承认 这个真的挺麻烦的 虽然大体上都是一个样的</p>
+<p>下载一个 编译器/解释器/运行时</p>
+<p>将其路径添加到环境变量中</p>
 ]]></content>
   </entry>
   <entry>
@@ -3094,7 +3339,6 @@ server.listen(3000);</p>
 <p>我们的<code>path.join</code> 拥有错误处理能力</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&quot;path&quot;</span></span><br><span class="line"><span class="comment">// 使用的是相对路径 </span></span><br><span class="line"><span class="keyword">let</span> path_test1 = path.<span class="title function_">join</span>(process.<span class="title function_">cwd</span>(),<span class="string">&quot;./network&quot;</span>,<span class="string">&quot;./test.jpeg&quot;</span>)</span><br><span class="line"><span class="comment">// 有/ 并且过多</span></span><br><span class="line"><span class="keyword">let</span> path_test2 = path.<span class="title function_">join</span>(process.<span class="title function_">cwd</span>(),<span class="string">&quot;/network&quot;</span>,<span class="string">&quot;////test.webp&quot;</span>)</span><br><span class="line"><span class="comment">// 有/ 并且是反斜杠</span></span><br><span class="line"><span class="keyword">let</span> path_test3 = path.<span class="title function_">join</span>(process.<span class="title function_">cwd</span>(),<span class="string">&quot;\\network&quot;</span>,<span class="string">&quot;\\test.webp&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path_test1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path_test2)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path_test3)</span><br></pre></td></tr></table></figure>
 <p>他们都可以获得正确的结果 并且是可以不同平台间通用的 (我的是win 所以最后的路径使用的是<code>\</code>)</p>
-<p><img src="http://81.68.91.70/picgo/8_43_8.webp" alt="image-20221103084308130" /></p>
 <p>实用性分析 也是<code>join</code>的胜利</p>
 <h2 id="性能分析">性能分析</h2>
 <p>其实不必 分析也可以知道 肯定是字符串拼接的效率要高 但是这一点点的性能差别真的没有太大优化的意义</p>
@@ -3356,29 +3600,6 @@ server.listen(3000);</p>
 <p>解决思路 大概是这样的 每个页面都有自己的init 函数 用于检测本地是否有图片 将其替代网络的图片显示</p>
 <p>save_to_local 在我们的初始页面进行设置</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>注册名表的玩法</title>
-    <url>/static-html/2022/12/12/Cookie/%E6%B3%A8%E5%86%8C%E5%90%8D%E8%A1%A8%E7%9A%84%E7%8E%A9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>学习修改注册表</h1>
-<p>路径</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Computer</span>\<span class="variable constant_">HKEY_CLASSES_ROOT</span>\*\shell </span><br><span class="line">这里是存放我们的选中文件后右键指令</span><br><span class="line"></span><br><span class="line"><span class="title class_">Computer</span>\<span class="variable constant_">HKEY_CLASSES_ROOT</span>\<span class="title class_">Directory</span>\shell</span><br><span class="line">文件夹里的相关操作</span><br></pre></td></tr></table></figure>
-<p>变量</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">%<span class="number">1</span> 表示的是选中当前文件</span><br><span class="line">%V 表示移动至当前文件路径</span><br></pre></td></tr></table></figure>
-<p>比如说我们想让右键打开记事本 变成<code>notepad++</code>而不是自带的笔记本</p>
-<p><img src="http://81.68.91.70/picgo/10_5_21_25_45.webp" alt="image-20221104212545034" /></p>
-<p>不过现在没有图标不是很好看对吧</p>
-<p>我们<code>new </code> <code>string value</code></p>
-<p><code>Icon</code> <code>exe path</code> 就好了</p>
-<p><img src="http://81.68.91.70/picgo/10_5_21_29_25.webp" alt="image-20221104212925687" /></p>
-<h2 id="导出-备用">导出 备用</h2>
-<p>我们以后装电脑 就可以直接使用了 哈哈哈</p>
-<h2 id="VSCODE的插件路径">VSCODE的插件路径</h2>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">vscode 的插件问题 </span><br><span class="line">--extensions-dir <span class="string">&quot;D:\0.SOFT\Code\extensions&quot;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>教程</tag>
-      </tags>
   </entry>
   <entry>
     <title>ES6和commonjs的区别</title>
@@ -3871,7 +4092,6 @@ server.listen(3000);</p>
 <p>是否可以跳转到其他文件的某个位置?  🆗的</p>
 <p>就是将上面的组合起来就好了 文件+锚点 完美解决问题 哈哈哈哈</p>
 <figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[<span class="name">标题跳转</span>](<span class="name">文件的路径</span>#某个标题)</span><br></pre></td></tr></table></figure>
-<p><a href="%E6%9C%8D%E5%8A%A1%E5%99%A8ESC.md#bind">服务器</a></p>
 <h2 id="HTML">HTML</h2>
 <p>很好奇对不对？为什么我要讲这个 其实我们的 typora 就是一个浏览器 将我们的文本进行渲染成 html 所以我们可以使用 html 标签进行编写 md</p>
 <p>前排提示 发现 iframe 没有 embed 好用</p>
@@ -3901,14 +4121,14 @@ server.listen(3000);</p>
 <p>支持 mp3 wav ogg 猜的 啊哈哈哈</p>
 <p>使用本土的 audio 就好了</p>
 <p>这些都存在一个问题 就是我们该如何解决本地和网络的区别啊 先尝试头痛死了 放到 ftp 上面去吗？</p>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">&lt;audio src = <span class="string">&quot;https://zuoge-1307686113.cos.ap-nanjing.myqcloud.com/video/giegie.mp3&quot;</span>&gt;</span><br><span class="line">为什么无法显示呢? 原生组件 必须要写&lt;\<span class="keyword">end</span>&gt; </span><br></pre></td></tr></table></figure>
-<audio src = "https://zuoge-1307686113.cos.ap-nanjing.myqcloud.com/video/giegie.mp3">
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">audio</span> <span class="attribute">src</span> = <span class="string">&quot;https://zuoge-1307686113.cos.ap-nanjing.myqcloud.com/video/giegie.mp3&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<audio src = "">
 <h3 id="插入网页">插入网页</h3>
 <p>想不到吧哈哈哈哈 真的很有意思</p>
 <p>下面是我的博客展示 等等啊 在我的博客里面看我的博客展示 是不是很奇怪啊 😂</p>
 <p>同样的按下 <code>CTRL</code> 可以直接从浏览器打开我们的网页 但是这样就不是聚合了 哈哈</p>
 <p>还可以玩游戏 我的天啊 太强大了吧 哈哈哈</p>
-<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">&lt;embed src <span class="operator">=</span> <span class="string">&quot;./BLOG/2048/&quot;</span> width <span class="operator">=</span><span class="string">&quot;100%&quot;</span> height<span class="operator">=</span> <span class="string">&quot;500px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">&lt;embed src <span class="operator">=</span> <span class="string">&quot;http://81.68.91.70/&quot;</span> width <span class="operator">=</span><span class="string">&quot;100%&quot;</span> height<span class="operator">=</span> <span class="string">&quot;500px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 <embed src = "./BLOG/2048/" width ="100%" height= "500px">
 <h3 id="插入-pdf">插入 pdf</h3>
 <p>一定要设置宽度 不然字体真的太小了</p>
@@ -4069,29 +4289,6 @@ server.listen(3000);</p>
 <p>什么是程序员 其实好多事情我都不是很想将</p>
 <p>脑子有些混乱 导致写的东西有些莫名其妙 无所谓了 我觉得反正 我讲的话其实也是一样的 没有什么意义的行为</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>环境变量</title>
-    <url>/static-html/2022/09/15/Cookie/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="环境变量">环境变量</h2>
-<p>这个名词只有使用win的人需要知道和了解</p>
-<p>我们的程序或者文件被下载到了电脑中 你想要启动它 就必须要文件的存放位置 这个就是环境变量 – 告知计算机我们的文件存放在何处</p>
-<h2 id="添加环境变量">添加环境变量</h2>
-<h3 id="简单版">简单版</h3>
-<p>打开文件管理器 -&gt; 右键 -&gt;属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; path -&gt; 新建 -&gt;添加路径</p>
-<p>自行进行添加</p>
-<h3 id="命令行版">命令行版</h3>
-<p>我们可以直接使用一条指令进行环境变量的添加</p>
-<p>新建一个名为 NODE_PATH 的环境变量 后面是其路径</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">setx <span class="string">&quot;NODE_PATH&quot;</span> <span class="string">&quot;D:<span class="subst">\0</span>.SOFT\NODE<span class="subst">\n</span>ode_global<span class="subst">\n</span>ode_modules&quot;</span> <span class="operator">/</span>m </span><br></pre></td></tr></table></figure>
-<h2 id="批量管理环境变量">批量管理环境变量</h2>
-<p>由于时不时会重装系统 环境变量又需要重新配置 所以可以写一个文件用于保存我们的环境变量</p>
-<p>编写一个 .bat文件进行操作 下面是我的</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="comment">@REM 配置环境变量path 可以是不是复制一下 进行保存我们的环境变量 </span></span><br><span class="line"><span class="comment">@REM 有系统的环境 python git nodejs vscode pycharm min64 go </span></span><br><span class="line">setx &quot;<span class="built_in">path</span>&quot; &quot;C:\Windows;C:\Windows\system32;C:\Windows\System32\WindowsPowerShell\v1.<span class="number">0</span>\;D:\<span class="number">0</span>.SOFT\environment\Scripts\;D:\<span class="number">0</span>.SOFT\environment\;D:\<span class="number">0</span>.SOFT\Git\<span class="built_in">cmd</span>;D:\<span class="number">0</span>.SOFT\NODE\;D:\<span class="number">0</span>.SOFT\NODE\node_cache;D:\<span class="number">0</span>.SOFT\NODE\node_global;D:\<span class="number">0</span>.SOFT\Microsoft VS Code\bin;D:\<span class="number">0</span>.SOFT\PyCharm\bin;D:\<span class="number">0</span>.SOFT\mingw64\bin;D:\<span class="number">0</span>.SOFT\GOGO\bin;&quot; /m</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 配置我们的python环境</span></span><br><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip install -r win_pip.txt</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 这里我们进行对于node.js环境的修复</span></span><br><span class="line">setx &quot;NODE_PATH&quot; &quot;D:\<span class="number">0</span>.SOFT\NODE\node_global\node_modules&quot; /m </span><br><span class="line"><span class="comment">@REM  添加淘宝的镜像源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> prefix &quot;D:\<span class="number">0</span>.SOFT\NODE\node_global&quot;</span><br><span class="line">npm config <span class="built_in">set</span> cache  &quot;D:\<span class="number">0</span>.SOFT\NODE\node_cache&quot;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
   </entry>
   <entry>
     <title>讨厌写Ppt</title>
