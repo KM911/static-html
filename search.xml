@@ -316,9 +316,8 @@
   <entry>
     <title>Markdonw编写规范</title>
     <url>/static-html/2023/05/08/markdonw%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><ul>
-<li></li>
-</ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="Markdown编写规范">Markdown编写规范</h2>
+<p>理由如下,其实根本就不需要理由,做事情遵从某种规定的流程和形式,这样绝对是好的,当然了,你肯定也会说如此繁多的条条框框是否是会限制这件事情的执行,我的见解是,一个合理的流程,绝对是只有好处没有坏处的.</p>
 ]]></content>
   </entry>
   <entry>
@@ -349,6 +348,9 @@
 <li>makefile  app template</li>
 <li></li>
 </ol>
+<h2 id="通过命令行对于环境变量进行修改">通过命令行对于环境变量进行修改</h2>
+<p>这里需要我们就是双向链接,一方面我们需要只进行部分的用户修改,将系统修改隔离,这样就不会出现这样的问题了不是吗?</p>
+<p><img src="D:%5Cimage_widget_5c8sbc3wanl91.png" alt="Widget image" /></p>
 ]]></content>
   </entry>
   <entry>
@@ -659,47 +661,30 @@
     <title>编码风格养成</title>
     <url>/static-html/2023/04/25/Github/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E5%85%BB%E6%88%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="编码风格的习惯">编码风格的习惯</h2>
-<ol>
-<li>
-<p>使用驼峰式命名法：变量、函数和方法的名称使用驼峰式命名法，即首字母小写，后面每个单词首字母大写，如：firstName、getFullName()；</p>
-<p>小驼峰变量名</p>
-<p>大驼峰函数</p>
-</li>
-<li>
-<p>使用首字母大写的名称来导出包中的变量、函数和方法：这些变量、函数和方法可以被其他包引用和使用，因此需要使用首字母大写的名称来表示其“公开”的属性，如：FirstName、GetFullName()；</p>
-</li>
-<li>
-<p>使用全大写字母的名称来表示常量：这些常量可以被其他包引用和使用，因此需要使用全大写字母的名称来表示其“公开”的属性，如：PI、VERSION；</p>
-<p>全大写表示产量</p>
-</li>
-<li>
-<p>使用有意义的名称：变量、函数和方法的名称应该有意义，能够描述其功能和用途，尽量避免使用缩写和简写的名称，如：firstName代替fn；</p>
-</li>
-<li>
-<p>使用名词来表示变量和结构体：变量和结构体名称应该使用名词表示，能够描述其代表的实体和概念，如：person、employee；</p>
-</li>
-<li>
-<p>使用动词来表示函数和方法：函数和方法名称应该使用动词表示，能够描述其代表的操作和行为，如：get、set、print；</p>
-</li>
-<li>
-<p>使用单数形式来表示集合：变量和结构体名称中表示集合的名称应该使用单数形式，如：person代替people；</p>
-</li>
-<li>
-<p>避免使用Go语言的关键字和保留字作为名称。</p>
-</li>
-</ol>
+<p>​	我并不认为存在什么 ‘clean code’ 的说法,在我看来,一个项目,只要是遵从某种固定的写法规范,就是一个很不错的样子.我原本以为不同的编程语言会共同遵守同一套编码规范,但是很不幸,事实并不是,在python中 利用 <strong>method</strong> 表示这个方法是私有的,go语言中是利用大小驼峰来区分.每个语言都有不同的编码规范,对于我们这样的初学者,就会很难受.所以我们可以制定一些编码规范.</p>
+<h3 id="变量命名">变量命名</h3>
+<p>因为大写字母是不常见的,或者说打起来是很麻烦的,所以我们尽量保证大写字母出现的次数减少,相对来说,大部分的变量的都是局部变量,所以我们用大写字母为全局变量命名其实是一个很正确的想法.</p>
+<p>但是还有一个问题,英文将空格作为不同单词之间的分割,我们这里就只能使用下划线代替,不过效果还是不错的.不过考虑到其实下划线也不是很好打,我们就只有当该变量或者方法的单词超过3个时才使用.帮助我们理解长的单词.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEFAULT_INITIAL_CAPACITY</span> <span class="operator">=</span> <span class="number">16</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">MAXIMUM_CAPACITY</span> <span class="operator">=</span> <span class="number">1073741824</span>;</span><br></pre></td></tr></table></figure>
+<p>不变全局变量 全大写 + 下划线</p>
+<p>可变全局变量 全大写</p>
+<p>不可变局部变量 大驼峰</p>
+<p>可变局部变量 小驼峰</p>
+<p>对象的变量 private 全小写</p>
+<p>对象的变量 public 小驼峰</p>
+<h3 id="函数命名">函数命名</h3>
+<p>对象的private 方法 小驼峰</p>
+<p>对象的public 方法 大驼峰</p>
+<h2 id="其他规范">其他规范</h2>
 <ul>
-<li>变量小驼峰</li>
-<li>函数大驼峰</li>
-<li>方法其实还是不错的</li>
-</ul>
-<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">goland中利用函数是否大驼峰 进行判断是否是<span class="keyword">public</span> 同样的 我们对于静态方法 也是大写 </span><br><span class="line">对于对象的方法 因为是不需要暴露的 我们就可以使用小写</span><br><span class="line">我不想利用python一样的 __ 去表示是否暴露 这样不是很美观</span><br><span class="line">其实还是想写一门就是高性能的编译语言就是说 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="代码规范">代码规范</h2>
-<ul>
-<li>函数和类全部都是大驼峰</li>
-<li>不应该直接将参数在函数体内拼接 而是应该创建一个变量 然后传进去 这样是为了方便我们进行一个Debug</li>
+<li>类名是大驼峰 接口使用小驼峰</li>
+<li>为了方便debug和方便理解,尽量不要使用例如,链式调用和</li>
 <li>使用switch 表示 多条件的判断显得更加高级和完善不是吗?</li>
 </ul>
+<h2 id="编程语言">编程语言</h2>
+<p>什么是编程语言,可以进行计算的语言.这里的计算只需要加减乘除.</p>
+<p>因为其他任何的计算都可以被表达,例如sin可以用泰勒公式去逼近(事实上,我们的计算机也正是这样做的)</p>
+<p>我其实不想说什么图灵机,讲真的他们自己都不一定懂.</p>
 ]]></content>
   </entry>
   <entry>
@@ -916,7 +901,7 @@
     <title>Windows</title>
     <url>/static-html/2023/04/03/Life/Windows/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Windows</h1>
-<p>不出意外的话 我日后应该只会使用我们的Win了,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.</p>
+<p>不出意外的话 我日后应该只会使用我们的Win了,并且还是win10的版本,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.</p>
 <h1>需要的软件列表 (这表还挺大的不是吗)</h1>
 <table>
 <thead>
@@ -979,7 +964,7 @@
 <td style="text-align:center"></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">RUST</td>
 <td style="text-align:center"></td>
 <td style="text-align:center"></td>
 <td style="text-align:center"></td>
@@ -1006,10 +991,12 @@
 </table>
 <h1>软件源和安装位置修改</h1>
 <p>我之前其实尝试修改过软件的默认安装路径,其实这样不好,像 <code>edge</code> 就会因为这个原因导致无法安装.</p>
-<h1>NPM</h1>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line"></span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line"></span><br><span class="line">npm config set prefix &quot;F:\nodejs\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;F:\nodejs\node_cache&quot;   </span><br><span class="line"></span><br><span class="line">path add F:\nodejs\node_global</span><br><span class="line">path add </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install cnpm -g for test</span><br><span class="line"></span><br><span class="line">PNPM_HOME and add it to path</span><br></pre></td></tr></table></figure>
-<p>just need to use pnpm oK ?</p>
-<h1>GO</h1>
+<h2 id="NPM">NPM</h2>
+<p>主要是换源和修改全局npm包的下载位置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line">npm config set prefix &quot;F:\nodejs\node_global&quot;</span><br><span class="line">npm config set cache &quot;F:\nodejs\node_cache&quot;   </span><br><span class="line">npm install cnpm -g for test</span><br></pre></td></tr></table></figure>
+<p>环境变量修改部分</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">path</span> <span class="keyword">add</span> F:\nodejs\node_global</span><br><span class="line"><span class="type">path</span> <span class="keyword">add</span> </span><br></pre></td></tr></table></figure>
+<h2 id="GO">GO</h2>
 <p>只需要设置我们的goPath 和 module就OK了,当然了还需要换源.</p>
 <p><code>GOPATH</code> 理论上是我们项目的地址,可以有多个,但是可以存在一个唯一的就是说,代表着全局仓库.</p>
 <p>%GOPATH%\bin 需要将其添加到环境变量中,这里就是为了让我们下载的包可以直接运行是吧</p>
@@ -1018,9 +1005,8 @@
 <p>我们还需要</p>
 <h2 id="VScode">VScode</h2>
 <p>主要解决的问题是,用户数据和插件安装问题,在启动方式上添加如下的参数就好了,可能位置需要调整一下,但是大体是一样的.</p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">--extensions-dir <span class="string">&quot;D:\Software\Microsoft\.vscode\extensions&quot;</span></span><br><span class="line">--user-<span class="meta">data</span>-dir D:\<span class="number">0</span>.SOFT\<span class="meta">Code</span>\<span class="meta">data</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line"><span class="built_in">--extensions-dir</span> <span class="string">&quot;D:\SOFT\IDEA\VsCode\extensions&quot;</span></span><br><span class="line"><span class="built_in">--user-data-dir</span> <span class="string">&quot;D:\SOFT\IDEA\VsCode\data&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id="pip">pip</h2>
-<h1>不要开vpn</h1>
 <p>这里很好笑,你开启vpn后pip将会无法下载</p>
 <p>超时默认事件是100秒 如果你超市了 可以去看看 特别是大的东西</p>
 <p>换源 创建pip.ini文件</p>
@@ -1035,7 +1021,8 @@
 <p><code>MAVEN_HOME</code> maven的位置 maven是一个工具</p>
 <p><code>M2_HOME</code> maven的安装位置</p>
 <p>我直接把两位位置设置成为一样的了 哈哈哈哈.</p>
-<h3 id="Docker">Docker</h3>
+<p>换</p>
+<h2 id="Docker">Docker</h2>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">wsl</span> </span><br></pre></td></tr></table></figure>
 <p>导出wsl子系统镜像:</p>
 <figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">wsl</span> --<span class="meta">export</span> docker-desktop docker-desktop.tar</span><br><span class="line"><span class="symbol">wsl</span> --<span class="meta">export</span> docker-desktop-<span class="meta">data</span> docker-desktop-<span class="meta">data</span>.tar</span><br></pre></td></tr></table></figure>
@@ -1043,8 +1030,15 @@
 <figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">wsl <span class="comment">--unregister docker-desktop</span></span><br><span class="line">wsl <span class="comment">--unregister docker-desktop-data</span></span><br></pre></td></tr></table></figure>
 <p>重新创建wsl子系统：</p>
 <figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">wsl --<span class="keyword">import</span> docker-desktop d:\your-install-<span class="built_in">path</span> docker-desktop.tar</span><br><span class="line">wsl --<span class="keyword">import</span> docker-desktop-<span class="keyword">data</span> d:\your-install-<span class="built_in">path</span> docker-desktop-<span class="keyword">data</span>.tar</span><br></pre></td></tr></table></figure>
-<h3 id="WSL">WSL</h3>
+<h2 id="WSL">WSL</h2>
+<p>默认会下载就是2</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">wsl <span class="comment">--install </span></span><br></pre></td></tr></table></figure>
 <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">wsl</span> --export Ubuntu-<span class="number">20</span>.<span class="number">04</span> d:\wsl-ubuntu20.<span class="number">04</span>.tar</span><br><span class="line"></span><br><span class="line"><span class="attribute">wsl</span> --unregister Ubuntu-<span class="number">20</span>.<span class="number">04</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">wsl</span> --import Ubuntu-<span class="number">20</span>.<span class="number">04</span> D:\SOFT\COMPUTER\Docker\wsl d:\wsl-ubuntu20.<span class="number">04</span>.tar --version <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="GIT">GIT</h2>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">git config <span class="attr">--global</span> http<span class="selector-class">.proxy</span> http:<span class="comment">//127.0.0.1:7890</span></span><br></pre></td></tr></table></figure>
+<h2 id="Rust">Rust</h2>
+<p>首先创建两个环境变量 ,然后就是安装rust setup mscv</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">RUSTUP_HOME<span class="operator">:</span>存储工具链和配置文件</span><br><span class="line">CARGO_HOME<span class="operator">:</span>存储cargo的缓存</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -2371,7 +2365,11 @@
   <entry>
     <title>垃圾桶</title>
     <url>/static-html/2023/03/10/%E5%9E%83%E5%9C%BE%E6%A1%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="GORM的一些坑">GORM的一些坑</h2>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>一级标题</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h2 id="GORM的一些坑">GORM的一些坑</h2>
 <h3 id="数据不存在时会报错">数据不存在时会报错</h3>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">2023/05/03 19:41:42 D:/GITHUB/KM911/commander/dao/Add.go:14 record not found</span><br><span class="line">[0.000ms] [rows:0] SELECT * FROM `command_tables` WHERE command = &quot;ls&quot; AND `command_tables`.`deleted_at` IS NULL ORDER BY `co</span><br><span class="line">mmand_tables`.`id` LIMIT 1</span><br></pre></td></tr></table></figure>
 <p>解决的方案是,使用列表进行查询,如何列表的长度为空,就表示数据不存在.</p>
@@ -3030,6 +3028,28 @@ server.listen(3000);</p>
 ]]></content>
   </entry>
   <entry>
+    <title>学会任何编程语言</title>
+    <url>/static-html/2023/01/12/BOOK/%E5%AD%A6%E4%BC%9A%E4%BB%BB%E4%BD%95%E8%AF%AD%E8%A8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>学会任何语言</h1>
+<p>这里很明显 不是☞英语 西班牙语之类的 而是说 让一个有编程基础的人 快速上手一个编程语言的通式</p>
+<ol start="0">
+<li>hello world</li>
+<li>变量 和 数据类型</li>
+<li>非顺序结构</li>
+<li>字符串处理</li>
+<li>文件读写</li>
+</ol>
+<p>我就用我学习GO 作为一个例子吧</p>
+<p>同时也希望可以帮助到后面想学习GO的人</p>
+<p>小声BB: 这里你会发现 我根本没有讲什么语言的特点 因为我觉得你根本就不了解一门语言 听到大量的名词堆砌 其实没有任何实际的帮助 在摸索中 你会有自己的体会的</p>
+<p>比如说 我们的GO error is value</p>
+<h2 id="hello-world">hello world</h2>
+<p>这里主要是解决环境问题 不得不承认 这个真的挺麻烦的 虽然大体上都是一个样的</p>
+<p>下载一个 编译器/解释器/运行时</p>
+<p>将其路径添加到环境变量中</p>
+]]></content>
+  </entry>
+  <entry>
     <title>操作系统</title>
     <url>/static-html/2023/01/12/BOOK/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>玩为什么要学习操作系统</h1>
@@ -3068,28 +3088,6 @@ server.listen(3000);</p>
 </code></pre>
 <p>其实不光程序是状态机,我们的硬件也是一个状态机,电脑开机的时候就是固定去初始化到某一个状态就是说</p>
 <figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">STATUS_CODES: &#123;</span><br><span class="line">&#x27;100&#x27;: &#x27;Continue&#x27;,</span><br><span class="line">&#x27;101&#x27;: &#x27;Switching Protocols&#x27;,</span><br><span class="line">&#x27;102&#x27;: &#x27;Processing&#x27;,</span><br><span class="line">&#x27;103&#x27;: &#x27;Early Hints&#x27;,</span><br><span class="line">&#x27;200&#x27;: &#x27;OK&#x27;,</span><br><span class="line">&#x27;201&#x27;: &#x27;Created&#x27;,</span><br><span class="line">&#x27;202&#x27;: &#x27;Accepted&#x27;,</span><br><span class="line">&#x27;203&#x27;: &#x27;Non-Authoritative Information&#x27;,</span><br><span class="line">&#x27;204&#x27;: &#x27;No Content&#x27;,</span><br><span class="line">&#x27;205&#x27;: &#x27;Reset Content&#x27;,</span><br><span class="line">&#x27;206&#x27;: &#x27;Partial Content&#x27;,</span><br><span class="line">&#x27;207&#x27;: &#x27;Multi-Status&#x27;,</span><br><span class="line">&#x27;208&#x27;: &#x27;Already Reported&#x27;,</span><br><span class="line">&#x27;226&#x27;: &#x27;IM Used&#x27;,</span><br><span class="line">&#x27;300&#x27;: &#x27;Multiple Choices&#x27;,</span><br><span class="line">&#x27;301&#x27;: &#x27;Moved Permanently&#x27;,</span><br><span class="line">&#x27;302&#x27;: &#x27;Found&#x27;,</span><br><span class="line">&#x27;303&#x27;: &#x27;See Other&#x27;,</span><br><span class="line">&#x27;304&#x27;: &#x27;Not Modified&#x27;,</span><br><span class="line">&#x27;305&#x27;: &#x27;Use Proxy&#x27;,</span><br><span class="line">&#x27;307&#x27;: &#x27;Temporary Redirect&#x27;,</span><br><span class="line">&#x27;308&#x27;: &#x27;Permanent Redirect&#x27;,</span><br><span class="line">&#x27;400&#x27;: &#x27;Bad Request&#x27;,</span><br><span class="line">&#x27;401&#x27;: &#x27;Unauthorized&#x27;,</span><br><span class="line">&#x27;402&#x27;: &#x27;Payment Required&#x27;,</span><br><span class="line">&#x27;403&#x27;: &#x27;Forbidden&#x27;,</span><br><span class="line">&#x27;404&#x27;: &#x27;Not Found&#x27;,</span><br><span class="line">&#x27;405&#x27;: &#x27;Method Not Allowed&#x27;,</span><br><span class="line">&#x27;406&#x27;: &#x27;Not Acceptable&#x27;,</span><br><span class="line">&#x27;407&#x27;: &#x27;Proxy Authentication Required&#x27;,</span><br><span class="line">&#x27;408&#x27;: &#x27;Request Timeout&#x27;,</span><br><span class="line">&#x27;409&#x27;: &#x27;Conflict&#x27;,</span><br><span class="line">&#x27;410&#x27;: &#x27;Gone&#x27;,</span><br><span class="line">&#x27;411&#x27;: &#x27;Length Required&#x27;,</span><br><span class="line">&#x27;412&#x27;: &#x27;Precondition Failed&#x27;,</span><br><span class="line">&#x27;413&#x27;: &#x27;Payload Too Large&#x27;,</span><br><span class="line">&#x27;414&#x27;: &#x27;URI Too Long&#x27;,</span><br><span class="line">&#x27;415&#x27;: &#x27;Unsupported Media Type&#x27;,</span><br><span class="line">&#x27;416&#x27;: &#x27;Range Not Satisfiable&#x27;,</span><br><span class="line">&#x27;417&#x27;: &#x27;Expectation Failed&#x27;,</span><br><span class="line">&#x27;418&#x27;: <span class="string">&quot;I&#x27;m a Teapot&quot;</span>,</span><br><span class="line">&#x27;421&#x27;: &#x27;Misdirected Request&#x27;,</span><br><span class="line">&#x27;422&#x27;: &#x27;Unprocessable Entity&#x27;,</span><br><span class="line">&#x27;423&#x27;: &#x27;Locked&#x27;,</span><br><span class="line">&#x27;424&#x27;: &#x27;Failed Dependency&#x27;,</span><br><span class="line">&#x27;425&#x27;: &#x27;Too Early&#x27;,</span><br><span class="line">&#x27;426&#x27;: &#x27;Upgrade Required&#x27;,</span><br><span class="line">&#x27;428&#x27;: &#x27;Precondition Required&#x27;,</span><br><span class="line">&#x27;429&#x27;: &#x27;Too Many Requests&#x27;,</span><br><span class="line">&#x27;431&#x27;: &#x27;Request Header Fields Too Large&#x27;,</span><br><span class="line">&#x27;451&#x27;: &#x27;Unavailable For Legal Reasons&#x27;,</span><br><span class="line">&#x27;500&#x27;: &#x27;Internal Server Error&#x27;,</span><br><span class="line">&#x27;501&#x27;: &#x27;Not Implemented&#x27;,</span><br><span class="line">&#x27;502&#x27;: &#x27;Bad Gateway&#x27;,</span><br><span class="line">&#x27;503&#x27;: &#x27;Service Unavailable&#x27;,</span><br><span class="line">&#x27;504&#x27;: &#x27;Gateway Timeout&#x27;,</span><br><span class="line">&#x27;505&#x27;: &#x27;HTTP Version Not Supported&#x27;,</span><br><span class="line">&#x27;506&#x27;: &#x27;Variant Also Negotiates&#x27;,</span><br><span class="line">&#x27;507&#x27;: &#x27;Insufficient Storage&#x27;,</span><br><span class="line">&#x27;508&#x27;: &#x27;Loop Detected&#x27;,</span><br><span class="line">&#x27;509&#x27;: &#x27;Bandwidth Limit Exceeded&#x27;,</span><br><span class="line">&#x27;510&#x27;: &#x27;Not Extended&#x27;,</span><br><span class="line">&#x27;511&#x27;: &#x27;Network Authentication Required&#x27;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>学会任何编程语言</title>
-    <url>/static-html/2023/01/12/BOOK/%E5%AD%A6%E4%BC%9A%E4%BB%BB%E4%BD%95%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>学会任何语言</h1>
-<p>这里很明显 不是☞英语 西班牙语之类的 而是说 让一个有编程基础的人 快速上手一个编程语言的通式</p>
-<ol start="0">
-<li>hello world</li>
-<li>变量 和 数据类型</li>
-<li>非顺序结构</li>
-<li>字符串处理</li>
-<li>文件读写</li>
-</ol>
-<p>我就用我学习GO 作为一个例子吧</p>
-<p>同时也希望可以帮助到后面想学习GO的人</p>
-<p>小声BB: 这里你会发现 我根本没有讲什么语言的特点 因为我觉得你根本就不了解一门语言 听到大量的名词堆砌 其实没有任何实际的帮助 在摸索中 你会有自己的体会的</p>
-<p>比如说 我们的GO error is value</p>
-<h2 id="hello-world">hello world</h2>
-<p>这里主要是解决环境问题 不得不承认 这个真的挺麻烦的 虽然大体上都是一个样的</p>
-<p>下载一个 编译器/解释器/运行时</p>
-<p>将其路径添加到环境变量中</p>
 ]]></content>
   </entry>
   <entry>
