@@ -8,9 +8,7 @@ categories:
 
 # Windows
 
-不出意外的话 我日后应该只会使用我们的Win了,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.
-
-
+不出意外的话 我日后应该只会使用我们的Win了,并且还是win10的版本,如果公司发mac或者可以尝试一下,但是正常情况下,应该是不会使用其他的了.
 
 # 需要的软件列表 (这表还挺大的不是吗)
 
@@ -22,7 +20,7 @@ categories:
 |   C    |        |      |      |          |      |
 |   R    |        |      |      |          |      |
 | Python |        |      |      |          |      |
-|        |        |      |      |          |      |
+|  RUST  |        |      |      |          |      |
 |        |        |      |      |          |      |
 |        |        |      |      |          |      |
 
@@ -32,31 +30,26 @@ categories:
 
 
 
-# NPM
+## NPM
+
+主要是换源和修改全局npm包的下载位置
 
 ```shell
 npm config ls
-
 npm config set registry https://registry.npmmirror.com/
-
 npm config set prefix "F:\nodejs\node_global"
-
 npm config set cache "F:\nodejs\node_cache"   
-
-path add F:\nodejs\node_global
-path add 
-
-
 npm install cnpm -g for test
-
-PNPM_HOME and add it to path
 ```
 
-just need to use pnpm oK ?
+环境变量修改部分
 
+```
+path add F:\nodejs\node_global
+path add 
+```
 
-
-# GO
+## GO
 
 只需要设置我们的goPath 和 module就OK了,当然了还需要换源.
 
@@ -75,13 +68,12 @@ just need to use pnpm oK ?
 主要解决的问题是,用户数据和插件安装问题,在启动方式上添加如下的参数就好了,可能位置需要调整一下,但是大体是一样的.
 
 ```
---extensions-dir "D:\Software\Microsoft\.vscode\extensions"
---user-data-dir D:\0.SOFT\Code\data
+--extensions-dir "D:\SOFT\IDEA\VsCode\extensions"
+--user-data-dir "D:\SOFT\IDEA\VsCode\data"
 ```
 
 ## pip
 
-# 不要开vpn
 
 这里很好笑,你开启vpn后pip将会无法下载
 
@@ -119,11 +111,11 @@ USER_BASE = "D:/SOFT/Path/Python/Scripts"
 
 我直接把两位位置设置成为一样的了 哈哈哈哈.
 
+换
 
 
 
-
-### Docker 
+## Docker 
 
 ```
 wsl 
@@ -150,7 +142,15 @@ wsl --import docker-desktop d:\your-install-path docker-desktop.tar
 wsl --import docker-desktop-data d:\your-install-path docker-desktop-data.tar
 ```
 
-### WSL
+##  WSL
+
+默认会下载就是2
+
+```
+wsl --install 
+```
+
+
 
 ```
 wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar
@@ -161,4 +161,22 @@ wsl --import Ubuntu-20.04 D:\SOFT\COMPUTER\Docker\wsl d:\wsl-ubuntu20.04.tar --v
 ```
 
 
+
+
+
+## GIT
+
+```
+git config --global http.proxy http://127.0.0.1:7890
+```
+
+
+## Rust
+
+首先创建两个环境变量 ,然后就是安装rust setup mscv
+
+```R
+RUSTUP_HOME:存储工具链和配置文件
+CARGO_HOME:存储cargo的缓存
+```
 
