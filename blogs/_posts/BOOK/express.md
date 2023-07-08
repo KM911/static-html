@@ -108,4 +108,51 @@ app.get("/:action/:name/:pwd"){
 }
 ```
 
-##
+
+
+
+
+
+
+## async
+
+```js
+function future(){
+    setTimeout(function(){
+        return "future"
+    }, 1000);
+}
+console.log(future())
+
+```
+
+直接输出 返回的结果是一个promise <pending>  需要使用then 获取结果,这里是异步的程序不会block
+
+
+```js
+ function future(){
+    return new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve("future")
+      }, 1000); 
+    })
+}
+// console.log(future());
+
+future().then(function(result){
+    console.log(result);
+})
+
+```
+
+我们进行一个同步的写法 (nodejs 不允许直接讲最外层写 await/async)
+
+```js
+async function main(){
+    let result = await future();
+    console.log(result);
+    console.log("hello");
+}
+main();
+```
+

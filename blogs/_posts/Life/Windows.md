@@ -37,16 +37,16 @@ categories:
 ```shell
 npm config ls
 npm config set registry https://registry.npmmirror.com/
-npm config set prefix "F:\nodejs\node_global"
-npm config set cache "F:\nodejs\node_cache"   
-npm install cnpm -g for test
+npm config set prefix "D:\PATH\nodejs\node_modules\global"
+npm config set cache "D:\PATH\nodejs\node_modules\cache"   
+// npm install cnpm -g for test
 ```
 
 环境变量修改部分
 
 ```
 path add F:\nodejs\node_global
-path add 
+path add PNPM_HOME 这里我们需要进行一个测试
 ```
 
 ## GO
