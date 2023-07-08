@@ -134,35 +134,39 @@
     <url>/static-html/2023/04/03/TODO/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Stream</h1>
 <ul>
-<li>
-<p>[ ] 从命令行中获取stream 这里我除了使用python 还可以使用其他的语言吗 就像我们之前做的一样就是说  可以了 但是不够好</p>
-</li>
-<li>
-<p>[ ] 如果我想比较两个应用程序的时间消耗是可以比较的吗? 我觉得是可以的 这样比起直接对两个函数进行比较估计还是会简单一些</p>
-</li>
-<li>
-<p>[ ] makefile with cli x 这里需要优化不是吗</p>
-</li>
-<li>
-<p>[ ] 其实就是还是就是</p>
-</li>
+<li>[ ] headers 为代理服务</li>
+<li>[ ] 添加更多的指纹信息</li>
+<li>[ ] 性能优化 这里其实我觉得就是减少部分的异步服务</li>
 </ul>
-<h2 id="考试时间">考试时间</h2>
-<p>5.24 随机过程</p>
-<p>5.31 统计学</p>
-<ol start="6">
-<li></li>
+<h2 id="利用nginx解析gzip请求">利用nginx解析gzip请求</h2>
+<p>我们知道对于静态资源,我们利用Gzip进行压缩,可以减少网络资源的消耗(当然了,这会增加部分CPU资源的消耗)</p>
+<p>同样的,我们可以将我们的请求进行压缩,特别是对于<code>JSON</code> 格式,理论上会有非常不错的效果.</p>
+<p>我们可以通过一个实例看看 测试的结果是对于小文件,例如4kb以内的,压缩效果并不是很理想 只有请求大于4kb时使用比较好</p>
+<p>我们现在有两个解决方案 第一个是利用例如springboot或者是java内置的ungzip方法,对其进行解压缩</p>
+<p>第二个方法是利用nginx 这样就不会因为编程语言而被限制了</p>
+<p>问题解决了 其实非常简单 根本就不需要什么lua脚本 其他的UnGzip 只需要在你的nginx下添加一句</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">  <span class="section">location</span> / &#123;                 </span><br><span class="line">   <span class="attribute">gunzip</span> <span class="literal">on</span>;                                     </span><br><span class="line"><span class="attribute">proxy_pass</span> http://localhost:3000;                                                                                    &#125;     </span><br></pre></td></tr></table></figure>
+<p>通过抓包 方向分析 内容 将我们的proxy 修改为我们自己的 理论上来说 发送http请求 根本就不想需要</p>
+<p>还有这里有upd浏览 他们那里 什么 TLS WS 都是什么乱七八糟的协议啊 就是 其实感觉没有很大的必要</p>
+<ol>
+<li>
+<p>日志问题: 日志分类 怎么写 什么时候写</p>
+<p>日志大致分类 info error waring 具体什么情况下才是 因为我感觉只有info 和 error</p>
+<p>怎么写: id + data 但是这里的id其实是data中的字段,类似于订单的id,这个id会在流程的接口中不停流转</p>
+<p>什么时候写: 一般是访问 + 运行结果</p>
+</li>
+<li>
+<p>性能优化: 同步 日志 网络 预热</p>
+</li>
 </ol>
-<p>6.19</p>
-<h2 id="随机过程">随机过程</h2>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190014245.png" alt="image-20230515190014245" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190038905.png" alt="image-20230515190038905" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190114692.png" alt="image-20230515190114692" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190133681.png" alt="image-20230515190133681" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190150888.png" alt="image-20230515190150888" /></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190330328.png" alt="image-20230515190330328" /></p>
-<p>$$</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230515190351140.png" alt="image-20230515190351140" /></p>
+<p>同步: 线程创建</p>
+<p>日志:如果可以减少部分无用日志</p>
+<p>网络:因为需要更新js 这里会导致单词请求花费时间过长</p>
+<p>预热: JIT 类似于jvm的</p>
+<p>多进程: 因为nodejs的主线程是单线程的 无法充分利用服务器性能 可以利用child_pross模块去提升性能 但是资源占用会高很多</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;url&quot;</span>:<span class="string">&quot;https://wsdkdl.migu.cn:8443/rocher/83c8a141d7064b5b9f93e3b7a5715a56.js?v=2V2bfQ-Oh4JazIJsfhxpOr&quot;</span>,</span><br><span class="line"><span class="string">&quot;headers&quot;</span>:[&#123;<span class="string">&quot;key&quot;</span>:<span class="string">&quot;X-Proxy&quot;</span>,<span class="string">&quot;value&quot;</span>:<span class="string">&quot;192.168.0.120&quot;</span>&#125;,&#123;<span class="string">&quot;key&quot;</span>:<span class="string">&quot;Real-ip&quot;</span>,<span class="string">&quot;value&quot;</span>:<span class="string">&quot;localhost&quot;</span>&#125;],</span><br><span class="line"><span class="string">&quot;__s&quot;</span>:<span class="string">&quot;25cfca035d0f47828a1edbab5ef34dfc&quot;</span>,<span class="string">&quot;ID&quot;</span>:<span class="string">&quot;202306281903242810&quot;</span>,<span class="string">&quot;type&quot;</span>:<span class="string">&quot;MUSIC&quot;</span>,<span class="string">&quot;canvas&quot;</span>:<span class="string">&quot;iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAACrklEQVRYR+2Yv08UQRTHP8/EwtBoghBzRhuJGq00VirGisKc2tsZyKnRVhqxQBtpNXKEE/8FgdCaqLX+AUonJOo29JiMeXvLMXu3ezuzc3uhcKq7nfd9731258ebEYMxdLW/wDtgA/gGbGt/20p/6qONiGPfR9m5BlwG7nT7SP6vAl+BTyJ8zrEZyGNpg0jHWQt4Bvy23Y8A94ClH8Ay8J5xIl4C0+5pRLEQlkXYdJe5WaZAngBvsnSngSkF6e18DLx2i2VbLQLzIvzyl2YrOiC5EKq7DpzPBtHukjAqnRaJR3Fwi0FaCDN5ro4kw+pQPohKdcB5DLPU1xHhUSiJ7GLMSSQ9J2yvk8C55EHG0NozHQd+AofLZbQuwu1y0rZKmhjzwJrsKWcXgKvWkz4gatUEGuWzCYKROsasZ4F0Q2iCBSB1YK08iCoXyw4zqWHMtg2ic+KKNZzsxApAasBWGIiqZ0TQXcCrCbqPjAiMAqeAs4BO7KxWAKKSnt3VK52O8QnfpVkwxtDY3xD7xh0eiPcQU5At2KzBRLl3Z6kGNLT2PE74VAAKsgazdVgIBhnAZLdzWBBh1jUpBWnAWBO0FAprgctvd/BIhDHXjCQyR29eZOdjqkh0VVt2gRtiXsRJEb64pCPGMNeC+dwSxcVLWInSL8JzEV64pKAgH/Q80bdoLPAUUDQW5bgqwt0iI+1XkM7SXwamQog4f5G8+imNlwLRrsyDVcYr0TnhebByebE9NqVB1NMusNJ91AV0n7gE3ALul690vYCCQLwiVWz8H6TiF+zt3ueLxMuvd4ThCLyW3zm90RhOXt5RvDZEvSOp9PLMO/19wQ3Xi734IGIMf4DjAQGrkPoVjQnIK+BpFdkE+PQs49tf5Ayg96EHqXkerJLUjeEt8PCAkHgfdf8Bm3S1HzV+Bf4AAAAASUVORK5CYII=&quot;</span>,<span class="string">&quot;userAgent&quot;</span>:<span class="string">&quot;Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A6060) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/15.0 Chrome/90.0.4430.210 Mobile Safari/537.36&quot;</span>,<span class="string">&quot;language&quot;</span>:<span class="string">&quot;zh-CN&quot;</span>,<span class="string">&quot;hardwareConcurrency&quot;</span>:<span class="string">&quot;8&quot;</span>,<span class="string">&quot;deviceMemory&quot;</span>:<span class="string">&quot;-1&quot;</span>,<span class="string">&quot;platform&quot;</span>:<span class="string">&quot;Linux aarch64&quot;</span>,<span class="string">&quot;doNotTrack&quot;</span>:<span class="string">&quot;unknown&quot;</span>,<span class="string">&quot;colorDepth&quot;</span>:<span class="string">&quot;24&quot;</span>,<span class="string">&quot;screenWidth&quot;</span>:<span class="string">&quot;412&quot;</span>,<span class="string">&quot;screenHeight&quot;</span>:<span class="string">&quot;892&quot;</span>,<span class="string">&quot;screenAvailWidth&quot;</span>:<span class="string">&quot;412&quot;</span>,<span class="string">&quot;screenAvailHeight&quot;</span>:<span class="string">&quot;892&quot;</span>,<span class="string">&quot;devicePixelRatio&quot;</span>:<span class="string">&quot;2.625&quot;</span>,<span class="string">&quot;indexedDB&quot;</span>:<span class="string">&quot;1&quot;</span>,<span class="string">&quot;openDatabase&quot;</span>:<span class="string">&quot;1&quot;</span>,<span class="string">&quot;maxTouchPoints&quot;</span>:<span class="string">&quot;5&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代理服务">代理服务</h2>
+<p>因为 不同的使用方法是不一样的 尽管他们都可以称自己为代理服务 因为确实也满足了 这个要求 我现在其实就是想利用抓包 去看看 具体的内容</p>
 <h1>Task</h1>
 <ul>
 <li>
@@ -271,7 +275,7 @@
   </entry>
   <entry>
     <title>Rust</title>
-    <url>/static-html/2023/05/14/rust/</url>
+    <url>/static-html/2023/05/14/TODO/rust/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="好吧我还是背叛了自己">好吧我还是背叛了自己</h2>
 <p>我在go中遇到了什么问题,我需要学习内存模型.</p>
 <p>然后就是我在文件读写的时候遇到的问题</p>
@@ -315,9 +319,11 @@
   </entry>
   <entry>
     <title>Markdonw编写规范</title>
-    <url>/static-html/2023/05/08/markdonw%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/</url>
+    <url>/static-html/2023/05/08/TODO/markdonw%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="Markdown编写规范">Markdown编写规范</h2>
 <p>理由如下,其实根本就不需要理由,做事情遵从某种规定的流程和形式,这样绝对是好的,当然了,你肯定也会说如此繁多的条条框框是否是会限制这件事情的执行,我的见解是,一个合理的流程,绝对是只有好处没有坏处的.</p>
+<h2 id="标题等级">标题等级</h2>
+<p>我们全部使用第二极作为标题等级 不要问我为什么 就是这样的理由</p>
 ]]></content>
   </entry>
   <entry>
@@ -348,9 +354,20 @@
 <li>makefile  app template</li>
 <li></li>
 </ol>
+<h2 id="7月">7月</h2>
+<ol start="6">
+<li>wsl科学上网 export https_proxy=192.168.0.101:7890  利用安卓手机作为软路由 我的手机性能还是不错的 + 网线+typec有线链接比较好 性能大大滴好</li>
+<li>密码学 sqlite header  可以利用gzip压缩请求的body 只有当请求的json特别大的时候才有用不是吗</li>
+<li></li>
+</ol>
 <h2 id="通过命令行对于环境变量进行修改">通过命令行对于环境变量进行修改</h2>
 <p>这里需要我们就是双向链接,一方面我们需要只进行部分的用户修改,将系统修改隔离,这样就不会出现这样的问题了不是吗?</p>
-<p><img src="D:%5Cimage_widget_5c8sbc3wanl91.png" alt="Widget image" /></p>
+<p><img src="http://81.68.91.70/pg/image/KMwxpFHkbZvJ.png" alt="image-20230707110437560" /></p>
+<h2 id="密码学">密码学</h2>
+<ul>
+<li>不改变内容 只改变其内容顺序的方法 列位移  垂直阑珊加密</li>
+<li>凯撒密码</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -383,16 +400,8 @@
 <h3 id="依赖目标">依赖目标</h3>
 <p>有的时候我们的目标依赖于其他的目标,这个时候就可以这样做了</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">[<span class="symbol">target</span>]: <span class="link">[require]</span></span><br><span class="line"><span class="code">	[command]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Go语言的面向对象</title>
-    <url>/static-html/2023/05/05/go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="很遗憾">很遗憾</h2>
-<p>我们的go语言其实不是严格意义上的面向对象的编程预言?</p>
-<p>其实只是和C++ Java这样的面向对象不太一样 毕竟连继承这样面向对象的特征都没有 实在是难以说是一</p>
-<h2 id="没有构造函数">没有构造函数</h2>
-<p>没有静态方法 不过其实也无所谓不是吗?</p>
+<h3 id="list">list</h3>
+<p>这里其实是为了交叉编译 不然每次都是需要我们进行修改 感觉其实挺麻烦的</p>
 ]]></content>
   </entry>
   <entry>
@@ -660,7 +669,9 @@
   <entry>
     <title>编码风格养成</title>
     <url>/static-html/2023/04/25/Github/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E5%85%BB%E6%88%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="编码风格的习惯">编码风格的习惯</h2>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="代码-more-then-code">代码 more then  code</h2>
+<p>核心功能可能只有一点点 为了保证其正常运行 你需要写很多其他的辅助性质的代码</p>
+<h2 id="编码风格的习惯">编码风格的习惯</h2>
 <p>​	我并不认为存在什么 ‘clean code’ 的说法,在我看来,一个项目,只要是遵从某种固定的写法规范,就是一个很不错的样子.我原本以为不同的编程语言会共同遵守同一套编码规范,但是很不幸,事实并不是,在python中 利用 <strong>method</strong> 表示这个方法是私有的,go语言中是利用大小驼峰来区分.每个语言都有不同的编码规范,对于我们这样的初学者,就会很难受.所以我们可以制定一些编码规范.</p>
 <h3 id="变量命名">变量命名</h3>
 <p>因为大写字母是不常见的,或者说打起来是很麻烦的,所以我们尽量保证大写字母出现的次数减少,相对来说,大部分的变量的都是局部变量,所以我们用大写字母为全局变量命名其实是一个很正确的想法.</p>
@@ -875,6 +886,7 @@
 <h2 id="Request-Header">Request Header</h2>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">GET</span> /js/app.<span class="property">dc20dbd2</span>.<span class="property">js</span> <span class="variable constant_">HTTP</span>/<span class="number">1.1</span></span><br><span class="line"><span class="title class_">Accept</span>: *<span class="comment">/*</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate, br</span></span><br><span class="line"><span class="comment">Accept-Language: en-US,en;q=0.9</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Host: localhost:8080</span></span><br><span class="line"><span class="comment">Sec-Fetch-Dest: script</span></span><br><span class="line"><span class="comment">Sec-Fetch-Mode: no-cors</span></span><br><span class="line"><span class="comment">Sec-Fetch-Site: same-origin</span></span><br><span class="line"><span class="comment">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="comment">sec-ch-ua: &quot;Google Chrome&quot;;v=&quot;111&quot;, &quot;Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;111&quot;</span></span><br><span class="line"><span class="comment">sec-ch-ua-mobile: ?0</span></span><br><span class="line"><span class="comment">sec-ch-ua-platform: &quot;Windows&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Request-Body">Request Body</h2>
+<p>springboot hjson fast-json</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line"><span class="string">&quot;passwd&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Respond-Header">Respond  Header</h2>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">HTTP</span>/<span class="number">1.1</span> <span class="number">200</span> ok</span><br><span class="line"><span class="title class_">Content</span>-<span class="title class_">Type</span>: text/html</span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Credentials</span>: <span class="literal">true</span></span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span>: *</span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span>: <span class="title class_">Origin</span>, X-<span class="title class_">Requested</span>-<span class="title class_">With</span>, <span class="title class_">Content</span>-<span class="title class_">Type</span>, <span class="title class_">Accept</span></span><br></pre></td></tr></table></figure>
@@ -993,9 +1005,9 @@
 <p>我之前其实尝试修改过软件的默认安装路径,其实这样不好,像 <code>edge</code> 就会因为这个原因导致无法安装.</p>
 <h2 id="NPM">NPM</h2>
 <p>主要是换源和修改全局npm包的下载位置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line">npm config set prefix &quot;F:\nodejs\node_global&quot;</span><br><span class="line">npm config set cache &quot;F:\nodejs\node_cache&quot;   </span><br><span class="line">npm install cnpm -g for test</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config ls</span><br><span class="line">npm config set registry https://registry.npmmirror.com/</span><br><span class="line">npm config set prefix &quot;D:\PATH\nodejs\node_modules\global&quot;</span><br><span class="line">npm config set cache &quot;D:\PATH\nodejs\node_modules\cache&quot;   </span><br><span class="line">// npm install cnpm -g for test</span><br></pre></td></tr></table></figure>
 <p>环境变量修改部分</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">path</span> <span class="keyword">add</span> F:\nodejs\node_global</span><br><span class="line"><span class="type">path</span> <span class="keyword">add</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">path</span> <span class="keyword">add</span> F:\nodejs\node_global</span><br><span class="line"><span class="type">path</span> <span class="keyword">add</span> PNPM_HOME 这里我们需要进行一个测试</span><br></pre></td></tr></table></figure>
 <h2 id="GO">GO</h2>
 <p>只需要设置我们的goPath 和 module就OK了,当然了还需要换源.</p>
 <p><code>GOPATH</code> 理论上是我们项目的地址,可以有多个,但是可以存在一个唯一的就是说,代表着全局仓库.</p>
@@ -1735,6 +1747,7 @@
 </ul>
 <p>body又有好几种了 就是说.</p>
 <p>这里其实是一个反思吧 就是可以看出来你其实没有很好的学习 就是模仿才是学习的第一步  而不是你自己去抓瞎 不是吗?至少你看上去可以学习到很多东西都是可以的 他还记得我的课程表 不是吗</p>
+<h2 id="保留一份笔记-保留一份代码模板-保留一份项目">保留一份笔记 保留一份代码模板 保留一份项目</h2>
 ]]></content>
       <tags>
         <tag>教程</tag>
@@ -2312,7 +2325,7 @@
 <h3 id="vimrc">vimrc</h3>
 <figure class="highlight v"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;==============================================================================</span></span><br><span class="line"><span class="string">&quot;</span> set 一般设置</span><br><span class="line"><span class="string">&quot;==============================================================================</span></span><br><span class="line"><span class="string">set nocompatible                &quot;</span>不兼容vi</span><br><span class="line">syntax enable                   <span class="string">&quot;语法高亮使能</span></span><br><span class="line"><span class="string">syntax on                       &quot;</span>语法高亮开启</span><br><span class="line">set hlsearch                    <span class="string">&quot;开启高亮搜索</span></span><br><span class="line"><span class="string">set incsearch                   &quot;</span>输出字符串的同时进行搜索</span><br><span class="line">set ignorecase                  <span class="string">&quot;搜索时忽略大小写</span></span><br><span class="line"><span class="string">set ruler                       &quot;</span>右下角的状态栏下显示光标的坐标</span><br><span class="line">set showcmd                     <span class="string">&quot;显示normal模式下的命令</span></span><br><span class="line"><span class="string">set number                      &quot;</span>显示行号</span><br><span class="line">set relativenumber              <span class="string">&quot;相对行号</span></span><br><span class="line"><span class="string">set cmdheight=1                 &quot;</span>命令行高度为<span class="number">1</span>行<span class="string">&quot;</span></span><br><span class="line"><span class="string">set noshowmode                  &quot;</span>不显示&#x27;-- insert --&#x27; 等</span><br><span class="line">set autoindent                  <span class="string">&quot;自动缩进</span></span><br><span class="line"><span class="string">set smartindent                 &quot;</span>智能缩进</span><br><span class="line">set cindent                     <span class="string">&quot;c语言缩进</span></span><br><span class="line"><span class="string">set pastetoggle=&lt;F4&gt;            &quot;</span>系统paste</span><br><span class="line">set mouse=i                     <span class="string">&quot;仅在insert mode 下可使用mouse</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set autoread                    &quot;</span>当文件在外部被改变时, vim自动载入</span><br><span class="line">set showmatch                   <span class="string">&quot;显示匹配的括号</span></span><br><span class="line"><span class="string">set matchtime=0                 &quot;</span>显示匹配的括号的时间，单位：十分之一秒</span><br><span class="line">set t_Co=<span class="number">256</span>                    <span class="string">&quot;vim配色为256色</span></span><br><span class="line"><span class="string">set cursorline                  &quot;</span>高亮当前光标行</span><br><span class="line">set cursorcolumn                <span class="string">&quot;高亮当前光标列</span></span><br><span class="line"><span class="string">autocmd InsertEnter * se cul</span></span><br><span class="line"><span class="string">set shortmess=atI</span></span><br><span class="line"><span class="string">set scrolloff=3                 &quot;</span>光标移动到buffer的顶部和底部时保持<span class="number">3</span>行距离</span><br><span class="line">set laststatus=<span class="number">2</span>                <span class="string">&quot;指定什么时候对最后一个窗口显示状态条, 2表示永远有</span></span><br><span class="line"><span class="string">set cinoptions=g0,:0,N-s,(0     &quot;</span>设置C/C++语言的具体缩进方式, unkown</span><br><span class="line">set tabstop=<span class="number">4</span>                   <span class="string">&quot;读取到文件的\t时，解释的空白长度</span></span><br><span class="line"><span class="string">set softtabstop=4               &quot;</span>在编辑动作（按tab或backspace键）时，所输入或删除的空白长度</span><br><span class="line">set shiftwidth=<span class="number">4</span>                <span class="string">&quot;自动缩进时的空白长度</span></span><br><span class="line"><span class="string">set expandtab                   &quot;</span>将tab转换成space，文件中存储的将会是space</span><br><span class="line">set smarttab</span><br><span class="line"><span class="string">&quot; set list                      &quot;</span>显示tab键为^I, 行为显示$</span><br><span class="line">set listchars=tab:&gt;-,trail:-    <span class="string">&quot;tab显示为&quot;</span>&gt;---<span class="string">&quot; 行尾多余的空白字符显示为&quot;</span>-<span class="string">&quot;</span></span><br><span class="line"><span class="string">set history=1000                &quot;</span>命令历史个数</span><br><span class="line">set langmenu=en_US<span class="variable">.UTF</span>-<span class="number">8</span>        <span class="string">&quot;菜单语系</span></span><br><span class="line"><span class="string">set helplang=en                 &quot;</span>使用中文文档cn，英文则为en</span><br><span class="line">set autowrite                   <span class="string">&quot;自动保存, 否则切换buffer,文件后会会提示没有保存</span></span><br><span class="line"><span class="string">set magic                       &quot;</span>匹配正则表达式时(\m)：除了$.*^之外其他正则表达式的元字符都要加反斜杠\</span><br><span class="line">set confirm                     <span class="string">&quot;总是出现确认选项，如执行:qa等命令时</span></span><br><span class="line"><span class="string">set nobackup                    &quot;</span>vim当覆盖一个文件时不保留一个备份</span><br><span class="line">set noswapfile                  <span class="string">&quot;不使用交换空间</span></span><br><span class="line"><span class="string">set wildmenu                    &quot;</span>补全相关，unkown</span><br><span class="line">set completeopt=longest,menu    <span class="string">&quot;显示补全列表</span></span><br><span class="line"><span class="string">set backspace=indent,eol,start  &quot;</span>indent将<span class="number">4</span>个空格缩进当缩进删除，eol删除到上一行</span><br><span class="line">set report=<span class="number">0</span>                    <span class="string">&quot;当使用:commands命令时，总是报告文件的那一行被改变过</span></span><br><span class="line"><span class="string">set fillchars=vert:\ ,stl:\ ,stlnc:\  &quot;</span>设置多窗口时的窗口间分割线</span><br><span class="line"><span class="string">&quot; set iskeyword+=.                &quot;</span>追加.为判断一个word</span><br><span class="line">set termencoding=utf-<span class="number">8</span>          <span class="string">&quot;终端使用的字符编码</span></span><br><span class="line"><span class="string">set encoding=utf8               &quot;</span>vim内部buffer使用的字符编码</span><br><span class="line">set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030 <span class="string">&quot;依次判断文件字符编码</span></span><br><span class="line"><span class="string">&quot;</span> set foldmethod=indent         <span class="string">&quot;基于缩进的折叠</span></span><br><span class="line"><span class="string">set foldmethod=syntax           &quot;</span>基于语法的折叠</span><br><span class="line">set nofoldenable                <span class="string">&quot;启动 vim 时关闭折叠代码</span></span><br><span class="line"><span class="string">&quot;</span> set nowrap                      <span class="string">&quot;禁止折行</span></span><br><span class="line"><span class="string">set viminfo+=n~/.cache/vim/.viminfo</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">let $BASH_ENV=&quot;</span>~/<span class="variable">.bash_aliases</span><span class="string">&quot; &quot;</span>增加外部命令的<span class="keyword">alias</span></span><br><span class="line"><span class="keyword">let</span> mapleader = <span class="string">&quot;,&quot;</span>             <span class="string">&quot;修改&lt;leader&gt;键为&#x27;,&#x27;</span></span><br><span class="line"><span class="string">vnoremap &lt;leader&gt;y &quot;</span>+y</span><br><span class="line"></span><br><span class="line">filetype plugin on              <span class="string">&quot;根据文件类型读取插件</span></span><br><span class="line"><span class="string">filetype indent on              &quot;</span>使用缩进文件</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; 标签跳转快捷键，在gnome-terminal中无效</span></span><br><span class="line"><span class="string">&quot;</span> normal no recursive map</span><br><span class="line"><span class="string">&quot; insert no recursive map</span></span><br><span class="line"><span class="string">nnoremap &lt;C-c&gt; :tabclose&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-x&gt; :tabonly&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-k&gt; :tabs&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-n&gt; :tabnew&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-h&gt; :tabprevious&lt;cr&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-l&gt; :tabnext&lt;cr&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span> 光标闪烁，在插入模式下为‘|’，在norrmal 模式下为方块</span><br><span class="line"><span class="string">&quot; 若要不闪烁，则将改为后面的数字</span></span><br><span class="line"><span class="string">let &amp;t_SI = &quot;</span>\&lt;Esc&gt;[<span class="number">5</span> q<span class="string">&quot;                     &quot;</span> <span class="number">6</span></span><br><span class="line"><span class="keyword">let</span> &amp;t_SR = <span class="string">&quot;\&lt;Esc&gt;[3 q&quot;</span>                     <span class="string">&quot; 4</span></span><br><span class="line"><span class="string">let &amp;t_EI = &quot;</span>\&lt;Esc&gt;[<span class="number">1</span> q<span class="string">&quot;                     &quot;</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p>很神奇我的配置就是那么简单哈哈哈哈 不想有太多有的没的东西 就是说</p>
-<figure class="highlight v"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot; basic config </span></span><br><span class="line"><span class="string">set nocompatible</span></span><br><span class="line"><span class="string">set bs=indent,eol,start</span></span><br><span class="line"><span class="string">set smartindent  </span></span><br><span class="line"><span class="string">set relativenumber</span></span><br><span class="line"><span class="string">set tabstop=2</span></span><br><span class="line"><span class="string">set shiftwidth=2</span></span><br><span class="line"><span class="string">set nofoldenable</span></span><br><span class="line"><span class="string">set noswapfile</span></span><br><span class="line"><span class="string">:syntax on </span></span><br><span class="line"><span class="string">&quot;</span> theme you should have a try</span><br><span class="line"><span class="string">&quot;:colorschem  elflord | ron | murphy | slate | darkblud | delek  </span></span><br><span class="line"><span class="string">:colorschem murphy </span></span><br><span class="line"><span class="string">&quot;</span> hot key</span><br><span class="line">:inoremap jk &lt;ESC&gt;</span><br><span class="line">noremap H ^</span><br><span class="line">noremap L $</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-a&gt; &lt;Home&gt;</span><br><span class="line">inoremap &lt;C-e&gt; &lt;End&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight v"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="推荐的改建位">推荐的改建位</h4>
 <p>其实有的时候 根本就不需要你强制去说明使用哪一种,因为你根本就无法做到在按下了 <code>Ctrl(left)</code>情况下再可以按下 反正我是做不到的 ,就和你打大写A 是利用 <code>Ctrl(eft)</code> 一样很奇怪.</p>
 <figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">C<span class="function"><span class="title">aps</span> --&gt;</span> Ctrl(left) 大小写锁定是真的没有任何的作用</span><br><span class="line">C<span class="function"><span class="title">trl</span> + PaDn --&gt;</span> Alt + Insert Ide的指能修复</span><br><span class="line">C<span class="function"><span class="title">trl</span> + Esc --&gt;</span> ` 因为我没有</span><br><span class="line"></span><br><span class="line">切换windterm窗口</span><br><span class="line">C<span class="function"><span class="title">trl</span> + 数字键 --&gt;</span> Alt + 数字键 </span><br></pre></td></tr></table></figure>
@@ -2384,7 +2397,7 @@
 <h3 id="WSL的端口">WSL的端口</h3>
 <p>首先,我们可以通过 <code>ipconfig</code>获取我们的 <code>wsl</code>的端口,但是这其实是 <code>wsl</code>想要访问 <code>windows</code>的 <code>ip</code> ,但是这个并没有什么用处,因为你可以直接通过 <code>192.168.x.x</code> 去访问 <code>windows</code> 我们真正要做的事情是让局域网内的人都可以访问我们的 <code>wsl</code></p>
 <p>正确获取 <code>wsl</code>的方式是 通过</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">ip a <span class="string">|grep &quot;</span>global eth0<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">ip a |grep <span class="string">&quot;global eth0&quot;</span></span><br><span class="line">172.26.74.143</span><br><span class="line">172.26.79.255</span><br><span class="line">netsh<span class="built_in"> interface </span>portproxy <span class="built_in">add</span> v4tov4 <span class="attribute">listenport</span>=6379 <span class="attribute">listenaddress</span>=0.0.0.0 <span class="attribute">connectport</span>=6379 <span class="attribute">connectaddress</span>=172.26.74.143</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ip adress</span></span><br></pre></td></tr></table></figure>
 <p>提高字符串拼接的效率,我们需要使用吗?肯定是的,不然每次都是在进行创建新的变量</p>
@@ -2392,11 +2405,6 @@
 <figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">sudo EXTERNAL_URL<span class="operator">=</span><span class="string">&quot;http://172.28.4.162/&quot;</span> yum install -y gitlab-ce</span><br></pre></td></tr></table></figure>
 <figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">你现在是团体中复杂代码检查和审核的工作人员,只需要对代码进行分析和优化,不要回复其他的内容,如果听明白了,请回复. <span class="string">&quot;开始审核代码&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id=""></h2>
-<p>go换源</p>
-<p>我们的ubuntu镜像不是很好的去就是</p>
-<p>如果你没有vim的话 还是想换源 可以使用</p>
-<p>利用echo向文件中输出内容</p>
-<p>wsl2 的端口转发有好大的问题呀</p>
 <figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian/ jessie main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list &amp;&amp; \</span><br><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list &amp;&amp; \</span><br><span class="line">echo <span class="string">&#x27;deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib&#x27;</span> &gt;&gt; <span class="regexp">/etc/</span>apt/sources.list</span><br></pre></td></tr></table></figure>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/ubuntu/</span> jammy-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//</span>security.ubuntu.com<span class="regexp">/ubuntu/</span> jammy-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
 <p>查看日志 其实就是查看报错 linux 一般不喜欢</p>
@@ -2596,6 +2604,54 @@ $$</p>
 ]]></content>
   </entry>
   <entry>
+    <title>Vue</title>
+    <url>/static-html/2023/01/12/BOOK/Vue/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Vue</h1>
+<h2 id="项目结构">项目结构</h2>
+<blockquote>
+<p>index.html    //vue只有一个html页面</p>
+<p>/src    // 这里是我们的主要编写内容</p>
+<blockquote>
+<p>App.vue</p>
+<p>main.js</p>
+<p>/assert   //静态资源</p>
+<blockquote>
+<p>css jpg</p>
+</blockquote>
+<p>/components  组件</p>
+<blockquote>
+<p>hello.vue</p>
+<p>todo.vue</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1>理解项目</h1>
+<p>App.vue 其实也是一个组件 就好像JAVA啊 自己也是一个对象一样</p>
+<p><code>vue</code>文件有三个部分 和原生的是一个样的其实是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"></span><br><span class="line">// 这里我们可以写一个就是更加基础的组件 就是专为了绑定数据而生的</span><br><span class="line">const props = defineProps(&#123;</span><br><span class="line">    msg: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &quot;按钮&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button&gt;&#123;&#123; msg &#125;&#125;&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scope&gt;</span><br><span class="line">    button&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>非常理想的是 组件间的类名是不会互相影响的 这对于我们的开发很友好</p>
+<h2 id="JS-in-Vue">JS in Vue</h2>
+<p>我们这里是用的是api形式的书写规范</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt; //setup 在组件被加载的时候就会执行</span><br><span class="line"> //  props 是从父组件中获取到的值</span><br><span class="line">const props = defineProps(&#123;</span><br><span class="line">    msg: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &quot;按钮&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 我们使用指针进行值的传递</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">const count = ref(0)</span><br></pre></td></tr></table></figure>
+<h2 id="Html-in-Vue">Html in Vue</h2>
+<p>其实没有什么区别</p>
+<p>最外层的template 只是为了说明这里是模板 不会真的有一个<code>template</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 使此按钮生效 --&gt;</span><br><span class="line">  &lt;BB :msg=&quot;he&quot;&gt;&lt;/BB&gt;</span><br><span class="line">  &lt;button @click=&quot;count++&quot;&gt;count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS-in-Vue">CSS in Vue</h2>
+<p>其实没有任何的区别  <code>scoped</code> 也是区别啊 确实</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">   	button&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;    </span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h1>组件化</h1>
+<p>开始真正地书写我们的组件吧</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">所有的 props 都遵循着单向绑定原则，props 因父组件的更新而变化，自然地将新的状态向下流往子组件，而不会逆向传递。这避免了子组件意外修改父组件的状态的情况，不然应用的数据流将很容易变得混乱而难以理解。</span><br></pre></td></tr></table></figure>
+<p>这里有它的考虑在里面 如果子组件可以修改父组件的值 这样很麻烦</p>
+<p>它想的是 我们直接通过父组件将子组件初始化 然后让其自己可以独立完成某项工作</p>
+<p>组件化的布局 我是真的写不出来啊 就是比较麻烦</p>
+<p>本来就不是很会布局 结果现在 还要将其划分为组件 这不是为难我吗?</p>
+<h1>重启我们的todo</h1>
+<p>将其作为我们的第一个项目吧</p>
+]]></content>
+  </entry>
+  <entry>
     <title>SQL</title>
     <url>/static-html/2023/01/12/BOOK/Sql/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h2 id="SQL">SQL</h2>
@@ -2787,54 +2843,6 @@ $$</p>
 ]]></content>
   </entry>
   <entry>
-    <title>Vue</title>
-    <url>/static-html/2023/01/12/BOOK/Vue/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>Vue</h1>
-<h2 id="项目结构">项目结构</h2>
-<blockquote>
-<p>index.html    //vue只有一个html页面</p>
-<p>/src    // 这里是我们的主要编写内容</p>
-<blockquote>
-<p>App.vue</p>
-<p>main.js</p>
-<p>/assert   //静态资源</p>
-<blockquote>
-<p>css jpg</p>
-</blockquote>
-<p>/components  组件</p>
-<blockquote>
-<p>hello.vue</p>
-<p>todo.vue</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h1>理解项目</h1>
-<p>App.vue 其实也是一个组件 就好像JAVA啊 自己也是一个对象一样</p>
-<p><code>vue</code>文件有三个部分 和原生的是一个样的其实是</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"></span><br><span class="line">// 这里我们可以写一个就是更加基础的组件 就是专为了绑定数据而生的</span><br><span class="line">const props = defineProps(&#123;</span><br><span class="line">    msg: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &quot;按钮&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button&gt;&#123;&#123; msg &#125;&#125;&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scope&gt;</span><br><span class="line">    button&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>非常理想的是 组件间的类名是不会互相影响的 这对于我们的开发很友好</p>
-<h2 id="JS-in-Vue">JS in Vue</h2>
-<p>我们这里是用的是api形式的书写规范</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt; //setup 在组件被加载的时候就会执行</span><br><span class="line"> //  props 是从父组件中获取到的值</span><br><span class="line">const props = defineProps(&#123;</span><br><span class="line">    msg: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &quot;按钮&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 我们使用指针进行值的传递</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">const count = ref(0)</span><br></pre></td></tr></table></figure>
-<h2 id="Html-in-Vue">Html in Vue</h2>
-<p>其实没有什么区别</p>
-<p>最外层的template 只是为了说明这里是模板 不会真的有一个<code>template</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 使此按钮生效 --&gt;</span><br><span class="line">  &lt;BB :msg=&quot;he&quot;&gt;&lt;/BB&gt;</span><br><span class="line">  &lt;button @click=&quot;count++&quot;&gt;count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="CSS-in-Vue">CSS in Vue</h2>
-<p>其实没有任何的区别  <code>scoped</code> 也是区别啊 确实</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">   	button&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;    </span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h1>组件化</h1>
-<p>开始真正地书写我们的组件吧</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">所有的 props 都遵循着单向绑定原则，props 因父组件的更新而变化，自然地将新的状态向下流往子组件，而不会逆向传递。这避免了子组件意外修改父组件的状态的情况，不然应用的数据流将很容易变得混乱而难以理解。</span><br></pre></td></tr></table></figure>
-<p>这里有它的考虑在里面 如果子组件可以修改父组件的值 这样很麻烦</p>
-<p>它想的是 我们直接通过父组件将子组件初始化 然后让其自己可以独立完成某项工作</p>
-<p>组件化的布局 我是真的写不出来啊 就是比较麻烦</p>
-<p>本来就不是很会布局 结果现在 还要将其划分为组件 这不是为难我吗?</p>
-<h1>重启我们的todo</h1>
-<p>将其作为我们的第一个项目吧</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Vue初见</title>
     <url>/static-html/2023/01/12/BOOK/Vue%E5%88%9D%E8%A7%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>环境搭建</h1>
@@ -2900,7 +2908,12 @@ $$</p>
 <p>我们访问css的请求还是不会出现问题 同时也对访问权限进行了设置</p>
 <h1>处理请求</h1>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="params"><span class="string">&quot;/:action/:name/:pwd&quot;</span></span>)&#123;</span><br><span class="line">    <span class="comment">//这样不就可以了 其实也差不多的 哎</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id=""></h2>
+<h2 id="async">async</h2>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">future</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;future&quot;</span></span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">future</span>())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>直接输出 返回的结果是一个promise <pending>  需要使用then 获取结果,这里是异步的程序不会block</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">future</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>)&#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">resolve</span>(<span class="string">&quot;future&quot;</span>)</span><br><span class="line">      &#125;, <span class="number">1000</span>); </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(future());</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">future</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">result</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们进行一个同步的写法 (nodejs 不允许直接讲最外层写 await/async)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> <span class="title function_">future</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">main</span>();</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Book</category>
@@ -3129,13 +3142,16 @@ server.listen(3000);</p>
 </ul>
 <h3 id="局域网代理">局域网代理</h3>
 <p>只要是在同一个wifi下的设备都可以享受到这个的代理.</p>
-<p>allow lan 就可以了 就是对于电脑的网卡压力比较大</p>
+<p>allow lan 就可以了 就是对于电脑的网卡压力比较大 真的很大吗 ? 其实除开视频和大文件下载 大部分的使用场景中都是不选哟</p>
 <h2 id="git">git</h2>
 <p>pigcha会自动代理我们的git</p>
 <p>我们其实也可以使用它不一定非得使用就是它,主要是太贵了 331 200g 平均</p>
 <p>接受不了了 我们还是去买一个3600g的吧,感觉就是很够用了 不是吗,这个学期我不应该有其他的消费了</p>
-<h1>重装系统</h1>
-<p>其实我并不会真正意义上的装系统 – 一台电脑 给他直接装上系统,主要是</p>
+<p>clash不会自动代理git 需要我们手动设置git的代理</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &lt;protocol&gt;<span class="symbol">://&lt;host&gt;</span><span class="symbol">:&lt;port&gt;</span></span><br><span class="line"><span class="comment"># 例如 </span></span><br><span class="line">git config --global http.proxy <span class="symbol">http:</span>//<span class="symbol">localhost:</span><span class="number">7890</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="我在做什么">我在做什么</h2>
+<p>其实主要是有点没有理解你在做什么 就是说 这里是在搭建我们的vpn客户端 就好了</p>
+<p>目前我打算的策略是利用电脑的LAN功能实现手机端的科学上网. 日后应该会使用网线直连手机 利用手机作为软路由实现科学上网的功能 不出意外的就是这样了</p>
 ]]></content>
   </entry>
   <entry>
@@ -3270,6 +3286,27 @@ server.listen(3000);</p>
       </tags>
   </entry>
   <entry>
+    <title>JAVA_PATH</title>
+    <url>/static-html/2022/12/12/Cookie/JAVA_PATH/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>JAVA环境配置</h1>
+<p>首先 你需要下载并安装 <a href="https://www.oracle.com/java/technologies/downloads/">JDK</a> (Java SE Development)</p>
+<p>大概的名字是<code>jdk-17_windows-x64</code> 之类的 不要下载运行时<code>runtime</code></p>
+<p>请牢记你的安装路径</p>
+<h2 id="配置JAVA-HOME-和-CLASSPATH">配置JAVA_HOME  和 CLASSPATH</h2>
+<p>你需要记住之前的安装路径 这很正常 然后添加环境变量</p>
+<p>新建一个变量环境变量 名字为JAVA_HOME 内容为 上面的路径 <code>SOFT\JAVA</code></p>
+<p>新建一个环境变量 名字为CLASSPATH 内容为 <code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar</code></p>
+<p>然后添加PATH</p>
+<p>新建 添加如下的路径</p>
+<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line"><span class="tag">%<span class="selector-tag">JAVA_HOME</span></span>%\bin</span><br><span class="line"><span class="tag">%<span class="selector-tag">JAVA_HOME</span></span>%\jre\bin</span><br></pre></td></tr></table></figure>
+<h2 id="报错">报错</h2>
+<p>如果有<code>java</code> 但是没有<code>javac</code> 很可能是没有安装正确的<code>JDK</code></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221104144002765.png" alt="image-20221104144002765" /></p>
+<p>删除我们的 <code>lib/ext</code> 文件夹就好了</p>
+<p>有的时候<code>win</code>会无法识别<code>%</code>里的内容 建议将上面的 <code>%JAVA_HOME</code> 写成绝对路径</p>
+]]></content>
+  </entry>
+  <entry>
     <title>FTP的使用</title>
     <url>/static-html/2022/12/12/Cookie/FTP%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>FTP的使用</h1>
@@ -3298,27 +3335,6 @@ server.listen(3000);</p>
 <p>当然了 我也不过是 一个初学者 只是解决了问题 并不懂得背后的原理 甚至很多时候 能够解问题 都是凭借运气</p>
 <h2 id="大功告成">大功告成</h2>
 <p>开始使用ftp进行文件传输吧</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>JAVA_PATH</title>
-    <url>/static-html/2022/12/12/Cookie/JAVA_PATH/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>JAVA环境配置</h1>
-<p>首先 你需要下载并安装 <a href="https://www.oracle.com/java/technologies/downloads/">JDK</a> (Java SE Development)</p>
-<p>大概的名字是<code>jdk-17_windows-x64</code> 之类的 不要下载运行时<code>runtime</code></p>
-<p>请牢记你的安装路径</p>
-<h2 id="配置JAVA-HOME-和-CLASSPATH">配置JAVA_HOME  和 CLASSPATH</h2>
-<p>你需要记住之前的安装路径 这很正常 然后添加环境变量</p>
-<p>新建一个变量环境变量 名字为JAVA_HOME 内容为 上面的路径 <code>SOFT\JAVA</code></p>
-<p>新建一个环境变量 名字为CLASSPATH 内容为 <code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar</code></p>
-<p>然后添加PATH</p>
-<p>新建 添加如下的路径</p>
-<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line"><span class="tag">%<span class="selector-tag">JAVA_HOME</span></span>%\bin</span><br><span class="line"><span class="tag">%<span class="selector-tag">JAVA_HOME</span></span>%\jre\bin</span><br></pre></td></tr></table></figure>
-<h2 id="报错">报错</h2>
-<p>如果有<code>java</code> 但是没有<code>javac</code> 很可能是没有安装正确的<code>JDK</code></p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221104144002765.png" alt="image-20221104144002765" /></p>
-<p>删除我们的 <code>lib/ext</code> 文件夹就好了</p>
-<p>有的时候<code>win</code>会无法识别<code>%</code>里的内容 建议将上面的 <code>%JAVA_HOME</code> 写成绝对路径</p>
 ]]></content>
   </entry>
   <entry>
@@ -3509,6 +3525,8 @@ server.listen(3000);</p>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/static-html/assets/css/APlayer.min.css"><script src="/static-html/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/static-html/assets/js/Meting.min.js"></script><h1>服务器代码本地不可用问题</h1>
 <p>很现实的问题 以数据库为例 在服务器上 我们是访问<code>localhost </code>但是在本地的时候 你没有数据库 就无法运行我们的程序 还有发送请求的url问题</p>
 <h2 id="解决方案">解决方案</h2>
+<p>其实就是添加一层其他的信息 这里我有非常丰富的实践经验了 不是吗 哈哈哈</p>
+<p>go语言可以利用viper nodejs项目可以直接将配置文件写在js中</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;server&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;exp&quot;</span>: <span class="string">&quot;解释 这里是服务器的配置 database 表示是否连接到服务器 root 是根目录&quot;</span>,</span><br><span class="line">        <span class="string">&quot;history_message_max_length&quot;</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="string">&quot;root&quot;</span>: <span class="string">&quot;http://81.68.91.70&quot;</span>,</span><br><span class="line">        <span class="string">&quot;database&quot;</span>: <span class="string">&quot;true&quot;</span>,</span><br><span class="line">        <span class="string">&quot;db&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;host&quot;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">            <span class="string">&quot;user&quot;</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">            <span class="string">&quot;password&quot;</span>: <span class="string">&quot;@Dzg15484&quot;</span>,</span><br><span class="line">            <span class="string">&quot;database&quot;</span>: <span class="string">&quot;node&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;local&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;history_message_max_length&quot;</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="string">&quot;root&quot;</span>: <span class="string">&quot;http://localhost:3000/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;database&quot;</span>: <span class="string">&quot;false&quot;</span>,</span><br><span class="line">        <span class="string">&quot;db&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;host&quot;</span>: <span class="string">&quot;81.68.91.70&quot;</span>,</span><br><span class="line">            <span class="string">&quot;user&quot;</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">            <span class="string">&quot;password&quot;</span>: <span class="string">&quot;@Dzg15484&quot;</span>,</span><br><span class="line">            <span class="string">&quot;database&quot;</span>: <span class="string">&quot;node&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我写了如上的配置文件 每次运行前程序读取配置信息</p>
 <h3 id="数据库的连接">数据库的连接</h3>
